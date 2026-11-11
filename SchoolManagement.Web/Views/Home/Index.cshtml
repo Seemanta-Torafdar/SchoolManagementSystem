@@ -11,24 +11,16 @@
     var management = ViewBag.ManagementMembers as IReadOnlyList<ManagementMember> ?? new List<ManagementMember>();
 }
 
-<!-- Ambient Background Glow Blobs for Smart Colorful Atmosphere -->
-<div class="es-ambient-blob es-blob-1"></div>
-<div class="es-ambient-blob es-blob-2"></div>
-<div class="es-ambient-blob es-blob-3"></div>
-
 <!-- ==========================================================================
-     1. HERO BANNER SECTION (Smart, Colorful, Lush Gradient)
+     1. HERO BANNER SECTION (Mint Green #EFFFF0 Background)
      ========================================================================== -->
 <section class="es-hero">
     <div class="container">
-        <div class="row align-items-center g-5">
+        <div class="row align-items-center g-4">
             <!-- Left Hero Content -->
             <div class="col-lg-6">
-                <!-- Welcome Pill Badge -->
-                <div class="es-hero-welcome-badge">
-                    <i data-lucide="sparkles" style="width:16px;height:16px;"></i>
-                    <span>Welcome to E-School</span>
-                </div>
+                <!-- Welcome Orange Text -->
+                <span class="es-hero-welcome">Welcome to E-School</span>
 
                 <!-- Main Display Headline -->
                 <h1 class="es-hero-title">
@@ -47,164 +39,133 @@
                     <span></span>
                 </div>
 
-                <!-- Dual CTA Buttons -->
-                <div class="es-hero-cta-group">
+                <!-- CTA Button -->
+                <div>
                     <a asp-area="" asp-controller="Academics" asp-action="Index" class="btn-es-green">
-                        Get Started <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
-                    </a>
-                    <a href="#result-section" class="btn-es-glass">
-                        <i data-lucide="award" style="width:18px;height:18px;color:#21B573;"></i>
-                        Check Result
+                        Get Started
                     </a>
                 </div>
             </div>
 
-            <!-- Right Hero Illustration with Floating Smart Badges -->
+            <!-- Right Hero Illustration -->
             <div class="col-lg-6">
                 <div class="es-hero-img-wrap">
-                    <!-- Floating Smart Badge 1 (Top Left) -->
-                    <div class="es-float-badge es-badge-top-left">
-                        <div class="es-badge-icon-box" style="background:linear-gradient(135deg, #F59E0B, #D97706);">
-                            <i data-lucide="star" style="width:18px;height:18px;fill:#fff;"></i>
-                        </div>
-                        <div>
-                            <div class="es-badge-text-title">Top Rated School</div>
-                            <div class="es-badge-text-sub">Est. 1998 • Excellence</div>
-                        </div>
-                    </div>
-
-                    <!-- Modern Educational Classroom Vector Illustration -->
                     <svg class="es-hero-illustration" viewBox="0 0 540 380" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
-                            <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#2D3748" />
-                                <stop offset="100%" stop-color="#1A202C" />
-                            </linearGradient>
                             <linearGradient id="teacherGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#F6AD55" />
-                                <stop offset="100%" stop-color="#ED8936" />
+                                <stop offset="0%" stop-color="#FBBF24" />
+                                <stop offset="100%" stop-color="#F59E0B" />
                             </linearGradient>
                             <linearGradient id="plantGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#48BB78" />
-                                <stop offset="100%" stop-color="#2F855A" />
+                                <stop offset="0%" stop-color="#34D399" />
+                                <stop offset="100%" stop-color="#059669" />
                             </linearGradient>
                             <filter id="heroCardShadow" x="-10%" y="-10%" width="120%" height="120%">
-                                <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#1A202C" flood-opacity="0.14" />
+                                <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0F172A" flood-opacity="0.12" />
                             </filter>
                         </defs>
 
                         <!-- Background Desk Base -->
                         <rect x="220" y="270" width="300" height="12" rx="6" fill="#CBD5E0" />
-                        <rect x="270" y="282" width="12" height="70" rx="3" fill="#A0AEC0" />
-                        <rect x="450" y="282" width="12" height="70" rx="3" fill="#A0AEC0" />
+                        <rect x="270" y="282" width="12" height="70" rx="3" fill="#94A3B8" />
+                        <rect x="450" y="282" width="12" height="70" rx="3" fill="#94A3B8" />
 
                         <!-- Wall Clock (Top Left of Scene) -->
-                        <circle cx="280" cy="80" r="18" fill="#FFFFFF" stroke="#4299E1" stroke-width="4" />
-                        <line x1="280" y1="80" x2="280" y2="70" stroke="#2B6CB0" stroke-width="3" stroke-linecap="round" />
-                        <line x1="280" y1="80" x2="288" y2="80" stroke="#2B6CB0" stroke-width="3" stroke-linecap="round" />
-                        <circle cx="280" cy="80" r="2.5" fill="#E53E3E" />
+                        <circle cx="280" cy="80" r="19" fill="#FFFFFF" stroke="#06B6D4" stroke-width="4" />
+                        <line x1="280" y1="80" x2="280" y2="69" stroke="#0284C7" stroke-width="3" stroke-linecap="round" />
+                        <line x1="280" y1="80" x2="289" y2="80" stroke="#0284C7" stroke-width="3" stroke-linecap="round" />
+                        <circle cx="280" cy="80" r="2.5" fill="#EF4444" />
 
                         <!-- Large Digital Screen / Virtual Classroom Monitor -->
                         <g filter="url(#heroCardShadow)">
-                            <rect x="290" y="90" width="220" height="150" rx="14" fill="#FFFFFF" stroke="#CBD5E0" stroke-width="4" />
-                            <rect x="298" y="98" width="204" height="134" rx="10" fill="#F7FAFC" />
+                            <rect x="290" y="90" width="220" height="150" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4" />
+                            <rect x="298" y="98" width="204" height="134" rx="10" fill="#F8FAFC" />
                             <!-- Video UI Bar -->
                             <rect x="298" y="98" width="204" height="24" fill="#E2E8F0" />
-                            <circle cx="312" cy="110" r="4" fill="#FC8181" />
-                            <circle cx="324" cy="110" r="4" fill="#F6E05E" />
-                            <circle cx="336" cy="110" r="4" fill="#68D391" />
-                            <rect x="466" y="104" width="24" height="12" rx="3" fill="#E53E3E" />
+                            <circle cx="312" cy="110" r="4" fill="#F43F5E" />
+                            <circle cx="324" cy="110" r="4" fill="#FBBF24" />
+                            <circle cx="336" cy="110" r="4" fill="#10B981" />
+                            <rect x="466" y="104" width="24" height="12" rx="3" fill="#EF4444" />
                             <polygon points="475,107 481,110 475,113" fill="#FFFFFF" />
 
                             <!-- Teacher Inside Monitor -->
                             <!-- Head & Hair -->
                             <circle cx="400" cy="140" r="18" fill="#FBD38D" />
-                            <path d="M385 136 C385 124, 415 124, 415 136 Z" fill="#2D3748" />
+                            <path d="M385 136 C385 124, 415 124, 415 136 Z" fill="#1E293B" />
                             <!-- Body / Yellow-Orange Shirt -->
                             <path d="M375 185 C375 160, 425 160, 425 185 Z" fill="url(#teacherGrad)" />
                             <!-- Tie -->
-                            <polygon points="400,162 404,180 400,185 396,180" fill="#2B6CB0" />
+                            <polygon points="400,162 404,180 400,185 396,180" fill="#2563EB" />
                             <!-- Left Arm Pointing -->
                             <path d="M375 168 Q345 150 330 160" stroke="url(#teacherGrad)" stroke-width="8" stroke-linecap="round" />
                             <circle cx="328" cy="162" r="5" fill="#FBD38D" />
                             
                             <!-- Floating Virtual Content Cards on Screen -->
-                            <rect x="315" y="172" width="40" height="20" rx="4" fill="#EBF8FF" stroke="#BEE3F8" stroke-width="1.5" />
-                            <rect x="320" y="177" width="20" height="3" rx="1.5" fill="#3182CE" />
-                            <rect x="320" y="183" width="30" height="2" rx="1" fill="#A0AEC0" />
+                            <rect x="315" y="172" width="40" height="20" rx="4" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5" />
+                            <rect x="320" y="177" width="20" height="3" rx="1.5" fill="#2563EB" />
+                            <rect x="320" y="183" width="30" height="2" rx="1" fill="#94A3B8" />
                             
-                            <rect x="445" y="140" width="45" height="30" rx="4" fill="#F0FFF4" stroke="#C6F6D5" stroke-width="1.5" />
-                            <line x1="452" y1="150" x2="478" y2="150" stroke="#38A169" stroke-width="2" stroke-linecap="round" />
-                            <line x1="452" y1="158" x2="472" y2="158" stroke="#38A169" stroke-width="2" stroke-linecap="round" />
+                            <rect x="445" y="140" width="45" height="30" rx="4" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.5" />
+                            <line x1="452" y1="150" x2="478" y2="150" stroke="#10B981" stroke-width="2" stroke-linecap="round" />
+                            <line x1="452" y1="158" x2="472" y2="158" stroke="#10B981" stroke-width="2" stroke-linecap="round" />
 
                             <!-- Monitor Stand -->
-                            <rect x="393" y="240" width="14" height="32" fill="#A0AEC0" />
-                            <path d="M365 272 L435 272 L440 274 L360 274 Z" fill="#718096" />
+                            <rect x="393" y="240" width="14" height="32" fill="#94A3B8" />
+                            <path d="M365 272 L435 272 L440 274 L360 274 Z" fill="#64748B" />
                         </g>
 
                         <!-- Potted Plant on Table Stand -->
                         <g>
-                            <rect x="475" y="290" width="40" height="8" rx="2" fill="#4A5568" />
-                            <line x1="482" y1="298" x2="476" y2="352" stroke="#4A5568" stroke-width="4" stroke-linecap="round" />
-                            <line x1="508" y1="298" x2="514" y2="352" stroke="#4A5568" stroke-width="4" stroke-linecap="round" />
+                            <rect x="475" y="290" width="40" height="8" rx="2" fill="#334155" />
+                            <line x1="482" y1="298" x2="476" y2="352" stroke="#334155" stroke-width="4" stroke-linecap="round" />
+                            <line x1="508" y1="298" x2="514" y2="352" stroke="#334155" stroke-width="4" stroke-linecap="round" />
                             <!-- Pot -->
-                            <polygon points="485,290 505,290 502,268 488,268" fill="#3182CE" />
-                            <ellipse cx="495" cy="268" rx="7" ry="2" fill="#2B6CB0" />
+                            <polygon points="485,290 505,290 502,268 488,268" fill="#0284C7" />
+                            <ellipse cx="495" cy="268" rx="7" ry="2" fill="#0369A1" />
                             <!-- Plant Foliage -->
                             <circle cx="495" cy="254" r="14" fill="url(#plantGrad)" />
                             <circle cx="484" cy="246" r="12" fill="url(#plantGrad)" />
                             <circle cx="506" cy="246" r="12" fill="url(#plantGrad)" />
-                            <circle cx="495" cy="236" r="13" fill="#68D391" />
+                            <circle cx="495" cy="236" r="13" fill="#6EE7B7" />
                         </g>
 
                         <!-- Student Learning at Desk (Left Foreground) -->
                         <g filter="url(#heroCardShadow)">
                             <!-- Chair -->
-                            <rect x="180" y="210" width="34" height="42" rx="6" fill="#38A169" />
-                            <path d="M174 250 L220 250 L216 262 L178 262 Z" fill="#276749" />
-                            <line x1="184" y1="262" x2="176" y2="350" stroke="#4A5568" stroke-width="5" stroke-linecap="round" />
-                            <line x1="210" y1="262" x2="224" y2="350" stroke="#4A5568" stroke-width="5" stroke-linecap="round" />
-                            <line x1="178" y1="310" x2="220" y2="310" stroke="#718096" stroke-width="3" />
+                            <rect x="180" y="210" width="34" height="42" rx="6" fill="#10B981" />
+                            <path d="M174 250 L220 250 L216 262 L178 262 Z" fill="#059669" />
+                            <line x1="184" y1="262" x2="176" y2="350" stroke="#334155" stroke-width="5" stroke-linecap="round" />
+                            <line x1="210" y1="262" x2="224" y2="350" stroke="#334155" stroke-width="5" stroke-linecap="round" />
+                            <line x1="178" y1="310" x2="220" y2="310" stroke="#64748B" stroke-width="3" />
 
                             <!-- Head & Hair (Student) -->
                             <circle cx="196" cy="164" r="17" fill="#FBD38D" />
-                            <path d="M182 160 C182 144, 212 144, 212 160 Z" fill="#2D3748" />
-                            <path d="M182 160 C172 164, 168 184, 178 188 C182 180, 184 168, 182 160 Z" fill="#2D3748" />
-                            <circle cx="180" cy="168" r="3" fill="#E53E3E" />
+                            <path d="M182 160 C182 144, 212 144, 212 160 Z" fill="#1E293B" />
+                            <path d="M182 160 C172 164, 168 184, 178 188 C182 180, 184 168, 182 160 Z" fill="#1E293B" />
+                            <circle cx="180" cy="168" r="3" fill="#F43F5E" />
 
                             <!-- Student Body / Cyan-Blue Top -->
-                            <path d="M180 188 C180 178, 214 178, 214 188 L216 230 L180 230 Z" fill="#3182CE" />
+                            <path d="M180 188 C180 178, 214 178, 214 188 L216 230 L180 230 Z" fill="#2563EB" />
                             
                             <!-- Legs & Shoes -->
-                            <path d="M184 230 L226 230 L226 270 L212 270 L210 330 L198 330 L200 270 L184 270 Z" fill="#2B6CB0" />
-                            <ellipse cx="204" cy="334" rx="10" ry="4" fill="#E53E3E" />
+                            <path d="M184 230 L226 230 L226 270 L212 270 L210 330 L198 330 L200 270 L184 270 Z" fill="#1E40AF" />
+                            <ellipse cx="204" cy="334" rx="10" ry="4" fill="#F43F5E" />
 
                             <!-- Arms & Laptop -->
-                            <path d="M198 196 Q220 216 236 218" stroke="#3182CE" stroke-width="8" stroke-linecap="round" />
+                            <path d="M198 196 Q220 216 236 218" stroke="#2563EB" stroke-width="8" stroke-linecap="round" />
                             <circle cx="238" cy="218" r="4" fill="#FBD38D" />
 
                             <polygon points="230,224 268,224 262,232 224,232" fill="#E2E8F0" />
-                            <polygon points="244,196 272,196 268,224 240,224" fill="#4A5568" />
-                            <polygon points="246,198 270,198 266,222 242,222" fill="#2B6CB0" />
+                            <polygon points="244,196 272,196 268,224 240,224" fill="#334155" />
+                            <polygon points="246,198 270,198 266,222 242,222" fill="#2563EB" />
                             <circle cx="256" cy="210" r="4" fill="#FFFFFF" opacity="0.8" />
                         </g>
 
                         <!-- Books on Table -->
-                        <rect x="250" y="258" width="30" height="6" rx="1" fill="#E53E3E" />
-                        <rect x="252" y="252" width="28" height="6" rx="1" fill="#38A169" />
-                        <rect x="254" y="246" width="24" height="6" rx="1" fill="#ECC94B" />
+                        <rect x="250" y="258" width="30" height="6" rx="1" fill="#EF4444" />
+                        <rect x="252" y="252" width="28" height="6" rx="1" fill="#10B981" />
+                        <rect x="254" y="246" width="24" height="6" rx="1" fill="#F59E0B" />
                     </svg>
-
-                    <!-- Floating Smart Badge 2 (Bottom Right) -->
-                    <div class="es-float-badge es-badge-bottom-right">
-                        <div class="es-badge-icon-box" style="background:linear-gradient(135deg, #10B981, #059669);">
-                            <i data-lucide="trending-up" style="width:18px;height:18px;stroke-width:2.5;"></i>
-                        </div>
-                        <div>
-                            <div class="es-badge-text-title">99.4% Pass Rate</div>
-                            <div class="es-badge-text-sub">1,200+ Active Students</div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -212,65 +173,13 @@
 </section>
 
 <!-- ==========================================================================
-     SMART COLORFUL METRICS STRIP (4 High-Impact Pillars)
-     ========================================================================== -->
-<div class="container es-stat-strip">
-    <div class="es-stat-bar">
-        <!-- Metric 1: Students -->
-        <div class="es-stat-item">
-            <div class="es-stat-icon" style="background:var(--es-mint-grad);">
-                <i data-lucide="graduation-cap" style="width:26px;height:26px;"></i>
-            </div>
-            <div class="es-stat-info">
-                <h4>1,200+</h4>
-                <p>Enrolled Students</p>
-            </div>
-        </div>
-
-        <!-- Metric 2: Teachers -->
-        <div class="es-stat-item">
-            <div class="es-stat-icon" style="background:var(--es-amber-grad);">
-                <i data-lucide="users" style="width:26px;height:26px;"></i>
-            </div>
-            <div class="es-stat-info">
-                <h4>50+</h4>
-                <p>Expert Faculty</p>
-            </div>
-        </div>
-
-        <!-- Metric 3: Academic Excellence -->
-        <div class="es-stat-item">
-            <div class="es-stat-icon" style="background:var(--es-cyan-grad);">
-                <i data-lucide="award" style="width:26px;height:26px;"></i>
-            </div>
-            <div class="es-stat-info">
-                <h4>99.2%</h4>
-                <p>Academic Success</p>
-            </div>
-        </div>
-
-        <!-- Metric 4: Modern Classrooms -->
-        <div class="es-stat-item">
-            <div class="es-stat-icon" style="background:var(--es-purple-grad);">
-                <i data-lucide="monitor" style="width:26px;height:26px;"></i>
-            </div>
-            <div class="es-stat-info">
-                <h4>100%</h4>
-                <p>Digital Classrooms</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ==========================================================================
-     2. NOTICE SECTION (Smart & Colorful Cards)
+     2. NOTICE SECTION
      ========================================================================== -->
 <section class="es-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
-            <div class="es-section-title-wrap">
-                <span class="es-section-pill">Campus Announcements</span>
+            <div>
                 <h2 class="es-section-title">Notice</h2>
             </div>
             <div>
@@ -282,17 +191,17 @@
 
         <!-- Main Notice Card -->
         <div class="es-notice-card">
-            <div class="row align-items-center g-4">
+            <div class="row align-items-center g-3">
                 <!-- Megaphone Icon Column -->
                 <div class="col-auto d-none d-md-block">
                     <div class="es-mega-icon">
-                        <i data-lucide="megaphone" style="width:32px;height:32px;"></i>
+                        <i data-lucide="megaphone" style="width:28px;height:28px;"></i>
                     </div>
                 </div>
 
                 <!-- Notices List Column -->
                 <div class="col">
-                    <!-- Notice 1 -->
+                    <!-- Notice 1: Urgent -->
                     <div class="es-notice-row">
                         <div class="es-notice-icon d-md-none">
                             <i data-lucide="bell" style="width:20px;height:20px;"></i>
@@ -303,12 +212,12 @@
                         <div class="d-flex align-items-center gap-3">
                             <span class="es-badge es-badge-urgent">Urgent</span>
                             <span class="es-notice-date">
-                                <i data-lucide="calendar" style="width:15px;height:15px;color:#DC2626;"></i> 10 Nov, 2026
+                                <i data-lucide="calendar" style="width:14px;height:14px;"></i> 10 Nov, 2026
                             </span>
                         </div>
                     </div>
 
-                    <!-- Notice 2 -->
+                    <!-- Notice 2: New -->
                     <div class="es-notice-row">
                         <div class="es-notice-icon d-md-none">
                             <i data-lucide="bell" style="width:20px;height:20px;"></i>
@@ -319,12 +228,12 @@
                         <div class="d-flex align-items-center gap-3">
                             <span class="es-badge es-badge-new">New</span>
                             <span class="es-notice-date">
-                                <i data-lucide="calendar" style="width:15px;height:15px;color:#047857;"></i> 08 Nov, 2026
+                                <i data-lucide="calendar" style="width:14px;height:14px;"></i> 08 Nov, 2026
                             </span>
                         </div>
                     </div>
 
-                    <!-- Notice 3 -->
+                    <!-- Notice 3: Info -->
                     <div class="es-notice-row">
                         <div class="es-notice-icon d-md-none">
                             <i data-lucide="bell" style="width:20px;height:20px;"></i>
@@ -335,7 +244,7 @@
                         <div class="d-flex align-items-center gap-3">
                             <span class="es-badge es-badge-info">Info</span>
                             <span class="es-notice-date">
-                                <i data-lucide="calendar" style="width:15px;height:15px;color:#0369A1;"></i> 05 Nov, 2026
+                                <i data-lucide="calendar" style="width:14px;height:14px;"></i> 05 Nov, 2026
                             </span>
                         </div>
                     </div>
@@ -346,14 +255,13 @@
 </section>
 
 <!-- ==========================================================================
-     3. TEACHER & MANAGEMENT SECTION (Vibrant Colorful Cards)
+     3. TEACHER & MANAGEMENT SECTION
      ========================================================================== -->
 <section class="es-section pt-0">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
-            <div class="es-section-title-wrap">
-                <span class="es-section-pill">Academic Leadership</span>
+            <div>
                 <h2 class="es-section-title">Teacher &amp; Management</h2>
             </div>
             <div>
@@ -363,71 +271,70 @@
             </div>
         </div>
 
-        <!-- 7 Responsive Cards Row Matching Reference with Colorful Accent Tags -->
+        <!-- 7 Responsive Cards Row Matching Reference Image Exactly -->
         <div class="es-team-row">
             <!-- 1. "Our Teachers" Category Badge Card -->
-            <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-label-card-teachers">
-                <div class="es-label-icon-box">
-                    <i data-lucide="users" style="width:26px;height:26px;color:#fff;"></i>
+            <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-label-card" style="text-decoration:none;">
+                <div style="background:rgba(255,255,255,0.2); border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center;">
+                    <i data-lucide="users" style="width:24px;height:24px;color:#fff;"></i>
                 </div>
                 <span>Our<br />Teachers</span>
             </a>
 
             <!-- 2. Teacher 1: Md. Rahat Islam -->
-            <div class="es-person-card" style="--card-accent:#10B981;">
+            <div class="es-person-card">
                 <div class="gvhs-avatar-img avatar-rahman-ali es-avatar"></div>
                 <h6 class="es-person-name">Md. Rahat Islam</h6>
-                <span class="es-person-tag tag-math">Mathematics</span>
+                <p class="es-person-sub">Mathematics</p>
             </div>
 
             <!-- 3. Teacher 2: Farhana Akter -->
-            <div class="es-person-card" style="--card-accent:#8B5CF6;">
+            <div class="es-person-card">
                 <div class="gvhs-avatar-img avatar-farhana-akter es-avatar"></div>
                 <h6 class="es-person-name">Farhana Akter</h6>
-                <span class="es-person-tag tag-eng">English</span>
+                <p class="es-person-sub">English</p>
             </div>
 
             <!-- 4. Teacher 3: Sabbir Hossain -->
-            <div class="es-person-card" style="--card-accent:#3B82F6;">
+            <div class="es-person-card">
                 <div class="gvhs-avatar-img avatar-tanvir-hasan es-avatar"></div>
                 <h6 class="es-person-name">Sabbir Hossain</h6>
-                <span class="es-person-tag tag-ict">ICT</span>
+                <p class="es-person-sub">ICT</p>
             </div>
 
             <!-- 5. "Our Management" Category Badge Card -->
-            <a asp-area="" asp-controller="About" asp-action="Index" class="es-label-card-mgmt">
-                <div class="es-label-icon-box">
-                    <i data-lucide="landmark" style="width:26px;height:26px;color:#fff;"></i>
+            <a asp-area="" asp-controller="About" asp-action="Index" class="es-label-card" style="background:#EFFFF0; color:#21B573; border:1px solid #C6F6D5; text-decoration:none;">
+                <div style="background:rgba(33,181,115,0.15); border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center;">
+                    <i data-lucide="landmark" style="width:24px;height:24px;color:#21B573;"></i>
                 </div>
-                <span>Our<br />Management</span>
+                <span style="color:#28213D;">Our<br />Management</span>
             </a>
 
             <!-- 6. Management 1: Prof. Dr. A. Karim -->
-            <div class="es-person-card" style="--card-accent:#F59E0B;">
+            <div class="es-person-card">
                 <div class="gvhs-avatar-img avatar-abdur-rahman es-avatar"></div>
                 <h6 class="es-person-name">Prof. Dr. A. Karim</h6>
-                <span class="es-person-tag tag-lead">Principal</span>
+                <p class="es-person-sub">Principal</p>
             </div>
 
             <!-- 7. Management 2: Nasrin Sultana -->
-            <div class="es-person-card" style="--card-accent:#EC4899;">
+            <div class="es-person-card">
                 <div class="gvhs-avatar-img avatar-nusrat-jahan es-avatar"></div>
                 <h6 class="es-person-name">Nasrin Sultana</h6>
-                <span class="es-person-tag tag-vp">Vice Principal</span>
+                <p class="es-person-sub">Vice Principal</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ==========================================================================
-     4. NEXT EVENT SECTION (Dynamic Sports & Festivals)
+     4. NEXT EVENT SECTION
      ========================================================================== -->
 <section class="es-section pt-0">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
-            <div class="es-section-title-wrap">
-                <span class="es-section-pill">Campus Life &amp; Activities</span>
+            <div>
                 <h2 class="es-section-title">Next Event</h2>
             </div>
             <div>
@@ -442,44 +349,30 @@
             <div class="col-lg-4 col-md-5">
                 <div class="es-event-info-card d-flex flex-column justify-content-between">
                     <div>
-                        <!-- Live Pill -->
-                        <div class="es-event-live-pill">
-                            <span class="es-live-dot"></span>
-                            <span>Registration Open</span>
+                        <!-- Green Date Badge -->
+                        <div class="es-event-date-badge">
+                            <span class="day">25</span>
+                            <span class="month">Nov</span>
                         </div>
-
-                        <!-- Green Gradient Date Badge -->
-                        <div>
-                            <div class="es-event-date-badge">
-                                <span class="day">25</span>
-                                <span class="month">Nov</span>
-                            </div>
-                        </div>
-
                         <h4 class="es-event-title">Annual Sports Day 2026</h4>
-                        
                         <div class="es-event-meta">
-                            <div class="es-meta-icon">
-                                <i data-lucide="calendar" style="width:16px;height:16px;"></i>
-                            </div>
-                            <span>Wednesday, 25 Nov, 2026</span>
+                            <i data-lucide="calendar" style="width:16px;height:16px;"></i>
+                            <span>25 Nov, 2026</span>
                         </div>
                         <div class="es-event-meta">
-                            <div class="es-meta-icon">
-                                <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
-                            </div>
-                            <span>School Playground &amp; Athletic Track</span>
+                            <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
+                            <span>School Playground</span>
                         </div>
                     </div>
                     <div>
                         <a asp-area="" asp-controller="Events" asp-action="Index" class="btn-es-register">
-                            Register Now <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                            Register Now &rarr;
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Right: 3 Event Photos Grid with Colorful Badges -->
+            <!-- Right: 3 Event Photos Grid -->
             <div class="col-lg-8 col-md-7">
                 <div class="row g-3 h-100">
                     <!-- Photo 1: Athletic Sports Race -->
@@ -488,7 +381,6 @@
                             <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80" 
                                  alt="Annual Sports Sprint" 
                                  loading="lazy" />
-                            <span class="es-photo-badge" style="background:rgba(239, 68, 68, 0.9);">🏃 Track 100m</span>
                         </div>
                     </div>
                     <!-- Photo 2: Students with Championship Trophy -->
@@ -497,7 +389,6 @@
                             <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" 
                                  alt="Trophy Celebration" 
                                  loading="lazy" />
-                            <span class="es-photo-badge" style="background:rgba(33, 181, 115, 0.9);">🏆 Champions</span>
                         </div>
                     </div>
                     <!-- Photo 3: Outdoor Stage & Canopy Ceremony -->
@@ -506,7 +397,6 @@
                             <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" 
                                  alt="Sports Ground Assembly" 
                                  loading="lazy" />
-                            <span class="es-photo-badge" style="background:rgba(30, 144, 255, 0.9);">🎪 Pavilion</span>
                         </div>
                     </div>
                 </div>
@@ -516,14 +406,13 @@
 </section>
 
 <!-- ==========================================================================
-     5. CLASS VIDEOS SECTION (Smart Video Hub with Glowing Plays)
+     5. CLASS VIDEOS SECTION
      ========================================================================== -->
-<section class="es-section es-bg-videos">
+<section class="es-section es-bg-light">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
-            <div class="es-section-title-wrap">
-                <span class="es-section-pill">Interactive Learning</span>
+            <div>
                 <h2 class="es-section-title">Class Videos</h2>
             </div>
             <div>
@@ -542,17 +431,14 @@
                         <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80" 
                              alt="Algebra Class 10" 
                              loading="lazy" />
-                        <span class="es-video-chip" style="background:#10B981;">Mathematics</span>
                         <div class="es-play-btn">
-                            <i data-lucide="play" style="width:22px;height:22px;fill:currentColor;margin-left:3px;"></i>
+                            <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
                         </div>
                         <span class="es-duration-badge">18:24</span>
                     </div>
                     <div class="es-video-body">
                         <h5 class="es-video-title">Algebra - Class 10</h5>
-                        <p class="es-video-sub">
-                            <i data-lucide="book-open" style="width:14px;height:14px;color:#10B981;"></i> Chapter 4 • Quadratic Equations
-                        </p>
+                        <p class="es-video-sub">Mathematics</p>
                     </div>
                 </div>
             </div>
@@ -564,17 +450,14 @@
                         <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" 
                              alt="Human Digestive System" 
                              loading="lazy" />
-                        <span class="es-video-chip" style="background:#8B5CF6;">Biology</span>
                         <div class="es-play-btn">
-                            <i data-lucide="play" style="width:22px;height:22px;fill:currentColor;margin-left:3px;"></i>
+                            <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
                         </div>
                         <span class="es-duration-badge">22:10</span>
                     </div>
                     <div class="es-video-body">
                         <h5 class="es-video-title">Human Digestive System</h5>
-                        <p class="es-video-sub">
-                            <i data-lucide="book-open" style="width:14px;height:14px;color:#8B5CF6;"></i> Chapter 2 • Physiology &amp; Nutrition
-                        </p>
+                        <p class="es-video-sub">Biology</p>
                     </div>
                 </div>
             </div>
@@ -586,17 +469,14 @@
                         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" 
                              alt="Introduction to Programming" 
                              loading="lazy" />
-                        <span class="es-video-chip" style="background:#0284C7;">ICT &amp; Computer</span>
                         <div class="es-play-btn">
-                            <i data-lucide="play" style="width:22px;height:22px;fill:currentColor;margin-left:3px;"></i>
+                            <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
                         </div>
                         <span class="es-duration-badge">20:36</span>
                     </div>
                     <div class="es-video-body">
                         <h5 class="es-video-title">Introduction to Programming</h5>
-                        <p class="es-video-sub">
-                            <i data-lucide="book-open" style="width:14px;height:14px;color:#0284C7;"></i> Python Basics • Algorithms &amp; Logic
-                        </p>
+                        <p class="es-video-sub">ICT</p>
                     </div>
                 </div>
             </div>
@@ -605,14 +485,13 @@
 </section>
 
 <!-- ==========================================================================
-     6. RESULT SECTION (Smart Result Verification Portal)
+     6. RESULT SECTION
      ========================================================================== -->
-<section class="es-section" id="result-section">
+<section class="es-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
-            <div class="es-section-title-wrap">
-                <span class="es-section-pill">Online Verification Portal</span>
+            <div>
                 <h2 class="es-section-title">Result</h2>
             </div>
             <div>
@@ -622,16 +501,13 @@
             </div>
         </div>
 
-        <!-- Result Lookup Box Card with Smart Aesthetic -->
+        <!-- Result Lookup Box Card -->
         <div class="es-result-card">
             <div class="es-result-label">
                 <div class="es-result-icon">
-                    <i data-lucide="bar-chart-2" style="width:28px;height:28px;"></i>
+                    <i data-lucide="bar-chart-2" style="width:24px;height:24px;"></i>
                 </div>
-                <div>
-                    <div class="es-result-text-main">Check Your Result</div>
-                    <div class="es-result-text-sub">Instant Marksheet &amp; Grade Verification</div>
-                </div>
+                <span>Check Your Result</span>
             </div>
 
             <form asp-area="" asp-controller="Results" asp-action="Index" method="get" class="es-result-form">
@@ -644,17 +520,17 @@
 
                 <select name="class" class="es-form-select" aria-label="Select Class">
                     <option value="">Select Class</option>
-                    <option value="10">Class 10 (SSC Batch)</option>
+                    <option value="10">Class 10</option>
                     <option value="9">Class 9</option>
-                    <option value="8">Class 8 (JSC)</option>
+                    <option value="8">Class 8</option>
                     <option value="7">Class 7</option>
                     <option value="6">Class 6</option>
                 </select>
 
-                <input type="text" name="roll" class="es-form-input" placeholder="Enter Student Roll No." aria-label="Enter Roll Number" />
+                <input type="text" name="roll" class="es-form-input" placeholder="Enter Roll Number" aria-label="Enter Roll Number" />
 
                 <button type="submit" class="btn-es-result">
-                    <i data-lucide="search" style="width:16px;height:16px;"></i> View Result
+                    View Result &rarr;
                 </button>
             </form>
         </div>

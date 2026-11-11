@@ -162,4 +162,5 @@ C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compr
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\ka95w75ev4-{0}-exg5moz2pg-exg5moz2pg.gz
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\m3pg5eofyz-{0}-4jq4o0bg35-4jq4o0bg35.gz
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\wm8ch4gizi-{0}-8mwdd9k3yi-8mwdd9k3yi.gz
-C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\3xjvxujzfd-{0}-7mq7gul7dq-7mq7gul7dq.gz
+C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\SchoolManagement.Web.sourcelink.json
+C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\3xjvxujzfd-{0}-mtewk0hyhn-mtewk0hyhn.gz

@@ -34,3 +34,4 @@ C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Domain\obj\Debug\net10.0\Sc
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Domain\obj\Debug\net10.0\refint\SchoolManagement.Domain.dll
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Domain\obj\Debug\net10.0\SchoolManagement.Domain.pdb
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Domain\obj\Debug\net10.0\ref\SchoolManagement.Domain.dll
+C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Domain\obj\Debug\net10.0\SchoolManagement.Domain.sourcelink.json

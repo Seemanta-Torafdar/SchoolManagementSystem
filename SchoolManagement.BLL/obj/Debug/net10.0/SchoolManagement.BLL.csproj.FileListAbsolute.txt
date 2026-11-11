@@ -49,3 +49,4 @@ C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.BLL\obj\Debug\net10.0\Schoo
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.BLL\obj\Debug\net10.0\refint\SchoolManagement.BLL.dll
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.BLL\obj\Debug\net10.0\SchoolManagement.BLL.pdb
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.BLL\obj\Debug\net10.0\ref\SchoolManagement.BLL.dll
+C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.BLL\obj\Debug\net10.0\SchoolManagement.BLL.sourcelink.json
