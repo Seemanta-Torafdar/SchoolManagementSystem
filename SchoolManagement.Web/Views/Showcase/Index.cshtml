@@ -1,0 +1,999 @@
+@{
+    Layout = null;
+    ViewData["Title"] = "UI/UX Master Presentation - Green Valley High School";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Valley High School – UI/UX Design System Showcase</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/public.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/teacher.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/showcase.css" asp-append-version="true" />
+    <style>
+        .mini-sidebar {
+            width: 145px;
+            background-color: #151D35;
+            color: #A0AEC0;
+            padding: 0.75rem 0.5rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(255,255,255,0.06);
+            flex-shrink: 0;
+        }
+        .mini-sidebar .sidebar-brand {
+            padding: 0.25rem 0.5rem 0.75rem 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 0.5rem;
+        }
+        .mini-sidebar .brand-title {
+            color: #FFFFFF;
+            font-size: 0.75rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .mini-sidebar .brand-sub {
+            color: #94A3B8;
+            font-size: 0.65rem;
+        }
+        .mini-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.55rem;
+            color: #CBD5E1;
+            font-size: 0.72rem;
+            font-weight: 500;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-bottom: 0.15rem;
+            transition: all 0.2s;
+        }
+        .mini-nav-item.active {
+            background-color: #7138E8;
+            color: #FFFFFF;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(113, 56, 232, 0.4);
+        }
+        .mini-nav-item [data-lucide] {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+        }
+        .mini-topbar {
+            background: #FFFFFF;
+            border-bottom: 1px solid #E8ECF4;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .mini-topbar [data-lucide] {
+            width: 15px;
+            height: 15px;
+        }
+        .mini-content {
+            padding: 1rem;
+            background-color: #F5F7FC;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        .mini-stat-card {
+            background: #FFFFFF;
+            border: 1px solid #E8ECF4;
+            border-radius: 12px;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 6px rgba(21, 29, 53, 0.03);
+        }
+        .mini-stat-num {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #17213B;
+            line-height: 1.1;
+        }
+        .mini-stat-lbl {
+            font-size: 0.68rem;
+            color: #718096;
+            margin-bottom: 0.15rem;
+        }
+        .mini-icon-circle {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mini-icon-circle [data-lucide] {
+            width: 18px;
+            height: 18px;
+        }
+    </style>
+</head>
+<body class="showcase-canvas-wrapper">
+
+    <!-- Top Master Control Bar -->
+    <header class="showcase-control-bar">
+        <div class="showcase-brand-badge">
+            <div class="gvhs-brand-icon" style="width:34px;height:34px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                    <path d="M6 2v20"></path>
+                </svg>
+            </div>
+            <div>
+                <h6 class="mb-0 fw-bold text-white">Green Valley High School</h6>
+                <span class="small text-secondary" style="font-size: 0.75rem;">Complete UI/UX Design System – Reference Recreation</span>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="showcase-pills-nav d-none d-md-flex">
+            <button class="showcase-pill-btn active" onclick="switchView('all')">
+                <i data-lucide="layout-grid" class="me-1" style="width:14px;height:14px;"></i> All-in-One Mockup
+            </button>
+            <a class="showcase-pill-btn" asp-area="" asp-controller="Home" asp-action="Index">
+                <i data-lucide="globe" class="me-1" style="width:14px;height:14px;"></i> Public Web
+            </a>
+            <a class="showcase-pill-btn" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                <i data-lucide="shield" class="me-1" style="width:14px;height:14px;"></i> Admin Panel
+            </a>
+            <a class="showcase-pill-btn" asp-area="Teacher" asp-controller="Dashboard" asp-action="Index">
+                <i data-lucide="graduation-cap" class="me-1" style="width:14px;height:14px;"></i> Teacher Panel
+            </a>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-purple btn-sm">
+                Open Live Web App <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         MASTER ARTBOARD GRID (Faithful 4-in-1 Layout)
+         ========================================== -->
+    <main class="showcase-artboard-grid">
+
+        <!-- ==========================================
+             PANEL 1: PUBLIC SCHOOL WEBSITE (Left Column)
+             ========================================== -->
+        <div class="showcase-panel-frame showcase-frame-public">
+            <!-- Dark Navy Navbar -->
+            <nav class="gvhs-navbar py-2 px-3">
+                <div class="d-flex align-items-center justify-content-between w-100">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="gvhs-brand-icon" style="width:30px;height:30px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                                <path d="M6 2v20"></path>
+                            </svg>
+                        </div>
+                        <span class="fw-bold text-white" style="font-size: 0.95rem;">Green Valley High School</span>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-1">
+                        <span class="gvhs-nav-link active py-1 px-2" style="font-size:0.75rem;">Home</span>
+                        <span class="gvhs-nav-link py-1 px-2" style="font-size:0.75rem;">About &or;</span>
+                        <span class="gvhs-nav-link py-1 px-2" style="font-size:0.75rem;">Academics &or;</span>
+                        <span class="gvhs-nav-link py-1 px-2" style="font-size:0.75rem;">Teachers</span>
+                        <span class="gvhs-nav-link py-1 px-2" style="font-size:0.75rem;">Notices</span>
+                        <span class="gvhs-nav-link py-1 px-2" style="font-size:0.75rem;">Results</span>
+                        <span class="gvhs-nav-link py-1 px-2" style="font-size:0.75rem;">Gallery</span>
+                        <span class="gvhs-nav-link py-1 px-2" style="font-size:0.75rem;">Contact</span>
+                    </div>
+
+                    <a asp-area="" asp-controller="Account" asp-action="Login" class="gvhs-btn-login py-1 px-2" style="font-size:0.75rem;">
+                        <i data-lucide="log-in" style="width:13px;height:13px;"></i> Login
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Hero Section -->
+            <div class="gvhs-hero" style="min-height: 380px;">
+                <div class="gvhs-hero-overlay"></div>
+                <div class="container position-relative px-4">
+                    <div class="gvhs-hero-content py-4" style="max-width: 480px;">
+                        <div class="gvhs-badge-est" style="font-size:0.72rem;padding:0.2rem 0.65rem;">
+                            <i data-lucide="award" style="width:12px;height:12px;"></i> Est. 1998
+                        </div>
+                        <h2 class="gvhs-hero-title mb-2" style="font-size: 2.25rem;">
+                            Shaping Bright<br />
+                            <span class="text-purple-glow">Futures Together</span>
+                        </h2>
+                        <p class="gvhs-hero-desc mb-3" style="font-size: 0.88rem;">
+                            A modern and inclusive learning environment dedicated to academic excellence, character building and holistic development.
+                        </p>
+                        <div class="d-flex align-items-center gap-2">
+                            <a asp-area="" asp-controller="Academics" asp-action="Index" class="btn btn-purple btn-sm">
+                                Explore School &rarr;
+                            </a>
+                            <a asp-area="" asp-controller="Results" asp-action="Index" class="btn btn-glass-light btn-sm">
+                                <i data-lucide="search" style="width:14px;height:14px;"></i> Check Result
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Multi-Layered Flowing Ocean Sea Wave Transition -->
+                <svg class="gvhs-hero-curve" viewBox="0 0 1440 90" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0,48 C280,12 560,68 840,28 C1120,6 1300,58 1440,32 L1440,90 L0,90 Z" fill="rgba(255, 255, 255, 0.35)"></path>
+                    <path d="M0,62 C240,26 500,78 760,38 C1020,12 1260,68 1440,44 L1440,90 L0,90 Z" fill="rgba(255, 255, 255, 0.65)"></path>
+                    <path d="M0,38 C320,82 640,16 960,62 C1200,92 1360,36 1440,50 L1440,90 L0,90 Z" fill="#FFFFFF"></path>
+                </svg>
+            </div>
+
+            <!-- 4 Features Bar -->
+            <div class="bg-white px-3 py-3 border-bottom">
+                <div class="row g-2 text-center">
+                    <div class="col-3">
+                        <div class="gvhs-feature-icon-box gvhs-feature-icon-blue mx-auto" style="width:38px;height:38px;">
+                            <i data-lucide="graduation-cap" style="width:18px;height:18px;"></i>
+                        </div>
+                        <div class="fw-bold text-dark" style="font-size:0.75rem;">Quality Education</div>
+                        <div class="text-secondary" style="font-size:0.62rem;">Modern curriculum & expert teachers</div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gvhs-feature-icon-box gvhs-feature-icon-purple mx-auto" style="width:38px;height:38px;">
+                            <i data-lucide="users" style="width:18px;height:18px;"></i>
+                        </div>
+                        <div class="fw-bold text-dark" style="font-size:0.75rem;">Experienced Faculty</div>
+                        <div class="text-secondary" style="font-size:0.62rem;">Dedicated & qualified teachers</div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gvhs-feature-icon-box gvhs-feature-icon-orange mx-auto" style="width:38px;height:38px;">
+                            <i data-lucide="trophy" style="width:18px;height:18px;"></i>
+                        </div>
+                        <div class="fw-bold text-dark" style="font-size:0.75rem;">Student Excellence</div>
+                        <div class="text-secondary" style="font-size:0.62rem;">Academic & co-curricular success</div>
+                    </div>
+                    <div class="col-3">
+                        <div class="gvhs-feature-icon-box gvhs-feature-icon-green mx-auto" style="width:38px;height:38px;">
+                            <i data-lucide="sprout" style="width:18px;height:18px;"></i>
+                        </div>
+                        <div class="fw-bold text-dark" style="font-size:0.75rem;">Holistic Growth</div>
+                        <div class="text-secondary" style="font-size:0.62rem;">Sports, culture & leadership</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notices & Event Section -->
+            <div class="p-3" style="background-color: #F5F7FC;">
+                <div class="row g-3">
+                    <!-- Latest Notices -->
+                    <div class="col-6">
+                        <div class="bg-white p-3 rounded-3 border h-100 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold text-dark" style="font-size:0.85rem;">Latest Notices</span>
+                                <span class="text-purple small fw-semibold" style="font-size:0.7rem;">View All &rarr;</span>
+                            </div>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="d-flex align-items-center gap-2 p-1 rounded border bg-light">
+                                    <div class="gvhs-notice-icon" style="width:28px;height:28px;">
+                                        <i data-lucide="file-text" style="width:14px;height:14px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <span class="text-truncate fw-semibold text-dark" style="font-size:0.72rem;">Annual Examination Routine 2025</span>
+                                            <span class="badge badge-new" style="font-size:0.55rem;padding:0.15rem 0.35rem;">New</span>
+                                        </div>
+                                        <span class="text-secondary" style="font-size:0.62rem;"><i data-lucide="calendar" style="width:10px;height:10px;"></i> Jan 20, 2025</span>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-2 p-1 rounded border bg-light">
+                                    <div class="gvhs-notice-icon" style="width:28px;height:28px;">
+                                        <i data-lucide="file-text" style="width:14px;height:14px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="text-truncate fw-semibold text-dark" style="font-size:0.72rem;">School will remain closed on 21 Jan</div>
+                                        <span class="text-secondary" style="font-size:0.62rem;"><i data-lucide="calendar" style="width:10px;height:10px;"></i> Jan 18, 2025</span>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-2 p-1 rounded border bg-light">
+                                    <div class="gvhs-notice-icon" style="width:28px;height:28px;">
+                                        <i data-lucide="file-text" style="width:14px;height:14px;"></i>
+                                    </div>
+                                    <div class="flex-grow-1 min-w-0">
+                                        <div class="text-truncate fw-semibold text-dark" style="font-size:0.72rem;">Cultural Program – 25 Jan 2025</div>
+                                        <span class="text-secondary" style="font-size:0.62rem;"><i data-lucide="calendar" style="width:10px;height:10px;"></i> Jan 16, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Event -->
+                    <div class="col-6">
+                        <div class="bg-white rounded-3 border overflow-hidden h-100 shadow-sm d-flex flex-direction-column">
+                            <div class="d-flex justify-content-between align-items-center p-2 border-bottom">
+                                <span class="fw-bold text-dark" style="font-size:0.85rem;">Upcoming Event</span>
+                                <span class="text-purple small fw-semibold" style="font-size:0.7rem;">View All &rarr;</span>
+                            </div>
+                            <div style="height: 110px; overflow: hidden;">
+                                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;" />
+                            </div>
+                            <div class="p-2 d-flex align-items-center gap-2 mt-auto">
+                                <div class="gvhs-event-datebox" style="width:40px;height:40px;">
+                                    <span style="font-size:1rem;font-weight:800;line-height:1;">25</span>
+                                    <span style="font-size:0.55rem;font-weight:700;">Jan</span>
+                                </div>
+                                <div class="flex-grow-1 min-w-0">
+                                    <div class="fw-bold text-dark text-truncate" style="font-size:0.75rem;">Annual Cultural Festival 2025</div>
+                                    <div class="text-secondary text-truncate" style="font-size:0.62rem;">Music, dance, drama and art competition.</div>
+                                </div>
+                                <div class="gvhs-event-arrow-btn" style="width:28px;height:28px;">
+                                    <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="bg-white rounded-3 border p-2 mt-3 shadow-sm">
+                    <div class="row g-2 text-center align-items-center">
+                        <div class="col-3 d-flex align-items-center justify-content-center gap-2">
+                            <div class="gvhs-stat-icon-wrap" style="width:34px;height:34px;">
+                                <i data-lucide="users" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="text-start">
+                                <div class="fw-bold text-dark" style="font-size:0.88rem;line-height:1;">1,000+</div>
+                                <div class="text-secondary" style="font-size:0.65rem;">Students</div>
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center gap-2">
+                            <div class="gvhs-stat-icon-wrap" style="width:34px;height:34px;">
+                                <i data-lucide="user-check" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="text-start">
+                                <div class="fw-bold text-dark" style="font-size:0.88rem;line-height:1;">50+</div>
+                                <div class="text-secondary" style="font-size:0.65rem;">Teachers</div>
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center gap-2">
+                            <div class="gvhs-stat-icon-wrap" style="width:34px;height:34px;">
+                                <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="text-start">
+                                <div class="fw-bold text-dark" style="font-size:0.88rem;line-height:1;">12</div>
+                                <div class="text-secondary" style="font-size:0.65rem;">Classrooms</div>
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center gap-2">
+                            <div class="gvhs-stat-icon-wrap" style="width:34px;height:34px;">
+                                <i data-lucide="shield-check" style="width:16px;height:16px;"></i>
+                            </div>
+                            <div class="text-start">
+                                <div class="fw-bold text-dark" style="font-size:0.88rem;line-height:1;">95%</div>
+                                <div class="text-secondary" style="font-size:0.65rem;">Result Success</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Principal Card -->
+                <div class="bg-white rounded-3 border p-3 mt-3 shadow-sm position-relative overflow-hidden">
+                    <span style="position:absolute;top:0;right:15px;font-size:4rem;color:#F0E9FF;font-family:Georgia,serif;line-height:1;">&ldquo;</span>
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" 
+                             style="width:68px;height:68px;border-radius:12px;object-fit:cover;" />
+                        <div>
+                            <div class="fw-bold text-dark" style="font-size:0.88rem;">Message from the Principal</div>
+                            <p class="text-secondary fst-italic mb-1" style="font-size:0.74rem;line-height:1.4;">
+                                "Our goal is to provide a safe, supportive and modern learning environment where every student can discover their potential and build a brighter future."
+                            </p>
+                            <div class="fw-bold text-dark" style="font-size:0.75rem;">Md. Rahman Ali</div>
+                            <div class="text-secondary" style="font-size:0.65rem;">Principal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dark Navy Footer -->
+            <footer class="gvhs-footer py-3 px-3">
+                <div class="row g-2" style="font-size:0.7rem;">
+                    <div class="col-4">
+                        <div class="fw-bold text-white mb-1">Green Valley High School</div>
+                        <p class="text-secondary mb-0" style="font-size:0.62rem;">Nurturing minds and shaping leaders for tomorrow.</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold text-white mb-1">Quick Links</div>
+                        <div class="text-secondary" style="font-size:0.62rem;">Home &bull; Notices &bull; Results</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="fw-bold text-white mb-1">Contact</div>
+                        <div class="text-secondary" style="font-size:0.62rem;">+880 1712-345678<br />info@gvhs.edu.bd</div>
+                    </div>
+                </div>
+                <div class="text-center text-secondary mt-2 pt-2 border-top border-secondary border-opacity-25" style="font-size:0.6rem;">
+                    &copy; 2025 Green Valley High School. All Rights Reserved.
+                </div>
+            </footer>
+        </div>
+
+        <!-- ==========================================
+             PANEL 2: ADMIN DASHBOARD (Upper Right)
+             ========================================== -->
+        <div class="showcase-panel-frame showcase-frame-admin d-flex" style="min-height: 480px;">
+            <!-- Mini Dark Navy Sidebar -->
+            <aside class="mini-sidebar">
+                <div class="sidebar-brand">
+                    <div class="gvhs-brand-icon" style="width:22px;height:22px;border-radius:6px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                            <path d="M6 2v20"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="brand-title">GVHS</div>
+                        <div class="brand-sub">Admin Panel</div>
+                    </div>
+                </div>
+
+                <nav class="d-flex flex-column">
+                    <a href="#" class="mini-nav-item active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="users"></i> Students</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="graduation-cap"></i> Teachers</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="layers"></i> Classes & Sections</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="edit-3"></i> Examinations</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="award"></i> Results</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="file-text"></i> Notices</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="calendar"></i> Routine</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="calendar-days"></i> Events</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="image"></i> Gallery</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="user-check"></i> Users & Roles</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="settings"></i> Settings</a>
+                </nav>
+
+                <div class="mt-auto pt-2 border-top border-secondary border-opacity-10">
+                    <a href="#" class="mini-nav-item text-danger"><i data-lucide="log-out"></i> Logout</a>
+                </div>
+            </aside>
+
+            <!-- Admin Workspace -->
+            <div class="d-flex flex-column flex-grow-1 min-w-0">
+                <!-- Topbar -->
+                <header class="mini-topbar">
+                    <i data-lucide="menu" class="text-secondary"></i>
+                    <div class="d-flex align-items-center gap-2">
+                        <i data-lucide="search" class="text-secondary"></i>
+                        <div class="position-relative">
+                            <i data-lucide="bell" class="text-secondary"></i>
+                            <span class="admin-badge-dot" style="top:0;right:0;"></span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" 
+                             style="width:24px;height:24px;border-radius:50%;object-fit:cover;" />
+                        <div class="d-none d-sm-block text-start" style="line-height:1.1;">
+                            <span class="fw-bold text-dark d-block" style="font-size:0.72rem;">Admin</span>
+                            <span class="text-secondary" style="font-size:0.62rem;">Super Admin</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Workspace Content -->
+                <div class="mini-content">
+                    <div class="mb-2">
+                        <h6 class="fw-bold text-dark mb-0" style="font-size:0.95rem;">Admin Dashboard</h6>
+                        <span class="text-secondary" style="font-size:0.68rem;">Welcome back, Admin! Here's what's happening at your school.</span>
+                    </div>
+
+                    <!-- 4 Summary Cards -->
+                    <div class="row g-2 mb-2">
+                        <div class="col-3">
+                            <div class="mini-stat-card">
+                                <div>
+                                    <div class="mini-stat-num">1,024</div>
+                                    <div class="mini-stat-lbl">Total Students</div>
+                                    <span class="badge bg-success-subtle text-success" style="font-size:0.55rem;padding:0.1rem 0.35rem;">+3.5%</span>
+                                </div>
+                                <div class="mini-icon-circle admin-icon-purple">
+                                    <i data-lucide="users"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mini-stat-card">
+                                <div>
+                                    <div class="mini-stat-num">42</div>
+                                    <div class="mini-stat-lbl">Teachers</div>
+                                    <span class="badge bg-success-subtle text-success" style="font-size:0.55rem;padding:0.1rem 0.35rem;">+2.4%</span>
+                                </div>
+                                <div class="mini-icon-circle admin-icon-blue">
+                                    <i data-lucide="graduation-cap"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mini-stat-card">
+                                <div>
+                                    <div class="mini-stat-num">12</div>
+                                    <div class="mini-stat-lbl">Classes</div>
+                                    <span class="badge bg-light text-secondary border" style="font-size:0.55rem;padding:0.1rem 0.35rem;">- 0%</span>
+                                </div>
+                                <div class="mini-icon-circle admin-icon-violet">
+                                    <i data-lucide="layers"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="mini-stat-card">
+                                <div>
+                                    <div class="mini-stat-num">06</div>
+                                    <div class="mini-stat-lbl">Active Notices</div>
+                                </div>
+                                <div class="mini-icon-circle admin-icon-orange">
+                                    <i data-lucide="bell"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Middle Row: Chart & Actions -->
+                    <div class="row g-2 mb-2">
+                        <div class="col-7">
+                            <div class="bg-white p-2 rounded-3 border h-100">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="fw-bold text-dark" style="font-size:0.75rem;">Student Enrollment</span>
+                                    <span class="badge bg-light text-secondary border" style="font-size:0.6rem;">This Year &or;</span>
+                                </div>
+                                <div style="height: 110px;">
+                                    <canvas id="miniAdminEnrollChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="bg-white p-2 rounded-3 border h-100">
+                                <span class="fw-bold text-dark d-block mb-1" style="font-size:0.75rem;">Quick Actions</span>
+                                <div class="row g-1">
+                                    <div class="col-6">
+                                        <div class="border rounded p-1 text-center bg-light">
+                                            <i data-lucide="user-plus" class="text-purple" style="width:14px;height:14px;"></i>
+                                            <span class="d-block text-dark fw-semibold" style="font-size:0.58rem;">Add Student</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="border rounded p-1 text-center bg-light">
+                                            <i data-lucide="graduation-cap" class="text-purple" style="width:14px;height:14px;"></i>
+                                            <span class="d-block text-dark fw-semibold" style="font-size:0.58rem;">Add Teacher</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="border rounded p-1 text-center bg-light">
+                                            <i data-lucide="file-plus" class="text-purple" style="width:14px;height:14px;"></i>
+                                            <span class="d-block text-dark fw-semibold" style="font-size:0.58rem;">Create Notice</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="border rounded p-1 text-center bg-light">
+                                            <i data-lucide="award" class="text-purple" style="width:14px;height:14px;"></i>
+                                            <span class="d-block text-dark fw-semibold" style="font-size:0.58rem;">Manage Result</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Row: Activities & Donut -->
+                    <div class="row g-2">
+                        <div class="col-7">
+                            <div class="bg-white p-2 rounded-3 border h-100">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="fw-bold text-dark" style="font-size:0.75rem;">Recent Activities</span>
+                                    <span class="text-purple" style="font-size:0.62rem;">View All &rarr;</span>
+                                </div>
+                                <div class="d-flex flex-column gap-1">
+                                    <div class="d-flex align-items-center justify-content-between" style="font-size:0.65rem;">
+                                        <span><i data-lucide="file-text" class="text-purple me-1" style="width:11px;height:11px;"></i> Result published: Annual Exam 2025</span>
+                                        <span class="text-secondary">2 hours ago</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between" style="font-size:0.65rem;">
+                                        <span><i data-lucide="file-text" class="text-purple me-1" style="width:11px;height:11px;"></i> New notice added: Cultural Program</span>
+                                        <span class="text-secondary">5 hours ago</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between" style="font-size:0.65rem;">
+                                        <span><i data-lucide="file-text" class="text-purple me-1" style="width:11px;height:11px;"></i> Teacher profile updated: Tanvir Hasan</span>
+                                        <span class="text-secondary">1 day ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="bg-white p-2 rounded-3 border h-100 d-flex align-items-center justify-content-between">
+                                <div class="position-relative" style="width: 75px; height: 75px;">
+                                    <canvas id="miniAdminDonutChart"></canvas>
+                                    <div class="position-absolute inset-0 d-flex flex-column align-items-center justify-content-center text-center" style="top:18px;left:0;right:0;">
+                                        <span class="fw-bold text-dark" style="font-size:0.75rem;line-height:1;">1,066</span>
+                                        <span class="text-secondary" style="font-size:0.45rem;">Total Users</span>
+                                    </div>
+                                </div>
+                                <div style="font-size:0.62rem;">
+                                    <div><span class="badge" style="background:#7138E8;width:7px;height:7px;padding:0;border-radius:50%;display:inline-block;"></span> Students (96.1%)</div>
+                                    <div><span class="badge" style="background:#16A36A;width:7px;height:7px;padding:0;border-radius:50%;display:inline-block;"></span> Teachers (3.9%)</div>
+                                    <div><span class="badge" style="background:#F5A623;width:7px;height:7px;padding:0;border-radius:50%;display:inline-block;"></span> Admins (0.4%)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PANEL 3: TEACHER DASHBOARD (Lower Middle/Right)
+             ========================================== -->
+        <div class="showcase-panel-frame showcase-frame-teacher d-flex" style="min-height: 400px;">
+            <!-- Mini Dark Navy Sidebar -->
+            <aside class="mini-sidebar">
+                <div class="sidebar-brand">
+                    <div class="gvhs-brand-icon" style="width:22px;height:22px;border-radius:6px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                            <path d="M6 2v20"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="brand-title">GVHS</div>
+                        <div class="brand-sub">Teacher Panel</div>
+                    </div>
+                </div>
+
+                <nav class="d-flex flex-column">
+                    <a href="#" class="mini-nav-item active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="user"></i> My Profile</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="layers"></i> My Classes</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="check-square"></i> Attendance</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="award"></i> Marks / Result</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="calendar"></i> Class Routine</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="bell"></i> Notices</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="mail"></i> Messages</a>
+                    <a href="#" class="mini-nav-item"><i data-lucide="key"></i> Change Password</a>
+                </nav>
+
+                <div class="mt-auto pt-2 border-top border-secondary border-opacity-10">
+                    <a href="#" class="mini-nav-item text-danger"><i data-lucide="log-out"></i> Logout</a>
+                </div>
+            </aside>
+
+            <!-- Teacher Workspace -->
+            <div class="d-flex flex-column flex-grow-1 min-w-0">
+                <!-- Topbar -->
+                <header class="mini-topbar">
+                    <i data-lucide="menu" class="text-secondary"></i>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="position-relative">
+                            <i data-lucide="bell" class="text-secondary"></i>
+                            <span class="admin-badge-dot" style="top:0;right:0;"></span>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop" 
+                             style="width:24px;height:24px;border-radius:50%;object-fit:cover;" />
+                        <div class="d-none d-sm-block text-start" style="line-height:1.1;">
+                            <span class="fw-bold text-dark d-block" style="font-size:0.72rem;">Tanvir Hasan</span>
+                            <span class="text-secondary" style="font-size:0.62rem;">Assistant Teacher</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Workspace Content -->
+                <div class="mini-content">
+                    <h6 class="fw-bold text-dark mb-2" style="font-size:0.95rem;">Teacher Dashboard</h6>
+
+                    <!-- Welcome Card -->
+                    <div class="teacher-welcome-banner py-2 px-3 mb-2" style="border-radius:12px;">
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop" 
+                                 style="width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #FFFFFF;" />
+                            <div>
+                                <h6 class="fw-bold text-dark mb-0" style="font-size:0.85rem;">Good Morning, Tanvir Hasan 👋</h6>
+                                <span class="text-secondary" style="font-size:0.68rem;">Assistant Teacher (ICT)</span>
+                            </div>
+                        </div>
+                        <div class="d-none d-sm-block">
+                            <svg width="60" height="40" viewBox="0 0 120 85" fill="none">
+                                <rect x="25" y="70" width="70" height="15" rx="3" fill="#7138E8" />
+                                <rect x="30" y="54" width="60" height="14" rx="3" fill="#9B6BFA" />
+                                <rect x="36" y="38" width="50" height="14" rx="3" fill="#F5A623" />
+                                <path d="M60 14L85 24L60 34L35 24L60 14Z" fill="#151D35" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- 3 Stats Cards -->
+                    <div class="row g-2 mb-2">
+                        <div class="col-4">
+                            <div class="mini-stat-card">
+                                <div>
+                                    <div class="mini-stat-num">3</div>
+                                    <div class="mini-stat-lbl">My Classes</div>
+                                </div>
+                                <div class="mini-icon-circle teacher-stat-icon-purple">
+                                    <i data-lucide="layers"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="mini-stat-card">
+                                <div>
+                                    <div class="mini-stat-num">96</div>
+                                    <div class="mini-stat-lbl">Total Students</div>
+                                </div>
+                                <div class="mini-icon-circle teacher-stat-icon-green">
+                                    <i data-lucide="users"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="mini-stat-card">
+                                <div>
+                                    <div class="mini-stat-num">5</div>
+                                    <div class="mini-stat-lbl">New Notices</div>
+                                </div>
+                                <div class="mini-icon-circle teacher-stat-icon-orange">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Routine & Notices -->
+                    <div class="row g-2">
+                        <div class="col-7">
+                            <div class="bg-white p-2 rounded-3 border h-100">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="fw-bold text-dark" style="font-size:0.75rem;">Today's Routine</span>
+                                    <span class="text-purple" style="font-size:0.62rem;">View Full Routine &rarr;</span>
+                                </div>
+                                <table class="w-100" style="font-size:0.65rem;">
+                                    <thead>
+                                        <tr class="text-secondary border-bottom">
+                                            <th>Period</th><th>Time</th><th>Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-bottom">
+                                            <td class="py-1"><span class="badge bg-light-purple text-purple">1st</span></td>
+                                            <td class="text-secondary">9:00 AM – 9:40 AM</td>
+                                            <td><span class="badge bg-light text-dark border">Class 6 (A)</span></td>
+                                        </tr>
+                                        <tr class="border-bottom">
+                                            <td class="py-1"><span class="badge bg-light-purple text-purple">2nd</span></td>
+                                            <td class="text-secondary">9:50 AM – 10:30 AM</td>
+                                            <td><span class="badge bg-light text-dark border">Class 7 (B)</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-1"><span class="badge bg-light-purple text-purple">3rd</span></td>
+                                            <td class="text-secondary">11:00 AM – 11:40 AM</td>
+                                            <td><span class="badge bg-light text-dark border">Class 8 (A)</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="bg-white p-2 rounded-3 border h-100">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="fw-bold text-dark" style="font-size:0.75rem;">Latest Notices</span>
+                                    <span class="text-purple" style="font-size:0.62rem;">View All &rarr;</span>
+                                </div>
+                                <div class="d-flex flex-column gap-1" style="font-size:0.64rem;">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span><i data-lucide="file-text" class="text-purple me-1" style="width:10px;height:10px;"></i> Annual Exam Routine 2025</span>
+                                        <span class="badge badge-new" style="font-size:0.5rem;padding:0.1rem 0.3rem;">New</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span><i data-lucide="file-text" class="text-purple me-1" style="width:10px;height:10px;"></i> Staff Meeting – 22 Jan</span>
+                                        <span class="text-secondary">22 Jan</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span><i data-lucide="file-text" class="text-purple me-1" style="width:10px;height:10px;"></i> Cultural Program – 25 Jan</span>
+                                        <span class="text-secondary">25 Jan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PANEL 4: SMARTPHONE MOCKUP (Far Right Column)
+             ========================================== -->
+        <div class="showcase-frame-mobile">
+            <div class="smartphone-device">
+                <div class="smartphone-screen">
+                    <!-- Status Bar & Dynamic Island -->
+                    <div class="smartphone-status-bar">
+                        <span>9:41</span>
+                        <div class="smartphone-dynamic-island"></div>
+                        <div class="d-flex align-items-center gap-1">
+                            <i data-lucide="signal" style="width:12px;height:12px;"></i>
+                            <i data-lucide="wifi" style="width:12px;height:12px;"></i>
+                            <i data-lucide="battery" style="width:14px;height:14px;"></i>
+                        </div>
+                    </div>
+
+                    <!-- Smartphone App Header -->
+                    <div class="smartphone-appbar">
+                        <div class="smartphone-brand">
+                            <div class="smartphone-logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                                    <path d="M6 2v20"></path>
+                                </svg>
+                            </div>
+                            <span>Green Valley High School</span>
+                        </div>
+                        <i data-lucide="menu" style="width:18px;height:18px;color:#17213B;"></i>
+                    </div>
+
+                    <!-- Smartphone Hero -->
+                    <div class="smartphone-hero">
+                        <h5 class="smartphone-heading">
+                            Quality Education<br />
+                            for a <span>Brighter Future</span>
+                        </h5>
+
+                        <img src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?q=80&w=400&auto=format&fit=crop" 
+                             alt="Campus" class="smartphone-hero-img" />
+
+                        <div class="smartphone-btn-group">
+                            <a asp-area="" asp-controller="Academics" asp-action="Index" class="btn btn-purple btn-sm w-100">
+                                Explore School &rarr;
+                            </a>
+                            <a asp-area="" asp-controller="Results" asp-action="Index" class="btn btn-outline-purple btn-sm w-100">
+                                <i data-lucide="search" style="width:14px;height:14px;"></i> Check Result
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2x3 Quick-Access Grid (Reference Match) -->
+                    <div class="smartphone-grid">
+                        <!-- Notices -->
+                        <a asp-area="" asp-controller="Notices" asp-action="Index" class="smartphone-grid-card">
+                            <div class="smartphone-grid-icon-circle" style="background:#F0E9FF;color:#7138E8;">
+                                <i data-lucide="file-text" style="width:16px;height:16px;"></i>
+                            </div>
+                            <span class="smartphone-grid-label">Notices</span>
+                        </a>
+
+                        <!-- Result -->
+                        <a asp-area="" asp-controller="Results" asp-action="Index" class="smartphone-grid-card">
+                            <div class="smartphone-grid-icon-circle" style="background:#FEF6E9;color:#F5A623;">
+                                <i data-lucide="award" style="width:16px;height:16px;"></i>
+                            </div>
+                            <span class="smartphone-grid-label">Result</span>
+                        </a>
+
+                        <!-- Routine -->
+                        <a asp-area="" asp-controller="Academics" asp-action="Index" class="smartphone-grid-card">
+                            <div class="smartphone-grid-icon-circle" style="background:#EBF3FF;color:#2563EB;">
+                                <i data-lucide="calendar" style="width:16px;height:16px;"></i>
+                            </div>
+                            <span class="smartphone-grid-label">Routine</span>
+                        </a>
+
+                        <!-- Teachers -->
+                        <a asp-area="" asp-controller="Teachers" asp-action="Index" class="smartphone-grid-card">
+                            <div class="smartphone-grid-icon-circle" style="background:#F3E8FF;color:#9333EA;">
+                                <i data-lucide="users" style="width:16px;height:16px;"></i>
+                            </div>
+                            <span class="smartphone-grid-label">Teachers</span>
+                        </a>
+
+                        <!-- Gallery -->
+                        <a asp-area="" asp-controller="Gallery" asp-action="Index" class="smartphone-grid-card">
+                            <div class="smartphone-grid-icon-circle" style="background:#E7F7EF;color:#16A36A;">
+                                <i data-lucide="image" style="width:16px;height:16px;"></i>
+                            </div>
+                            <span class="smartphone-grid-label">Gallery</span>
+                        </a>
+
+                        <!-- Admission -->
+                        <a asp-area="" asp-controller="About" asp-action="Index" class="smartphone-grid-card">
+                            <div class="smartphone-grid-icon-circle" style="background:#FEECEB;color:#EF4444;">
+                                <i data-lucide="landmark" style="width:16px;height:16px;"></i>
+                            </div>
+                            <span class="smartphone-grid-label">Admission</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            // Mini Admin Enrollment Chart
+            var enrollCtx = document.getElementById('miniAdminEnrollChart');
+            if (enrollCtx) {
+                var gradient = enrollCtx.getContext('2d').createLinearGradient(0, 0, 0, 110);
+                gradient.addColorStop(0, 'rgba(113, 56, 232, 0.3)');
+                gradient.addColorStop(1, 'rgba(113, 56, 232, 0.0)');
+
+                new Chart(enrollCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            data: [930, 970, 960, 1010, 1005, 1024],
+                            borderColor: '#7138E8',
+                            backgroundColor: gradient,
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.35,
+                            pointRadius: 2.5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { min: 900, max: 1100, ticks: { display: false }, grid: { color: 'rgba(0,0,0,0.05)' } },
+                            x: { ticks: { font: { size: 9 }, color: '#94A3B8' }, grid: { display: false } }
+                        }
+                    }
+                });
+            }
+
+            // Mini Admin Donut Chart
+            var donutCtx = document.getElementById('miniAdminDonutChart');
+            if (donutCtx) {
+                new Chart(donutCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Students', 'Teachers', 'Admins'],
+                        datasets: [{
+                            data: [96.1, 3.9, 0.4],
+                            backgroundColor: ['#7138E8', '#16A36A', '#F5A623'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '72%',
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+        });
+
+        function switchView(mode) {
+            // Can be expanded to toggle active classes or full-screen panels
+        }
+    </script>
+</body>
+</html>
+

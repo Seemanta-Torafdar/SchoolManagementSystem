@@ -1,0 +1,180 @@
+@{
+    ViewData["Title"] = "Examination Results Overview";
+    var results = ViewBag.Results as IEnumerable<SchoolManagement.BLL.DTOs.Result.StudentMarksheetDto>;
+    var selectedExam = ViewBag.SelectedExam as SchoolManagement.BLL.DTOs.Examination.ExaminationDto;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold text-dark mb-1">Results & Transcripts</h3>
+        <p class="text-secondary small mb-0">Consolidated grade sheets, marks review, individual student transcripts, and public release.</p>
+    </div>
+    <a asp-action="MarksEntry" class="btn btn-primary">
+        <i class="bi bi-pencil-square me-1"></i> Enter / Edit Marks
+    </a>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>@TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>@TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<!-- Filters Card -->
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body p-3">
+        <form asp-action="Index" method="get" class="row g-2 align-items-center">
+            <div class="col-md-4">
+                <select name="examinationId" asp-items="ViewBag.Examinations" class="form-select form-select-sm" required>
+                    <option value="">-- Select Examination --</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="classId" id="classSelect" asp-items="ViewBag.Classes" class="form-select form-select-sm" required>
+                    <option value="">-- Select Class --</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="sectionId" id="sectionSelect" asp-items="ViewBag.Sections" class="form-select form-select-sm">
+                    <option value="">All Sections</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-sm w-100">
+                    <i class="bi bi-search me-1"></i> Load Results
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (selectedExam != null)
+{
+    <div class="alert alert-light border shadow-sm d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <div>
+            <h6 class="fw-bold mb-0 text-dark">
+                <i class="bi bi-mortarboard-fill me-2 text-primary"></i>@selectedExam.Name — Results Sheet
+            </h6>
+            <small class="text-muted">
+                Status: @(selectedExam.IsPublished ? "Published (Visible to Students & Guardians)" : "Unpublished (Internal Draft)")
+            </small>
+        </div>
+        <div class="mt-2 mt-md-0">
+            <form asp-action="PublishResults" method="post" class="d-inline">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="examinationId" value="@selectedExam.Id" />
+                <input type="hidden" name="publish" value="@((!selectedExam.IsPublished).ToString().ToLower())" />
+                @if (selectedExam.IsPublished)
+                {
+                    <button type="submit" class="btn btn-warning btn-sm fw-semibold">
+                        <i class="bi bi-lock me-1"></i> Unpublish Results
+                    </button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-success btn-sm fw-semibold">
+                        <i class="bi bi-globe me-1"></i> Publish Results to Public Portal
+                    </button>
+                }
+            </form>
+        </div>
+    </div>
+}
+
+<!-- Results Table -->
+@if (results != null)
+{
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light small">
+                        <tr>
+                            <th style="width: 60px;">Roll</th>
+                            <th>Student Name</th>
+                            <th>Class & Section</th>
+                            <th>Total Marks</th>
+                            <th>GPA</th>
+                            <th>Grade</th>
+                            <th>Status</th>
+                            <th class="text-end" style="width: 150px;">Transcript</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!results.Any())
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center text-muted py-4">No marks recorded yet for this class and examination.</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var res in results)
+                            {
+                                <tr>
+                                    <td class="fw-bold">@res.RollNumber</td>
+                                    <td>
+                                        <div class="fw-semibold text-dark">@res.StudentName</div>
+                                        <small class="text-muted">ID: @res.AdmissionNumber</small>
+                                    </td>
+                                    <td>@res.ClassName (@res.SectionName)</td>
+                                    <td class="fw-semibold">@res.TotalMarksObtained / @res.TotalMaxMarks</td>
+                                    <td class="fw-bold text-primary">@res.GPA.ToString("F2")</td>
+                                    <td><span class="badge @(res.OverallGrade == "F" ? "bg-danger" : "bg-primary")">@res.OverallGrade</span></td>
+                                    <td>
+                                        @if (res.ResultStatus == SchoolManagement.Domain.Enums.ResultStatus.Passed)
+                                        {
+                                            <span class="badge bg-success-subtle text-success border border-success">Passed</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger-subtle text-danger border border-danger">Failed</span>
+                                        }
+                                    </td>
+                                    <td class="text-end">
+                                        <a asp-action="Marksheet" asp-route-studentId="@res.StudentId" asp-route-examinationId="@(selectedExam?.Id ?? 0)" class="btn btn-outline-info btn-sm">
+                                            <i class="bi bi-file-earmark-text me-1"></i> Marksheet
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        document.getElementById('classSelect')?.addEventListener('change', function () {
+            var classId = this.value;
+            var sectionSelect = document.getElementById('sectionSelect');
+            sectionSelect.innerHTML = '<option value="">All Sections</option>';
+
+            if (classId) {
+                fetch('/Admin/Students/GetSectionsByClass?classId=' + classId)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(item => {
+                            var opt = document.createElement('option');
+                            opt.value = item.id;
+                            opt.text = item.name;
+                            sectionSelect.appendChild(opt);
+                        });
+                    });
+            }
+        });
+    </script>
+}

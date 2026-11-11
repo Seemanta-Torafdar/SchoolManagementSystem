@@ -1,0 +1,140 @@
+@model IEnumerable<SchoolManagement.BLL.DTOs.Examination.ExamSubjectDto>
+@{
+    var exam = ViewBag.Exam as SchoolManagement.BLL.DTOs.Examination.ExaminationDto;
+    var allSubjects = ViewBag.AllSubjects as IEnumerable<SchoolManagement.BLL.DTOs.Subject.SubjectDto> ?? Enumerable.Empty<SchoolManagement.BLL.DTOs.Subject.SubjectDto>();
+    ViewData["Title"] = $"Manage Subjects: {exam?.Name}";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold text-dark mb-1">Examination Subjects: @exam?.Name</h3>
+        <p class="text-secondary small mb-0">Session: @exam?.SessionName | Timeline: @exam?.StartDate.ToString("MMM dd") – @exam?.EndDate.ToString("MMM dd, yyyy")</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i> Back to Examinations
+    </a>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>@TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>@TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="row g-4">
+    <!-- Add Exam Subject Form -->
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 border-bottom">
+                <h6 class="card-title fw-bold mb-0 text-dark">
+                    <i class="bi bi-plus-circle me-2 text-primary"></i>Include Subject
+                </h6>
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="AddExamSubject" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="ExaminationId" value="@exam?.Id" />
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Subject *</label>
+                        <select name="SubjectId" class="form-select" required>
+                            <option value="">-- Choose Subject --</option>
+                            @foreach (var sub in allSubjects)
+                            {
+                                <option value="@sub.Id">@sub.ClassName: @sub.Name (@sub.SubjectCode)</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="row g-2 mb-3">
+                        <div class="col-6">
+                            <label class="form-label fw-semibold">Full Marks *</label>
+                            <input type="number" name="FullMarks" class="form-control" value="100" min="1" max="200" required />
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label fw-semibold">Pass Marks *</label>
+                            <input type="number" name="PassMarks" class="form-control" value="33" min="1" max="200" required />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Exam Date</label>
+                        <input type="date" name="ExamDate" class="form-control" value="@DateTime.UtcNow.ToString("yyyy-MM-dd")" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-plus-lg me-1"></i> Add to Exam Schedule
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scheduled Exam Subjects Table -->
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 border-bottom">
+                <h6 class="card-title fw-bold mb-0 text-dark">
+                    <i class="bi bi-table me-2 text-primary"></i>Scheduled Exam Papers (@Model.Count())
+                </h6>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light small">
+                            <tr>
+                                <th>Subject Code</th>
+                                <th>Subject Name</th>
+                                <th>Full Marks</th>
+                                <th>Pass Marks</th>
+                                <th>Exam Date</th>
+                                <th class="text-end" style="width: 80px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (!Model.Any())
+                            {
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted py-4">No subjects added to this examination yet.</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="fw-bold text-muted">@item.SubjectCode</td>
+                                        <td class="fw-semibold text-dark">@item.SubjectName</td>
+                                        <td>@item.FullMarks</td>
+                                        <td>@item.PassMarks</td>
+                                        <td class="small text-muted">@item.ExamDate.ToString("MMM dd, yyyy")</td>
+                                        <td class="text-end">
+                                            <form asp-action="DeleteExamSubject" method="post" onsubmit="return confirm('Remove subject from exam schedule?');">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="examSubjectId" value="@item.Id" />
+                                                <input type="hidden" name="examId" value="@exam?.Id" />
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" title="Remove">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

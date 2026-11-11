@@ -1,0 +1,51 @@
+@using SchoolManagement.BLL.DTOs.Class
+@model IReadOnlyList<ClassDto>
+
+@{
+    ViewData["Title"] = "Academics & Curriculum";
+}
+
+<div class="container py-5">
+    <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge badge-purple mb-2">Comprehensive Education</span>
+        <h1 class="display-5 fw-bold">Academic Structure</h1>
+        <p class="text-muted fs-5">A structured learning pathway designed to prepare students for national SSC examinations and future tertiary academic pursuits.</p>
+    </div>
+
+    <div class="row g-4 mb-5">
+        @foreach (var c in Model)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class="card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge badge-purple fs-6">Grade @c.NumericValue</span>
+                        <span class="small text-muted fw-semibold"><i class="bi bi-people me-1"></i>@c.StudentCount Students</span>
+                    </div>
+                    <h3 class="fw-bold mb-2">@c.Name</h3>
+                    <p class="text-muted small mb-3">@(string.IsNullOrEmpty(c.Description) ? "Standard secondary school academic curriculum." : c.Description)</p>
+                    
+                    <h6 class="fw-bold small text-uppercase text-secondary mb-2">Sections:</h6>
+                    <div class="d-flex flex-wrap gap-1 mb-3">
+                        @foreach (var s in c.Sections)
+                        {
+                            <span class="badge bg-light text-dark border">@s.Name (@s.RoomNumber)</span>
+                        }
+                    </div>
+
+                    <h6 class="fw-bold small text-uppercase text-secondary mb-2">Core Subjects:</h6>
+                    <div class="d-flex flex-wrap gap-1 mb-4">
+                        @foreach (var sub in c.SubjectNames)
+                        {
+                            <span class="badge badge-purple">@sub</span>
+                        }
+                    </div>
+
+                    <a asp-controller="Academics" asp-action="ClassDetails" asp-route-id="@c.Id" class="btn btn-outline-primary btn-sm mt-auto">
+                        View Curriculum &amp; Syllabus <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

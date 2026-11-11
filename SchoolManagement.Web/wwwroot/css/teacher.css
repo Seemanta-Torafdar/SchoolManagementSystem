@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Green Valley High School - Teacher Dashboard Stylesheet
+   Meticulously matches the reference visual design
+   ========================================================================== */
+
+/* Teacher Welcome Banner */
+.teacher-welcome-banner {
+  background: linear-gradient(135deg, #F0E9FF 0%, #E9DEFF 50%, #F5F0FF 100%);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 2rem;
+  border: 1px solid rgba(155, 107, 250, 0.25);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.teacher-welcome-banner::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(155, 107, 250, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.teacher-welcome-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.teacher-welcome-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--white);
+  box-shadow: 0 4px 12px rgba(113, 56, 232, 0.25);
+}
+
+.teacher-greeting-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--primary-text);
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.teacher-designation-sub {
+  font-size: 0.92rem;
+  color: var(--secondary-text);
+  font-weight: 500;
+  margin: 0;
+}
+
+.teacher-illustration-box {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teacher-illustration-box svg {
+  max-height: 85px;
+  width: auto;
+}
+
+/* 3 Teacher KPI Cards */
+.teacher-stat-card {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.35rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: all 0.25s ease;
+  height: 100%;
+}
+
+.teacher-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.teacher-stat-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.teacher-stat-icon-purple {
+  background-color: var(--light-purple);
+  color: var(--primary-purple);
+}
+
+.teacher-stat-icon-green {
+  background-color: var(--success-light);
+  color: var(--success-green);
+}
+
+.teacher-stat-icon-orange {
+  background-color: var(--warning-light);
+  color: var(--warning-orange);
+}
+
+.teacher-stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary-text);
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+
+.teacher-stat-label {
+  font-size: 0.85rem;
+  color: var(--secondary-text);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Today's Routine Table */
+.teacher-routine-card {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+}
+
+.teacher-routine-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.teacher-routine-table th {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--secondary-text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.75rem 1rem;
+  border-bottom: 1.5px solid var(--border-color);
+}
+
+.teacher-routine-table td {
+  padding: 0.95rem 1rem;
+  font-size: 0.9rem;
+  color: var(--primary-text);
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: middle;
+}
+
+.teacher-routine-table tr:last-child td {
+  border-bottom: none;
+}
+
+.teacher-routine-period-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background-color: var(--light-purple);
+  color: var(--primary-purple);
+  border-radius: var(--radius-xs);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.teacher-routine-class-pill {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #F8FAFC;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-text);
+}

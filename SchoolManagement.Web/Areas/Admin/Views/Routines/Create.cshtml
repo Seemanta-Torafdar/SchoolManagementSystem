@@ -1,0 +1,128 @@
+@model SchoolManagement.Web.ViewModels.Routine.RoutineCreateEditViewModel
+@{
+    ViewData["Title"] = "Add Timetable Period";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold text-dark mb-1">Add Timetable Period</h3>
+        <p class="text-secondary small mb-0">Schedule a class period, assign course subject, faculty instructor, and physical classroom.</p>
+    </div>
+    <a asp-action="Index" asp-route-classId="@Model.SchoolClassId" asp-route-sectionId="@Model.SectionId" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i> Back to Timetable
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-md-5">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger p-2 small mb-4"></div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label asp-for="SchoolClassId" class="form-label fw-semibold">Class *</label>
+                    <select asp-for="SchoolClassId" id="classSelect" asp-items="Model.Classes" class="form-select" required>
+                        <option value="">-- Select Class --</option>
+                    </select>
+                    <span asp-validation-for="SchoolClassId" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="SectionId" class="form-label fw-semibold">Section *</label>
+                    <select asp-for="SectionId" id="sectionSelect" asp-items="Model.Sections" class="form-select" required>
+                        <option value="">-- Select Section --</option>
+                    </select>
+                    <span asp-validation-for="SectionId" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="SubjectId" class="form-label fw-semibold">Subject *</label>
+                    <select asp-for="SubjectId" id="subjectSelect" asp-items="Model.Subjects" class="form-select" required>
+                        <option value="">-- Select Subject --</option>
+                    </select>
+                    <span asp-validation-for="SubjectId" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="TeacherId" class="form-label fw-semibold">Assigned Teacher *</label>
+                    <select asp-for="TeacherId" asp-items="Model.Teachers" class="form-select" required>
+                        <option value="">-- Select Faculty Member --</option>
+                    </select>
+                    <span asp-validation-for="TeacherId" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="DayOfWeek" class="form-label fw-semibold">Day of Week *</label>
+                    <select asp-for="DayOfWeek" class="form-select" required>
+                        <option value="Sunday">Sunday</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label asp-for="PeriodNumber" class="form-label fw-semibold">Period # *</label>
+                    <input asp-for="PeriodNumber" type="number" min="1" max="8" class="form-control" required />
+                    <span asp-validation-for="PeriodNumber" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label asp-for="StartTime" class="form-label fw-semibold">Start Time *</label>
+                    <input asp-for="StartTime" type="text" class="form-control" placeholder="09:00 AM" required />
+                    <span asp-validation-for="StartTime" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label asp-for="EndTime" class="form-label fw-semibold">End Time *</label>
+                    <input asp-for="EndTime" type="text" class="form-control" placeholder="09:45 AM" required />
+                    <span asp-validation-for="EndTime" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="RoomNumber" class="form-label fw-semibold">Room / Laboratory</label>
+                    <input asp-for="RoomNumber" type="text" class="form-control" placeholder="e.g. Room 204 or Physics Lab" />
+                    <span asp-validation-for="RoomNumber" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <div class="border-top pt-4 mt-4 d-flex justify-content-between align-items-center">
+                <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary px-5 fw-semibold">
+                    <i class="bi bi-check-circle me-1"></i> Save to Schedule
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.getElementById('classSelect')?.addEventListener('change', function () {
+            var classId = this.value;
+            var sectionSelect = document.getElementById('sectionSelect');
+            var subjectSelect = document.getElementById('subjectSelect');
+
+            sectionSelect.innerHTML = '<option value="">-- Select Section --</option>';
+            subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
+
+            if (classId) {
+                fetch('/Admin/Students/GetSectionsByClass?classId=' + classId)
+                    .then(r => r.json())
+                    .then(data => {
+                        data.forEach(item => {
+                            var opt = document.createElement('option');
+                            opt.value = item.id;
+                            opt.text = item.name;
+                            sectionSelect.appendChild(opt);
+                        });
+                    });
+            }
+        });
+    </script>
+}
+

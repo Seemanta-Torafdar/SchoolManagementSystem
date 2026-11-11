@@ -1,0 +1,81 @@
+@using SchoolManagement.BLL.DTOs.Subject
+@using SchoolManagement.BLL.DTOs.Class
+@model ClassDto
+
+@{
+    ViewData["Title"] = $"{Model.Name} - Curriculum Details";
+    var subjects = ViewBag.Subjects as IReadOnlyList<SubjectDto> ?? new List<SubjectDto>();
+}
+
+<div class="container py-5">
+    <div class="mb-4">
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm mb-3">
+            <i class="bi bi-arrow-left me-1"></i> Back to Academics
+        </a>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <span class="badge badge-purple mb-1">Academic Curriculum</span>
+                <h1 class="display-6 fw-bold mb-1">@Model.Name</h1>
+                <p class="text-muted">@Model.Description</p>
+            </div>
+            <span class="badge badge-purple fs-5">Grade @Model.NumericValue</span>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="card p-4 mb-4">
+                <h4 class="fw-bold mb-3">Enrolled Subjects &amp; Credit Marks</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Subject Code</th>
+                                <th>Subject Name</th>
+                                <th>Assigned Faculty</th>
+                                <th>Full Marks</th>
+                                <th>Pass Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var sub in subjects)
+                            {
+                                <tr>
+                                    <td><span class="badge bg-light text-dark border">@sub.SubjectCode</span></td>
+                                    <td class="fw-bold">@sub.Name</td>
+                                    <td>@(string.IsNullOrEmpty(sub.TeacherName) ? "Faculty Assigned" : sub.TeacherName)</td>
+                                    <td>@sub.TotalMarks</td>
+                                    <td><span class="text-success fw-semibold">@sub.PassMarks</span></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card p-4 mb-4">
+                <h5 class="fw-bold mb-3">Sections &amp; Classrooms</h5>
+                <ul class="list-group list-group-flush">
+                    @foreach (var sec in Model.Sections)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                            <div>
+                                <span class="fw-bold">@sec.Name</span>
+                                <div class="small text-muted">@sec.RoomNumber</div>
+                            </div>
+                            <span class="badge badge-purple">Max: @sec.Capacity</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="card p-4 bg-light border-0">
+                <h5 class="fw-bold mb-2">Academic Enquiries</h5>
+                <p class="small text-muted mb-3">Have questions about admissions or subject requirements?</p>
+                <a asp-controller="Contact" asp-action="Index" class="btn btn-primary btn-sm">Contact Administration</a>
+            </div>
+        </div>
+    </div>
+</div>

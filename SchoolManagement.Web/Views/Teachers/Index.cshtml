@@ -1,0 +1,46 @@
+@using SchoolManagement.BLL.DTOs.Teacher
+@model IReadOnlyList<TeacherDto>
+
+@{
+    ViewData["Title"] = "Our Faculty Members";
+}
+
+<div class="container py-5">
+    <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge badge-purple mb-2">Dedicated Educators</span>
+        <h1 class="display-5 fw-bold">Our Faculty &amp; Mentors</h1>
+        <p class="text-muted fs-5">Meet our team of experienced, certified, and compassionate educators who bring real-world passion to the classroom every single day.</p>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var teacher in Model)
+        {
+            <div class="col-lg-3 col-md-6">
+                <div class="teacher-public-card h-100 d-flex flex-column">
+                    <img src="@(string.IsNullOrEmpty(teacher.ProfilePictureUrl) ? "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=400&auto=format&fit=crop" : teacher.ProfilePictureUrl)" 
+                         alt="@teacher.FullName" />
+                    <div class="teacher-public-info flex-grow-1 d-flex flex-column">
+                        <h5 class="fw-bold mb-1">@teacher.FullName</h5>
+                        <div class="small text-purple fw-semibold mb-2">@teacher.Designation</div>
+                        <p class="small text-muted mb-2"><i class="bi bi-mortarboard me-1"></i>@teacher.Qualification</p>
+                        <p class="small text-muted mb-3"><i class="bi bi-briefcase me-1"></i>@teacher.ExperienceYears+ Years Experience</p>
+
+                        @if (teacher.AssignedSubjects.Any())
+                        {
+                            <div class="mt-auto pt-2 border-top">
+                                <div class="small fw-semibold text-secondary mb-1">Teaches:</div>
+                                <div class="d-flex flex-wrap gap-1">
+                                    @foreach (var sub in teacher.AssignedSubjects)
+                                    {
+                                        <span class="badge badge-purple" style="font-size: 0.72rem;">@sub</span>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,80 @@
+<footer class="es-footer">
+    <div class="container">
+        <div class="row g-4 pb-4">
+            <!-- Brand Info -->
+            <div class="col-lg-4 col-md-6">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="es-brand-icon" style="width:38px;height:38px;border-radius:10px;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                            <path d="M6 2v20"></path>
+                        </svg>
+                    </div>
+                    <span class="fs-4 fw-bold text-white">E-School</span>
+                </div>
+                <p class="small mb-4 text-white-50" style="line-height: 1.7; max-width: 320px;">
+                    A modern, smart online school platform to learn, explore, and stay connected with your classes, teachers, events, and results.
+                </p>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="#" class="es-social-btn" aria-label="Facebook"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a>
+                    <a href="#" class="es-social-btn" aria-label="Instagram"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a>
+                    <a href="#" class="es-social-btn" aria-label="Twitter"><i data-lucide="twitter" style="width:16px;height:16px;"></i></a>
+                    <a href="#" class="es-social-btn" aria-label="Youtube"><i data-lucide="youtube" style="width:16px;height:16px;"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="col-lg-2 col-md-3 col-6">
+                <h6 class="es-footer-heading">Navigation</h6>
+                <ul class="es-footer-links">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Notices" asp-action="Index">Notice</a></li>
+                    <li><a asp-area="" asp-controller="Teachers" asp-action="Index">Teachers</a></li>
+                    <li><a asp-area="" asp-controller="About" asp-action="Index">Management</a></li>
+                    <li><a asp-area="" asp-controller="Results" asp-action="Index">Result</a></li>
+                </ul>
+            </div>
+
+            <!-- Academics & Resources -->
+            <div class="col-lg-3 col-md-3 col-6">
+                <h6 class="es-footer-heading">Academics</h6>
+                <ul class="es-footer-links">
+                    <li><a asp-area="" asp-controller="Academics" asp-action="Index">Curriculum</a></li>
+                    <li><a asp-area="" asp-controller="Routine" asp-action="Index">Class Routine</a></li>
+                    <li><a asp-area="" asp-controller="Events" asp-action="Index">Upcoming Events</a></li>
+                    <li><a asp-area="" asp-controller="Gallery" asp-action="Index">Campus Gallery</a></li>
+                    <li><a asp-area="" asp-controller="Admission" asp-action="Index">Online Admission</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="col-lg-3 col-md-6">
+                <h6 class="es-footer-heading">Get in Touch</h6>
+                <ul class="es-footer-links small">
+                    <li class="d-flex align-items-center gap-2 text-white-50">
+                        <i data-lucide="phone" class="text-success" style="width:16px;height:16px;color:#21B573 !important;"></i>
+                        <span>+880 1712-345678</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 text-white-50">
+                        <i data-lucide="mail" class="text-success" style="width:16px;height:16px;color:#21B573 !important;"></i>
+                        <span>info@eschool.edu.bd</span>
+                    </li>
+                    <li class="d-flex align-items-center gap-2 text-white-50">
+                        <i data-lucide="map-pin" class="text-success" style="width:16px;height:16px;color:#21B573 !important;"></i>
+                        <span>Green Road, Dhanmondi, Dhaka-1205</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="es-footer-bottom">
+            <span>&copy; @DateTime.UtcNow.Year E-School. All rights reserved.</span>
+            <div class="d-flex align-items-center gap-3">
+                <a href="#">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="#">Terms of Use</a>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <rect width="48" height="48" rx="12" fill="url(#gvhs-grad)" />
+  <path d="M12 16C12 16 17 14 24 18C31 14 36 16 36 16V33C36 33 31 31 24 35C17 31 12 33 12 33V16Z" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.15)"/>
+  <path d="M24 18V35" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M18 13L24 10L30 13" stroke="#FFD166" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="gvhs-grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7138E8"/>
+      <stop offset="1" stop-color="#9B6BFA"/>
+    </linearGradient>
+  </defs>
+</svg>
+

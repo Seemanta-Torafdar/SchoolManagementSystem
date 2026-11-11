@@ -1,0 +1,57 @@
+@model SchoolManagement.BLL.DTOs.Notice.NoticeDto
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold text-dark mb-1">Notice Details</h3>
+        <p class="text-secondary small mb-0">Published: @Model.PublishDate.ToString("MMMM dd, yyyy") | Category: @Model.Category</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i> Back to Notices
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm p-4 p-md-5">
+    <h4 class="fw-bold text-dark mb-3">@Model.Title</h4>
+
+    <div class="d-flex flex-wrap gap-2 mb-4">
+        <span class="badge bg-light text-dark border">@Model.Category</span>
+        @if (Model.IsTeacherOnly)
+        {
+            <span class="badge bg-warning-subtle text-warning-emphasis">Internal Faculty</span>
+        }
+        else
+        {
+            <span class="badge bg-success-subtle text-success">School-Wide</span>
+        }
+    </div>
+
+    <div class="notice-body mb-4" style="line-height: 1.8; font-size: 1.05rem;">
+        @Html.Raw(Model.Content.Replace("\n", "<br/>"))
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.AttachmentUrl))
+    {
+        <div class="p-3 bg-light rounded-3 border d-flex justify-content-between align-items-center my-4">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-file-earmark-pdf text-danger fs-3"></i>
+                <div>
+                    <div class="fw-semibold">Document Attachment</div>
+                    <small class="text-muted">Click to view or download file</small>
+                </div>
+            </div>
+            <a href="@Model.AttachmentUrl" target="_blank" class="btn btn-outline-primary btn-sm">
+                <i class="bi bi-download me-1"></i> Download
+            </a>
+        </div>
+    }
+
+    <div class="border-top pt-4 mt-4 d-flex justify-content-between align-items-center">
+        <button onclick="window.print()" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-printer me-1"></i> Print Notice
+        </button>
+        <a asp-action="Index" class="btn btn-secondary btn-sm">Back to Notices</a>
+    </div>
+</div>

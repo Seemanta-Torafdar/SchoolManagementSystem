@@ -1,0 +1,187 @@
+@model SchoolManagement.Web.ViewModels.Dashboard.TeacherDashboardViewModel
+@{
+    ViewData["Title"] = "Teacher Dashboard";
+    var stats = Model.Stats;
+    var teacherName = !string.IsNullOrEmpty(stats.TeacherName) ? stats.TeacherName : "Tanvir Hasan";
+    var designation = !string.IsNullOrEmpty(stats.Designation) ? stats.Designation : "Assistant Teacher (ICT)";
+    var classesCount = stats.AssignedClassesCount > 0 ? stats.AssignedClassesCount : 3;
+    var studentsCount = stats.TotalAssignedStudentsCount > 0 ? stats.TotalAssignedStudentsCount : 96;
+    var noticesCount = stats.ActiveNoticesCount > 0 ? stats.ActiveNoticesCount : 5;
+}
+
+<!-- ==========================================
+     WELCOME BANNER (Recreated from Reference)
+     ========================================== -->
+<div class="teacher-welcome-banner">
+    <div class="teacher-welcome-left">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" 
+             alt="@teacherName" class="teacher-welcome-avatar" />
+        <div>
+            <h3 class="teacher-greeting-title">Good Morning, @teacherName 👋</h3>
+            <p class="teacher-designation-sub">@designation</p>
+        </div>
+    </div>
+
+    <!-- Right Decorative Illustration -->
+    <div class="teacher-illustration-box d-none d-md-flex">
+        <svg width="120" height="85" viewBox="0 0 120 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Plant pot & leaves -->
+            <path d="M102 75H116L113 85H105L102 75Z" fill="#16A36A" />
+            <path d="M109 75C109 65 118 60 118 60C118 60 115 72 109 75Z" fill="#22C55E" />
+            <path d="M109 75C109 63 100 58 100 58C100 58 103 72 109 75Z" fill="#16A36A" />
+            
+            <!-- Stack of books -->
+            <rect x="25" y="70" width="70" height="15" rx="3" fill="#7138E8" />
+            <rect x="23" y="73" width="70" height="3" fill="#E8DCFF" opacity="0.6" />
+            
+            <rect x="30" y="54" width="60" height="14" rx="3" fill="#9B6BFA" />
+            <rect x="28" y="57" width="60" height="3" fill="#FFFFFF" opacity="0.6" />
+
+            <rect x="36" y="38" width="50" height="14" rx="3" fill="#F5A623" />
+            <rect x="34" y="41" width="50" height="3" fill="#FFFFFF" opacity="0.6" />
+
+            <!-- Graduation Cap -->
+            <path d="M60 14L85 24L60 34L35 24L60 14Z" fill="#151D35" />
+            <path d="M47 29V39C47 43 73 43 73 39V29" stroke="#151D35" stroke-width="2" fill="#151D35" />
+            <path d="M78 27V42C78 43 82 43 82 42V27" stroke="#7138E8" stroke-width="2" />
+            <circle cx="80" cy="43" r="2.5" fill="#7138E8" />
+        </svg>
+    </div>
+</div>
+
+<!-- ==========================================
+     3 TEACHER SUMMARY METRIC CARDS
+     ========================================== -->
+<div class="row g-3 mb-4">
+    <!-- Card 1: My Classes -->
+    <div class="col-md-4">
+        <div class="teacher-stat-card">
+            <div class="teacher-stat-icon-wrap teacher-stat-icon-purple">
+                <i data-lucide="layers" style="width:24px;height:24px;"></i>
+            </div>
+            <div>
+                <div class="teacher-stat-value">@classesCount</div>
+                <div class="teacher-stat-label">My Classes</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2: Total Students -->
+    <div class="col-md-4">
+        <div class="teacher-stat-card">
+            <div class="teacher-stat-icon-wrap teacher-stat-icon-green">
+                <i data-lucide="users" style="width:24px;height:24px;"></i>
+            </div>
+            <div>
+                <div class="teacher-stat-value">@studentsCount</div>
+                <div class="teacher-stat-label">Total Students</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3: New Notices -->
+    <div class="col-md-4">
+        <div class="teacher-stat-card">
+            <div class="teacher-stat-icon-wrap teacher-stat-icon-orange">
+                <i data-lucide="mail" style="width:24px;height:24px;"></i>
+            </div>
+            <div>
+                <div class="teacher-stat-value">@noticesCount</div>
+                <div class="teacher-stat-label">New Notices</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================
+     BOTTOM ROW: TODAY'S ROUTINE & LATEST NOTICES
+     ========================================== -->
+<div class="row g-4">
+    <!-- Left: Today's Routine Table -->
+    <div class="col-lg-7">
+        <div class="teacher-routine-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold text-dark mb-0">Today's Routine</h5>
+                <a asp-controller="Routine" asp-action="Index" class="gvhs-link-viewall">
+                    View Full Routine <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="teacher-routine-table">
+                    <thead>
+                        <tr>
+                            <th>Period</th>
+                            <th>Time</th>
+                            <th>Class</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="teacher-routine-period-badge">1st</span></td>
+                            <td class="text-secondary">9:00 AM – 9:40 AM</td>
+                            <td><span class="teacher-routine-class-pill">Class 6 (A)</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="teacher-routine-period-badge">2nd</span></td>
+                            <td class="text-secondary">9:50 AM – 10:30 AM</td>
+                            <td><span class="teacher-routine-class-pill">Class 7 (B)</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="teacher-routine-period-badge">3rd</span></td>
+                            <td class="text-secondary">11:00 AM – 11:40 AM</td>
+                            <td><span class="teacher-routine-class-pill">Class 8 (A)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right: Latest Notices List -->
+    <div class="col-lg-5">
+        <div class="card border-0 shadow-sm p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold text-dark mb-0">Latest Notices</h5>
+                <a asp-controller="Notices" asp-action="Index" class="gvhs-link-viewall">
+                    View All <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                </a>
+            </div>
+
+            <div class="d-flex flex-column gap-3">
+                <!-- Notice 1 -->
+                <div class="d-flex align-items-center justify-content-between p-2 rounded-3 hover-bg">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="gvhs-notice-icon" style="width:34px;height:34px;">
+                            <i data-lucide="file-text" style="width:16px;height:16px;"></i>
+                        </div>
+                        <span class="fw-semibold text-dark fs-6">Annual Exam Routine 2025</span>
+                    </div>
+                    <span class="badge badge-new">New</span>
+                </div>
+
+                <!-- Notice 2 -->
+                <div class="d-flex align-items-center justify-content-between p-2 rounded-3 hover-bg">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="gvhs-notice-icon" style="width:34px;height:34px;">
+                            <i data-lucide="file-text" style="width:16px;height:16px;"></i>
+                        </div>
+                        <span class="fw-semibold text-dark fs-6">Staff Meeting – 22 Jan</span>
+                    </div>
+                    <span class="text-secondary small">22 Jan</span>
+                </div>
+
+                <!-- Notice 3 -->
+                <div class="d-flex align-items-center justify-content-between p-2 rounded-3 hover-bg">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="gvhs-notice-icon" style="width:34px;height:34px;">
+                            <i data-lucide="file-text" style="width:16px;height:16px;"></i>
+                        </div>
+                        <span class="fw-semibold text-dark fs-6">Cultural Program – 25 Jan</span>
+                    </div>
+                    <span class="text-secondary small">25 Jan</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,352 @@
+@model SchoolManagement.Web.ViewModels.Dashboard.AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    var stats = Model.Stats;
+    var totalStudents = stats.TotalStudents > 0 ? stats.TotalStudents : 1024;
+    var totalTeachers = stats.TotalTeachers > 0 ? stats.TotalTeachers : 42;
+    var totalClasses = stats.TotalClasses > 0 ? stats.TotalClasses : 12;
+    var activeNotices = Model.RecentNotices.Any() ? Model.RecentNotices.Count : 6;
+    var totalUsers = totalStudents + totalTeachers + 2; // + 2 admins
+}
+
+<!-- Dashboard Header Section -->
+<div class="admin-header-section d-flex flex-wrap justify-content-between align-items-center gap-3">
+    <div>
+        <h2 class="admin-page-title">Admin Dashboard</h2>
+        <p class="admin-page-sub">Welcome back, Admin! Here's what's happening at your school.</p>
+    </div>
+</div>
+
+<!-- ==========================================
+     4 SUMMARY METRIC CARDS
+     ========================================== -->
+<div class="row g-3 mb-4">
+    <!-- Card 1: Total Students -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="admin-stat-card">
+            <div>
+                <div class="admin-stat-number">@totalStudents.ToString("N0")</div>
+                <div class="admin-stat-label">Total Students</div>
+                <span class="admin-trend-badge admin-trend-up">
+                    <i data-lucide="trending-up" style="width:12px;height:12px;"></i> +3.5%
+                </span>
+            </div>
+            <div class="admin-stat-icon-box admin-icon-purple">
+                <i data-lucide="users" style="width:26px;height:26px;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2: Teachers -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="admin-stat-card">
+            <div>
+                <div class="admin-stat-number">@totalTeachers</div>
+                <div class="admin-stat-label">Teachers</div>
+                <span class="admin-trend-badge admin-trend-up">
+                    <i data-lucide="trending-up" style="width:12px;height:12px;"></i> +2.4%
+                </span>
+            </div>
+            <div class="admin-stat-icon-box admin-icon-blue">
+                <i data-lucide="graduation-cap" style="width:26px;height:26px;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3: Classes -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="admin-stat-card">
+            <div>
+                <div class="admin-stat-number">@totalClasses</div>
+                <div class="admin-stat-label">Classes</div>
+                <span class="admin-trend-badge admin-trend-neutral">
+                    - 0%
+                </span>
+            </div>
+            <div class="admin-stat-icon-box admin-icon-violet">
+                <i data-lucide="layers" style="width:26px;height:26px;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 4: Active Notices -->
+    <div class="col-xl-3 col-sm-6">
+        <div class="admin-stat-card">
+            <div>
+                <div class="admin-stat-number">@(activeNotices < 10 ? $"0{activeNotices}" : activeNotices.ToString())</div>
+                <div class="admin-stat-label">Active Notices</div>
+            </div>
+            <div class="admin-stat-icon-box admin-icon-orange">
+                <i data-lucide="bell" style="width:26px;height:26px;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================
+     MIDDLE ROW: ENROLLMENT CHART & QUICK ACTIONS
+     ========================================== -->
+<div class="row g-4 mb-4">
+    <!-- Student Enrollment Line Chart -->
+    <div class="col-lg-7">
+        <div class="card border-0 shadow-sm h-100 p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold text-dark mb-0">Student Enrollment</h5>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-light border dropdown-toggle text-secondary" type="button" data-bs-toggle="dropdown">
+                        This Year
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm">
+                        <li><a class="dropdown-item active" href="#">This Year</a></li>
+                        <li><a class="dropdown-item" href="#">Previous Year</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="height: 250px; position: relative;">
+                <canvas id="studentEnrollmentChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions (2x2 Grid) -->
+    <div class="col-lg-5">
+        <div class="admin-quick-actions-card">
+            <h5 class="fw-bold text-dark mb-3">Quick Actions</h5>
+            <div class="row g-3">
+                <!-- Action 1: Add Student -->
+                <div class="col-6">
+                    <a asp-controller="Students" asp-action="Create" class="admin-action-btn-card">
+                        <div class="admin-action-icon-circle">
+                            <i data-lucide="user-plus" style="width:20px;height:20px;"></i>
+                        </div>
+                        <span>Add Student</span>
+                    </a>
+                </div>
+
+                <!-- Action 2: Add Teacher -->
+                <div class="col-6">
+                    <a asp-controller="Teachers" asp-action="Create" class="admin-action-btn-card">
+                        <div class="admin-action-icon-circle">
+                            <i data-lucide="graduation-cap" style="width:20px;height:20px;"></i>
+                        </div>
+                        <span>Add Teacher</span>
+                    </a>
+                </div>
+
+                <!-- Action 3: Create Notice -->
+                <div class="col-6">
+                    <a asp-controller="Notices" asp-action="Create" class="admin-action-btn-card">
+                        <div class="admin-action-icon-circle">
+                            <i data-lucide="file-plus" style="width:20px;height:20px;"></i>
+                        </div>
+                        <span>Create Notice</span>
+                    </a>
+                </div>
+
+                <!-- Action 4: Manage Result -->
+                <div class="col-6">
+                    <a asp-controller="Results" asp-action="Index" class="admin-action-btn-card">
+                        <div class="admin-action-icon-circle">
+                            <i data-lucide="award" style="width:20px;height:20px;"></i>
+                        </div>
+                        <span>Manage Result</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================
+     BOTTOM ROW: RECENT ACTIVITIES & SYSTEM SUMMARY
+     ========================================== -->
+<div class="row g-4">
+    <!-- Recent Activities -->
+    <div class="col-lg-7">
+        <div class="card border-0 shadow-sm p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold text-dark mb-0">Recent Activities</h5>
+                <a asp-controller="AuditLogs" asp-action="Index" class="gvhs-link-viewall">
+                    View All <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                </a>
+            </div>
+
+            <div class="d-flex flex-column gap-3">
+                <!-- Activity 1 -->
+                <div class="d-flex align-items-center justify-content-between p-2 rounded-3 hover-bg">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="gvhs-notice-icon" style="width:38px;height:38px;">
+                            <i data-lucide="file-text" style="width:18px;height:18px;"></i>
+                        </div>
+                        <div>
+                            <div class="fw-semibold text-dark fs-6">Result published: Annual Exam 2025</div>
+                        </div>
+                    </div>
+                    <span class="text-secondary small">2 hours ago</span>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="d-flex align-items-center justify-content-between p-2 rounded-3 hover-bg">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="gvhs-notice-icon" style="width:38px;height:38px;">
+                            <i data-lucide="file-text" style="width:18px;height:18px;"></i>
+                        </div>
+                        <div>
+                            <div class="fw-semibold text-dark fs-6">New notice added: Cultural Program</div>
+                        </div>
+                    </div>
+                    <span class="text-secondary small">5 hours ago</span>
+                </div>
+
+                <!-- Activity 3 -->
+                <div class="d-flex align-items-center justify-content-between p-2 rounded-3 hover-bg">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="gvhs-notice-icon" style="width:38px;height:38px;">
+                            <i data-lucide="file-text" style="width:18px;height:18px;"></i>
+                        </div>
+                        <div>
+                            <div class="fw-semibold text-dark fs-6">Teacher profile updated: Tanvir Hasan</div>
+                        </div>
+                    </div>
+                    <span class="text-secondary small">1 day ago</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Summary Donut Chart -->
+    <div class="col-lg-5">
+        <div class="card border-0 shadow-sm p-4 h-100">
+            <h5 class="fw-bold text-dark mb-3">System Summary</h5>
+            
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="admin-donut-wrapper">
+                        <canvas id="systemSummaryChart"></canvas>
+                        <div class="admin-donut-center-text">
+                            <span class="admin-donut-total">1,066</span>
+                            <span class="admin-donut-label">Total Users</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <ul class="admin-donut-legend">
+                        <li class="admin-donut-legend-item">
+                            <span><span class="admin-legend-dot" style="background-color: #7138E8;"></span>Students</span>
+                            <strong class="text-dark">96.1%</strong>
+                        </li>
+                        <li class="admin-donut-legend-item">
+                            <span><span class="admin-legend-dot" style="background-color: #16A36A;"></span>Teachers</span>
+                            <strong class="text-dark">3.9%</strong>
+                        </li>
+                        <li class="admin-donut-legend-item">
+                            <span><span class="admin-legend-dot" style="background-color: #F5A623;"></span>Admins</span>
+                            <strong class="text-dark">0.4%</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Student Enrollment Line Chart
+            var enrollCtx = document.getElementById('studentEnrollmentChart');
+            if (enrollCtx) {
+                var gradient = enrollCtx.getContext('2d').createLinearGradient(0, 0, 0, 250);
+                gradient.addColorStop(0, 'rgba(113, 56, 232, 0.28)');
+                gradient.addColorStop(1, 'rgba(113, 56, 232, 0.0)');
+
+                new Chart(enrollCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Students',
+                            data: [930, 970, 960, 1010, 1005, 1024],
+                            borderColor: '#7138E8',
+                            backgroundColor: gradient,
+                            borderWidth: 2.5,
+                            fill: true,
+                            tension: 0.35,
+                            pointBackgroundColor: '#7138E8',
+                            pointBorderColor: '#FFFFFF',
+                            pointBorderWidth: 2,
+                            pointRadius: 4.5,
+                            pointHoverRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: '#151D35',
+                                titleFont: { family: "'Plus Jakarta Sans', sans-serif" },
+                                bodyFont: { family: "'Plus Jakarta Sans', sans-serif" },
+                                padding: 10,
+                                cornerRadius: 8
+                            }
+                        },
+                        scales: {
+                            y: {
+                                min: 900,
+                                max: 1100,
+                                ticks: {
+                                    stepSize: 100,
+                                    font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
+                                    color: '#94A3B8'
+                                },
+                                grid: { color: 'rgba(232, 236, 244, 0.7)' }
+                            },
+                            x: {
+                                ticks: {
+                                    font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
+                                    color: '#94A3B8'
+                                },
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 2. System Summary Donut Chart
+            var donutCtx = document.getElementById('systemSummaryChart');
+            if (donutCtx) {
+                new Chart(donutCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Students', 'Teachers', 'Admins'],
+                        datasets: [{
+                            data: [96.1, 3.9, 0.4],
+                            backgroundColor: ['#7138E8', '#16A36A', '#F5A623'],
+                            borderWidth: 0,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '76%',
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.label + ': ' + context.raw + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+}

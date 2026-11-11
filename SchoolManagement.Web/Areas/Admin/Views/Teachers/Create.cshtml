@@ -1,0 +1,129 @@
+@model SchoolManagement.Web.ViewModels.Teacher.TeacherCreateEditViewModel
+@{
+    ViewData["Title"] = "Add Faculty Member";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold text-dark mb-1">Add Faculty Member</h3>
+        <p class="text-secondary small mb-0">Create an official teacher profile and automatically provision portal login credentials.</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i> Back to Faculty List
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-md-5">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger p-2 small mb-4"></div>
+
+            <h5 class="fw-bold text-primary mb-3"><i class="bi bi-person-badge me-2"></i>Institutional & Account Setup</h5>
+            <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                    <label asp-for="TeacherIdNumber" class="form-label fw-semibold">Teacher ID Code</label>
+                    <input asp-for="TeacherIdNumber" class="form-control" />
+                    <span asp-validation-for="TeacherIdNumber" class="text-danger small"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="Email" class="form-label fw-semibold">Official Login Email *</label>
+                    <input asp-for="Email" type="email" class="form-control" required />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="TemporaryPassword" class="form-label fw-semibold">Initial Temporary Password *</label>
+                    <input asp-for="TemporaryPassword" class="form-control" required />
+                    <span asp-validation-for="TemporaryPassword" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Designation" class="form-label fw-semibold">Designation / Title *</label>
+                    <input asp-for="Designation" class="form-control" placeholder="e.g. Senior Teacher (Mathematics)" required />
+                    <span asp-validation-for="Designation" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Qualification" class="form-label fw-semibold">Academic Qualifications *</label>
+                    <input asp-for="Qualification" class="form-control" placeholder="e.g. M.Sc. in Mathematics (DU)" required />
+                    <span asp-validation-for="Qualification" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <h5 class="fw-bold text-primary mb-3 border-top pt-4"><i class="bi bi-person me-2"></i>Personal Details</h5>
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label asp-for="FirstName" class="form-label fw-semibold">First Name *</label>
+                    <input asp-for="FirstName" class="form-control" required />
+                    <span asp-validation-for="FirstName" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="LastName" class="form-label fw-semibold">Last Name *</label>
+                    <input asp-for="LastName" class="form-control" required />
+                    <span asp-validation-for="LastName" class="text-danger small"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="Phone" class="form-label fw-semibold">Phone Number *</label>
+                    <input asp-for="Phone" type="tel" class="form-control" required />
+                    <span asp-validation-for="Phone" class="text-danger small"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="Gender" class="form-label fw-semibold">Gender *</label>
+                    <select asp-for="Gender" class="form-select" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="ExperienceYears" class="form-label fw-semibold">Teaching Experience (Years)</label>
+                    <input asp-for="ExperienceYears" type="number" min="0" class="form-control" />
+                    <span asp-validation-for="ExperienceYears" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="JoiningDate" class="form-label fw-semibold">Joining Date</label>
+                    <input asp-for="JoiningDate" type="date" class="form-control" />
+                    <span asp-validation-for="JoiningDate" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="PhotoFile" class="form-label fw-semibold">Profile Photo</label>
+                    <input asp-for="PhotoFile" type="file" accept="image/*" class="form-control" />
+                    <span asp-validation-for="PhotoFile" class="text-danger small"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="Address" class="form-label fw-semibold">Address</label>
+                    <textarea asp-for="Address" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="Address" class="text-danger small"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="Bio" class="form-label fw-semibold">Biography / Profile Summary</label>
+                    <textarea asp-for="Bio" class="form-control" rows="3" placeholder="Brief professional intro for school website..."></textarea>
+                    <span asp-validation-for="Bio" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-check mt-2">
+                        <input asp-for="IsActive" class="form-check-input" />
+                        <label asp-for="IsActive" class="form-check-label fw-semibold">Teacher Account is Active</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-check mt-2">
+                        <input asp-for="IsPubliclyVisible" class="form-check-input" />
+                        <label asp-for="IsPubliclyVisible" class="form-check-label fw-semibold">Show on Public Website Faculty Page</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-top pt-4 mt-4 d-flex justify-content-between align-items-center">
+                <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary px-5 fw-semibold">
+                    <i class="bi bi-check-circle me-1"></i> Provision & Save Faculty
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

@@ -1,0 +1,54 @@
+@model IEnumerable<SchoolManagement.BLL.DTOs.Subject.SubjectDto>
+@{
+    ViewData["Title"] = "My Assigned Classes & Subjects";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold text-dark mb-1">My Assigned Classes & Subjects</h3>
+        <p class="text-secondary small mb-0">Curricula, subject codes, and class sections currently assigned to your instruction.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    @if (!Model.Any())
+    {
+        <div class="col-12">
+            <div class="card border-0 shadow-sm p-5 text-center text-muted">
+                <i class="bi bi-book display-3 text-secondary mb-3"></i>
+                <h5>No teaching subjects currently assigned to your faculty profile.</h5>
+                <p class="small text-muted">Please contact the Academic Dean or Administrator if you believe this is an error.</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        @foreach (var sub in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary fs-6">@sub.ClassName</span>
+                        <span class="text-muted small">Code: @sub.SubjectCode</span>
+                    </div>
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h5 class="fw-bold text-dark mb-2">@sub.Name</h5>
+                        <div class="small text-secondary mb-3">
+                            <div><strong>Assessment:</strong> Full Marks: @sub.FullMarks | Pass: @sub.PassMarks</div>
+                            <div><strong>Type:</strong> @(sub.IsOptional ? "Elective / Optional" : "Compulsory Core")</div>
+                        </div>
+                        <div class="mt-auto border-top pt-3 d-flex gap-2">
+                            <a asp-controller="Results" asp-action="Index" asp-route-subjectId="@sub.Id" class="btn btn-primary btn-sm flex-grow-1">
+                                <i class="bi bi-pencil-square me-1"></i> Marks Entry
+                            </a>
+                            <a asp-controller="Students" asp-action="Index" asp-route-classId="@sub.SchoolClassId" class="btn btn-outline-secondary btn-sm">
+                                <i class="bi bi-people me-1"></i> Students
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+

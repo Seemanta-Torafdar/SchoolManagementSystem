@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GVHS Admin Panel</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <div class="admin-layout-wrapper">
+        <!-- ==========================================
+             DARK NAVY SIDEBAR (GVHS Admin Panel)
+             ========================================== -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <!-- Sidebar Header -->
+            <div class="admin-sidebar-header">
+                <div class="admin-sidebar-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                        <path d="M6 2v20"></path>
+                    </svg>
+                </div>
+                <div>
+                    <div class="admin-sidebar-title">GVHS</div>
+                    <div class="admin-sidebar-subtitle">Admin Panel</div>
+                </div>
+            </div>
+
+            <!-- Sidebar Navigation Menu -->
+            <ul class="admin-sidebar-menu">
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Dashboard" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Students" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Students" asp-action="Index">
+                        <i data-lucide="users"></i>
+                        <span>Students</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Teachers" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Teachers" asp-action="Index">
+                        <i data-lucide="graduation-cap"></i>
+                        <span>Teachers</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Classes" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Classes" asp-action="Index">
+                        <i data-lucide="layers"></i>
+                        <span>Classes &amp; Sections</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Examinations" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Examinations" asp-action="Index">
+                        <i data-lucide="edit-3"></i>
+                        <span>Examinations</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Results" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Results" asp-action="Index">
+                        <i data-lucide="award"></i>
+                        <span>Results</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Notices" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Notices" asp-action="Index">
+                        <i data-lucide="file-text"></i>
+                        <span>Notices</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Routines" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Routines" asp-action="Index">
+                        <i data-lucide="calendar"></i>
+                        <span>Routine</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Events" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Events" asp-action="Index">
+                        <i data-lucide="calendar-days"></i>
+                        <span>Events</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Gallery" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Gallery" asp-action="Index">
+                        <i data-lucide="image"></i>
+                        <span>Gallery</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Users" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Users" asp-action="Index">
+                        <i data-lucide="user-check"></i>
+                        <span>Users &amp; Roles</span>
+                    </a>
+                </li>
+                <li class="admin-nav-item">
+                    <a class="admin-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Settings" ? "active" : "")" 
+                       asp-area="Admin" asp-controller="Settings" asp-action="Index">
+                        <i data-lucide="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Bottom Logout -->
+            <div class="admin-sidebar-footer">
+                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                    <button type="submit" class="admin-btn-logout">
+                        <i data-lucide="log-out"></i>
+                        <span>Logout</span>
+                    </button>
+                </form>
+            </div>
+        </aside>
+
+        <!-- ==========================================
+             MAIN WORKSPACE
+             ========================================== -->
+        <div class="admin-workspace">
+            <!-- Topbar Header -->
+            <header class="admin-topbar">
+                <div class="admin-topbar-left">
+                    <button id="sidebarToggleBtn" class="admin-toggle-sidebar" title="Toggle Sidebar">
+                        <i data-lucide="menu" style="width:22px;height:22px;"></i>
+                    </button>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" target="_blank" class="btn btn-outline-purple btn-sm">
+                        <i data-lucide="external-link" style="width:14px;height:14px;"></i> Public Site
+                    </a>
+                </div>
+
+                <div class="admin-topbar-right">
+                    <!-- Search Icon -->
+                    <button class="admin-icon-btn" title="Search">
+                        <i data-lucide="search" style="width:20px;height:20px;"></i>
+                    </button>
+
+                    <!-- Notification Bell with Red Unread Badge -->
+                    <button class="admin-icon-btn" title="Notifications">
+                        <i data-lucide="bell" style="width:20px;height:20px;"></i>
+                        <span class="admin-badge-dot"></span>
+                    </button>
+
+                    <!-- Super Admin Profile Dropdown -->
+                    <div class="dropdown">
+                        <div class="admin-profile-pill" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" 
+                                 alt="Admin" class="admin-avatar" />
+                            <div class="admin-user-info d-none d-sm-flex">
+                                <span class="admin-user-name">Admin</span>
+                                <span class="admin-user-role">Super Admin</span>
+                            </div>
+                            <i data-lucide="chevron-down" style="width:16px;height:16px;color:#94A3B8;"></i>
+                        </div>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg mt-2">
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="ChangePassword"><i data-lucide="key" class="me-2" style="width:14px;height:14px;"></i> Change Password</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="px-3">
+                                    <button type="submit" class="btn btn-danger btn-sm w-100">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Body -->
+            <main class="admin-body">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+                        <i data-lucide="check-circle" class="me-2" style="width:18px;height:18px;"></i> @TempData["SuccessMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                }
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                        <i data-lucide="alert-triangle" class="me-2" style="width:18px;height:18px;"></i> @TempData["ErrorMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                }
+
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            var toggleBtn = document.getElementById('sidebarToggleBtn');
+            var sidebar = document.getElementById('adminSidebar');
+            if (toggleBtn && sidebar) {
+                toggleBtn.addEventListener('click', function () {
+                    sidebar.classList.toggle('show');
+                });
+            }
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

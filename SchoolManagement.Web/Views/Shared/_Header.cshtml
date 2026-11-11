@@ -1,0 +1,82 @@
+@using SchoolManagement.Domain.Enums
+
+<header class="es-navbar-wrapper sticky-top">
+    <nav class="navbar navbar-expand-lg es-navbar">
+        <div class="container">
+            <!-- E-School Brand Logo -->
+            <a class="navbar-brand es-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <div class="es-brand-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                        <path d="M6 2v20"></path>
+                    </svg>
+                </div>
+                <span class="es-brand-title">E-School</span>
+            </a>
+
+            <!-- Mobile Toggler -->
+            <button class="navbar-toggler border-0 shadow-none p-1" type="button" data-bs-toggle="collapse" data-bs-target="#esNavbarContent" aria-label="Toggle navigation">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#28213D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <!-- Nav Menu Items & Actions -->
+            <div class="collapse navbar-collapse" id="esNavbarContent">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3 gap-1 my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a class="es-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && ViewContext.RouteData.Values["action"]?.ToString() == "Index" ? "active" : "")" 
+                           asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="es-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Notices" ? "active" : "")" 
+                           asp-area="" asp-controller="Notices" asp-action="Index">Notice</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="es-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Teachers" ? "active" : "")" 
+                           asp-area="" asp-controller="Teachers" asp-action="Index">Teachers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="es-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "About" ? "active" : "")" 
+                           asp-area="" asp-controller="About" asp-action="Index">Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="es-nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Results" ? "active" : "")" 
+                           asp-area="" asp-controller="Results" asp-action="Index">Result</a>
+                    </li>
+
+                    <li class="nav-item ms-lg-2">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <div class="d-flex align-items-center gap-2">
+                                @if (User.IsInRole(UserRole.Admin))
+                                {
+                                    <a class="btn-es-login" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                                        <i data-lucide="layout-dashboard" style="width:16px;height:16px;"></i> Admin
+                                    </a>
+                                }
+                                else if (User.IsInRole(UserRole.Teacher))
+                                {
+                                    <a class="btn-es-login" asp-area="Teacher" asp-controller="Dashboard" asp-action="Index">
+                                        <i data-lucide="user" style="width:16px;height:16px;"></i> Teacher
+                                    </a>
+                                }
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm rounded-pill px-3 py-1">Logout</button>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <a class="btn-es-login" asp-area="" asp-controller="Account" asp-action="Login">
+                                <i data-lucide="user" style="width:15px;height:15px;"></i> Login
+                            </a>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

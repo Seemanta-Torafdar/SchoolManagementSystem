@@ -1,0 +1,65 @@
+@model SchoolManagement.BLL.DTOs.Notice.NoticeDto
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<section class="page-banner py-5 bg-light border-bottom">
+    <div class="container">
+        <div class="d-flex align-items-center gap-2 mb-2 text-muted small">
+            <a asp-controller="Home" asp-action="Index" class="text-decoration-none">Home</a>
+            <span>/</span>
+            <a asp-controller="Notices" asp-action="Index" class="text-decoration-none">Notices</a>
+            <span>/</span>
+            <span>Details</span>
+        </div>
+        <h1 class="h3 fw-bold text-dark">@Model.Title</h1>
+        <div class="d-flex flex-wrap align-items-center gap-3 text-secondary small mt-2">
+            <span><i class="bi bi-calendar3 me-1"></i>Published: @Model.PublishDate.ToString("MMMM dd, yyyy")</span>
+            <span><i class="bi bi-tag me-1"></i>@Model.Category</span>
+            <span><i class="bi bi-eye me-1"></i>@Model.ViewCount Views</span>
+            @if (Model.IsTeacherOnly)
+            {
+                <span class="badge bg-warning-subtle text-warning-emphasis">Faculty Circular</span>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="card border-0 shadow-sm p-4 p-md-5">
+                    <div class="notice-content mb-4" style="line-height: 1.8; font-size: 1.05rem;">
+                        @Html.Raw(Model.Content.Replace("\n", "<br/>"))
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.AttachmentUrl))
+                    {
+                        <div class="p-3 bg-light rounded-3 d-flex align-items-center justify-content-between my-4 border">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-file-earmark-pdf-fill text-danger fs-2"></i>
+                                <div>
+                                    <div class="fw-semibold">Official Attachment Document</div>
+                                    <small class="text-muted">Click the button to view or download</small>
+                                </div>
+                            </div>
+                            <a href="@Model.AttachmentUrl" target="_blank" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-download me-1"></i> Download File
+                            </a>
+                        </div>
+                    }
+
+                    <div class="border-top pt-4 d-flex justify-content-between align-items-center mt-3">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left me-1"></i> Back to Notices
+                        </a>
+                        <button onclick="window.print()" class="btn btn-outline-secondary">
+                            <i class="bi bi-printer me-1"></i> Print Notice
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

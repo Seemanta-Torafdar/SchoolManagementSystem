@@ -1,0 +1,171 @@
+@model IEnumerable<SchoolManagement.BLL.DTOs.Subject.SubjectDto>
+@{
+    ViewData["Title"] = "Academic Subjects";
+    var classes = ViewBag.Classes as IEnumerable<SchoolManagement.BLL.DTOs.Class.ClassDto> ?? Enumerable.Empty<SchoolManagement.BLL.DTOs.Class.ClassDto>();
+    var teachers = ViewBag.Teachers as IEnumerable<SchoolManagement.BLL.DTOs.Teacher.TeacherDto> ?? Enumerable.Empty<SchoolManagement.BLL.DTOs.Teacher.TeacherDto>();
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold text-dark mb-1">Academic Subjects</h3>
+        <p class="text-secondary small mb-0">Manage curricula, syllabus subject codes, full/pass marks criteria, and faculty assignments.</p>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSubjectModal">
+        <i class="bi bi-plus-circle me-1"></i> Add Subject
+    </button>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>@TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>@TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light small">
+                    <tr>
+                        <th style="width: 100px;">Code</th>
+                        <th>Subject Name</th>
+                        <th>Class</th>
+                        <th>Assigned Faculty</th>
+                        <th>Full Marks</th>
+                        <th>Pass Marks</th>
+                        <th>Type</th>
+                        <th class="text-end" style="width: 100px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="8" class="text-center text-muted py-4">No subjects found in the curriculum.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var sub in Model)
+                        {
+                            <tr>
+                                <td class="fw-bold text-muted">@sub.SubjectCode</td>
+                                <td class="fw-semibold text-dark">@sub.Name</td>
+                                <td><span class="badge bg-light text-dark border">@sub.ClassName</span></td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(sub.TeacherName))
+                                    {
+                                        <i class="bi bi-person-check text-success me-1"></i>@sub.TeacherName
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small"><em>Unassigned</em></span>
+                                    }
+                                </td>
+                                <td>@sub.FullMarks</td>
+                                <td>@sub.PassMarks</td>
+                                <td>
+                                    @if (sub.IsOptional)
+                                    {
+                                        <span class="badge bg-secondary-subtle text-secondary">Optional</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-primary-subtle text-primary">Compulsory</span>
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    <div class="btn-group btn-group-sm">
+                                        <form asp-action="Delete" asp-route-id="@sub.Id" method="post" onsubmit="return confirm('Delete subject @sub.Name?');">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-outline-danger" title="Delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Add Subject -->
+<div class="modal fade" id="addSubjectModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Add Academic Subject</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Subject Name *</label>
+                            <input type="text" name="Name" class="form-control" placeholder="e.g. Higher Mathematics" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Subject Code *</label>
+                            <input type="text" name="SubjectCode" class="form-control" placeholder="e.g. HM-101" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Class *</label>
+                            <select name="SchoolClassId" class="form-select" required>
+                                <option value="">-- Select Class --</option>
+                                @foreach (var c in classes)
+                                {
+                                    <option value="@c.Id">@c.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Assigned Teacher</label>
+                            <select name="TeacherId" class="form-select">
+                                <option value="">-- Unassigned --</option>
+                                @foreach (var t in teachers)
+                                {
+                                    <option value="@t.Id">@t.FullName (@t.Designation)</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Full Marks *</label>
+                            <input type="number" name="FullMarks" class="form-control" value="100" min="1" max="200" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Pass Marks *</label>
+                            <input type="number" name="PassMarks" class="form-control" value="33" min="1" max="200" required />
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input type="checkbox" name="IsOptional" value="true" class="form-check-input" id="isOpt" />
+                                <input type="hidden" name="IsOptional" value="false" />
+                                <label class="form-check-label fw-semibold" for="isOpt">Elective / Optional Subject</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Subject</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

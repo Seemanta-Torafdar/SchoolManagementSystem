@@ -1,0 +1,73 @@
+@model SchoolManagement.Domain.Entities.Event
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<section class="page-banner py-5 bg-light border-bottom">
+    <div class="container">
+        <div class="d-flex align-items-center gap-2 mb-2 text-muted small">
+            <a asp-controller="Home" asp-action="Index" class="text-decoration-none">Home</a>
+            <span>/</span>
+            <a asp-controller="Events" asp-action="Index" class="text-decoration-none">Events</a>
+            <span>/</span>
+            <span>Details</span>
+        </div>
+        <h1 class="h3 fw-bold text-dark">@Model.Title</h1>
+        <div class="d-flex flex-wrap align-items-center gap-4 text-secondary small mt-2">
+            <span><i class="bi bi-calendar-event me-1 text-primary"></i>Date: @Model.EventDate.ToString("MMMM dd, yyyy - hh:mm tt")</span>
+            <span><i class="bi bi-geo-alt me-1 text-danger"></i>Location: @Model.Location</span>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="card border-0 shadow-sm overflow-hidden mb-4">
+                    @if (!string.IsNullOrEmpty(Model.BannerImageUrl))
+                    {
+                        <img src="@Model.BannerImageUrl" alt="@Model.Title" class="w-100" style="max-height: 400px; object-fit: cover;" />
+                    }
+                    <div class="card-body p-4 p-md-5">
+                        <h4 class="fw-bold mb-3">Event Overview</h4>
+                        <div class="text-secondary" style="line-height: 1.8; font-size: 1.05rem;">
+                            @Html.Raw(Model.Description.Replace("\n", "<br/>"))
+                        </div>
+
+                        <div class="bg-light p-4 rounded-3 border mt-5">
+                            <h5 class="fw-bold mb-3"><i class="bi bi-info-circle me-2 text-primary"></i>Event Information</h5>
+                            <div class="row g-3 small">
+                                <div class="col-sm-6">
+                                    <div class="text-muted">Target Audience:</div>
+                                    <div class="fw-semibold">Students, Teachers, and Guardians</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="text-muted">Organized By:</div>
+                                    <div class="fw-semibold">School Co-Curricular & Cultural Committee</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="text-muted">Venue Location:</div>
+                                    <div class="fw-semibold">@Model.Location</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="text-muted">Inquiries:</div>
+                                    <div class="fw-semibold">info@school.edu.bd</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-top pt-4 mt-4 d-flex justify-content-between align-items-center">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left me-1"></i> Back to Events
+                            </a>
+                            <button onclick="window.print()" class="btn btn-outline-secondary">
+                                <i class="bi bi-printer me-1"></i> Print Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

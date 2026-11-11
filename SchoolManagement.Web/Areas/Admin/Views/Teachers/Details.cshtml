@@ -1,0 +1,102 @@
+@model SchoolManagement.BLL.DTOs.Teacher.TeacherDto
+@{
+    ViewData["Title"] = $"Faculty Profile: {Model.FullName}";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold text-dark mb-1">Faculty Member Profile</h3>
+        <p class="text-secondary small mb-0">Record and assigned courses for faculty ID: @Model.TeacherIdNumber</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary btn-sm">
+            <i class="bi bi-pencil me-1"></i> Edit Profile
+        </a>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left me-1"></i> Back to Faculty List
+        </a>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm text-center p-4">
+            <div class="mb-3">
+                <img src="@(string.IsNullOrEmpty(Model.ProfilePictureUrl) ? "/images/default-avatar.png" : Model.ProfilePictureUrl)" 
+                     class="rounded-circle border p-1 shadow-sm" width="130" height="130" alt="@Model.FullName"
+                     onerror="this.src='https://ui-avatars.com/api/?name=@Model.FullName&background=151D35&color=fff&size=128';" />
+            </div>
+            <h4 class="fw-bold text-dark mb-1">@Model.FullName</h4>
+            <div class="text-muted small mb-2">@Model.Designation</div>
+            <div class="mb-3">
+                @if (Model.IsActive)
+                {
+                    <span class="badge bg-success-subtle text-success border border-success px-3 py-1">Active Faculty</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger-subtle text-danger border border-danger px-3 py-1">Inactive Account</span>
+                }
+            </div>
+
+            <div class="bg-light p-3 rounded-3 border text-start small">
+                <div class="mb-2"><strong>Teacher ID:</strong> <span class="float-end fw-bold">@Model.TeacherIdNumber</span></div>
+                <div class="mb-2"><strong>Experience:</strong> <span class="float-end text-muted">@Model.ExperienceYears Years</span></div>
+                <div class="mb-2"><strong>Joining Date:</strong> <span class="float-end text-muted">@Model.JoiningDate.ToString("yyyy-MM-dd")</span></div>
+                <div class="mb-0"><strong>Public Listing:</strong> <span class="float-end text-muted">@(Model.IsPubliclyVisible ? "Yes" : "Hidden")</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm p-4">
+            <h5 class="fw-bold text-primary mb-3"><i class="bi bi-info-circle me-2"></i>Academic Profile & Qualifications</h5>
+            <div class="mb-4">
+                <div class="text-muted small mb-1">Highest Qualifications:</div>
+                <div class="fw-semibold">@Model.Qualification</div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.Bio))
+            {
+                <div class="mb-4">
+                    <div class="text-muted small mb-1">Biography / Profile Summary:</div>
+                    <p class="text-secondary" style="line-height: 1.7;">@Model.Bio</p>
+                </div>
+            }
+
+            <h5 class="fw-bold text-primary mb-3 border-top pt-4"><i class="bi bi-book-half me-2"></i>Assigned Subjects</h5>
+            @if (Model.AssignedSubjects != null && Model.AssignedSubjects.Any())
+            {
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                    @foreach (var sub in Model.AssignedSubjects)
+                    {
+                        <span class="badge bg-light text-dark border p-2"><i class="bi bi-journal-text me-1 text-primary"></i>@sub</span>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="text-muted small mb-4">No subjects currently assigned to this faculty member.</div>
+            }
+
+            <h5 class="fw-bold text-primary mb-3 border-top pt-4"><i class="bi bi-telephone-fill me-2"></i>Contact Details</h5>
+            <table class="table table-borderless table-sm mb-0">
+                <tbody>
+                    <tr>
+                        <th class="text-muted" style="width: 160px;">Phone Number:</th>
+                        <td class="fw-semibold text-dark">@Model.Phone</td>
+                    </tr>
+                    <tr>
+                        <th class="text-muted">Official Email:</th>
+                        <td>@Model.Email</td>
+                    </tr>
+                    <tr>
+                        <th class="text-muted">Residential Address:</th>
+                        <td>@(Model.Address ?? "N/A")</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

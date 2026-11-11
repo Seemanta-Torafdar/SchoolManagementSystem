@@ -1,0 +1,174 @@
+@model SchoolManagement.Web.ViewModels.Student.StudentCreateEditViewModel
+@{
+    ViewData["Title"] = "Enroll New Student";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold text-dark mb-1">Student Enrollment Form</h3>
+        <p class="text-secondary small mb-0">Add a new student record to the institution with academic assignment and verification credentials.</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left me-1"></i> Back to Directory
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4 p-md-5">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger p-2 small mb-4"></div>
+
+            <h5 class="fw-bold text-primary mb-3"><i class="bi bi-mortarboard me-2"></i>Academic Enrollment Details</h5>
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <label asp-for="AcademicSessionId" class="form-label fw-semibold">Academic Session *</label>
+                    <select asp-for="AcademicSessionId" asp-items="Model.Sessions" class="form-select" required></select>
+                    <span asp-validation-for="AcademicSessionId" class="text-danger small"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="SchoolClassId" class="form-label fw-semibold">Class *</label>
+                    <select asp-for="SchoolClassId" id="classSelect" asp-items="Model.Classes" class="form-select" required>
+                        <option value="">-- Select Class --</option>
+                    </select>
+                    <span asp-validation-for="SchoolClassId" class="text-danger small"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="SectionId" class="form-label fw-semibold">Section *</label>
+                    <select asp-for="SectionId" id="sectionSelect" asp-items="Model.Sections" class="form-select" required>
+                        <option value="">-- Select Section --</option>
+                    </select>
+                    <span asp-validation-for="SectionId" class="text-danger small"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="RollNumber" class="form-label fw-semibold">Roll Number *</label>
+                    <input asp-for="RollNumber" type="number" class="form-control" required min="1" />
+                    <span asp-validation-for="RollNumber" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="AdmissionNumber" class="form-label fw-semibold">Admission / ID Number *</label>
+                    <input asp-for="AdmissionNumber" class="form-control" required />
+                    <span asp-validation-for="AdmissionNumber" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="VerificationCode" class="form-label fw-semibold">Private Verification PIN *</label>
+                    <input asp-for="VerificationCode" class="form-control" placeholder="Required for Part 8 public marksheet lookup" required />
+                    <span asp-validation-for="VerificationCode" class="text-danger small"></span>
+                    <small class="text-muted">Students will use this private PIN along with roll to check term results.</small>
+                </div>
+            </div>
+
+            <h5 class="fw-bold text-primary mb-3 border-top pt-4"><i class="bi bi-person me-2"></i>Personal Information</h5>
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label asp-for="FirstName" class="form-label fw-semibold">First Name *</label>
+                    <input asp-for="FirstName" class="form-control" required />
+                    <span asp-validation-for="FirstName" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="LastName" class="form-label fw-semibold">Last Name *</label>
+                    <input asp-for="LastName" class="form-control" required />
+                    <span asp-validation-for="LastName" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="FatherName" class="form-label fw-semibold">Father's Name</label>
+                    <input asp-for="FatherName" class="form-control" />
+                    <span asp-validation-for="FatherName" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="MotherName" class="form-label fw-semibold">Mother's Name</label>
+                    <input asp-for="MotherName" class="form-control" />
+                    <span asp-validation-for="MotherName" class="text-danger small"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="DateOfBirth" class="form-label fw-semibold">Date of Birth *</label>
+                    <input asp-for="DateOfBirth" type="date" class="form-control" required />
+                    <span asp-validation-for="DateOfBirth" class="text-danger small"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="Gender" class="form-label fw-semibold">Gender *</label>
+                    <select asp-for="Gender" class="form-select" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="BloodGroup" class="form-label fw-semibold">Blood Group</label>
+                    <select asp-for="BloodGroup" class="form-select">
+                        <option value="">-- Select Blood Group --</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+            </div>
+
+            <h5 class="fw-bold text-primary mb-3 border-top pt-4"><i class="bi bi-telephone me-2"></i>Guardian & Contact Information</h5>
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label asp-for="GuardianPhone" class="form-label fw-semibold">Guardian Phone *</label>
+                    <input asp-for="GuardianPhone" type="tel" class="form-control" required />
+                    <span asp-validation-for="GuardianPhone" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="GuardianEmail" class="form-label fw-semibold">Guardian Email</label>
+                    <input asp-for="GuardianEmail" type="email" class="form-control" />
+                    <span asp-validation-for="GuardianEmail" class="text-danger small"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="Address" class="form-label fw-semibold">Residential Address</label>
+                    <textarea asp-for="Address" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="Address" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="PhotoFile" class="form-label fw-semibold">Student Photograph</label>
+                    <input asp-for="PhotoFile" type="file" accept="image/*" class="form-control" />
+                    <span asp-validation-for="PhotoFile" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Status" class="form-label fw-semibold">Enrollment Status</label>
+                    <select asp-for="Status" asp-items="Html.GetEnumSelectList<SchoolManagement.Domain.Enums.StudentStatus>()" class="form-select"></select>
+                </div>
+            </div>
+
+            <div class="border-top pt-4 mt-4 d-flex justify-content-between align-items-center">
+                <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary px-5 fw-semibold">
+                    <i class="bi bi-check-circle me-1"></i> Save & Enroll Student
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.getElementById('classSelect')?.addEventListener('change', function () {
+            var classId = this.value;
+            var sectionSelect = document.getElementById('sectionSelect');
+            sectionSelect.innerHTML = '<option value="">-- Select Section --</option>';
+
+            if (classId) {
+                fetch('/Admin/Students/GetSectionsByClass?classId=' + classId)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(item => {
+                            var opt = document.createElement('option');
+                            opt.value = item.id;
+                            opt.text = item.name;
+                            sectionSelect.appendChild(opt);
+                        });
+                    });
+            }
+        });
+    </script>
+}
+

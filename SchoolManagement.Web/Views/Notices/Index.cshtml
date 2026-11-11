@@ -1,0 +1,109 @@
+@using SchoolManagement.Web.ViewModels.Notice
+@using SchoolManagement.Domain.Enums
+@model NoticeListViewModel
+
+@{
+    ViewData["Title"] = "Official Notice Board";
+}
+
+<div class="container py-5">
+    <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge badge-purple mb-2">School Announcements</span>
+        <h1 class="display-5 fw-bold">Official Notice Board</h1>
+        <p class="text-muted fs-5">Stay updated with academic circulars, exam routines, administrative announcements, and holiday notices.</p>
+    </div>
+
+    <!-- Filter & Search Form -->
+    <div class="card p-4 mb-4">
+        <form method="get" class="row g-3 align-items-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                    <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Search notices by keyword..." />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <select name="category" class="form-select">
+                    <option value="">All Categories</option>
+                    @foreach (NoticeType cat in Enum.GetValues(typeof(NoticeType)))
+                    {
+                        if (cat != NoticeType.TeacherOnly)
+                        {
+                            <option value="@cat" selected="@(Model.Category == cat ? "selected" : null)">@cat</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 d-grid">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Notices List -->
+    <div class="row g-4 mb-5">
+        @if (Model.Notices.Items.Any())
+        {
+            @foreach (var notice in Model.Notices.Items)
+            {
+                <div class="col-md-6">
+                    <div class="card p-4 h-100 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge badge-purple">@notice.Category</span>
+                            <span class="small text-muted"><i class="bi bi-calendar3 me-1"></i>@notice.PublishDate.ToString("dd MMM yyyy")</span>
+                        </div>
+                        <h4 class="fw-bold mb-2">
+                            <a asp-action="Details" asp-route-id="@notice.Id" class="text-dark">@notice.Title</a>
+                        </h4>
+                        <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">
+                            @(notice.Content.Length > 150 ? notice.Content.Substring(0, 150) + "..." : notice.Content)
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                            <a asp-action="Details" asp-route-id="@notice.Id" class="fw-semibold text-purple small">
+                                Read Full Notice <i class="bi bi-chevron-right ms-1"></i>
+                            </a>
+                            @if (!string.IsNullOrEmpty(notice.AttachmentUrl))
+                            {
+                                <a href="@notice.AttachmentUrl" target="_blank" class="badge badge-purple text-decoration-none">
+                                    <i class="bi bi-file-earmark-pdf-fill me-1"></i> PDF Attachment
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-light text-center py-5">
+                    <i class="bi bi-info-circle fs-2 text-muted mb-2 d-block"></i>
+                    <h5>No notices found</h5>
+                    <p class="text-muted mb-0">Try clearing your filters or check back later.</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Pagination -->
+    @if (Model.Notices.TotalPages > 1)
+    {
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item @(!Model.Notices.HasPreviousPage ? "disabled" : "")">
+                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.Notices.PageIndex - 1)" asp-route-searchTerm="@Model.SearchTerm" asp-route-category="@Model.Category">Previous</a>
+                </li>
+                @for (int p = 1; p <= Model.Notices.TotalPages; p++)
+                {
+                    <li class="page-item @(p == Model.Notices.PageIndex ? "active" : "")">
+                        <a class="page-link" asp-action="Index" asp-route-page="@p" asp-route-searchTerm="@Model.SearchTerm" asp-route-category="@Model.Category">@p</a>
+                    </li>
+                }
+                <li class="page-item @(!Model.Notices.HasNextPage ? "disabled" : "")">
+                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.Notices.PageIndex + 1)" asp-route-searchTerm="@Model.SearchTerm" asp-route-category="@Model.Category">Next</a>
+                </li>
+            </ul>
+        </nav>
+    }
+</div>
+
