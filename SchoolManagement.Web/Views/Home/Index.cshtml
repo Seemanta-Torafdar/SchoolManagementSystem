@@ -173,9 +173,66 @@
 </section>
 
 <!-- ==========================================================================
+     QUICK ACTION BUTTONS (Top of Notice & Under Hero Banner)
+     ========================================================================== -->
+<div class="es-quick-actions-strip">
+    <div class="container">
+        <div class="es-quick-actions-wrapper">
+            <!-- 1. Latest Notice Button -->
+            <a href="#notice-section" class="es-quick-btn es-quick-btn-notice">
+                <span class="es-quick-icon">
+                    <i data-lucide="bell" style="width:19px;height:19px;"></i>
+                </span>
+                <span>Latest Notice</span>
+            </a>
+
+            <!-- 2. Our Teacher Button -->
+            <a href="#teachers-section" class="es-quick-btn es-quick-btn-teacher">
+                <span class="es-quick-icon">
+                    <i data-lucide="graduation-cap" style="width:19px;height:19px;"></i>
+                </span>
+                <span>Our Teacher</span>
+            </a>
+
+            <!-- 3. Management Button -->
+            <a href="#teachers-section" class="es-quick-btn es-quick-btn-mgmt">
+                <span class="es-quick-icon">
+                    <i data-lucide="landmark" style="width:19px;height:19px;"></i>
+                </span>
+                <span>Management</span>
+            </a>
+
+            <!-- 4. Event Button -->
+            <a href="#event-section" class="es-quick-btn es-quick-btn-event">
+                <span class="es-quick-icon">
+                    <i data-lucide="calendar" style="width:19px;height:19px;"></i>
+                </span>
+                <span>Event</span>
+            </a>
+
+            <!-- 5. Result Button -->
+            <a href="#result-section" class="es-quick-btn es-quick-btn-result">
+                <span class="es-quick-icon">
+                    <i data-lucide="award" style="width:19px;height:19px;"></i>
+                </span>
+                <span>Result</span>
+            </a>
+
+            <!-- 6. Academic Calendar Button -->
+            <a asp-area="" asp-controller="Academics" asp-action="Index" class="es-quick-btn es-quick-btn-calendar">
+                <span class="es-quick-icon">
+                    <i data-lucide="calendar-days" style="width:19px;height:19px;"></i>
+                </span>
+                <span>Academic Calendar</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
      2. NOTICE SECTION
      ========================================================================== -->
-<section class="es-section">
+<section class="es-section" id="notice-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
@@ -257,11 +314,14 @@
 <!-- ==========================================================================
      3. TEACHER & MANAGEMENT SECTION
      ========================================================================== -->
-<section class="es-section pt-0">
+<section class="es-section pt-0" id="teachers-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
-            <div>
+            <div class="es-section-title-wrap">
+                <span class="badge rounded-pill bg-success-subtle text-success px-3 py-1 fw-bold mb-2 align-self-start" style="font-size:0.75rem; letter-spacing:0.5px;">
+                    <i data-lucide="award" style="width:13px;height:13px;margin-right:2px;display:inline;"></i> MENTORSHIP &amp; LEADERSHIP
+                </span>
                 <h2 class="es-section-title">Teacher &amp; Management</h2>
             </div>
             <div>
@@ -271,57 +331,104 @@
             </div>
         </div>
 
-        <!-- 7 Responsive Cards Row Matching Reference Image Exactly -->
+        <!-- 7 Responsive Cards Row Matching Reference with Smart Elevation -->
         <div class="es-team-row">
             <!-- 1. "Our Teachers" Category Badge Card -->
-            <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-label-card" style="text-decoration:none;">
-                <div style="background:rgba(255,255,255,0.2); border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center;">
-                    <i data-lucide="users" style="width:24px;height:24px;color:#fff;"></i>
+            <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-label-card-teachers">
+                <div class="es-label-icon-box">
+                    <i data-lucide="users" style="width:28px;height:28px;color:#fff;"></i>
                 </div>
-                <span>Our<br />Teachers</span>
+                <div>
+                    <span class="es-label-badge-pill">FACULTY</span>
+                    <h5 class="es-label-title-main">Our<br />Teachers</h5>
+                </div>
+                <span class="es-label-btn">
+                    Explore <i data-lucide="arrow-right" style="width:12px;height:12px;"></i>
+                </span>
             </a>
 
-            <!-- 2. Teacher 1: Md. Rahat Islam -->
-            <div class="es-person-card">
-                <div class="gvhs-avatar-img avatar-rahman-ali es-avatar"></div>
-                <h6 class="es-person-name">Md. Rahat Islam</h6>
-                <p class="es-person-sub">Mathematics</p>
+            <!-- 2. Teacher 1: Md. Rahat Islam (Mathematics) -->
+            <div class="es-person-card" style="--card-accent:#10B981;--card-border:#A7F3D0;--card-glow:rgba(16,185,129,0.22);">
+                <div class="es-avatar-wrap">
+                    <div class="gvhs-avatar-img avatar-rahman-ali es-avatar"></div>
+                    <span class="es-verified-dot" title="Certified Educator">✓</span>
+                </div>
+                <h6 class="es-person-name" title="Md. Rahat Islam">Md. Rahat Islam</h6>
+                <span class="es-person-tag tag-math">Mathematics</span>
+                <p class="es-person-sub">M.Sc., Head Teacher</p>
+                <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-card-quick-link">
+                    Profile &rarr;
+                </a>
             </div>
 
-            <!-- 3. Teacher 2: Farhana Akter -->
-            <div class="es-person-card">
-                <div class="gvhs-avatar-img avatar-farhana-akter es-avatar"></div>
-                <h6 class="es-person-name">Farhana Akter</h6>
-                <p class="es-person-sub">English</p>
+            <!-- 3. Teacher 2: Farhana Akter (English) -->
+            <div class="es-person-card" style="--card-accent:#8B5CF6;--card-border:#DDD6FE;--card-glow:rgba(139,92,246,0.22);">
+                <div class="es-avatar-wrap">
+                    <div class="gvhs-avatar-img avatar-farhana-akter es-avatar"></div>
+                    <span class="es-verified-dot" title="Certified Educator">✓</span>
+                </div>
+                <h6 class="es-person-name" title="Farhana Akter">Farhana Akter</h6>
+                <span class="es-person-tag tag-eng">English</span>
+                <p class="es-person-sub">M.A., Senior Teacher</p>
+                <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-card-quick-link">
+                    Profile &rarr;
+                </a>
             </div>
 
-            <!-- 4. Teacher 3: Sabbir Hossain -->
-            <div class="es-person-card">
-                <div class="gvhs-avatar-img avatar-tanvir-hasan es-avatar"></div>
-                <h6 class="es-person-name">Sabbir Hossain</h6>
-                <p class="es-person-sub">ICT</p>
+            <!-- 4. Teacher 3: Sabbir Hossain (ICT) -->
+            <div class="es-person-card" style="--card-accent:#3B82F6;--card-border:#BAE6FD;--card-glow:rgba(59,130,246,0.22);">
+                <div class="es-avatar-wrap">
+                    <div class="gvhs-avatar-img avatar-tanvir-hasan es-avatar"></div>
+                    <span class="es-verified-dot" title="Certified Educator">✓</span>
+                </div>
+                <h6 class="es-person-name" title="Sabbir Hossain">Sabbir Hossain</h6>
+                <span class="es-person-tag tag-ict">ICT &amp; CS</span>
+                <p class="es-person-sub">B.Sc., Asst. Teacher</p>
+                <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-card-quick-link">
+                    Profile &rarr;
+                </a>
             </div>
 
             <!-- 5. "Our Management" Category Badge Card -->
-            <a asp-area="" asp-controller="About" asp-action="Index" class="es-label-card" style="background:#EFFFF0; color:#21B573; border:1px solid #C6F6D5; text-decoration:none;">
-                <div style="background:rgba(33,181,115,0.15); border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center;">
-                    <i data-lucide="landmark" style="width:24px;height:24px;color:#21B573;"></i>
+            <a asp-area="" asp-controller="About" asp-action="Index" class="es-label-card-mgmt">
+                <div class="es-label-icon-box">
+                    <i data-lucide="landmark" style="width:28px;height:28px;color:#fff;"></i>
                 </div>
-                <span style="color:#28213D;">Our<br />Management</span>
+                <div>
+                    <span class="es-label-badge-pill">LEADERSHIP</span>
+                    <h5 class="es-label-title-main">Our<br />Management</h5>
+                </div>
+                <span class="es-label-btn">
+                    View Board <i data-lucide="arrow-right" style="width:12px;height:12px;"></i>
+                </span>
             </a>
 
-            <!-- 6. Management 1: Prof. Dr. A. Karim -->
-            <div class="es-person-card">
-                <div class="gvhs-avatar-img avatar-abdur-rahman es-avatar"></div>
-                <h6 class="es-person-name">Prof. Dr. A. Karim</h6>
-                <p class="es-person-sub">Principal</p>
+            <!-- 6. Management 1: Prof. Dr. A. Karim (Principal) -->
+            <div class="es-person-card" style="--card-accent:#F59E0B;--card-border:#FDE68A;--card-glow:rgba(245,158,11,0.22);">
+                <div class="es-avatar-wrap">
+                    <div class="gvhs-avatar-img avatar-abdur-rahman es-avatar"></div>
+                    <span class="es-verified-dot" title="Governing Head" style="background:#F59E0B;">✓</span>
+                </div>
+                <h6 class="es-person-name" title="Prof. Dr. A. Karim">Prof. Dr. A. Karim</h6>
+                <span class="es-person-tag tag-lead">Principal</span>
+                <p class="es-person-sub">Ph.D., Managing Head</p>
+                <a asp-area="" asp-controller="About" asp-action="Index" class="es-card-quick-link">
+                    Profile &rarr;
+                </a>
             </div>
 
-            <!-- 7. Management 2: Nasrin Sultana -->
-            <div class="es-person-card">
-                <div class="gvhs-avatar-img avatar-nusrat-jahan es-avatar"></div>
-                <h6 class="es-person-name">Nasrin Sultana</h6>
-                <p class="es-person-sub">Vice Principal</p>
+            <!-- 7. Management 2: Nasrin Sultana (Vice Principal) -->
+            <div class="es-person-card" style="--card-accent:#EC4899;--card-border:#FBCFE8;--card-glow:rgba(236,72,153,0.22);">
+                <div class="es-avatar-wrap">
+                    <div class="gvhs-avatar-img avatar-nusrat-jahan es-avatar"></div>
+                    <span class="es-verified-dot" title="Academic Leadership" style="background:#EC4899;">✓</span>
+                </div>
+                <h6 class="es-person-name" title="Nasrin Sultana">Nasrin Sultana</h6>
+                <span class="es-person-tag tag-vp">Vice Principal</span>
+                <p class="es-person-sub">M.Ed., Administration</p>
+                <a asp-area="" asp-controller="About" asp-action="Index" class="es-card-quick-link">
+                    Profile &rarr;
+                </a>
             </div>
         </div>
     </div>
@@ -330,7 +437,7 @@
 <!-- ==========================================================================
      4. NEXT EVENT SECTION
      ========================================================================== -->
-<section class="es-section pt-0">
+<section class="es-section pt-0" id="event-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
