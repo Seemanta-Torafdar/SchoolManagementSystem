@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SchoolManagement.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eca471744bc47d36df7b3335ed84a088b88c9dc5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17003a9fda23f7f78fee88a62f4987ee98e5e1bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("SchoolManagement.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SchoolManagement.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

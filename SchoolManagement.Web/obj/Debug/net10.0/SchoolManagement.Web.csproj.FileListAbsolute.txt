@@ -329,4 +329,4 @@ C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\ob
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\SchoolManagement.Web.pdb
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\SchoolManagement.Web.genruntimeconfig.cache
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\ref\SchoolManagement.Web.dll
-C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\3xjvxujzfd-{0}-ssbmecuaxr-ssbmecuaxr.gz
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\3xjvxujzfd-{0}-13agui03sh-13agui03sh.gz

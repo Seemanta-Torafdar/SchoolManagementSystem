@@ -19,13 +19,16 @@
         <div class="row align-items-center g-4">
             <!-- Left Hero Content -->
             <div class="col-lg-6">
-                <!-- Welcome Orange Text -->
-                <span class="es-hero-welcome">Welcome to E-School</span>
+                <!-- Welcome Orange Badge -->
+                <div class="es-hero-welcome-badge">
+                    <i data-lucide="sparkles" style="width:16px;height:16px;color:#D97706;"></i>
+                    <span>Welcome to E-School</span>
+                </div>
 
                 <!-- Main Display Headline -->
                 <h1 class="es-hero-title">
                     Learn With fun<br />
-                    on <span class="text-es-green">any schedule</span>
+                    on <span class="text-gradient-green">any schedule</span>
                 </h1>
 
                 <!-- Subtitle -->
@@ -39,17 +42,48 @@
                     <span></span>
                 </div>
 
-                <!-- CTA Button -->
-                <div>
+                <!-- CTA Button Group -->
+                <div class="d-flex align-items-center flex-wrap gap-3">
                     <a asp-area="" asp-controller="Academics" asp-action="Index" class="btn-es-green">
                         Get Started
                     </a>
+                    <a asp-area="" asp-controller="About" asp-action="Index" class="btn-es-glass">
+                        <i data-lucide="compass" style="width:18px;height:18px;"></i> Explore Campus
+                    </a>
+                </div>
+
+                <!-- Quick Trust Highlights under CTA -->
+                <div class="es-hero-trust-bar">
+                    <div class="es-trust-item">
+                        <i data-lucide="star" style="width:16px;height:16px;color:#F59E0B;fill:#F59E0B;"></i>
+                        <span><strong>4.9/5</strong> Rating</span>
+                    </div>
+                    <div class="es-trust-divider"></div>
+                    <div class="es-trust-item">
+                        <i data-lucide="users" style="width:16px;height:16px;color:#10B981;"></i>
+                        <span><strong>1,200+</strong> Students</span>
+                    </div>
+                    <div class="es-trust-divider"></div>
+                    <div class="es-trust-item">
+                        <i data-lucide="award" style="width:16px;height:16px;color:#06B6D4;"></i>
+                        <span><strong>100%</strong> Certified</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Right Hero Illustration -->
             <div class="col-lg-6">
                 <div class="es-hero-img-wrap">
+                    <!-- Top-Left Floating Badge -->
+                    <div class="es-float-badge es-badge-top-left">
+                        <div class="es-badge-icon-box" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
+                            <i data-lucide="graduation-cap" style="width:20px;height:20px;"></i>
+                        </div>
+                        <div>
+                            <div class="es-badge-text-title">Interactive Learning</div>
+                            <div class="es-badge-text-sub">Live &amp; Recorded Sessions</div>
+                        </div>
+                    </div>
                     <svg class="es-hero-illustration" viewBox="0 0 540 380" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="teacherGrad" x1="0" y1="0" x2="1" y2="1">
@@ -166,16 +200,37 @@
                         <rect x="252" y="252" width="28" height="6" rx="1" fill="#10B981" />
                         <rect x="254" y="246" width="24" height="6" rx="1" fill="#F59E0B" />
                     </svg>
+
+                    <!-- Bottom-Right Floating Badge -->
+                    <div class="es-float-badge es-badge-bottom-right">
+                        <div class="es-badge-icon-box" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+                            <i data-lucide="check-circle" style="width:20px;height:20px;"></i>
+                        </div>
+                        <div>
+                            <div class="es-badge-text-title">Verified Faculty</div>
+                            <div class="es-badge-text-sub">Top Ranked Educators</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="es-hero-scroll-wrap">
+        <a href="#quick-actions" class="es-hero-scroll-btn" aria-label="Scroll to campus content">
+            <span class="es-mouse-pill">
+                <span class="es-mouse-wheel"></span>
+            </span>
+            <span class="es-scroll-text">Explore Campus</span>
+        </a>
     </div>
 </section>
 
 <!-- ==========================================================================
      QUICK ACTION BUTTONS (Top of Notice & Under Hero Banner)
      ========================================================================== -->
-<div class="es-quick-actions-strip">
+<div class="es-quick-actions-strip" id="quick-actions">
     <div class="container">
         <div class="es-quick-actions-wrapper">
             <!-- 1. Latest Notice Button -->
@@ -308,7 +363,8 @@
                             <h5>Final Examination (Term-2) will start from 20 Nov, 2026.</h5>
                             <p class="es-notice-desc">All students of Class 6–10 must collect their Term-2 admit cards from their class teachers.</p>
                         </div>
-                        <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge rounded-pill bg-light text-secondary border px-2 py-1 small d-inline-flex align-items-center gap-1" style="font-size:0.72rem;"><i data-lucide="paperclip" style="width:11px;height:11px;"></i> PDF</span>
                             <span class="es-badge es-badge-urgent">Urgent</span>
                             <a asp-area="" asp-controller="Notices" asp-action="Index" class="es-notice-action-link">
                                 Details &rarr;
@@ -326,7 +382,8 @@
                             <h5>Inter-School Science Fair Registration is Now Open.</h5>
                             <p class="es-notice-desc">Annual science exhibition project submission deadline is 15 Nov. Lab guides available.</p>
                         </div>
-                        <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge rounded-pill bg-light text-secondary border px-2 py-1 small d-inline-flex align-items-center gap-1" style="font-size:0.72rem;"><i data-lucide="paperclip" style="width:11px;height:11px;"></i> Guidelines</span>
                             <span class="es-badge es-badge-new">New</span>
                             <a asp-area="" asp-controller="Notices" asp-action="Index" class="es-notice-action-link">
                                 Details &rarr;
@@ -344,7 +401,7 @@
                             <h5>School will remain closed on 16 Nov, 2026 (Victory Day).</h5>
                             <p class="es-notice-desc">Campus administrative offices and classes will resume on Tuesday, 17 Nov at 8:00 AM.</p>
                         </div>
-                        <div class="d-flex align-items-center gap-3">
+                        <div class="d-flex align-items-center gap-2">
                             <span class="es-badge es-badge-info">Info</span>
                             <a asp-area="" asp-controller="Notices" asp-action="Index" class="es-notice-action-link">
                                 Details &rarr;
@@ -364,10 +421,7 @@
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
-            <div class="es-section-title-wrap">
-                <span class="badge rounded-pill bg-success-subtle text-success px-3 py-1 fw-bold mb-2 align-self-start" style="font-size:0.75rem; letter-spacing:0.5px;">
-                    <i data-lucide="award" style="width:13px;height:13px;margin-right:2px;display:inline;"></i> MENTORSHIP &amp; LEADERSHIP
-                </span>
+            <div>
                 <h2 class="es-section-title">Teacher &amp; Management</h2>
             </div>
             <div>
@@ -377,30 +431,43 @@
             </div>
         </div>
 
+        <!-- Smart Category Filter Pills -->
+        <div class="es-team-filter-pills">
+            <button type="button" class="es-team-filter-btn active" data-team="all">👥 All (5)</button>
+            <button type="button" class="es-team-filter-btn" data-team="teachers">🎓 Teachers (3)</button>
+            <button type="button" class="es-team-filter-btn" data-team="management">🏛️ Management (2)</button>
+        </div>
+
         <!-- 7 Responsive Cards Row Matching Reference with Smart Elevation -->
         <div class="es-team-row">
             <!-- 1. "Our Teachers" Category Badge Card -->
-            <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-label-card-teachers">
-                <div class="es-label-icon-box">
-                    <i data-lucide="users" style="width:28px;height:28px;color:#fff;"></i>
+            <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-label-card-teachers" data-team-group="teachers">
+                <div class="es-label-card-top">
+                    <div class="es-label-icon-pod">
+                        <i data-lucide="users" style="width:22px;height:22px;"></i>
+                    </div>
+                    <span class="es-label-chip">25+ Experts</span>
                 </div>
-                <div>
-                    <span class="es-label-badge-pill">FACULTY</span>
-                    <h5 class="es-label-title-main">Our<br />Teachers</h5>
+                <div class="es-label-card-center">
+                    <span class="es-label-sub">Certified Faculty</span>
+                    <h4 class="es-label-title">Our<br />Teachers</h4>
                 </div>
-                <span class="es-label-btn">
-                    Explore <i data-lucide="arrow-right" style="width:12px;height:12px;"></i>
-                </span>
+                <div class="es-label-card-bottom">
+                    <span class="es-label-action-text">View All Faculty</span>
+                    <div class="es-label-action-arrow">
+                        <i data-lucide="arrow-up-right" style="width:15px;height:15px;"></i>
+                    </div>
+                </div>
             </a>
 
             <!-- 2. Teacher 1: Md. Rahat Islam (Mathematics) -->
-            <div class="es-person-card" style="--card-accent:#10B981;--card-border:#A7F3D0;--card-glow:rgba(16,185,129,0.22);">
+            <div class="es-person-card" data-team-group="teachers">
                 <div class="es-avatar-wrap">
                     <div class="gvhs-avatar-img avatar-rahman-ali es-avatar"></div>
                     <span class="es-verified-dot" title="Certified Educator">✓</span>
                 </div>
                 <h6 class="es-person-name" title="Md. Rahat Islam">Md. Rahat Islam</h6>
-                <span class="es-person-tag tag-math">Mathematics</span>
+                <span class="es-person-tag">Mathematics</span>
                 <p class="es-person-sub">M.Sc., Head Teacher</p>
                 <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-card-quick-link">
                     Profile &rarr;
@@ -408,13 +475,13 @@
             </div>
 
             <!-- 3. Teacher 2: Farhana Akter (English) -->
-            <div class="es-person-card" style="--card-accent:#8B5CF6;--card-border:#DDD6FE;--card-glow:rgba(139,92,246,0.22);">
+            <div class="es-person-card" data-team-group="teachers">
                 <div class="es-avatar-wrap">
                     <div class="gvhs-avatar-img avatar-farhana-akter es-avatar"></div>
                     <span class="es-verified-dot" title="Certified Educator">✓</span>
                 </div>
                 <h6 class="es-person-name" title="Farhana Akter">Farhana Akter</h6>
-                <span class="es-person-tag tag-eng">English</span>
+                <span class="es-person-tag">English</span>
                 <p class="es-person-sub">M.A., Senior Teacher</p>
                 <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-card-quick-link">
                     Profile &rarr;
@@ -422,13 +489,13 @@
             </div>
 
             <!-- 4. Teacher 3: Sabbir Hossain (ICT) -->
-            <div class="es-person-card" style="--card-accent:#3B82F6;--card-border:#BAE6FD;--card-glow:rgba(59,130,246,0.22);">
+            <div class="es-person-card" data-team-group="teachers">
                 <div class="es-avatar-wrap">
                     <div class="gvhs-avatar-img avatar-tanvir-hasan es-avatar"></div>
                     <span class="es-verified-dot" title="Certified Educator">✓</span>
                 </div>
                 <h6 class="es-person-name" title="Sabbir Hossain">Sabbir Hossain</h6>
-                <span class="es-person-tag tag-ict">ICT &amp; CS</span>
+                <span class="es-person-tag">ICT &amp; CS</span>
                 <p class="es-person-sub">B.Sc., Asst. Teacher</p>
                 <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-card-quick-link">
                     Profile &rarr;
@@ -436,27 +503,33 @@
             </div>
 
             <!-- 5. "Our Management" Category Badge Card -->
-            <a asp-area="" asp-controller="About" asp-action="Index" class="es-label-card-mgmt">
-                <div class="es-label-icon-box">
-                    <i data-lucide="landmark" style="width:28px;height:28px;color:#fff;"></i>
+            <a asp-area="" asp-controller="About" asp-action="Index" class="es-label-card-mgmt" data-team-group="management">
+                <div class="es-label-card-top">
+                    <div class="es-label-icon-pod">
+                        <i data-lucide="landmark" style="width:22px;height:22px;"></i>
+                    </div>
+                    <span class="es-label-chip">Governing</span>
                 </div>
-                <div>
-                    <span class="es-label-badge-pill">LEADERSHIP</span>
-                    <h5 class="es-label-title-main">Our<br />Management</h5>
+                <div class="es-label-card-center">
+                    <span class="es-label-sub">Campus Leadership</span>
+                    <h4 class="es-label-title">Our<br />Management</h4>
                 </div>
-                <span class="es-label-btn">
-                    View Board <i data-lucide="arrow-right" style="width:12px;height:12px;"></i>
-                </span>
+                <div class="es-label-card-bottom">
+                    <span class="es-label-action-text">Meet The Board</span>
+                    <div class="es-label-action-arrow">
+                        <i data-lucide="arrow-up-right" style="width:15px;height:15px;"></i>
+                    </div>
+                </div>
             </a>
 
             <!-- 6. Management 1: Prof. Dr. A. Karim (Principal) -->
-            <div class="es-person-card" style="--card-accent:#F59E0B;--card-border:#FDE68A;--card-glow:rgba(245,158,11,0.22);">
+            <div class="es-person-card" data-team-group="management">
                 <div class="es-avatar-wrap">
                     <div class="gvhs-avatar-img avatar-abdur-rahman es-avatar"></div>
-                    <span class="es-verified-dot" title="Governing Head" style="background:#F59E0B;">✓</span>
+                    <span class="es-verified-dot" title="Governing Head">✓</span>
                 </div>
                 <h6 class="es-person-name" title="Prof. Dr. A. Karim">Prof. Dr. A. Karim</h6>
-                <span class="es-person-tag tag-lead">Principal</span>
+                <span class="es-person-tag">Principal</span>
                 <p class="es-person-sub">Ph.D., Managing Head</p>
                 <a asp-area="" asp-controller="About" asp-action="Index" class="es-card-quick-link">
                     Profile &rarr;
@@ -464,13 +537,13 @@
             </div>
 
             <!-- 7. Management 2: Nasrin Sultana (Vice Principal) -->
-            <div class="es-person-card" style="--card-accent:#EC4899;--card-border:#FBCFE8;--card-glow:rgba(236,72,153,0.22);">
+            <div class="es-person-card" data-team-group="management">
                 <div class="es-avatar-wrap">
                     <div class="gvhs-avatar-img avatar-nusrat-jahan es-avatar"></div>
-                    <span class="es-verified-dot" title="Academic Leadership" style="background:#EC4899;">✓</span>
+                    <span class="es-verified-dot" title="Academic Leadership">✓</span>
                 </div>
                 <h6 class="es-person-name" title="Nasrin Sultana">Nasrin Sultana</h6>
-                <span class="es-person-tag tag-vp">Vice Principal</span>
+                <span class="es-person-tag">Vice Principal</span>
                 <p class="es-person-sub">M.Ed., Administration</p>
                 <a asp-area="" asp-controller="About" asp-action="Index" class="es-card-quick-link">
                     Profile &rarr;
@@ -502,19 +575,30 @@
             <div class="col-lg-4 col-md-5">
                 <div class="es-event-info-card d-flex flex-column justify-content-between">
                     <div>
-                        <!-- Green Date Badge -->
-                        <div class="es-event-date-badge">
-                            <span class="day">25</span>
-                            <span class="month">Nov</span>
+                        <!-- Date Badge & Live Status Pill -->
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="es-event-date-badge mb-0">
+                                <span class="day">25</span>
+                                <span class="month">Nov</span>
+                            </div>
+                            <div class="es-event-live-pill mb-0">
+                                <span class="es-live-dot"></span> Registration Open
+                            </div>
                         </div>
+
                         <h4 class="es-event-title">Annual Sports Day 2026</h4>
+                        
                         <div class="es-event-meta">
-                            <i data-lucide="calendar" style="width:16px;height:16px;"></i>
-                            <span>25 Nov, 2026</span>
+                            <div class="es-meta-icon">
+                                <i data-lucide="calendar" style="width:16px;height:16px;"></i>
+                            </div>
+                            <span>Tuesday, 25 Nov, 2026 • 9:00 AM</span>
                         </div>
                         <div class="es-event-meta">
-                            <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
-                            <span>School Playground</span>
+                            <div class="es-meta-icon">
+                                <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
+                            </div>
+                            <span>Main Sports Ground &amp; Pavilion</span>
                         </div>
                     </div>
                     <div>
@@ -534,6 +618,7 @@
                             <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&q=80" 
                                  alt="Annual Sports Sprint" 
                                  loading="lazy" />
+                            <span class="es-photo-badge" style="background:rgba(239,68,68,0.85);">Sprint 100M</span>
                         </div>
                     </div>
                     <!-- Photo 2: Students with Championship Trophy -->
@@ -542,6 +627,7 @@
                             <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" 
                                  alt="Trophy Celebration" 
                                  loading="lazy" />
+                            <span class="es-photo-badge" style="background:rgba(16,185,129,0.85);">Championship</span>
                         </div>
                     </div>
                     <!-- Photo 3: Outdoor Stage & Canopy Ceremony -->
@@ -550,6 +636,7 @@
                             <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" 
                                  alt="Sports Ground Assembly" 
                                  loading="lazy" />
+                            <span class="es-photo-badge" style="background:rgba(37,99,235,0.85);">Ceremony</span>
                         </div>
                     </div>
                 </div>
@@ -561,7 +648,7 @@
 <!-- ==========================================================================
      5. CLASS VIDEOS SECTION
      ========================================================================== -->
-<section class="es-section es-bg-light">
+<section class="es-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
@@ -584,14 +671,15 @@
                         <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80" 
                              alt="Algebra Class 10" 
                              loading="lazy" />
-                        <div class="es-play-btn">
+                        <span class="es-video-chip" style="background:#10B981;">Mathematics</span>
+                        <button type="button" class="es-play-btn" data-bs-toggle="modal" data-bs-target="#videoPlayerModal" data-video-title="Algebra - Class 10 (Mathematics)" aria-label="Play Algebra Class 10">
                             <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
-                        </div>
+                        </button>
                         <span class="es-duration-badge">18:24</span>
                     </div>
                     <div class="es-video-body">
                         <h5 class="es-video-title">Algebra - Class 10</h5>
-                        <p class="es-video-sub">Mathematics</p>
+                        <p class="es-video-sub mb-0 text-muted small">Chapter 4: Quadratic Equations &amp; Solutions</p>
                     </div>
                 </div>
             </div>
@@ -603,14 +691,15 @@
                         <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" 
                              alt="Human Digestive System" 
                              loading="lazy" />
-                        <div class="es-play-btn">
+                        <span class="es-video-chip" style="background:#8B5CF6;">Biology</span>
+                        <button type="button" class="es-play-btn" data-bs-toggle="modal" data-bs-target="#videoPlayerModal" data-video-title="Human Digestive System (Biology)" aria-label="Play Human Digestive System">
                             <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
-                        </div>
+                        </button>
                         <span class="es-duration-badge">22:10</span>
                     </div>
                     <div class="es-video-body">
                         <h5 class="es-video-title">Human Digestive System</h5>
-                        <p class="es-video-sub">Biology</p>
+                        <p class="es-video-sub mb-0 text-muted small">Chapter 2: Anatomy, Enzymes &amp; Metabolism</p>
                     </div>
                 </div>
             </div>
@@ -622,14 +711,15 @@
                         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" 
                              alt="Introduction to Programming" 
                              loading="lazy" />
-                        <div class="es-play-btn">
+                        <span class="es-video-chip" style="background:#06B6D4;">ICT &amp; CS</span>
+                        <button type="button" class="es-play-btn" data-bs-toggle="modal" data-bs-target="#videoPlayerModal" data-video-title="Introduction to Programming (ICT)" aria-label="Play Introduction to Programming">
                             <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
-                        </div>
+                        </button>
                         <span class="es-duration-badge">20:36</span>
                     </div>
                     <div class="es-video-body">
                         <h5 class="es-video-title">Introduction to Programming</h5>
-                        <p class="es-video-sub">ICT</p>
+                        <p class="es-video-sub mb-0 text-muted small">Python Basics, Variables &amp; Logic Flow</p>
                     </div>
                 </div>
             </div>
@@ -658,20 +748,23 @@
         <div class="es-result-card">
             <div class="es-result-label">
                 <div class="es-result-icon">
-                    <i data-lucide="bar-chart-2" style="width:24px;height:24px;"></i>
+                    <i data-lucide="bar-chart-2" style="width:26px;height:26px;"></i>
                 </div>
-                <span>Check Your Result</span>
+                <div>
+                    <h5 class="es-result-text-main mb-0">Check Your Result</h5>
+                    <span class="es-result-text-sub">Instant online marksheet &amp; grade</span>
+                </div>
             </div>
 
             <form asp-area="" asp-controller="Results" asp-action="Index" method="get" class="es-result-form">
-                <select name="exam" class="es-form-select" aria-label="Select Examination">
+                <select name="exam" class="es-form-select" aria-label="Select Examination" required>
                     <option value="">Select Exam</option>
                     <option value="Final-2026">Final Examination 2026</option>
                     <option value="Term2-2026">Term-2 Examination 2026</option>
                     <option value="HalfYearly-2026">Half Yearly Examination</option>
                 </select>
 
-                <select name="class" class="es-form-select" aria-label="Select Class">
+                <select name="class" class="es-form-select" aria-label="Select Class" required>
                     <option value="">Select Class</option>
                     <option value="10">Class 10</option>
                     <option value="9">Class 9</option>
@@ -680,20 +773,48 @@
                     <option value="6">Class 6</option>
                 </select>
 
-                <input type="text" name="roll" class="es-form-input" placeholder="Enter Roll Number" aria-label="Enter Roll Number" />
+                <input type="text" name="roll" class="es-form-input" placeholder="Enter Roll Number" aria-label="Enter Roll Number" required pattern="[0-9]+" />
 
                 <button type="submit" class="btn-es-result">
                     View Result &rarr;
                 </button>
             </form>
+
+            <div class="es-result-chips-row">
+                <span class="text-muted small d-inline-flex align-items-center gap-1">
+                    <i data-lucide="info" style="width:14px;height:14px;color:#10B981;"></i>
+                    Enter your official 6-digit student roll number to view verified digital grade-sheet.
+                </span>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- Interactive Video Player Modal -->
+<div class="modal fade" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow-lg" style="border-radius:20px; overflow:hidden;">
+            <div class="modal-header bg-dark text-white border-0 py-3 px-4">
+                <h5 class="modal-title fs-6 fw-bold" id="videoPlayerModalLabel">Class Lesson Video</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0 bg-black">
+                <div class="ratio ratio-16x9">
+                    <iframe id="videoPlayerIframe" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Educational Class Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="modal-footer border-0 bg-light py-2 px-4 justify-content-between">
+                <span class="small text-muted">E-School Smart Classroom Archive</span>
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Interactive Category Filter for Notices
+        // 1. Interactive Category Filter for Notices
         const filterBtns = document.querySelectorAll('.es-notice-filter-btn');
         const noticeRows = document.querySelectorAll('.es-notice-row-smart');
 
@@ -708,6 +829,58 @@
                         row.style.display = 'flex';
                     } else {
                         row.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 2. Video Player Modal Dynamic Title & Playback Handling
+        const videoModal = document.getElementById('videoPlayerModal');
+        if (videoModal) {
+            videoModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                if (button) {
+                    const title = button.getAttribute('data-video-title') || 'Class Lesson Video';
+                    const modalTitle = videoModal.querySelector('.modal-title');
+                    if (modalTitle) modalTitle.textContent = title;
+                }
+            });
+            videoModal.addEventListener('hidden.bs.modal', function () {
+                const iframe = document.getElementById('videoPlayerIframe');
+                if (iframe) {
+                    const currentSrc = iframe.src;
+                    iframe.src = currentSrc; // Pause/reset video
+                }
+            });
+        }
+
+        // 3. Navbar Sticky Shadow on Scroll
+        const header = document.querySelector('.es-navbar-wrapper');
+        if (header) {
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 20) {
+                    header.classList.add('is-scrolled');
+                } else {
+                    header.classList.remove('is-scrolled');
+                }
+            }, { passive: true });
+        }
+
+        // 4. Interactive Category Switcher for Teacher & Management
+        const teamFilterBtns = document.querySelectorAll('.es-team-filter-btn');
+        const teamCards = document.querySelectorAll('[data-team-group]');
+
+        teamFilterBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                teamFilterBtns.forEach(function (b) { b.classList.remove('active'); });
+                this.classList.add('active');
+
+                const filter = this.getAttribute('data-team');
+                teamCards.forEach(function (card) {
+                    if (filter === 'all' || card.getAttribute('data-team-group') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
                     }
                 });
             });
