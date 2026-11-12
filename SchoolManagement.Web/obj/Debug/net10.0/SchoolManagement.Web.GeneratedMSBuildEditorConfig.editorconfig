@@ -12,289 +12,289 @@ build_property.EntryPointFilePath =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SchoolManagement.Web
 build_property.RootNamespace = SchoolManagement.Web
-build_property.ProjectDir = C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\
+build_property.ProjectDir = C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 10.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web
+build_property.MSBuildProjectDirectory = C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/AuditLogs/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/AuditLogs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXVkaXRMb2dzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Classes/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Classes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2xhc3Nlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Dashboard/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Events/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Events/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXZlbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Examinations/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Examinations/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXhhbWluYXRpb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Examinations/ManageSubjects.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Examinations/ManageSubjects.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRXhhbWluYXRpb25zXE1hbmFnZVN1YmplY3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Gallery/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Gallery/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcR2FsbGVyeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Management/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Management/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlbWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Notices/Create.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Notices/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTm90aWNlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Notices/Edit.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Notices/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTm90aWNlc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Notices/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Notices/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTm90aWNlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/ProfileRequests/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/ProfileRequests/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZmlsZVJlcXVlc3RzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Results/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Results/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVzdWx0c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Results/MarksEntry.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Results/MarksEntry.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVzdWx0c1xNYXJrc0VudHJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Results/Marksheet.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Results/Marksheet.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUmVzdWx0c1xNYXJrc2hlZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Routines/Create.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Routines/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm91dGluZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Routines/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Routines/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm91dGluZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Settings/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Settings/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2V0dGluZ3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Students/Create.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Students/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Students/Details.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Students/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Students/Edit.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Students/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Students/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Students/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Subjects/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Subjects/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Teachers/Create.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Teachers/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Teachers/Details.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Teachers/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlcnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Teachers/Edit.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Teachers/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Teachers/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Teachers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Users/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/_ViewImports.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/_ViewStart.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Classes/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Classes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xDbGFzc2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Dashboard/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xEYXNoYm9hcmRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Notices/Details.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Notices/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xOb3RpY2VzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Notices/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Notices/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xOb3RpY2VzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/ProfileRequests/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/ProfileRequests/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xQcm9maWxlUmVxdWVzdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Profile/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Profile/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xQcm9maWxlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Results/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Results/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xSZXN1bHRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Routine/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Routine/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xSb3V0aW5lXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Students/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/Students/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xTdHVkZW50c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/_ViewImports.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/_ViewStart.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Areas/Teacher/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/About/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/About/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Academics/ClassDetails.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Academics/ClassDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNzXENsYXNzRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Academics/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Academics/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Account/AccessDenied.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Account/ChangePassword.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Account/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Account/Login.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Contact/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Events/Details.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Events/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Events/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Events/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Gallery/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Gallery/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FsbGVyeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Home/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Home/Privacy.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Notices/Details.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Notices/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWNlc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Notices/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Notices/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWNlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Results/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Results/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdWx0c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Results/MarksheetPrint.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Results/MarksheetPrint.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdWx0c1xNYXJrc2hlZXRQcmludC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/Error.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_AdminLayout.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_Footer.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_Header.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_PublicLayout.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_PublicLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9QdWJsaWNMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_TeacherLayout.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_TeacherLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9UZWFjaGVyTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Showcase/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Showcase/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvd2Nhc2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Teachers/Index.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Teachers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/_ViewImports.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/_ViewStart.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Project/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_Layout.cshtml]
+[C:/Users/seema/OneDrive/Desktop/SCHOOL MANAGEMENT SYSTEM/SchoolManagement.Web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-48dzpkti3k

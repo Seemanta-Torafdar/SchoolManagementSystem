@@ -354,3 +354,4 @@ C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Tests\obj\Debug\net10.0\ref
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Tests\obj\Debug\net10.0\SchoolManagement.Tests.pdb
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Tests\obj\Debug\net10.0\SchoolManagement.Tests.genruntimeconfig.cache
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Tests\obj\Debug\net10.0\ref\SchoolManagement.Tests.dll
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Tests\obj\Debug\net10.0\SchoolManagement.Tests.sourcelink.json

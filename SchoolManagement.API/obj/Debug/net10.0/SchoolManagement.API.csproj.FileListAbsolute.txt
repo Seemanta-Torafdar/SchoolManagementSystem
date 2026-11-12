@@ -168,3 +168,4 @@ C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.API\obj\Debug\net10.0\refin
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.API\obj\Debug\net10.0\SchoolManagement.API.pdb
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.API\obj\Debug\net10.0\SchoolManagement.API.genruntimeconfig.cache
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.API\obj\Debug\net10.0\ref\SchoolManagement.API.dll
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.API\obj\Debug\net10.0\SchoolManagement.API.sourcelink.json

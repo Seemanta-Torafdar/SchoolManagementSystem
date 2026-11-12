@@ -1256,17 +1256,17 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.API\\SchoolManagement.API.csproj",
+      "projectUniqueName": "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.API\\SchoolManagement.API.csproj",
       "projectName": "SchoolManagement.API",
-      "projectPath": "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.API\\SchoolManagement.API.csproj",
+      "projectPath": "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.API\\SchoolManagement.API.csproj",
       "packagesPath": "C:\\Users\\seema\\.nuget\\packages\\",
-      "outputPath": "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.API\\obj\\",
+      "outputPath": "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\NuGet.Config",
+        "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\NuGet.Config",
         "C:\\Users\\seema\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -1283,14 +1283,14 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.BLL\\SchoolManagement.BLL.csproj": {
-              "projectPath": "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.BLL\\SchoolManagement.BLL.csproj"
+            "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.BLL\\SchoolManagement.BLL.csproj": {
+              "projectPath": "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.BLL\\SchoolManagement.BLL.csproj"
             },
-            "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.DAL\\SchoolManagement.DAL.csproj": {
-              "projectPath": "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.DAL\\SchoolManagement.DAL.csproj"
+            "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.DAL\\SchoolManagement.DAL.csproj": {
+              "projectPath": "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.DAL\\SchoolManagement.DAL.csproj"
             },
-            "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {
-              "projectPath": "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj"
+            "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj": {
+              "projectPath": "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.Domain\\SchoolManagement.Domain.csproj"
             }
           }
         }

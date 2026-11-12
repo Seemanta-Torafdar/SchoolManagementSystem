@@ -1,0 +1,3 @@
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\SchoolManagement.Web.dll
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\refint\SchoolManagement.Web.dll
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\SchoolManagement.Web.pdb

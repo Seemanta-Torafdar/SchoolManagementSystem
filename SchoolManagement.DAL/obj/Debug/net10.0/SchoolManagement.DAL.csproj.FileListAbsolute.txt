@@ -44,3 +44,4 @@ C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.DAL\obj\Debug\net10.0\refin
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.DAL\obj\Debug\net10.0\SchoolManagement.DAL.pdb
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.DAL\obj\Debug\net10.0\ref\SchoolManagement.DAL.dll
 C:\Project\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.DAL\obj\Debug\net10.0\SchoolManagement.DAL.sourcelink.json
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.DAL\obj\Debug\net10.0\SchoolManagement.DAL.sourcelink.json

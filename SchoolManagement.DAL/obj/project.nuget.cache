@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "a8PACUZ2ieE=",
+  "dgSpecHash": "Gx3UHvtWOps=",
   "success": true,
-  "projectFilePath": "C:\\Project\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.DAL\\SchoolManagement.DAL.csproj",
+  "projectFilePath": "C:\\Users\\seema\\OneDrive\\Desktop\\SCHOOL MANAGEMENT SYSTEM\\SchoolManagement.DAL\\SchoolManagement.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\seema\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\seema\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",

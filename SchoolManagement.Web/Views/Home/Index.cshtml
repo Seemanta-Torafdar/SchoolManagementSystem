@@ -230,7 +230,7 @@
 </div>
 
 <!-- ==========================================================================
-     2. NOTICE SECTION
+     2. NOTICE SECTION (Smart & Attractive Announcement Board)
      ========================================================================== -->
 <section class="es-section" id="notice-section">
     <div class="container">
@@ -248,64 +248,110 @@
 
         <!-- Main Notice Card -->
         <div class="es-notice-card">
-            <div class="row align-items-center g-3">
-                <!-- Megaphone Icon Column -->
-                <div class="col-auto d-none d-md-block">
-                    <div class="es-mega-icon">
-                        <i data-lucide="megaphone" style="width:28px;height:28px;"></i>
-                    </div>
-                </div>
+            <!-- Filter Pills -->
+            <div class="es-notice-filter-pills">
+                <button type="button" class="es-notice-filter-btn active" data-filter="all">📌 All Circulars</button>
+                <button type="button" class="es-notice-filter-btn" data-filter="exam">🔴 Examinations</button>
+                <button type="button" class="es-notice-filter-btn" data-filter="academic">🟢 Academic &amp; Fair</button>
+                <button type="button" class="es-notice-filter-btn" data-filter="holiday">🔵 Holidays &amp; Events</button>
+            </div>
 
-                <!-- Notices List Column -->
-                <div class="col">
-                    <!-- Notice 1: Urgent -->
-                    <div class="es-notice-row">
-                        <div class="es-notice-icon d-md-none">
-                            <i data-lucide="bell" style="width:20px;height:20px;"></i>
+            <!-- Notices List -->
+            <div class="es-notices-list">
+                @if (latestNotices != null && latestNotices.Any())
+                {
+                    @foreach (var notice in latestNotices.Take(4))
+                    {
+                        var catLower = notice.Category.ToString().ToLower();
+                        var categoryClass = catLower switch {
+                            "urgent" or "exam" => "es-notice-row-urgent",
+                            "academic" => "es-notice-row-new",
+                            _ => "es-notice-row-info"
+                        };
+                        var badgeClass = catLower switch {
+                            "urgent" or "exam" => "es-badge-urgent",
+                            "academic" => "es-badge-new",
+                            _ => "es-badge-info"
+                        };
+                        var filterCat = catLower switch {
+                            "urgent" or "exam" => "exam",
+                            "academic" => "academic",
+                            _ => "holiday"
+                        };
+                        <div class="es-notice-row-smart @categoryClass" data-category="@filterCat">
+                            <div class="es-notice-date-box">
+                                <span class="day">@notice.PublishDate.ToString("dd")</span>
+                                <span class="month">@notice.PublishDate.ToString("MMM")</span>
+                            </div>
+                            <div class="es-notice-content">
+                                <h5>@notice.Title</h5>
+                                <p class="es-notice-desc">@(string.IsNullOrWhiteSpace(notice.Content) ? "Click details to read full circular." : (notice.Content.Length > 90 ? notice.Content.Substring(0, 90) + "..." : notice.Content))</p>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="es-badge @badgeClass">@notice.Category.ToString()</span>
+                                <a asp-area="" asp-controller="Notices" asp-action="Details" asp-route-id="@notice.Id" class="es-notice-action-link">
+                                    Details &rarr;
+                                </a>
+                            </div>
                         </div>
-                        <h5 class="es-notice-title">
-                            Final Examination (Term-2) will start from 20 Nov, 2026.
-                        </h5>
+                    }
+                }
+                else
+                {
+                    <!-- Notice 1: Urgent / Exam -->
+                    <div class="es-notice-row-smart es-notice-row-urgent" data-category="exam">
+                        <div class="es-notice-date-box">
+                            <span class="day">20</span>
+                            <span class="month">Nov</span>
+                        </div>
+                        <div class="es-notice-content">
+                            <h5>Final Examination (Term-2) will start from 20 Nov, 2026.</h5>
+                            <p class="es-notice-desc">All students of Class 6–10 must collect their Term-2 admit cards from their class teachers.</p>
+                        </div>
                         <div class="d-flex align-items-center gap-3">
                             <span class="es-badge es-badge-urgent">Urgent</span>
-                            <span class="es-notice-date">
-                                <i data-lucide="calendar" style="width:14px;height:14px;"></i> 10 Nov, 2026
-                            </span>
+                            <a asp-area="" asp-controller="Notices" asp-action="Index" class="es-notice-action-link">
+                                Details &rarr;
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Notice 2: New -->
-                    <div class="es-notice-row">
-                        <div class="es-notice-icon d-md-none">
-                            <i data-lucide="bell" style="width:20px;height:20px;"></i>
+                    <!-- Notice 2: New / Academic -->
+                    <div class="es-notice-row-smart es-notice-row-new" data-category="academic">
+                        <div class="es-notice-date-box">
+                            <span class="day">08</span>
+                            <span class="month">Nov</span>
                         </div>
-                        <h5 class="es-notice-title">
-                            Inter-School Science Fair Registration is Now Open.
-                        </h5>
+                        <div class="es-notice-content">
+                            <h5>Inter-School Science Fair Registration is Now Open.</h5>
+                            <p class="es-notice-desc">Annual science exhibition project submission deadline is 15 Nov. Lab guides available.</p>
+                        </div>
                         <div class="d-flex align-items-center gap-3">
                             <span class="es-badge es-badge-new">New</span>
-                            <span class="es-notice-date">
-                                <i data-lucide="calendar" style="width:14px;height:14px;"></i> 08 Nov, 2026
-                            </span>
+                            <a asp-area="" asp-controller="Notices" asp-action="Index" class="es-notice-action-link">
+                                Details &rarr;
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Notice 3: Info -->
-                    <div class="es-notice-row">
-                        <div class="es-notice-icon d-md-none">
-                            <i data-lucide="bell" style="width:20px;height:20px;"></i>
+                    <!-- Notice 3: Info / Holiday -->
+                    <div class="es-notice-row-smart es-notice-row-info" data-category="holiday">
+                        <div class="es-notice-date-box">
+                            <span class="day">05</span>
+                            <span class="month">Nov</span>
                         </div>
-                        <h5 class="es-notice-title">
-                            School will remain closed on 16 Nov, 2026 (Victory Day).
-                        </h5>
+                        <div class="es-notice-content">
+                            <h5>School will remain closed on 16 Nov, 2026 (Victory Day).</h5>
+                            <p class="es-notice-desc">Campus administrative offices and classes will resume on Tuesday, 17 Nov at 8:00 AM.</p>
+                        </div>
                         <div class="d-flex align-items-center gap-3">
                             <span class="es-badge es-badge-info">Info</span>
-                            <span class="es-notice-date">
-                                <i data-lucide="calendar" style="width:14px;height:14px;"></i> 05 Nov, 2026
-                            </span>
+                            <a asp-area="" asp-controller="Notices" asp-action="Index" class="es-notice-action-link">
+                                Details &rarr;
+                            </a>
                         </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -643,3 +689,29 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Interactive Category Filter for Notices
+        const filterBtns = document.querySelectorAll('.es-notice-filter-btn');
+        const noticeRows = document.querySelectorAll('.es-notice-row-smart');
+
+        filterBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                filterBtns.forEach(function (b) { b.classList.remove('active'); });
+                this.classList.add('active');
+
+                const filter = this.getAttribute('data-filter');
+                noticeRows.forEach(function (row) {
+                    if (filter === 'all' || row.getAttribute('data-category') === filter) {
+                        row.style.display = 'flex';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+}
