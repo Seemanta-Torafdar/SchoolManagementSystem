@@ -256,7 +256,6 @@ C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\ob
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\a46vpof3b2-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\lq5nwwg88t-{0}-y3qcnmslvo-y3qcnmslvo.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\vsmry0hk6l-{0}-7ddxuw4ntm-7ddxuw4ntm.gz
-C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\m2hp7ulwx3-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\5voqxmue6z-{0}-bqjiyaj88i-bqjiyaj88i.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\k05j3sge4u-{0}-c2jlpeoesf-c2jlpeoesf.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\en35wj7e9k-{0}-erw9l3u2r3-erw9l3u2r3.gz
@@ -329,4 +328,5 @@ C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\ob
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\SchoolManagement.Web.pdb
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\SchoolManagement.Web.genruntimeconfig.cache
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\ref\SchoolManagement.Web.dll
-C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\3xjvxujzfd-{0}-13agui03sh-13agui03sh.gz
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\3xjvxujzfd-{0}-vzhdkeidpn-vzhdkeidpn.gz
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\m2hp7ulwx3-{0}-jop48bs5om-jop48bs5om.gz

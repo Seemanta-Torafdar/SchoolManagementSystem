@@ -12,19 +12,15 @@
 }
 
 <!-- ==========================================================================
-     1. HERO BANNER SECTION (Mint Green #EFFFF0 Background)
+     FULL BACKGROUND SHOWCASE & QUICK ACTION NAVIGATION
+     (Campus Building Full View & Glassmorphism Quick Action Buttons)
      ========================================================================== -->
-<section class="es-hero">
-    <div class="container">
-        <div class="row align-items-center g-4">
-            <!-- Left Hero Content -->
-            <div class="col-lg-6">
-                <!-- Welcome Orange Badge -->
-                <div class="es-hero-welcome-badge">
-                    <i data-lucide="sparkles" style="width:16px;height:16px;color:#D97706;"></i>
-                    <span>Welcome to E-School</span>
-                </div>
-
+<div class="es-full-bg-showcase" id="quick-actions">
+    <div class="container es-showcase-container">
+        <!-- Written Hero Information -->
+        <div class="row align-items-center g-4 es-hero-main-row">
+            <!-- Left Content: Headline, Description & CTA Buttons -->
+            <div class="col-lg-7 col-xl-6">
                 <!-- Main Display Headline -->
                 <h1 class="es-hero-title">
                     Learn With fun<br />
@@ -51,187 +47,13 @@
                         <i data-lucide="compass" style="width:18px;height:18px;"></i> Explore Campus
                     </a>
                 </div>
-
-                <!-- Quick Trust Highlights under CTA -->
-                <div class="es-hero-trust-bar">
-                    <div class="es-trust-item">
-                        <i data-lucide="star" style="width:16px;height:16px;color:#F59E0B;fill:#F59E0B;"></i>
-                        <span><strong>4.9/5</strong> Rating</span>
-                    </div>
-                    <div class="es-trust-divider"></div>
-                    <div class="es-trust-item">
-                        <i data-lucide="users" style="width:16px;height:16px;color:#10B981;"></i>
-                        <span><strong>1,200+</strong> Students</span>
-                    </div>
-                    <div class="es-trust-divider"></div>
-                    <div class="es-trust-item">
-                        <i data-lucide="award" style="width:16px;height:16px;color:#06B6D4;"></i>
-                        <span><strong>100%</strong> Certified</span>
-                    </div>
-                </div>
             </div>
 
-            <!-- Right Hero Illustration -->
-            <div class="col-lg-6">
-                <div class="es-hero-img-wrap">
-                    <!-- Top-Left Floating Badge -->
-                    <div class="es-float-badge es-badge-top-left">
-                        <div class="es-badge-icon-box" style="background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);">
-                            <i data-lucide="graduation-cap" style="width:20px;height:20px;"></i>
-                        </div>
-                        <div>
-                            <div class="es-badge-text-title">Interactive Learning</div>
-                            <div class="es-badge-text-sub">Live &amp; Recorded Sessions</div>
-                        </div>
-                    </div>
-                    <svg class="es-hero-illustration" viewBox="0 0 540 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="teacherGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#FBBF24" />
-                                <stop offset="100%" stop-color="#F59E0B" />
-                            </linearGradient>
-                            <linearGradient id="plantGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#34D399" />
-                                <stop offset="100%" stop-color="#059669" />
-                            </linearGradient>
-                            <filter id="heroCardShadow" x="-10%" y="-10%" width="120%" height="120%">
-                                <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0F172A" flood-opacity="0.12" />
-                            </filter>
-                        </defs>
-
-                        <!-- Background Desk Base -->
-                        <rect x="220" y="270" width="300" height="12" rx="6" fill="#CBD5E0" />
-                        <rect x="270" y="282" width="12" height="70" rx="3" fill="#94A3B8" />
-                        <rect x="450" y="282" width="12" height="70" rx="3" fill="#94A3B8" />
-
-                        <!-- Wall Clock (Top Left of Scene) -->
-                        <circle cx="280" cy="80" r="19" fill="#FFFFFF" stroke="#06B6D4" stroke-width="4" />
-                        <line x1="280" y1="80" x2="280" y2="69" stroke="#0284C7" stroke-width="3" stroke-linecap="round" />
-                        <line x1="280" y1="80" x2="289" y2="80" stroke="#0284C7" stroke-width="3" stroke-linecap="round" />
-                        <circle cx="280" cy="80" r="2.5" fill="#EF4444" />
-
-                        <!-- Large Digital Screen / Virtual Classroom Monitor -->
-                        <g filter="url(#heroCardShadow)">
-                            <rect x="290" y="90" width="220" height="150" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4" />
-                            <rect x="298" y="98" width="204" height="134" rx="10" fill="#F8FAFC" />
-                            <!-- Video UI Bar -->
-                            <rect x="298" y="98" width="204" height="24" fill="#E2E8F0" />
-                            <circle cx="312" cy="110" r="4" fill="#F43F5E" />
-                            <circle cx="324" cy="110" r="4" fill="#FBBF24" />
-                            <circle cx="336" cy="110" r="4" fill="#10B981" />
-                            <rect x="466" y="104" width="24" height="12" rx="3" fill="#EF4444" />
-                            <polygon points="475,107 481,110 475,113" fill="#FFFFFF" />
-
-                            <!-- Teacher Inside Monitor -->
-                            <!-- Head & Hair -->
-                            <circle cx="400" cy="140" r="18" fill="#FBD38D" />
-                            <path d="M385 136 C385 124, 415 124, 415 136 Z" fill="#1E293B" />
-                            <!-- Body / Yellow-Orange Shirt -->
-                            <path d="M375 185 C375 160, 425 160, 425 185 Z" fill="url(#teacherGrad)" />
-                            <!-- Tie -->
-                            <polygon points="400,162 404,180 400,185 396,180" fill="#2563EB" />
-                            <!-- Left Arm Pointing -->
-                            <path d="M375 168 Q345 150 330 160" stroke="url(#teacherGrad)" stroke-width="8" stroke-linecap="round" />
-                            <circle cx="328" cy="162" r="5" fill="#FBD38D" />
-                            
-                            <!-- Floating Virtual Content Cards on Screen -->
-                            <rect x="315" y="172" width="40" height="20" rx="4" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5" />
-                            <rect x="320" y="177" width="20" height="3" rx="1.5" fill="#2563EB" />
-                            <rect x="320" y="183" width="30" height="2" rx="1" fill="#94A3B8" />
-                            
-                            <rect x="445" y="140" width="45" height="30" rx="4" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.5" />
-                            <line x1="452" y1="150" x2="478" y2="150" stroke="#10B981" stroke-width="2" stroke-linecap="round" />
-                            <line x1="452" y1="158" x2="472" y2="158" stroke="#10B981" stroke-width="2" stroke-linecap="round" />
-
-                            <!-- Monitor Stand -->
-                            <rect x="393" y="240" width="14" height="32" fill="#94A3B8" />
-                            <path d="M365 272 L435 272 L440 274 L360 274 Z" fill="#64748B" />
-                        </g>
-
-                        <!-- Potted Plant on Table Stand -->
-                        <g>
-                            <rect x="475" y="290" width="40" height="8" rx="2" fill="#334155" />
-                            <line x1="482" y1="298" x2="476" y2="352" stroke="#334155" stroke-width="4" stroke-linecap="round" />
-                            <line x1="508" y1="298" x2="514" y2="352" stroke="#334155" stroke-width="4" stroke-linecap="round" />
-                            <!-- Pot -->
-                            <polygon points="485,290 505,290 502,268 488,268" fill="#0284C7" />
-                            <ellipse cx="495" cy="268" rx="7" ry="2" fill="#0369A1" />
-                            <!-- Plant Foliage -->
-                            <circle cx="495" cy="254" r="14" fill="url(#plantGrad)" />
-                            <circle cx="484" cy="246" r="12" fill="url(#plantGrad)" />
-                            <circle cx="506" cy="246" r="12" fill="url(#plantGrad)" />
-                            <circle cx="495" cy="236" r="13" fill="#6EE7B7" />
-                        </g>
-
-                        <!-- Student Learning at Desk (Left Foreground) -->
-                        <g filter="url(#heroCardShadow)">
-                            <!-- Chair -->
-                            <rect x="180" y="210" width="34" height="42" rx="6" fill="#10B981" />
-                            <path d="M174 250 L220 250 L216 262 L178 262 Z" fill="#059669" />
-                            <line x1="184" y1="262" x2="176" y2="350" stroke="#334155" stroke-width="5" stroke-linecap="round" />
-                            <line x1="210" y1="262" x2="224" y2="350" stroke="#334155" stroke-width="5" stroke-linecap="round" />
-                            <line x1="178" y1="310" x2="220" y2="310" stroke="#64748B" stroke-width="3" />
-
-                            <!-- Head & Hair (Student) -->
-                            <circle cx="196" cy="164" r="17" fill="#FBD38D" />
-                            <path d="M182 160 C182 144, 212 144, 212 160 Z" fill="#1E293B" />
-                            <path d="M182 160 C172 164, 168 184, 178 188 C182 180, 184 168, 182 160 Z" fill="#1E293B" />
-                            <circle cx="180" cy="168" r="3" fill="#F43F5E" />
-
-                            <!-- Student Body / Cyan-Blue Top -->
-                            <path d="M180 188 C180 178, 214 178, 214 188 L216 230 L180 230 Z" fill="#2563EB" />
-                            
-                            <!-- Legs & Shoes -->
-                            <path d="M184 230 L226 230 L226 270 L212 270 L210 330 L198 330 L200 270 L184 270 Z" fill="#1E40AF" />
-                            <ellipse cx="204" cy="334" rx="10" ry="4" fill="#F43F5E" />
-
-                            <!-- Arms & Laptop -->
-                            <path d="M198 196 Q220 216 236 218" stroke="#2563EB" stroke-width="8" stroke-linecap="round" />
-                            <circle cx="238" cy="218" r="4" fill="#FBD38D" />
-
-                            <polygon points="230,224 268,224 262,232 224,232" fill="#E2E8F0" />
-                            <polygon points="244,196 272,196 268,224 240,224" fill="#334155" />
-                            <polygon points="246,198 270,198 266,222 242,222" fill="#2563EB" />
-                            <circle cx="256" cy="210" r="4" fill="#FFFFFF" opacity="0.8" />
-                        </g>
-
-                        <!-- Books on Table -->
-                        <rect x="250" y="258" width="30" height="6" rx="1" fill="#EF4444" />
-                        <rect x="252" y="252" width="28" height="6" rx="1" fill="#10B981" />
-                        <rect x="254" y="246" width="24" height="6" rx="1" fill="#F59E0B" />
-                    </svg>
-
-                    <!-- Bottom-Right Floating Badge -->
-                    <div class="es-float-badge es-badge-bottom-right">
-                        <div class="es-badge-icon-box" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
-                            <i data-lucide="check-circle" style="width:20px;height:20px;"></i>
-                        </div>
-                        <div>
-                            <div class="es-badge-text-title">Verified Faculty</div>
-                            <div class="es-badge-text-sub">Top Ranked Educators</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Right Area: Clear View of Campus Building & Bangladesh Flag -->
+            <div class="col-lg-5 col-xl-6 d-none d-lg-block"></div>
         </div>
-    </div>
 
-    <!-- Scroll Down Indicator -->
-    <div class="es-hero-scroll-wrap">
-        <a href="#quick-actions" class="es-hero-scroll-btn" aria-label="Scroll to campus content">
-            <span class="es-mouse-pill">
-                <span class="es-mouse-wheel"></span>
-            </span>
-            <span class="es-scroll-text">Explore Campus</span>
-        </a>
-    </div>
-</section>
-
-<!-- ==========================================================================
-     QUICK ACTION BUTTONS (Top of Notice & Under Hero Banner)
-     ========================================================================== -->
-<div class="es-quick-actions-strip" id="quick-actions">
-    <div class="container">
+        <!-- Quick Action Buttons Strip (Frosted Glassmorphism Floating at Viewport Base) -->
         <div class="es-quick-actions-wrapper">
             <!-- 1. Latest Notice Button -->
             <a href="#notice-section" class="es-quick-btn es-quick-btn-notice">
@@ -301,8 +123,23 @@
             </div>
         </div>
 
-        <!-- Main Notice Card -->
-        <div class="es-notice-card">
+        <!-- Scroll-Driven Expanding Card Stage (NSU Motion Style) -->
+        <div class="es-notice-expand-stage" id="noticeExpandStage">
+            <div class="es-notice-expand-card" id="noticeExpandCard">
+                <!-- Main Notice Card -->
+                <div class="es-notice-card">
+            <!-- Live Announcement Moving Ticker (Continuous motion banner) -->
+            <div class="es-notice-live-ticker">
+                <span class="es-ticker-badge">
+                    <span class="es-ticker-dot"></span> LIVE
+                </span>
+                <div class="es-ticker-track-wrap">
+                    <span class="es-ticker-track">
+                        📌 Term-2 Final Examination routine published &bull; 🔴 Admit cards collection starts from Nov 20 &bull; 🟢 Inter-School Science Fair registration open &bull; 🔵 Campus Victory Day observance notice
+                    </span>
+                </div>
+            </div>
+
             <!-- Filter Pills -->
             <div class="es-notice-filter-pills">
                 <button type="button" class="es-notice-filter-btn active" data-filter="all">📌 All Circulars</button>
@@ -411,6 +248,8 @@
                 }
             </div>
         </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -431,15 +270,21 @@
             </div>
         </div>
 
-        <!-- Smart Category Filter Pills -->
-        <div class="es-team-filter-pills">
-            <button type="button" class="es-team-filter-btn active" data-team="all">👥 All (5)</button>
-            <button type="button" class="es-team-filter-btn" data-team="teachers">🎓 Teachers (3)</button>
-            <button type="button" class="es-team-filter-btn" data-team="management">🏛️ Management (2)</button>
-        </div>
+        <!-- Scroll-Driven Expanding Card Stage for Faculty (NSU Motion Style) -->
+        <div class="es-teachers-expand-stage" id="teachersExpandStage">
+            <div class="es-teachers-expand-card" id="teachersExpandCard">
+                <!-- Decorative Parallax Floating Backdrop -->
+                <div class="es-teachers-bg-decor" id="teachersBgDecor"></div>
 
-        <!-- 7 Responsive Cards Row Matching Reference with Smart Elevation -->
-        <div class="es-team-row">
+                <!-- Smart Category Filter Pills -->
+                <div class="es-team-filter-pills" style="position:relative; z-index:1;">
+                    <button type="button" class="es-team-filter-btn active" data-team="all">👥 All (5)</button>
+                    <button type="button" class="es-team-filter-btn" data-team="teachers">🎓 Teachers (3)</button>
+                    <button type="button" class="es-team-filter-btn" data-team="management">🏛️ Management (2)</button>
+                </div>
+
+                <!-- 7 Responsive Cards Row Matching Reference with Smart Elevation -->
+                <div class="es-team-row" style="position:relative; z-index:1;">
             <!-- 1. "Our Teachers" Category Badge Card -->
             <a asp-area="" asp-controller="Teachers" asp-action="Index" class="es-label-card-teachers" data-team-group="teachers">
                 <div class="es-label-card-top">
@@ -548,6 +393,8 @@
                 <a asp-area="" asp-controller="About" asp-action="Index" class="es-card-quick-link">
                     Profile &rarr;
                 </a>
+            </div>
+        </div>
             </div>
         </div>
     </div>

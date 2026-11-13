@@ -51,15 +51,42 @@ html {
     scroll-padding-top: 85px;
 }
 
+html.lenis, html.lenis body {
+    height: auto;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+
+
 body.eschool-body, body {
     font-family: 'Poppins', sans-serif !important;
     color: var(--es-body);
-    background: var(--es-bg-main);
+    background: 
+        linear-gradient(180deg, 
+            rgba(255, 255, 255, 0) 0%, 
+            rgba(255, 255, 255, 0.05) 500px, 
+            rgba(240, 253, 244, 0.82) 800px, 
+            rgba(248, 250, 252, 0.94) 1200px, 
+            rgba(241, 245, 249, 0.97) 100%
+        ),
+        url('/images/hero-building.jpg') center top / cover no-repeat fixed;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     position: relative;
+    min-height: 100vh;
 }
 
 /* Ambient Colored Glow Orbs */
@@ -69,7 +96,7 @@ body.eschool-body, body {
     filter: blur(75px);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.55;
+    opacity: 0.15;
 }
 .es-blob-1 {
     top: 60px;
@@ -299,21 +326,76 @@ body.eschool-body, body {
 }
 
 /* ==========================================================================
-   3. HERO BANNER SECTION (Rich, Ultra-Lively & Colorful)
+   3. FULL BACKGROUND CAMPUS SHOWCASE & QUICK ACTION NAVIGATION
    ========================================================================== */
+.es-full-bg-showcase {
+    min-height: calc(100vh - 72px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 42px 0 32px 0;
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(90deg, 
+        rgba(15, 23, 42, 0.85) 0%, 
+        rgba(15, 23, 42, 0.68) 40%, 
+        rgba(15, 23, 42, 0.20) 72%, 
+        rgba(15, 23, 42, 0) 100%
+    );
+}
+
+.es-showcase-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    flex: 1;
+    gap: 32px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
 .es-hero {
     min-height: calc(100vh - 72px);
     display: flex;
-    align-items: center;
-    background: radial-gradient(circle at 85% 25%, rgba(16, 185, 129, 0.32) 0%, transparent 55%),
-                radial-gradient(circle at 15% 75%, rgba(6, 182, 212, 0.22) 0%, transparent 50%),
-                radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.18) 0%, transparent 45%),
-                linear-gradient(180deg, #E6FBF0 0%, #D8F7E8 100%);
-    padding: 70px 0 95px;
+    flex-direction: column;
+    justify-content: center;
+    background: 
+        linear-gradient(90deg, 
+            rgba(15, 23, 42, 0.88) 0%, 
+            rgba(15, 23, 42, 0.70) 38%, 
+            rgba(15, 23, 42, 0.22) 70%, 
+            rgba(15, 23, 42, 0.04) 100%
+        ),
+        url('/images/hero-building.jpg') center center / cover no-repeat;
+    padding: 42px 0 32px;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    border-bottom: 2px solid rgba(16, 185, 129, 0.18);
+    border-bottom: 2px solid rgba(16, 185, 129, 0.25);
+}
+
+.es-hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    position: relative;
+    z-index: 2;
+    gap: 32px;
+}
+
+.es-hero-main-row {
+    flex: 1;
+    align-items: center;
+}
+
+.es-hero-quick-actions {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    margin-top: 10px;
 }
 
 .es-hero-welcome-badge {
@@ -334,14 +416,15 @@ body.eschool-body, body {
 .es-hero-title {
     font-size: clamp(2.85rem, 4.3vw, 4.35rem);
     font-weight: 900;
-    color: var(--es-dark);
+    color: #FFFFFF;
     line-height: 1.15;
     margin-bottom: 22px;
     letter-spacing: -1.5px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
 }
 
 .text-gradient-green {
-    background: linear-gradient(135deg, #10B981 0%, #059669 50%, #0D9488 100%);
+    background: linear-gradient(135deg, #34D399 0%, #10B981 50%, #6EE7B7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -354,10 +437,11 @@ body.eschool-body, body {
 
 .es-hero-desc {
     font-size: 1.15rem;
-    color: #475569;
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.8;
     max-width: 550px;
     margin-bottom: 28px;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
 .es-hero-lines {
@@ -408,9 +492,11 @@ body.eschool-body, body {
 }
 
 .btn-es-glass {
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--es-dark) !important;
-    border: 2px solid #10B981;
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #FFFFFF !important;
+    border: 2px solid rgba(255, 255, 255, 0.65);
     border-radius: 30px;
     padding: 15px 36px;
     font-size: 1.02rem;
@@ -419,15 +505,16 @@ body.eschool-body, body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
     transition: all 0.25s ease;
 }
 
 .btn-es-glass:hover {
     background: var(--es-green);
+    border-color: var(--es-green);
     color: #FFFFFF !important;
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
 }
 
 /* Quick Trust Highlights under CTA */
@@ -437,7 +524,7 @@ body.eschool-body, body {
     gap: 16px;
     margin-top: 32px;
     padding-top: 20px;
-    border-top: 1px solid rgba(16, 185, 129, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 .es-trust-item {
@@ -445,11 +532,11 @@ body.eschool-body, body {
     align-items: center;
     gap: 7px;
     font-size: 0.88rem;
-    color: #475569;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .es-trust-item strong {
-    color: var(--es-dark);
+    color: #FFFFFF;
     font-weight: 800;
 }
 
@@ -457,109 +544,24 @@ body.eschool-body, body {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: #CBD5E1;
+    background: rgba(255, 255, 255, 0.35);
 }
 
-/* Full Screen Hero Scroll Down Indicator */
-.es-hero-scroll-wrap {
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    text-align: center;
-}
-
-.es-hero-scroll-btn {
+/* Campus Feature Pill on Right */
+.es-hero-campus-pill {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 10px 22px;
     display: inline-flex;
-    flex-direction: column;
     align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    color: #059669;
-    font-size: 0.76rem;
+    gap: 10px;
+    color: #FFFFFF;
+    font-size: 0.92rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.25s ease;
-    opacity: 0.85;
-}
-
-.es-hero-scroll-btn:hover {
-    color: #10B981;
-    opacity: 1;
-    transform: translateY(2px);
-}
-
-.es-mouse-pill {
-    width: 22px;
-    height: 34px;
-    border: 2px solid #10B981;
-    border-radius: 20px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    padding-top: 6px;
-}
-
-.es-mouse-wheel {
-    width: 3.5px;
-    height: 7px;
-    background: #10B981;
-    border-radius: 2px;
-    animation: esMouseScroll 1.8s infinite;
-}
-
-@keyframes esMouseScroll {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-}
-
-/* Floating Smart Badges with Rich Vibrant Styling */
-.es-hero-img-wrap {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.es-hero-img-wrap::before {
-    content: '';
-    position: absolute;
-    width: 580px;
-    height: 420px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(6, 182, 212, 0.15) 50%, transparent 72%);
-    border-radius: 50%;
-    filter: blur(36px);
-    z-index: 0;
-    pointer-events: none;
-}
-
-.es-hero-illustration {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 620px;
-    height: auto;
-    filter: drop-shadow(0 20px 45px rgba(16, 185, 129, 0.18));
-}
-
-.es-float-badge {
-    position: absolute;
-    background: #FFFFFF;
-    padding: 12px 18px;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    z-index: 2;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
 }
 
 .es-badge-top-left {
@@ -613,21 +615,21 @@ body.eschool-body, body {
 }
 
 /* ==========================================================================
-   QUICK NAVIGATION ACTION BUTTONS STRIP (Top of Notice & Under Hero)
+   QUICK NAVIGATION ACTION BUTTONS (Transparent Glass Inside Hero)
    ========================================================================== */
 .es-quick-actions-strip {
-    margin-top: -30px;
-    margin-bottom: 24px;
     position: relative;
     z-index: 25;
 }
 
 .es-quick-actions-wrapper {
-    background: #FFFFFF;
+    background: rgba(15, 23, 42, 0.52);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border-radius: 20px;
-    padding: 12px 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
-    border: 1.5px solid #E8ECF4;
+    padding: 10px 14px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 12px;
@@ -638,11 +640,11 @@ body.eschool-body, body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 12px 14px;
+    padding: 10px 14px;
     border-radius: 14px;
-    background: #F8FAFC;
-    border: 1.5px solid transparent;
-    color: #1E293B;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    color: #0F172A;
     text-decoration: none;
     font-size: 0.88rem;
     font-weight: 700;
@@ -782,6 +784,173 @@ body.eschool-body, body {
 /* ==========================================================================
    5. NOTICE SECTION (Smart & Attractive Announcement Hub)
    ========================================================================== */
+/* Scroll-Driven Expanding Card Animation (NSU Style) */
+.es-notice-expand-stage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 10px 0 24px;
+    perspective: 1200px;
+}
+
+.es-notice-expand-card {
+    width: 100%;
+    transform-origin: center top;
+    transform: scale(0.88);
+    border-radius: 36px;
+    box-shadow: 0 24px 50px rgba(16, 185, 129, 0.12), 0 8px 24px rgba(0, 0, 0, 0.05);
+    transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.08s ease, box-shadow 0.08s ease;
+    will-change: transform, border-radius, box-shadow;
+}
+
+@media (max-width: 767.98px) {
+    .es-notice-expand-card {
+        transform: scale(0.93);
+        border-radius: 26px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .es-notice-expand-card {
+        transform: none !important;
+        border-radius: 22px !important;
+        box-shadow: 0 12px 35px rgba(16, 185, 129, 0.08) !important;
+    }
+}
+
+/* NSU Parallax Banner System (data-parallax & .gp-img) */
+.es-notice-parallax-wrap {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    height: 220px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    margin-bottom: 26px;
+    transform: translateZ(0);
+}
+
+.es-parallax-box {
+    position: absolute;
+    top: -25%;
+    left: 0;
+    width: 100%;
+    height: 150%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.gp-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    will-change: transform, scale, translate;
+    transform-origin: center center;
+    transition: translate 0.1s cubic-bezier(0.16, 1, 0.3, 1), scale 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.es-notice-parallax-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(90deg, 
+        rgba(15, 23, 42, 0.90) 0%, 
+        rgba(15, 23, 42, 0.68) 55%, 
+        rgba(15, 23, 42, 0.25) 100%
+    );
+    display: flex;
+    align-items: center;
+}
+
+.es-badge-pill-light {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(16, 185, 129, 0.25);
+    border: 1px solid rgba(52, 211, 153, 0.6);
+    color: #6EE7B7;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 767.98px) {
+    .es-notice-parallax-wrap {
+        height: 280px;
+    }
+}
+
+/* Live Announcement Moving Ticker inside Notice Section */
+.es-notice-live-ticker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #FEF3C7 0%, #FEF9C3 100%);
+    border: 1.5px solid #FCD34D;
+    border-radius: 12px;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.es-ticker-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #EF4444;
+    color: #FFFFFF;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
+.es-ticker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    animation: esBlink 1.2s infinite;
+}
+
+@keyframes esBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(0.6); }
+}
+
+.es-ticker-track-wrap {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.es-ticker-track {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: #92400E;
+    animation: esTickerScroll 22s linear infinite;
+}
+
+.es-ticker-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes esTickerScroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
 .es-notice-card {
     background: #FFFFFF;
     border: 1.5px solid rgba(16, 185, 129, 0.25);
@@ -885,25 +1054,34 @@ body.eschool-body, body {
     box-shadow: 0 6px 16px rgba(16, 185, 129, 0.25);
 }
 
-/* Notice Row with Left Date Badge */
+/* Notice Row Folder File Design with Scroll Reveal */
 .es-notice-row-smart {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 16px 18px;
-    border-radius: 14px;
+    gap: 18px;
+    padding: 18px 20px;
+    border-radius: 16px;
     background: #FFFFFF;
     border: 1.5px solid #E8ECF4;
-    margin-bottom: 12px;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    position: relative;
+    opacity: 0;
+    transform: translateX(-24px);
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    will-change: transform, opacity, box-shadow;
+}
+
+.es-notice-row-smart.is-revealed {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .es-notice-row-smart:hover {
-    transform: translateX(8px);
-    background: #F8FAFC;
+    transform: translateX(12px) translateY(-3px) !important;
+    background: linear-gradient(90deg, #F0FDF4 0%, #FFFFFF 100%);
     border-color: #10B981;
-    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.12);
+    box-shadow: 0 16px 36px rgba(16, 185, 129, 0.18), 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .es-notice-row-smart:last-child {
@@ -917,9 +1095,9 @@ body.eschool-body, body {
 }
 
 .es-notice-date-box {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
     background: #F8FAFC;
     border: 1.5px solid #E2E8F0;
     display: flex;
@@ -928,7 +1106,24 @@ body.eschool-body, body {
     justify-content: center;
     line-height: 1;
     flex-shrink: 0;
-    transition: all 0.25s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.es-notice-row-smart:hover .es-notice-date-box {
+    transform: scale(1.12) rotate(-4deg);
+    border-color: #10B981;
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+    background: #10B981;
+}
+
+.es-notice-row-smart:hover .es-notice-date-box .day,
+.es-notice-row-smart:hover .es-notice-date-box .month {
+    color: #FFFFFF !important;
+}
+
+.es-notice-row-smart:hover .es-notice-action-link {
+    transform: translateX(8px);
+    color: #059669;
 }
 
 .es-notice-date-box .day {
@@ -1030,6 +1225,85 @@ body.eschool-body, body {
 /* ==========================================================================
    6. TEACHER & MANAGEMENT SECTION (Smart, Ultra-Elevated Cards)
    ========================================================================== */
+/* Scroll-Driven Expanding Card Animation for Faculty (NSU Motion Style) */
+.es-teachers-expand-stage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 10px 0 24px;
+    perspective: 1200px;
+}
+
+.es-teachers-expand-card {
+    width: 100%;
+    transform-origin: center top;
+    transform: scale(0.88);
+    border-radius: 36px;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(139, 92, 246, 0.22);
+    box-shadow: 0 24px 50px rgba(139, 92, 246, 0.10), 0 8px 24px rgba(0, 0, 0, 0.04);
+    padding: 30px;
+    transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.08s ease, box-shadow 0.08s ease;
+    will-change: transform, border-radius, box-shadow;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle decorative parallax floating backdrop elements */
+.es-teachers-bg-decor {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+    border-radius: inherit;
+}
+
+.es-teachers-bg-decor::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 70%);
+    transform: translate3d(var(--decor-x, 0px), var(--decor-y, 0px), 0) scale(var(--decor-zoom, 1.0));
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+.es-teachers-bg-decor::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.14) 0%, rgba(139, 92, 246, 0.04) 50%, transparent 70%);
+    transform: translate3d(var(--decor2-x, 0px), var(--decor2-y, 0px), 0) scale(var(--decor-zoom, 1.0));
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+@media (max-width: 767.98px) {
+    .es-teachers-expand-card {
+        transform: scale(0.93);
+        border-radius: 26px;
+        padding: 20px 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .es-teachers-expand-card {
+        transform: none !important;
+        border-radius: 22px !important;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06) !important;
+    }
+}
+
 .es-team-filter-pills {
     display: flex;
     align-items: center;
@@ -1852,15 +2126,47 @@ body.eschool-body, body {
 }
 
 /* ==========================================================================
-   10. FOOTER (Rich Dark Navy with Vivid Neon Lines)
+   10. FOOTER (Rich Dark Navy with Moving Neon Glow & Staggered Reveal)
    ========================================================================== */
 .es-footer {
-    background: linear-gradient(180deg, #151D35 0%, #0B1021 100%);
-    border-top: 4px solid var(--es-green);
-    padding: 68px 0 0;
-    color: rgba(255, 255, 255, 0.7);
     position: relative;
-    z-index: 1;
+    z-index: 10;
+    background: linear-gradient(180deg, #151D35 0%, #0B1021 100%);
+    padding: 72px 0 0;
+    color: rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+}
+
+/* Moving Neon Sweep Border at top of footer */
+.es-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #10B981, #06B6D4, #3B82F6, #8B5CF6, #EC4899, #10B981);
+    background-size: 300% 100%;
+    animation: esFooterLineGlow 6s linear infinite;
+    z-index: 2;
+}
+
+@keyframes esFooterLineGlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* Footer Columns Scroll-Triggered Reveal */
+.es-footer-col {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.es-footer-col.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .es-footer-heading {
@@ -1893,12 +2199,15 @@ body.eschool-body, body {
     color: rgba(255, 255, 255, 0.65);
     text-decoration: none;
     font-size: 0.92rem;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .es-footer-links a:hover {
     color: #34D399;
-    transform: translateX(5px);
+    transform: translateX(8px);
 }
 
 .es-social-btn {
@@ -1910,17 +2219,26 @@ body.eschool-body, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     text-decoration: none;
-    transition: all 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .es-social-btn:hover {
     background: var(--es-grad-primary);
     border-color: #10B981;
-    color: #FFFFFF;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.5);
+    color: #FFFFFF !important;
+    transform: translateY(-5px) scale(1.12) rotate(6deg);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.45);
+}
+
+.es-footer .es-brand-icon {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.es-footer .es-brand-icon:hover {
+    transform: scale(1.14) rotate(-8deg);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.45);
 }
 
 .es-footer-bottom {
@@ -1934,6 +2252,14 @@ body.eschool-body, body {
     gap: 14px;
     font-size: 0.88rem;
     color: rgba(255, 255, 255, 0.45);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.es-footer-bottom.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .es-footer-bottom a {
@@ -1954,9 +2280,25 @@ body.eschool-body, body {
 }
 
 @media (max-width: 991.98px) {
+    .es-full-bg-showcase {
+        min-height: auto;
+        padding: 45px 0 24px;
+        background: linear-gradient(180deg, 
+            rgba(15, 23, 42, 0.88) 0%, 
+            rgba(15, 23, 42, 0.72) 65%, 
+            rgba(15, 23, 42, 0.85) 100%
+        );
+    }
     .es-hero {
         min-height: auto;
         padding: 55px 0 65px;
+        background: 
+            linear-gradient(180deg, 
+                rgba(15, 23, 42, 0.88) 0%, 
+                rgba(15, 23, 42, 0.72) 60%, 
+                rgba(15, 23, 42, 0.85) 100%
+            ),
+            url('/images/hero-building.jpg') center center / cover no-repeat;
     }
     .es-hero-title { font-size: 2.6rem; }
     .es-hero-illustration { max-width: 480px; }
@@ -1968,6 +2310,10 @@ body.eschool-body, body {
 }
 
 @media (max-width: 767.98px) {
+    .es-full-bg-showcase {
+        min-height: 48vh;
+        padding-bottom: 18px;
+    }
     .es-hero { padding: 45px 0 50px; }
     .es-hero-title { font-size: 2.1rem; }
     .es-hero-trust-bar { flex-wrap: wrap; gap: 10px; }
