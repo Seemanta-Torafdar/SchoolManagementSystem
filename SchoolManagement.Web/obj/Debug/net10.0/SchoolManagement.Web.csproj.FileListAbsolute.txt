@@ -244,15 +244,12 @@ C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\ob
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\scopedcss\bundle\SchoolManagement.Web.styles.css
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\scopedcss\projectbundle\SchoolManagement.Web.bundle.scp.css
-C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\z045ie6nbl-{0}-ckghxmz5k2-ckghxmz5k2.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\u6wwbxx8zp-{0}-5l61sbyget-5l61sbyget.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\wm8ch4gizi-{0}-8mwdd9k3yi-8mwdd9k3yi.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\ka95w75ev4-{0}-exg5moz2pg-exg5moz2pg.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\m3pg5eofyz-{0}-4jq4o0bg35-4jq4o0bg35.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\16vd39wc5y-{0}-fmd08s8muu-fmd08s8muu.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\j7tox7w0iz-{0}-v9ffwfwnsr-v9ffwfwnsr.gz
-C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\jt39crn6my-{0}-1ppczvfgw6-1ppczvfgw6.gz
-C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\u6nit1xyv4-{0}-9ihq6wkocu-9ihq6wkocu.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\a46vpof3b2-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\lq5nwwg88t-{0}-y3qcnmslvo-y3qcnmslvo.gz
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\vsmry0hk6l-{0}-7ddxuw4ntm-7ddxuw4ntm.gz
@@ -328,5 +325,8 @@ C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\ob
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\SchoolManagement.Web.pdb
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\SchoolManagement.Web.genruntimeconfig.cache
 C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\ref\SchoolManagement.Web.dll
-C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\3xjvxujzfd-{0}-vzhdkeidpn-vzhdkeidpn.gz
-C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\m2hp7ulwx3-{0}-jop48bs5om-jop48bs5om.gz
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\m2hp7ulwx3-{0}-em62z91q1f-em62z91q1f.gz
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\z045ie6nbl-{0}-1iuo591qmd-1iuo591qmd.gz
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\jt39crn6my-{0}-yrq36904g4-yrq36904g4.gz
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\u6nit1xyv4-{0}-0hg6ojn9wn-0hg6ojn9wn.gz
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\SchoolManagement.Web\obj\Debug\net10.0\compressed\3xjvxujzfd-{0}-3fwmsj5uwm-3fwmsj5uwm.gz
