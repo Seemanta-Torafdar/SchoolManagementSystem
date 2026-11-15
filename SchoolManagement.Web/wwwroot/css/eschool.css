@@ -131,19 +131,19 @@ body.eschool-body, body {
    1. NAVBAR / HEADER
    ========================================================================== */
 .es-navbar-wrapper {
-    background: rgba(255, 255, 255, 0.96);
+    background: #687F65;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border-bottom: 2px solid rgba(16, 185, 129, 0.15);
-    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.06);
+    border-bottom: 2px solid #566a54;
+    box-shadow: 0 4px 20px rgba(38, 59, 45, 0.12);
     z-index: 1030;
     transition: all 0.3s ease;
 }
 
 .es-navbar-wrapper.is-scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    border-bottom-color: rgba(16, 185, 129, 0.28);
+    background: #5d745a;
+    box-shadow: 0 8px 25px rgba(38, 59, 45, 0.22);
+    border-bottom-color: #4b5e48;
 }
 
 .es-navbar {
@@ -161,13 +161,13 @@ body.eschool-body, body {
 .es-brand-icon {
     width: 44px;
     height: 44px;
-    background: var(--es-grad-rainbow);
+    background: #FFFFFF;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
-    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4);
+    color: #687F65;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
     flex-shrink: 0;
     transition: transform 0.25s ease;
 }
@@ -179,16 +179,16 @@ body.eschool-body, body {
 .es-brand-title {
     font-size: 1.45rem;
     font-weight: 900;
-    background: linear-gradient(135deg, #151D35 0%, #10B981 70%, #06B6D4 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #FFFFFF;
+    background: none;
+    -webkit-text-fill-color: #FFFFFF;
     letter-spacing: -0.4px;
 }
 
 .es-nav-link {
     font-size: 0.94rem;
     font-weight: 600;
-    color: var(--es-dark) !important;
+    color: rgba(255, 255, 255, 0.92) !important;
     padding: 8px 16px !important;
     text-decoration: none;
     position: relative;
@@ -197,12 +197,13 @@ body.eschool-body, body {
 }
 
 .es-nav-link:hover {
-    color: var(--es-green) !important;
-    background: rgba(16, 185, 129, 0.1);
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.18);
 }
 
 .es-nav-link.active {
-    color: var(--es-green) !important;
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.24);
     font-weight: 700;
 }
 
@@ -213,14 +214,14 @@ body.eschool-body, body {
     left: 14px;
     right: 14px;
     height: 3.5px;
-    background: var(--es-grad-rainbow);
+    background: #FFFFFF;
     border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.4);
 }
 
 .btn-es-login {
-    background: var(--es-grad-primary);
-    color: #FFFFFF !important;
+    background: #FFFFFF;
+    color: #263B2D !important;
     border: none;
     border-radius: 30px;
     padding: 10px 28px;
@@ -230,14 +231,29 @@ body.eschool-body, body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
     transition: all 0.25s ease;
 }
 
+.btn-es-login i {
+    color: #687F65;
+}
+
 .btn-es-login:hover {
-    color: #FFFFFF !important;
+    background: #F1F2E8;
+    color: #263B2D !important;
     transform: translateY(-2px);
-    box-shadow: 0 10px 26px rgba(16, 185, 129, 0.55);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 991.98px) {
+    .es-navbar-wrapper .navbar-collapse {
+        background: #5d745a;
+        border-radius: 16px;
+        padding: 16px;
+        margin-top: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 }
 
 /* ==========================================================================
@@ -285,7 +301,7 @@ body.eschool-body, body {
 .es-section-title {
     font-size: 1.85rem;
     font-weight: 900;
-    color: var(--es-dark);
+    color: #263B2D;
     margin: 0;
     line-height: 1.2;
     letter-spacing: -0.4px;
@@ -296,16 +312,16 @@ body.eschool-body, body {
     display: block;
     width: 52px;
     height: 4.5px;
-    background: var(--title-underline, var(--es-grad-primary));
+    background: linear-gradient(90deg, #687F65 0%, #D2D9C5 100%);
     border-radius: 4px;
     margin-top: 8px;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+    box-shadow: 0 2px 8px rgba(104, 127, 101, 0.35);
 }
 
 .es-view-all {
     font-size: 0.92rem;
     font-weight: 700;
-    color: var(--view-color, var(--es-green));
+    color: #263B2D;
     background: #FFFFFF;
     padding: 9px 20px;
     border-radius: 30px;
@@ -314,15 +330,16 @@ body.eschool-body, body {
     align-items: center;
     gap: 6px;
     transition: all 0.25s ease;
-    border: 1.5px solid currentColor;
+    border: 1.5px solid #D2D9C5;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .es-view-all:hover {
-    background: var(--view-bg, var(--es-green));
+    background: #687F65;
+    border-color: #687F65;
     color: #FFFFFF !important;
     transform: translateX(4px);
-    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+    box-shadow: 0 6px 18px rgba(104, 127, 101, 0.35);
 }
 
 /* ==========================================================================
@@ -734,9 +751,9 @@ body.eschool-body, body {
     background: #FFFFFF;
     border-radius: 18px;
     padding: 22px 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border: 1.5px solid var(--es-border);
-    border-top: 5px solid var(--stat-color, #10B981);
+    box-shadow: 0 10px 30px rgba(38, 59, 45, 0.05);
+    border: 1.5px solid #D2D9C5;
+    border-top: 5px solid #687F65;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -745,14 +762,18 @@ body.eschool-body, body {
 
 .es-stat-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 16px 36px var(--stat-glow, rgba(16, 185, 129, 0.2));
-    border-color: var(--stat-color, #10B981);
+    box-shadow: 0 16px 36px rgba(104, 127, 101, 0.22);
+    border-color: #687F65;
 }
 
-.es-stat-card-1 { --stat-color: #10B981; --stat-glow: rgba(16, 185, 129, 0.25); background: linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 100%); }
-.es-stat-card-2 { --stat-color: #F59E0B; --stat-glow: rgba(245, 158, 11, 0.25); background: linear-gradient(135deg, #FFFFFF 0%, #FFFBEB 100%); }
-.es-stat-card-3 { --stat-color: #06B6D4; --stat-glow: rgba(6, 182, 212, 0.25); background: linear-gradient(135deg, #FFFFFF 0%, #ECFEFF 100%); }
-.es-stat-card-4 { --stat-color: #8B5CF6; --stat-glow: rgba(139, 92, 246, 0.25); background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%); }
+.es-stat-card-1,
+.es-stat-card-2,
+.es-stat-card-3,
+.es-stat-card-4 {
+    border: 1.5px solid #D2D9C5;
+    border-top: 5px solid #687F65;
+    background: #FFFFFF;
+}
 
 .es-stat-icon {
     width: 52px;
@@ -761,15 +782,16 @@ body.eschool-body, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #687F65;
     color: #FFFFFF;
     flex-shrink: 0;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 16px rgba(104, 127, 101, 0.25);
 }
 
 .es-stat-info h4 {
     font-size: 1.55rem;
     font-weight: 900;
-    color: var(--es-dark);
+    color: #263B2D;
     margin: 0;
     line-height: 1.1;
 }
@@ -777,13 +799,20 @@ body.eschool-body, body {
 .es-stat-info p {
     font-size: 0.82rem;
     font-weight: 600;
-    color: #4B5563;
+    color: #657565;
     margin: 3px 0 0;
 }
 
 /* ==========================================================================
    5. NOTICE SECTION (Smart & Attractive Announcement Hub)
    ========================================================================== */
+#notice-section {
+    background: linear-gradient(180deg, #DFE5CD 0%, #D4DCBD 100%);
+    border-top: 1.5px solid #CCD5BC;
+    border-bottom: 1.5px solid #CCD5BC;
+    position: relative;
+}
+
 /* Scroll-Driven Expanding Card Animation (NSU Style) */
 .es-notice-expand-stage {
     width: 100%;
@@ -799,7 +828,7 @@ body.eschool-body, body {
     transform-origin: center top;
     transform: scale(0.88);
     border-radius: 36px;
-    box-shadow: 0 24px 50px rgba(16, 185, 129, 0.12), 0 8px 24px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 24px 50px rgba(38, 59, 45, 0.10), 0 8px 24px rgba(0, 0, 0, 0.05);
     transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.08s ease, box-shadow 0.08s ease;
     will-change: transform, border-radius, box-shadow;
 }
@@ -815,7 +844,7 @@ body.eschool-body, body {
     .es-notice-expand-card {
         transform: none !important;
         border-radius: 22px !important;
-        box-shadow: 0 12px 35px rgba(16, 185, 129, 0.08) !important;
+        box-shadow: 0 12px 35px rgba(38, 59, 45, 0.06) !important;
     }
 }
 
@@ -889,8 +918,8 @@ body.eschool-body, body {
     display: flex;
     align-items: center;
     gap: 12px;
-    background: linear-gradient(135deg, #FEF3C7 0%, #FEF9C3 100%);
-    border: 1.5px solid #FCD34D;
+    background: #E5E8CE;
+    border: 1.5px solid #D2D9C5;
     border-radius: 12px;
     padding: 8px 16px;
     margin-bottom: 20px;
@@ -901,7 +930,7 @@ body.eschool-body, body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #EF4444;
+    background: #687F65;
     color: #FFFFFF;
     font-size: 0.72rem;
     font-weight: 800;
@@ -910,7 +939,7 @@ body.eschool-body, body {
     padding: 3px 10px;
     border-radius: 20px;
     flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+    box-shadow: 0 2px 8px rgba(104, 127, 101, 0.3);
 }
 
 .es-ticker-dot {
@@ -938,7 +967,7 @@ body.eschool-body, body {
     white-space: nowrap;
     font-size: 0.84rem;
     font-weight: 600;
-    color: #92400E;
+    color: #263B2D;
     animation: esTickerScroll 22s linear infinite;
 }
 
@@ -952,10 +981,10 @@ body.eschool-body, body {
 }
 
 .es-notice-card {
-    background: #FFFFFF;
-    border: 1.5px solid rgba(16, 185, 129, 0.25);
+    background: #F1F2E8;
+    border: 1.5px solid #D2D9C5;
     border-radius: 22px;
-    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.08);
+    box-shadow: 0 14px 38px rgba(38, 59, 45, 0.08);
     padding: 28px;
     transition: all 0.3s ease;
 }
@@ -971,9 +1000,9 @@ body.eschool-body, body {
 .es-notice-filter-btn {
     font-size: 0.8rem;
     font-weight: 700;
-    color: #475569;
+    color: #263B2D;
     background: #FFFFFF;
-    border: 1.5px solid #E2E8F0;
+    border: 1.5px solid #D2D9C5;
     padding: 6px 16px;
     border-radius: 20px;
     text-decoration: none;
@@ -983,15 +1012,15 @@ body.eschool-body, body {
 
 .es-notice-filter-btn:hover,
 .es-notice-filter-btn.active {
-    background: #10B981;
-    border-color: #10B981;
+    background: #687F65;
+    border-color: #687F65;
     color: #FFFFFF !important;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 4px 12px rgba(104, 127, 101, 0.25);
 }
 
 .es-notice-spotlight {
-    background: linear-gradient(145deg, #ECFDF5 0%, #D1FAE5 100%);
-    border: 2px solid #A7F3D0;
+    background: #E5E8CE;
+    border: 1.5px solid #D2D9C5;
     border-radius: 18px;
     padding: 24px 18px;
     display: flex;
@@ -1000,19 +1029,19 @@ body.eschool-body, body {
     text-align: center;
     height: 100%;
     justify-content: center;
-    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.12);
+    box-shadow: 0 8px 24px rgba(38, 59, 45, 0.06);
 }
 
 .es-notice-spotlight-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    background: #687F65;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+    box-shadow: 0 6px 18px rgba(104, 127, 101, 0.3);
     margin-bottom: 12px;
     animation: esPulse 3s infinite;
 }
@@ -1020,13 +1049,13 @@ body.eschool-body, body {
 .es-notice-spotlight-title {
     font-size: 1.15rem;
     font-weight: 800;
-    color: #064E3B;
+    color: #263B2D;
     margin-bottom: 4px;
 }
 
 .es-notice-spotlight-sub {
     font-size: 0.76rem;
-    color: #047857;
+    color: #657565;
     margin-bottom: 14px;
     line-height: 1.4;
 }
@@ -1034,9 +1063,9 @@ body.eschool-body, body {
 .es-notice-spotlight-btn {
     font-size: 0.78rem;
     font-weight: 700;
-    background: #FFFFFF;
-    color: #059669 !important;
-    border: 1.5px solid #10B981;
+    background: #687F65;
+    color: #FFFFFF !important;
+    border: 1.5px solid #687F65;
     border-radius: 20px;
     padding: 7px 16px;
     text-decoration: none;
@@ -1048,10 +1077,11 @@ body.eschool-body, body {
 }
 
 .es-notice-spotlight-btn:hover {
-    background: #10B981;
+    background: #566a54;
+    border-color: #566a54;
     color: #FFFFFF !important;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 6px 16px rgba(104, 127, 101, 0.3);
 }
 
 /* Notice Row Folder File Design with Scroll Reveal */
@@ -1062,9 +1092,9 @@ body.eschool-body, body {
     padding: 18px 20px;
     border-radius: 16px;
     background: #FFFFFF;
-    border: 1.5px solid #E8ECF4;
+    border: 1.5px solid #D2D9C5;
     margin-bottom: 14px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 2px 8px rgba(38, 59, 45, 0.04);
     position: relative;
     opacity: 0;
     transform: translateX(-24px);
@@ -1079,9 +1109,9 @@ body.eschool-body, body {
 
 .es-notice-row-smart:hover {
     transform: translateX(12px) translateY(-3px) !important;
-    background: linear-gradient(90deg, #F0FDF4 0%, #FFFFFF 100%);
-    border-color: #10B981;
-    box-shadow: 0 16px 36px rgba(16, 185, 129, 0.18), 0 4px 12px rgba(0, 0, 0, 0.04);
+    background: #E5E8CE;
+    border-color: #687F65;
+    box-shadow: 0 16px 36px rgba(104, 127, 101, 0.18), 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .es-notice-row-smart:last-child {
@@ -1091,15 +1121,15 @@ body.eschool-body, body {
 .es-notice-row-urgent,
 .es-notice-row-new,
 .es-notice-row-info {
-    border-left: 1.5px solid #E8ECF4;
+    border-left: 1.5px solid #D2D9C5;
 }
 
 .es-notice-date-box {
     width: 54px;
     height: 54px;
     border-radius: 14px;
-    background: #F8FAFC;
-    border: 1.5px solid #E2E8F0;
+    background: #E5E8CE;
+    border: 1.5px solid #D2D9C5;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1111,9 +1141,9 @@ body.eschool-body, body {
 
 .es-notice-row-smart:hover .es-notice-date-box {
     transform: scale(1.12) rotate(-4deg);
-    border-color: #10B981;
-    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
-    background: #10B981;
+    border-color: #687F65;
+    box-shadow: 0 6px 18px rgba(104, 127, 101, 0.35);
+    background: #687F65;
 }
 
 .es-notice-row-smart:hover .es-notice-date-box .day,
@@ -1123,31 +1153,21 @@ body.eschool-body, body {
 
 .es-notice-row-smart:hover .es-notice-action-link {
     transform: translateX(8px);
-    color: #059669;
+    color: #FFFFFF;
 }
 
 .es-notice-date-box .day {
     font-size: 1.25rem;
     font-weight: 800;
-    color: #1E293B;
+    color: #263B2D;
 }
 
 .es-notice-date-box .month {
     font-size: 0.68rem;
     font-weight: 700;
-    color: #64748B;
+    color: #657565;
     text-transform: uppercase;
     margin-top: 2px;
-}
-
-.es-notice-row-smart:hover .es-notice-date-box {
-    background: var(--row-accent, #10B981);
-    border-color: var(--row-accent, #10B981);
-}
-
-.es-notice-row-smart:hover .es-notice-date-box .day,
-.es-notice-row-smart:hover .es-notice-date-box .month {
-    color: #FFFFFF;
 }
 
 .es-notice-content {
@@ -1158,14 +1178,14 @@ body.eschool-body, body {
 .es-notice-content h5 {
     font-size: 0.98rem;
     font-weight: 700;
-    color: #151D35;
+    color: #263B2D;
     margin: 0 0 4px 0;
     line-height: 1.35;
 }
 
 .es-notice-desc {
     font-size: 0.8rem;
-    color: #64748B;
+    color: #657565;
     margin: 0;
     line-height: 1.4;
     white-space: nowrap;
@@ -1173,53 +1193,52 @@ body.eschool-body, body {
     text-overflow: ellipsis;
 }
 
-.es-badge {
-    font-size: 0.78rem;
-    font-weight: 800;
-    padding: 5px 14px;
-    border-radius: 30px;
-    white-space: nowrap;
-    letter-spacing: 0.4px;
-}
-
-.es-badge-urgent {
-    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-    color: #FFFFFF;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
-}
-
-.es-badge-new {
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    color: #FFFFFF;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
-}
-
-.es-badge-info {
-    background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
-    color: #FFFFFF;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
-}
-
 .es-notice-action-link {
     font-size: 0.82rem;
     font-weight: 700;
-    color: var(--row-accent, #10B981);
+    color: #687F65;
     display: inline-flex;
     align-items: center;
     gap: 4px;
     text-decoration: none;
     padding: 6px 14px;
     border-radius: 20px;
-    background: #F1F5F9;
+    background: #E5E8CE;
+    border: 1px solid #D2D9C5;
     transition: all 0.2s ease;
     white-space: nowrap;
 }
 
 .es-notice-row-smart:hover .es-notice-action-link {
-    background: var(--row-accent, #10B981);
+    background: #687F65;
+    border-color: #687F65;
     color: #FFFFFF;
     transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(104, 127, 101, 0.25);
+}
+
+.es-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+}
+
+.es-badge-info,
+.es-badge-new {
+    background: #E5E8CE;
+    color: #263B2D;
+    border: 1px solid #D2D9C5;
+}
+
+.es-badge-urgent {
+    background: #FEE2E2;
+    color: #991B1B;
+    border: 1px solid #FECACA;
 }
 
 /* ==========================================================================
@@ -1241,8 +1260,8 @@ body.eschool-body, body {
     transform: scale(0.88);
     border-radius: 36px;
     background: #FFFFFF;
-    border: 1.5px solid rgba(139, 92, 246, 0.22);
-    box-shadow: 0 24px 50px rgba(139, 92, 246, 0.10), 0 8px 24px rgba(0, 0, 0, 0.04);
+    border: 1.5px solid #D2D9C5;
+    box-shadow: 0 24px 50px rgba(38, 59, 45, 0.08), 0 8px 24px rgba(0, 0, 0, 0.04);
     padding: 30px;
     transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.08s ease, box-shadow 0.08s ease;
     will-change: transform, border-radius, box-shadow;
@@ -1268,7 +1287,7 @@ body.eschool-body, body {
     width: 340px;
     height: 340px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(104, 127, 101, 0.16) 0%, rgba(210, 217, 197, 0.05) 50%, transparent 70%);
     transform: translate3d(var(--decor-x, 0px), var(--decor-y, 0px), 0) scale(var(--decor-zoom, 1.0));
     will-change: transform;
     transition: transform 0.1s ease-out;
@@ -1282,7 +1301,7 @@ body.eschool-body, body {
     width: 280px;
     height: 280px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.14) 0%, rgba(139, 92, 246, 0.04) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(104, 127, 101, 0.14) 0%, rgba(210, 217, 197, 0.04) 50%, transparent 70%);
     transform: translate3d(var(--decor2-x, 0px), var(--decor2-y, 0px), 0) scale(var(--decor-zoom, 1.0));
     will-change: transform;
     transition: transform 0.1s ease-out;
@@ -1315,9 +1334,9 @@ body.eschool-body, body {
 .es-team-filter-btn {
     font-size: 0.8rem;
     font-weight: 700;
-    color: #475569;
-    background: #FFFFFF;
-    border: 1.5px solid #E2E8F0;
+    color: #263B2D;
+    background: #F1F2E8;
+    border: 1.5px solid #D2D9C5;
     padding: 6px 16px;
     border-radius: 20px;
     cursor: pointer;
@@ -1326,10 +1345,10 @@ body.eschool-body, body {
 
 .es-team-filter-btn:hover,
 .es-team-filter-btn.active {
-    background: #10B981;
-    border-color: #10B981;
+    background: #687F65;
+    border-color: #687F65;
     color: #FFFFFF !important;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 4px 12px rgba(104, 127, 101, 0.25);
 }
 
 .es-team-row {
@@ -1343,7 +1362,7 @@ body.eschool-body, body {
    Smart Category Feature Cards (Our Teachers & Our Management)
    ========================================================================== */
 .es-label-card-teachers {
-    background: linear-gradient(145deg, #10B981 0%, #059669 100%);
+    background: #687F65;
     color: #FFFFFF !important;
     border-radius: 20px;
     padding: 20px 16px 16px;
@@ -1352,7 +1371,7 @@ body.eschool-body, body {
     justify-content: space-between;
     height: 100%;
     text-decoration: none;
-    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.28);
+    box-shadow: 0 10px 25px rgba(104, 127, 101, 0.3);
     border: 1.5px solid rgba(255, 255, 255, 0.35);
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
@@ -1374,7 +1393,7 @@ body.eschool-body, body {
 
 .es-label-card-teachers:hover {
     transform: translateY(-10px);
-    box-shadow: 0 22px 46px rgba(16, 185, 129, 0.48);
+    box-shadow: 0 22px 46px rgba(104, 127, 101, 0.45);
     border-color: rgba(255, 255, 255, 0.7);
 }
 
@@ -1383,8 +1402,8 @@ body.eschool-body, body {
 }
 
 .es-label-card-mgmt {
-    background: linear-gradient(145deg, #F0FDF4 0%, #E6FBF0 100%);
-    color: #065F46 !important;
+    background: #F1F2E8;
+    color: #263B2D !important;
     border-radius: 20px;
     padding: 20px 16px 16px;
     display: flex;
@@ -1392,8 +1411,8 @@ body.eschool-body, body {
     justify-content: space-between;
     height: 100%;
     text-decoration: none;
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.1);
-    border: 1.5px solid #A7F3D0;
+    box-shadow: 0 6px 20px rgba(38, 59, 45, 0.06);
+    border: 1.5px solid #D2D9C5;
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     overflow: hidden;
@@ -1407,15 +1426,15 @@ body.eschool-body, body {
     width: 95px;
     height: 95px;
     border-radius: 50%;
-    background: rgba(16, 185, 129, 0.08);
+    background: rgba(104, 127, 101, 0.08);
     pointer-events: none;
     transition: transform 0.4s ease;
 }
 
 .es-label-card-mgmt:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 42px rgba(16, 185, 129, 0.22);
-    border-color: #10B981;
+    box-shadow: 0 20px 42px rgba(104, 127, 101, 0.22);
+    border-color: #687F65;
     background: #FFFFFF;
 }
 
@@ -1448,9 +1467,9 @@ body.eschool-body, body {
 }
 
 .es-label-card-mgmt .es-label-icon-pod {
-    background: rgba(16, 185, 129, 0.14);
-    color: #10B981;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
+    background: #E5E8CE;
+    color: #687F65;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .es-label-card-teachers:hover .es-label-icon-pod {
@@ -1461,9 +1480,9 @@ body.eschool-body, body {
 
 .es-label-card-mgmt:hover .es-label-icon-pod {
     transform: scale(1.12) rotate(-6deg);
-    background: #10B981;
+    background: #687F65;
     color: #FFFFFF;
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 6px 16px rgba(104, 127, 101, 0.3);
 }
 
 .es-label-chip {
@@ -1481,9 +1500,9 @@ body.eschool-body, body {
 }
 
 .es-label-card-mgmt .es-label-chip {
-    background: #DCFCE7;
-    color: #047857;
-    border: 1px solid #86EFAC;
+    background: #E5E8CE;
+    color: #263B2D;
+    border: 1px solid #D2D9C5;
 }
 
 .es-label-card-center {
@@ -1505,7 +1524,7 @@ body.eschool-body, body {
 }
 
 .es-label-card-mgmt .es-label-sub {
-    color: #059669;
+    color: #657565;
 }
 
 .es-label-title {
@@ -1520,7 +1539,7 @@ body.eschool-body, body {
 }
 
 .es-label-card-mgmt .es-label-title {
-    color: #064E3B;
+    color: #263B2D;
 }
 
 .es-label-card-bottom {
@@ -1533,7 +1552,7 @@ body.eschool-body, body {
 }
 
 .es-label-card-mgmt .es-label-card-bottom {
-    border-top-color: rgba(16, 185, 129, 0.15);
+    border-top-color: #D2D9C5;
 }
 
 .es-label-action-text {
@@ -1546,7 +1565,7 @@ body.eschool-body, body {
 }
 
 .es-label-card-mgmt .es-label-action-text {
-    color: #047857;
+    color: #687F65;
 }
 
 .es-label-action-arrow {
@@ -1561,11 +1580,11 @@ body.eschool-body, body {
 
 .es-label-card-teachers .es-label-action-arrow {
     background: #FFFFFF;
-    color: #059669;
+    color: #687F65;
 }
 
 .es-label-card-mgmt .es-label-action-arrow {
-    background: #10B981;
+    background: #687F65;
     color: #FFFFFF;
 }
 
@@ -1576,14 +1595,14 @@ body.eschool-body, body {
 
 .es-label-card-mgmt:hover .es-label-action-arrow {
     transform: translate(3px, -3px) scale(1.15);
-    background: #059669;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+    background: #566a54;
+    box-shadow: 0 4px 12px rgba(104, 127, 101, 0.35);
 }
 
 /* Person Profile Cards (Smart Elevating Cards) */
 .es-person-card {
     background: #FFFFFF;
-    border: 1.5px solid #E8ECF4;
+    border: 1.5px solid #D2D9C5;
     border-radius: 20px;
     padding: 18px 12px 14px;
     display: flex;
@@ -1599,8 +1618,8 @@ body.eschool-body, body {
 
 .es-person-card:hover {
     transform: translateY(-10px);
-    border-color: #10B981;
-    box-shadow: 0 20px 42px rgba(16, 185, 129, 0.18), 0 4px 12px rgba(0, 0, 0, 0.04);
+    border-color: #687F65;
+    box-shadow: 0 20px 42px rgba(104, 127, 101, 0.18), 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .es-person-card::before {
@@ -1616,8 +1635,8 @@ body.eschool-body, body {
     width: 82px;
     height: 82px;
     border-radius: 18px;
-    border: 2.5px solid #E2E8F0;
-    background-color: #EBF0F7;
+    border: 2.5px solid #D2D9C5;
+    background-color: #F1F2E8;
     background-size: cover;
     background-position: center top;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
@@ -1627,8 +1646,8 @@ body.eschool-body, body {
 
 .es-person-card:hover .es-avatar {
     transform: scale(1.08);
-    border-color: #10B981;
-    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+    border-color: #687F65;
+    box-shadow: 0 0 0 4px rgba(104, 127, 101, 0.2);
 }
 
 .es-verified-dot {
@@ -1637,7 +1656,7 @@ body.eschool-body, body {
     right: -3px;
     width: 20px;
     height: 20px;
-    background: #10B981;
+    background: #687F65;
     border: 2px solid #FFFFFF;
     border-radius: 50%;
     color: #FFFFFF;
@@ -1656,7 +1675,7 @@ body.eschool-body, body {
 .es-person-name {
     font-size: 0.92rem;
     font-weight: 800;
-    color: #151D35;
+    color: #263B2D;
     margin: 0 0 4px 0;
     line-height: 1.3;
     white-space: nowrap;
@@ -1667,7 +1686,7 @@ body.eschool-body, body {
 }
 
 .es-person-card:hover .es-person-name {
-    color: #10B981;
+    color: #687F65;
 }
 
 .es-person-tag {
@@ -1678,20 +1697,20 @@ body.eschool-body, body {
     white-space: nowrap;
     display: inline-block;
     margin-bottom: 4px;
-    background: #ECFDF5;
-    color: #047857;
-    border: 1px solid #A7F3D0;
+    background: #F1F2E8;
+    color: #263B2D;
+    border: 1px solid #D2D9C5;
     transition: all 0.25s ease;
 }
 
 .es-person-card:hover .es-person-tag {
     transform: translateY(-2px);
-    box-shadow: 0 3px 8px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 3px 8px rgba(104, 127, 101, 0.2);
 }
 
 .es-person-sub {
     font-size: 0.74rem;
-    color: #64748B;
+    color: #657565;
     margin: 0;
     font-weight: 500;
     white-space: nowrap;
@@ -1700,8 +1719,8 @@ body.eschool-body, body {
 .es-card-quick-link {
     font-size: 0.76rem;
     font-weight: 700;
-    color: #10B981;
-    background: #ECFDF5;
+    color: #687F65;
+    background: #F1F2E8;
     padding: 4px 14px;
     border-radius: 20px;
     text-decoration: none;
@@ -1710,32 +1729,32 @@ body.eschool-body, body {
     gap: 4px;
     margin-top: 8px;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid #A7F3D0;
+    border: 1px solid #D2D9C5;
 }
 
 .es-person-card:hover .es-card-quick-link {
-    background: #10B981;
+    background: #687F65;
     color: #FFFFFF;
-    border-color: #10B981;
+    border-color: #687F65;
     transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.32);
+    box-shadow: 0 4px 14px rgba(104, 127, 101, 0.32);
 }
 
-.tag-math   { background: #D1FAE5; color: #047857; border: 1px solid #6EE7B7; }
-.tag-eng    { background: #EDE9FE; color: #6D28D9; border: 1px solid #C4B5FD; }
-.tag-ict    { background: #DBEAFE; color: #1D4ED8; border: 1px solid #93C5FD; }
-.tag-lead   { background: #FEF3C7; color: #B45309; border: 1px solid #FCD34D; }
-.tag-vp     { background: #FCE7F3; color: #BE185D; border: 1px solid #F9A8D4; }
+.tag-math   { background: #F1F2E8; color: #263B2D; border: 1px solid #D2D9C5; }
+.tag-eng    { background: #F1F2E8; color: #263B2D; border: 1px solid #D2D9C5; }
+.tag-ict    { background: #F1F2E8; color: #263B2D; border: 1px solid #D2D9C5; }
+.tag-lead   { background: #E5E8CE; color: #263B2D; border: 1px solid #D2D9C5; }
+.tag-vp     { background: #E5E8CE; color: #263B2D; border: 1px solid #D2D9C5; }
 
 /* ==========================================================================
    7. NEXT EVENT SECTION
    ========================================================================= */
 .es-event-info-card {
     background: #FFFFFF;
-    border: 2px solid rgba(16, 185, 129, 0.25);
+    border: 1.5px solid #D2D9C5;
     border-radius: 20px;
     padding: 32px;
-    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.1);
+    box-shadow: 0 12px 35px rgba(38, 59, 45, 0.06);
     height: 100%;
     position: relative;
     overflow: hidden;
@@ -1745,27 +1764,27 @@ body.eschool-body, body {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: #FEF3C7;
-    color: #B45309;
-    border: 1.5px solid #F59E0B;
+    background: #F1F2E8;
+    color: #263B2D;
+    border: 1.5px solid #D2D9C5;
     font-size: 0.78rem;
     font-weight: 800;
     padding: 5px 14px;
     border-radius: 30px;
     margin-bottom: 16px;
-    box-shadow: 0 3px 10px rgba(245, 158, 11, 0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
 }
 
 .es-live-dot {
     width: 9px;
     height: 9px;
-    background: #EF4444;
+    background: #687F65;
     border-radius: 50%;
     animation: esPulse 1.2s infinite;
 }
 
 .es-event-date-badge {
-    background: var(--es-grad-primary);
+    background: #687F65;
     color: #FFFFFF;
     border-radius: 14px;
     padding: 12px 20px;
@@ -1774,7 +1793,7 @@ body.eschool-body, body {
     align-items: center;
     line-height: 1.1;
     margin-bottom: 20px;
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 8px 20px rgba(104, 127, 101, 0.35);
 }
 
 .es-event-date-badge .day {
@@ -1791,14 +1810,14 @@ body.eschool-body, body {
 .es-event-title {
     font-size: 1.45rem;
     font-weight: 900;
-    color: var(--es-dark);
+    color: #263B2D;
     margin-bottom: 18px;
     line-height: 1.35;
 }
 
 .es-event-meta {
     font-size: 0.92rem;
-    color: var(--es-body);
+    color: #657565;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -1809,17 +1828,17 @@ body.eschool-body, body {
     width: 34px;
     height: 34px;
     border-radius: 10px;
-    background: var(--es-green-light);
-    border: 1.5px solid #A7F3D0;
+    background: #F1F2E8;
+    border: 1.5px solid #D2D9C5;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--es-green);
+    color: #687F65;
     flex-shrink: 0;
 }
 
 .btn-es-register {
-    background: var(--es-grad-primary);
+    background: #687F65;
     color: #FFFFFF !important;
     border: none;
     border-radius: 30px;
@@ -1831,14 +1850,15 @@ body.eschool-body, body {
     align-items: center;
     gap: 8px;
     margin-top: 16px;
-    box-shadow: 0 8px 22px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 8px 22px rgba(104, 127, 101, 0.35);
     transition: all 0.25s ease;
 }
 
 .btn-es-register:hover {
+    background: #566a54;
     color: #FFFFFF !important;
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(16, 185, 129, 0.55);
+    box-shadow: 0 12px 28px rgba(104, 127, 101, 0.5);
 }
 
 .es-event-photo {
@@ -1888,28 +1908,28 @@ body.eschool-body, body {
     background: #FFFFFF;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    border: 1.5px solid #E2E8F0;
+    box-shadow: 0 10px 25px rgba(38, 59, 45, 0.05);
+    border: 1.5px solid #D2D9C5;
     transition: all 0.3s ease;
 }
 
 .es-video-card:hover {
     transform: translateY(-8px);
-    border-color: #10B981;
-    box-shadow: 0 16px 36px rgba(16, 185, 129, 0.18);
+    border-color: #687F65;
+    box-shadow: 0 16px 36px rgba(104, 127, 101, 0.2);
 }
 
 .es-video-card-1,
 .es-video-card-2,
 .es-video-card-3 {
-    border: 1.5px solid #E2E8F0;
+    border: 1.5px solid #D2D9C5;
 }
 
 .es-video-thumb {
     position: relative;
     aspect-ratio: 16/9;
     overflow: hidden;
-    background-color: #151D35;
+    background-color: #173F35;
 }
 
 .es-video-thumb img {
@@ -1937,22 +1957,23 @@ body.eschool-body, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--video-accent, #10B981);
+    color: #687F65;
     box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.35), 0 8px 24px rgba(0, 0, 0, 0.3);
     transition: all 0.25s ease;
 }
 
 .es-video-card:hover .es-play-btn {
     transform: translate(-50%, -50%) scale(1.18);
-    background: var(--video-accent, #10B981);
+    background: #687F65;
     color: #FFFFFF;
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.5), 0 12px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.5), 0 12px 30px rgba(104, 127, 101, 0.4);
 }
 
 .es-video-chip {
     position: absolute;
     top: 12px;
     left: 12px;
+    background: #687F65 !important;
     color: #FFFFFF;
     font-size: 0.76rem;
     font-weight: 800;
@@ -1966,7 +1987,7 @@ body.eschool-body, body {
     position: absolute;
     bottom: 12px;
     right: 12px;
-    background: rgba(21, 29, 53, 0.9);
+    background: rgba(23, 63, 53, 0.9);
     backdrop-filter: blur(4px);
     color: #FFFFFF;
     font-size: 0.78rem;
@@ -1982,7 +2003,7 @@ body.eschool-body, body {
 .es-video-title {
     font-size: 1.05rem;
     font-weight: 800;
-    color: var(--es-dark);
+    color: #263B2D;
     margin: 0 0 6px 0;
     white-space: nowrap;
     overflow: hidden;
@@ -1992,7 +2013,7 @@ body.eschool-body, body {
 .es-video-sub {
     font-size: 0.86rem;
     font-weight: 500;
-    color: #64748B;
+    color: #657565;
     margin: 0;
     display: flex;
     align-items: center;
@@ -2006,14 +2027,14 @@ body.eschool-body, body {
     background: #FFFFFF;
     border-radius: 22px;
     padding: 34px 38px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 10px 30px rgba(38, 59, 45, 0.05);
     display: flex;
     align-items: center;
     gap: 32px;
     flex-wrap: wrap;
     position: relative;
     overflow: hidden;
-    border: 1.5px solid #E2E8F0;
+    border: 1.5px solid #D2D9C5;
 }
 
 .es-result-label {
@@ -2027,26 +2048,26 @@ body.eschool-body, body {
 .es-result-icon {
     width: 58px;
     height: 58px;
-    background: var(--es-grad-primary);
+    background: #687F65;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+    box-shadow: 0 8px 20px rgba(104, 127, 101, 0.35);
 }
 
 .es-result-text-main {
     font-size: 1.25rem;
     font-weight: 900;
-    color: var(--es-dark);
+    color: #263B2D;
     line-height: 1.2;
 }
 
 .es-result-text-sub {
     font-size: 0.82rem;
     font-weight: 600;
-    color: #64748B;
+    color: #657565;
 }
 
 .es-result-form {
@@ -2058,13 +2079,13 @@ body.eschool-body, body {
 }
 
 .es-form-select, .es-form-input {
-    border: 2px solid #CBD5E1;
+    border: 2px solid #D2D9C5;
     border-radius: 14px;
     padding: 13px 18px;
     font-size: 0.94rem;
     font-family: 'Poppins', sans-serif;
-    color: var(--es-dark);
-    background-color: #F8FAFC;
+    color: #263B2D;
+    background-color: #F1F2E8;
     outline: none;
     transition: all 0.25s ease;
     flex: 1;
@@ -2072,13 +2093,13 @@ body.eschool-body, body {
 }
 
 .es-form-select:focus, .es-form-input:focus {
-    border-color: #10B981;
+    border-color: #687F65;
     background-color: #FFFFFF;
-    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 0 0 4px rgba(104, 127, 101, 0.25);
 }
 
 .btn-es-result {
-    background: var(--es-grad-primary);
+    background: #687F65;
     color: #FFFFFF;
     border: none;
     border-radius: 14px;
@@ -2091,14 +2112,15 @@ body.eschool-body, body {
     gap: 8px;
     white-space: nowrap;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 8px 24px rgba(104, 127, 101, 0.35);
     transition: all 0.25s ease;
 }
 
 .btn-es-result:hover {
+    background: #566a54;
     color: #FFFFFF;
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(16, 185, 129, 0.55);
+    box-shadow: 0 12px 30px rgba(104, 127, 101, 0.45);
 }
 
 .es-result-chips-row {
@@ -2118,10 +2140,16 @@ body.eschool-body, body {
     padding: 4px 14px;
     border-radius: 20px;
     text-decoration: none;
+    background: #F1F2E8;
+    border: 1px solid #D2D9C5;
+    color: #263B2D;
     transition: all 0.2s ease;
 }
 
 .es-result-chip:hover {
+    background: #687F65;
+    border-color: #687F65;
+    color: #FFFFFF !important;
     transform: translateY(-2px);
 }
 
@@ -2131,7 +2159,7 @@ body.eschool-body, body {
 .es-footer {
     position: relative;
     z-index: 10;
-    background: linear-gradient(180deg, #151D35 0%, #0B1021 100%);
+    background: linear-gradient(180deg, #1C2B21 0%, #152019 100%);
     padding: 72px 0 0;
     color: rgba(255, 255, 255, 0.7);
     overflow: hidden;
@@ -2145,15 +2173,15 @@ body.eschool-body, body {
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, #10B981, #06B6D4, #3B82F6, #8B5CF6, #EC4899, #10B981);
-    background-size: 300% 100%;
+    background: linear-gradient(90deg, #687F65, #D2D9C5, #687F65);
+    background-size: 200% 100%;
     animation: esFooterLineGlow 6s linear infinite;
     z-index: 2;
 }
 
 @keyframes esFooterLineGlow {
     0% { background-position: 0% 50%; }
-    100% { background-position: 300% 50%; }
+    100% { background-position: 200% 50%; }
 }
 
 /* Footer Columns Scroll-Triggered Reveal */
@@ -2181,7 +2209,7 @@ body.eschool-body, body {
     display: block;
     width: 32px;
     height: 3.5px;
-    background: var(--es-grad-rainbow);
+    background: linear-gradient(90deg, #687F65, #D2D9C5);
     border-radius: 3px;
     margin-top: 8px;
 }
@@ -2196,7 +2224,7 @@ body.eschool-body, body {
 }
 
 .es-footer-links a {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.72);
     text-decoration: none;
     font-size: 0.92rem;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2206,7 +2234,7 @@ body.eschool-body, body {
 }
 
 .es-footer-links a:hover {
-    color: #34D399;
+    color: #D2D9C5;
     transform: translateX(8px);
 }
 
@@ -2215,7 +2243,7 @@ body.eschool-body, body {
     height: 42px;
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.08);
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border: 1.5px solid rgba(210, 217, 197, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2225,11 +2253,11 @@ body.eschool-body, body {
 }
 
 .es-social-btn:hover {
-    background: var(--es-grad-primary);
-    border-color: #10B981;
+    background: #687F65;
+    border-color: #687F65;
     color: #FFFFFF !important;
     transform: translateY(-5px) scale(1.12) rotate(6deg);
-    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.45);
+    box-shadow: 0 10px 25px rgba(104, 127, 101, 0.45);
 }
 
 .es-footer .es-brand-icon {
@@ -2238,11 +2266,11 @@ body.eschool-body, body {
 
 .es-footer .es-brand-icon:hover {
     transform: scale(1.14) rotate(-8deg);
-    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.45);
+    box-shadow: 0 8px 24px rgba(104, 127, 101, 0.45);
 }
 
 .es-footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(210, 217, 197, 0.15);
     margin-top: 52px;
     padding: 24px 0;
     display: flex;
@@ -2251,7 +2279,7 @@ body.eschool-body, body {
     flex-wrap: wrap;
     gap: 14px;
     font-size: 0.88rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.55);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2263,12 +2291,12 @@ body.eschool-body, body {
 }
 
 .es-footer-bottom a {
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 255, 255, 0.65);
     text-decoration: none;
 }
 
 .es-footer-bottom a:hover {
-    color: #34D399;
+    color: #D2D9C5;
 }
 
 /* ==========================================================================
@@ -2327,4 +2355,27 @@ body.eschool-body, body {
     .es-person-card, .es-label-card-teachers, .es-label-card-mgmt { padding: 14px 8px; }
     .es-avatar { width: 68px; height: 68px; }
     .es-notice-card, .es-result-card { padding: 22px 16px; }
+}
+
+/* ==========================================================================
+   12. SAGE THEMED GLOBAL CARDS, HEADERS & FOOTERS
+   ========================================================================== */
+.card {
+    background-color: #FFFFFF;
+    border: 1px solid #D2D9C5;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(38, 59, 45, 0.04);
+}
+
+.card-header {
+    background-color: #F1F2E8;
+    border-bottom: 1px solid #D2D9C5;
+    color: #263B2D;
+    font-weight: 700;
+}
+
+.card-footer {
+    background-color: #F1F2E8;
+    border-top: 1px solid #D2D9C5;
+    color: #657565;
 }
