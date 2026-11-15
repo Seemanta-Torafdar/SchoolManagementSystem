@@ -109,7 +109,7 @@
 
             card.style.transform = `scale(${currentScale})`;
             card.style.borderRadius = `${currentRadius}px`;
-            card.style.boxShadow = `0 ${shadowY}px ${shadowBlur}px rgba(38, 59, 45, ${shadowAlpha}), 0 4px 16px rgba(0, 0, 0, 0.04)`;
+            card.style.boxShadow = `0 ${shadowY}px ${shadowBlur}px rgba(28, 43, 33, ${shadowAlpha}), 0 4px 16px rgba(28, 43, 33, 0.05)`;
 
             // Parallax banner image sync
             const bannerImg = card.querySelector('[data-parallax="img"], .gp-img');
@@ -193,7 +193,7 @@
 
             card.style.transform = `scale(${currentScale})`;
             card.style.borderRadius = `${currentRadius}px`;
-            card.style.boxShadow = `0 ${shadowY}px ${shadowBlur}px rgba(38, 59, 45, ${shadowAlpha}), 0 4px 16px rgba(0, 0, 0, 0.04)`;
+            card.style.boxShadow = `0 ${shadowY}px ${shadowBlur}px rgba(28, 43, 33, ${shadowAlpha}), 0 4px 16px rgba(28, 43, 33, 0.05)`;
 
             // Subtle parallax float and zoom on background decorative elements
             const decor = card.querySelector('#teachersBgDecor');
