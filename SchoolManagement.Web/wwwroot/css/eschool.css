@@ -804,13 +804,39 @@ body.eschool-body, body {
 }
 
 /* ==========================================================================
+   UNIFIED SHOWCASE ZONE (Notice, Teacher, Next Event, Class Videos, Result)
+   Single continuous Pale Sage Ivory surface (#EAEFE1) with zero lines/seams
+   ========================================================================== */
+.es-unified-showcase-zone,
+.es-unified-academic-zone,
+section:has(.es-notice-card),
+section:has(.es-teachers-expand-card),
+section:has(.es-event-info-card),
+section:has(.es-video-card),
+section:has(.es-result-card),
+#notice-section,
+#teachers-section,
+#event-section,
+#videos-section,
+#result-section {
+    background: #EAEFE1 !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: relative;
+}
+
+/* ==========================================================================
    5. NOTICE SECTION (Smart & Attractive Announcement Hub)
    ========================================================================== */
 #notice-section {
-    background: linear-gradient(180deg, #EAEFE1 0%, #DFE5D0 100%);
-    border-top: 1.5px solid #D2D9C5;
-    border-bottom: none;
-    position: relative;
+    padding-bottom: 20px;
 }
 
 #notice-section .es-section-title {
@@ -1266,10 +1292,15 @@ body.eschool-body, body {
    6. TEACHER & MANAGEMENT SECTION (Smart, Ultra-Elevated Cards)
    ========================================================================== */
 #teachers-section {
-    background: #FFFFFF;
-    border: none;
+    background: #EAEFE1 !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    outline: none !important;
     position: relative;
-    padding: 72px 0 64px;
+    padding-top: 10px;
+    padding-bottom: 60px;
 }
 
 #teachers-section .es-section-title {
@@ -1303,9 +1334,9 @@ body.eschool-body, body {
     transform-origin: center top;
     transform: scale(0.88);
     border-radius: 36px;
-    background: #FFFFFF !important;
-    border: 1px solid rgba(210, 217, 197, 0.5) !important;
-    box-shadow: 0 20px 50px rgba(28, 43, 33, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03);
+    background: #F1F2E8 !important;
+    border: 2px solid #1C2B21 !important;
+    box-shadow: 0 24px 50px rgba(28, 43, 33, 0.12), 0 8px 24px rgba(28, 43, 33, 0.05);
     padding: 30px;
     transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.08s ease, box-shadow 0.08s ease;
     will-change: transform, border-radius, box-shadow;
@@ -1314,7 +1345,7 @@ body.eschool-body, body {
 }
 
 .es-teachers-expand-card:hover {
-    border-color: rgba(104, 127, 101, 0.5);
+    border-color: #1C2B21;
 }
 
 /* Subtle decorative parallax floating backdrop elements */
@@ -1796,24 +1827,62 @@ body.eschool-body, body {
 .tag-vp     { background: #E5E8CE; color: #263B2D; border: 1px solid #D2D9C5; }
 
 /* ==========================================================================
-   7. NEXT EVENT SECTION
+   7. NEXT EVENT SECTION (Seamless Showcase Hub)
    ========================================================================= */
+section:has(.es-event-info-card),
+#event-section {
+    background: #EAEFE1 !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 24px;
+}
+
+section:has(.es-event-info-card) .es-section-title,
+#event-section .es-section-title {
+    color: #263B2D !important;
+}
+
+section:has(.es-event-info-card) .es-view-all,
+#event-section .es-view-all {
+    background: #FFFFFF !important;
+    color: #263B2D !important;
+    border: 1.5px solid #D2D9C5 !important;
+}
+
+section:has(.es-event-info-card) .es-view-all:hover,
+#event-section .es-view-all:hover {
+    background: #1C2B21 !important;
+    border-color: #1C2B21 !important;
+    color: #FFFFFF !important;
+}
+
 .es-event-info-card {
-    background: #FFFFFF;
-    border: 1.5px solid #D2D9C5;
-    border-radius: 20px;
+    background: #F1F2E8 !important;
+    border: 2px solid #1C2B21 !important;
+    border-radius: 28px;
     padding: 32px;
-    box-shadow: 0 12px 35px rgba(38, 59, 45, 0.06);
+    box-shadow: 0 20px 48px rgba(28, 43, 33, 0.12), 0 6px 18px rgba(28, 43, 33, 0.05);
     height: 100%;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.es-event-info-card:hover {
+    border-color: #1C2B21;
+    box-shadow: 0 24px 54px rgba(28, 43, 33, 0.18), 0 8px 20px rgba(28, 43, 33, 0.06);
 }
 
 .es-event-live-pill {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: #F1F2E8;
+    background: #FFFFFF;
     color: #263B2D;
     border: 1.5px solid #D2D9C5;
     font-size: 0.78rem;
@@ -1827,13 +1896,13 @@ body.eschool-body, body {
 .es-live-dot {
     width: 9px;
     height: 9px;
-    background: #687F65;
+    background: #10B981;
     border-radius: 50%;
     animation: esPulse 1.2s infinite;
 }
 
 .es-event-date-badge {
-    background: #687F65;
+    background: #1C2B21;
     color: #FFFFFF;
     border-radius: 14px;
     padding: 12px 20px;
@@ -1842,7 +1911,7 @@ body.eschool-body, body {
     align-items: center;
     line-height: 1.1;
     margin-bottom: 20px;
-    box-shadow: 0 8px 20px rgba(104, 127, 101, 0.35);
+    box-shadow: 0 8px 20px rgba(28, 43, 33, 0.35);
 }
 
 .es-event-date-badge .day {
@@ -1859,7 +1928,7 @@ body.eschool-body, body {
 .es-event-title {
     font-size: 1.45rem;
     font-weight: 900;
-    color: #263B2D;
+    color: #1C2B21;
     margin-bottom: 18px;
     line-height: 1.35;
 }
@@ -1877,17 +1946,17 @@ body.eschool-body, body {
     width: 34px;
     height: 34px;
     border-radius: 10px;
-    background: #F1F2E8;
+    background: #FFFFFF;
     border: 1.5px solid #D2D9C5;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #687F65;
+    color: #1C2B21;
     flex-shrink: 0;
 }
 
 .btn-es-register {
-    background: #687F65;
+    background: #1C2B21;
     color: #FFFFFF !important;
     border: none;
     border-radius: 30px;
@@ -1899,24 +1968,24 @@ body.eschool-body, body {
     align-items: center;
     gap: 8px;
     margin-top: 16px;
-    box-shadow: 0 8px 22px rgba(104, 127, 101, 0.35);
+    box-shadow: 0 8px 22px rgba(28, 43, 33, 0.35);
     transition: all 0.25s ease;
 }
 
 .btn-es-register:hover {
-    background: #566a54;
+    background: #263B2D;
     color: #FFFFFF !important;
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(104, 127, 101, 0.5);
+    box-shadow: 0 12px 28px rgba(28, 43, 33, 0.5);
 }
 
 .es-event-photo {
-    border-radius: 18px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 16px 36px rgba(28, 43, 33, 0.12);
     height: 100%;
     position: relative;
-    border: 2px solid #FFFFFF;
+    border: 2px solid #1C2B21 !important;
 }
 
 .es-event-photo img {
@@ -1946,32 +2015,80 @@ body.eschool-body, body {
 }
 
 /* ==========================================================================
-   8. CLASS VIDEOS SECTION (Clean Seamless Design)
+   8. CLASS VIDEOS SECTION (Seamless Academic Hub)
    ========================================================================== */
+section:has(.es-video-card),
+#videos-section {
+    background: #EAEFE1 !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+section:has(.es-video-card) .es-section-title,
+#videos-section .es-section-title {
+    color: #263B2D !important;
+}
+
+section:has(.es-video-card) .es-view-all,
+#videos-section .es-view-all {
+    background: #FFFFFF !important;
+    color: #263B2D !important;
+    border: 1.5px solid #D2D9C5 !important;
+}
+
+section:has(.es-video-card) .es-view-all:hover,
+#videos-section .es-view-all:hover {
+    background: #1C2B21 !important;
+    border-color: #1C2B21 !important;
+    color: #FFFFFF !important;
+}
+
 .es-bg-videos {
     background: transparent;
     border: none;
 }
 
-.es-video-card {
-    background: #FFFFFF;
-    border-radius: 20px;
+/* Videos Container Card (Matching Notice & Teacher Cards) */
+.es-videos-container-card {
+    background: #F1F2E8 !important;
+    border: 2px solid #1C2B21 !important;
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 20px 48px rgba(28, 43, 33, 0.12), 0 6px 18px rgba(28, 43, 33, 0.05);
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(38, 59, 45, 0.05);
-    border: 1.5px solid #D2D9C5;
+    transition: all 0.3s ease;
+}
+
+.es-videos-container-card:hover {
+    border-color: #1C2B21;
+    box-shadow: 0 24px 54px rgba(28, 43, 33, 0.18), 0 8px 20px rgba(28, 43, 33, 0.06);
+}
+
+.es-video-card {
+    background: #F1F2E8 !important;
+    border-radius: 20px !important;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(28, 43, 33, 0.08);
+    border: 2px solid #1C2B21 !important;
     transition: all 0.3s ease;
 }
 
 .es-video-card:hover {
-    transform: translateY(-8px);
-    border-color: #687F65;
-    box-shadow: 0 16px 36px rgba(104, 127, 101, 0.2);
+    transform: translateY(-5px);
+    border-color: #1C2B21 !important;
+    box-shadow: 0 18px 40px rgba(28, 43, 33, 0.18);
 }
 
 .es-video-card-1,
 .es-video-card-2,
 .es-video-card-3 {
-    border: 1.5px solid #D2D9C5;
+    border: 2px solid #1C2B21 !important;
 }
 
 .es-video-thumb {
@@ -2006,16 +2123,16 @@ body.eschool-body, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #687F65;
-    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.35), 0 8px 24px rgba(0, 0, 0, 0.3);
+    color: #1C2B21;
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
     transition: all 0.25s ease;
 }
 
 .es-video-card:hover .es-play-btn {
     transform: translate(-50%, -50%) scale(1.18);
-    background: #687F65;
+    background: #1C2B21;
     color: #FFFFFF;
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.5), 0 12px 30px rgba(104, 127, 101, 0.4);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.5), 0 12px 30px rgba(28, 43, 33, 0.4);
 }
 
 .es-video-chip {
@@ -2046,13 +2163,14 @@ body.eschool-body, body {
 }
 
 .es-video-body {
-    padding: 20px 22px;
+    padding: 18px 20px;
+    background: #F1F2E8 !important;
 }
 
 .es-video-title {
     font-size: 1.05rem;
     font-weight: 800;
-    color: #263B2D;
+    color: #1C2B21;
     margin: 0 0 6px 0;
     white-space: nowrap;
     overflow: hidden;
@@ -2072,18 +2190,56 @@ body.eschool-body, body {
 /* ==========================================================================
    9. RESULT SECTION (Clean Minimal Portal Widget)
    ========================================================================== */
+section:has(.es-result-card),
+#result-section {
+    background: #EAEFE1 !important;
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 64px;
+}
+
+section:has(.es-result-card) .es-section-title,
+#result-section .es-section-title {
+    color: #263B2D !important;
+}
+
+section:has(.es-result-card) .es-view-all,
+#result-section .es-view-all {
+    background: #FFFFFF !important;
+    color: #263B2D !important;
+    border: 1.5px solid #D2D9C5 !important;
+}
+
+section:has(.es-result-card) .es-view-all:hover,
+#result-section .es-view-all:hover {
+    background: #1C2B21 !important;
+    border-color: #1C2B21 !important;
+    color: #FFFFFF !important;
+}
+
 .es-result-card {
-    background: #FFFFFF;
-    border-radius: 22px;
+    background: #F1F2E8 !important;
+    border-radius: 28px;
     padding: 34px 38px;
-    box-shadow: 0 10px 30px rgba(38, 59, 45, 0.05);
+    box-shadow: 0 20px 48px rgba(28, 43, 33, 0.12), 0 6px 18px rgba(28, 43, 33, 0.05);
     display: flex;
     align-items: center;
     gap: 32px;
     flex-wrap: wrap;
     position: relative;
     overflow: hidden;
-    border: 1.5px solid #D2D9C5;
+    border: 2px solid #1C2B21 !important;
+    transition: all 0.3s ease;
+}
+
+.es-result-card:hover {
+    border-color: #1C2B21;
+    box-shadow: 0 24px 54px rgba(28, 43, 33, 0.18), 0 8px 20px rgba(28, 43, 33, 0.06);
 }
 
 .es-result-label {
@@ -2097,19 +2253,19 @@ body.eschool-body, body {
 .es-result-icon {
     width: 58px;
     height: 58px;
-    background: #687F65;
+    background: #1C2B21;
     border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    box-shadow: 0 8px 20px rgba(104, 127, 101, 0.35);
+    box-shadow: 0 8px 20px rgba(28, 43, 33, 0.3);
 }
 
 .es-result-text-main {
     font-size: 1.25rem;
     font-weight: 900;
-    color: #263B2D;
+    color: #1C2B21;
     line-height: 1.2;
 }
 
@@ -2133,8 +2289,8 @@ body.eschool-body, body {
     padding: 13px 18px;
     font-size: 0.94rem;
     font-family: 'Poppins', sans-serif;
-    color: #263B2D;
-    background-color: #F1F2E8;
+    color: #1C2B21;
+    background-color: #FFFFFF;
     outline: none;
     transition: all 0.25s ease;
     flex: 1;
@@ -2142,13 +2298,13 @@ body.eschool-body, body {
 }
 
 .es-form-select:focus, .es-form-input:focus {
-    border-color: #687F65;
+    border-color: #1C2B21;
     background-color: #FFFFFF;
-    box-shadow: 0 0 0 4px rgba(104, 127, 101, 0.25);
+    box-shadow: 0 0 0 4px rgba(28, 43, 33, 0.15);
 }
 
 .btn-es-result {
-    background: #687F65;
+    background: #1C2B21;
     color: #FFFFFF;
     border: none;
     border-radius: 14px;
@@ -2161,15 +2317,15 @@ body.eschool-body, body {
     gap: 8px;
     white-space: nowrap;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(104, 127, 101, 0.35);
+    box-shadow: 0 8px 24px rgba(28, 43, 33, 0.3);
     transition: all 0.25s ease;
 }
 
 .btn-es-result:hover {
-    background: #566a54;
+    background: #263B2D;
     color: #FFFFFF;
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(104, 127, 101, 0.45);
+    box-shadow: 0 12px 30px rgba(28, 43, 33, 0.4);
 }
 
 .es-result-chips-row {

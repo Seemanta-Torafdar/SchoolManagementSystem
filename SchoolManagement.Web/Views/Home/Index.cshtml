@@ -107,9 +107,14 @@
 </div>
 
 <!-- ==========================================================================
+     UNIFIED SHOWCASE ZONE (Notice + Teacher & Management)
+     ========================================================================== -->
+<div class="es-unified-showcase-zone">
+
+<!-- ==========================================================================
      2. NOTICE SECTION (Smart & Attractive Announcement Board)
      ========================================================================== -->
-<section class="es-section" id="notice-section">
+<section class="es-section pb-2" id="notice-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
@@ -256,7 +261,7 @@
 <!-- ==========================================================================
      3. TEACHER & MANAGEMENT SECTION
      ========================================================================== -->
-<section class="es-section" id="teachers-section" style="background: #FFFFFF; border: none; padding: 72px 0 64px;">
+<section class="es-section pt-2" id="teachers-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
@@ -272,7 +277,7 @@
 
         <!-- Scroll-Driven Expanding Card Stage for Faculty (NSU Motion Style) -->
         <div class="es-teachers-expand-stage" id="teachersExpandStage">
-            <div class="es-teachers-expand-card" id="teachersExpandCard" style="background: #FFFFFF !important; border: 1px solid rgba(210, 217, 197, 0.5) !important; box-shadow: 0 20px 50px rgba(28, 43, 33, 0.08);">
+            <div class="es-teachers-expand-card" id="teachersExpandCard">
                 <!-- Decorative Parallax Floating Backdrop -->
                 <div class="es-teachers-bg-decor" id="teachersBgDecor"></div>
 
@@ -403,7 +408,7 @@
 <!-- ==========================================================================
      4. NEXT EVENT SECTION
      ========================================================================== -->
-<section class="es-section pt-0" id="event-section">
+<section class="es-section py-2" id="event-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
@@ -495,7 +500,7 @@
 <!-- ==========================================================================
      5. CLASS VIDEOS SECTION
      ========================================================================== -->
-<section class="es-section">
+<section class="es-section pb-2" id="videos-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
@@ -509,64 +514,67 @@
             </div>
         </div>
 
-        <!-- 3 Class Video Cards -->
-        <div class="row g-4">
-            <!-- Video 1: Algebra - Class 10 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="es-video-card">
-                    <div class="es-video-thumb">
-                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80" 
-                             alt="Algebra Class 10" 
-                             loading="lazy" />
-                        <span class="es-video-chip" style="background:#10B981;">Mathematics</span>
-                        <button type="button" class="es-play-btn" data-bs-toggle="modal" data-bs-target="#videoPlayerModal" data-video-title="Algebra - Class 10 (Mathematics)" aria-label="Play Algebra Class 10">
-                            <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
-                        </button>
-                        <span class="es-duration-badge">18:24</span>
-                    </div>
-                    <div class="es-video-body">
-                        <h5 class="es-video-title">Algebra - Class 10</h5>
-                        <p class="es-video-sub mb-0 text-muted small">Chapter 4: Quadratic Equations &amp; Solutions</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Video 2: Human Digestive System -->
-            <div class="col-lg-4 col-md-6">
-                <div class="es-video-card">
-                    <div class="es-video-thumb">
-                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" 
-                             alt="Human Digestive System" 
-                             loading="lazy" />
-                        <span class="es-video-chip" style="background:#8B5CF6;">Biology</span>
-                        <button type="button" class="es-play-btn" data-bs-toggle="modal" data-bs-target="#videoPlayerModal" data-video-title="Human Digestive System (Biology)" aria-label="Play Human Digestive System">
-                            <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
-                        </button>
-                        <span class="es-duration-badge">22:10</span>
-                    </div>
-                    <div class="es-video-body">
-                        <h5 class="es-video-title">Human Digestive System</h5>
-                        <p class="es-video-sub mb-0 text-muted small">Chapter 2: Anatomy, Enzymes &amp; Metabolism</p>
+        <!-- Videos Container Card (Matching Notice & Teacher Cards) -->
+        <div class="es-videos-container-card">
+            <!-- 3 Class Video Cards -->
+            <div class="row g-4">
+                <!-- Video 1: Algebra - Class 10 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="es-video-card">
+                        <div class="es-video-thumb">
+                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Algebra Class 10" 
+                                 loading="lazy" />
+                            <span class="es-video-chip" style="background:#10B981;">Mathematics</span>
+                            <button type="button" class="es-play-btn" data-bs-toggle="modal" data-bs-target="#videoPlayerModal" data-video-title="Algebra - Class 10 (Mathematics)" aria-label="Play Algebra Class 10">
+                                <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
+                            </button>
+                            <span class="es-duration-badge">18:24</span>
+                        </div>
+                        <div class="es-video-body">
+                            <h5 class="es-video-title">Algebra - Class 10</h5>
+                            <p class="es-video-sub mb-0 text-muted small">Chapter 4: Quadratic Equations &amp; Solutions</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Video 3: Introduction to Programming -->
-            <div class="col-lg-4 col-md-6">
-                <div class="es-video-card">
-                    <div class="es-video-thumb">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" 
-                             alt="Introduction to Programming" 
-                             loading="lazy" />
-                        <span class="es-video-chip" style="background:#06B6D4;">ICT &amp; CS</span>
-                        <button type="button" class="es-play-btn" data-bs-toggle="modal" data-bs-target="#videoPlayerModal" data-video-title="Introduction to Programming (ICT)" aria-label="Play Introduction to Programming">
-                            <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
-                        </button>
-                        <span class="es-duration-badge">20:36</span>
+                <!-- Video 2: Human Digestive System -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="es-video-card">
+                        <div class="es-video-thumb">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Human Digestive System" 
+                                 loading="lazy" />
+                            <span class="es-video-chip" style="background:#8B5CF6;">Biology</span>
+                            <button type="button" class="es-play-btn" data-bs-toggle="modal" data-bs-target="#videoPlayerModal" data-video-title="Human Digestive System (Biology)" aria-label="Play Human Digestive System">
+                                <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
+                            </button>
+                            <span class="es-duration-badge">22:10</span>
+                        </div>
+                        <div class="es-video-body">
+                            <h5 class="es-video-title">Human Digestive System</h5>
+                            <p class="es-video-sub mb-0 text-muted small">Chapter 2: Anatomy, Enzymes &amp; Metabolism</p>
+                        </div>
                     </div>
-                    <div class="es-video-body">
-                        <h5 class="es-video-title">Introduction to Programming</h5>
-                        <p class="es-video-sub mb-0 text-muted small">Python Basics, Variables &amp; Logic Flow</p>
+                </div>
+
+                <!-- Video 3: Introduction to Programming -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="es-video-card">
+                        <div class="es-video-thumb">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Introduction to Programming" 
+                                 loading="lazy" />
+                            <span class="es-video-chip" style="background:#06B6D4;">ICT &amp; CS</span>
+                            <button type="button" class="es-play-btn" data-bs-toggle="modal" data-bs-target="#videoPlayerModal" data-video-title="Introduction to Programming (ICT)" aria-label="Play Introduction to Programming">
+                                <i data-lucide="play" style="width:20px;height:20px;fill:currentColor;margin-left:2px;"></i>
+                            </button>
+                            <span class="es-duration-badge">20:36</span>
+                        </div>
+                        <div class="es-video-body">
+                            <h5 class="es-video-title">Introduction to Programming</h5>
+                            <p class="es-video-sub mb-0 text-muted small">Python Basics, Variables &amp; Logic Flow</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -577,7 +585,7 @@
 <!-- ==========================================================================
      6. RESULT SECTION
      ========================================================================== -->
-<section class="es-section">
+<section class="es-section pt-2" id="result-section">
     <div class="container">
         <!-- Section Header -->
         <div class="es-section-header">
@@ -636,6 +644,7 @@
         </div>
     </div>
 </section>
+</div>
 
 <!-- Interactive Video Player Modal -->
 <div class="modal fade" id="videoPlayerModal" tabindex="-1" aria-labelledby="videoPlayerModalLabel" aria-hidden="true">

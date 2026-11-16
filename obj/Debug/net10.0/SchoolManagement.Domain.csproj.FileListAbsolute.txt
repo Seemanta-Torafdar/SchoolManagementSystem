@@ -1,0 +1,10 @@
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\bin\Debug\net10.0\SchoolManagement.Domain.dll
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\SchoolManagement.Domain.csproj.AssemblyReference.cache
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\SchoolManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\SchoolManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\SchoolManagement.Domain.AssemblyInfo.cs
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\SchoolManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\SchoolManagement.Domain.sourcelink.json
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\SchoolManagement.Domain.dll
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\refint\SchoolManagement.Domain.dll
+C:\Users\seema\OneDrive\Desktop\SCHOOL MANAGEMENT SYSTEM\obj\Debug\net10.0\SchoolManagement.Domain.pdb

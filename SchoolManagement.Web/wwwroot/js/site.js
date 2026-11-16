@@ -347,9 +347,156 @@
     }
 
     // --------------------------------------------------------------------------
+    // 6. Dynamic Seamless Campus Zone & Unified Card initialization
+    // (Enforces solid #EAEFE1 background across all 5 sections, #F1F2E8 cards with #1C2B21 borders)
+    // --------------------------------------------------------------------------
+    function initUnifiedCampusZone() {
+        try {
+            // Inject guaranteed seamless styles in document.head to bypass CSS caching
+            if (!document.getElementById('es-seamless-campus-styles')) {
+                const style = document.createElement('style');
+                style.id = 'es-seamless-campus-styles';
+                style.textContent = `
+                    .es-unified-showcase-zone,
+                    .es-unified-academic-zone,
+                    #notice-section,
+                    #teachers-section,
+                    #event-section,
+                    #videos-section,
+                    #result-section,
+                    section:has(.es-notice-card),
+                    section:has(.es-teachers-expand-card),
+                    section:has(.es-event-info-card),
+                    section:has(.es-video-card),
+                    section:has(.es-result-card) {
+                        background: #EAEFE1 !important;
+                        border: none !important;
+                        border-top: none !important;
+                        border-bottom: none !important;
+                        border-left: none !important;
+                        border-right: none !important;
+                        box-shadow: none !important;
+                        outline: none !important;
+                        margin-top: 0 !important;
+                        margin-bottom: 0 !important;
+                    }
+
+                    .es-notice-card,
+                    .es-teachers-expand-card,
+                    .es-event-info-card,
+                    .es-videos-container-card,
+                    .es-result-card {
+                        background: #F1F2E8 !important;
+                        border: 2px solid #1C2B21 !important;
+                        border-radius: 28px !important;
+                        box-shadow: 0 20px 48px rgba(28, 43, 33, 0.12), 0 6px 18px rgba(28, 43, 33, 0.05) !important;
+                    }
+
+                    .es-video-card {
+                        background: #F1F2E8 !important;
+                        border: 2px solid #1C2B21 !important;
+                        border-radius: 20px !important;
+                        box-shadow: 0 12px 30px rgba(28, 43, 33, 0.08) !important;
+                    }
+
+                    .es-video-body {
+                        background: #F1F2E8 !important;
+                        color: #1C2B21 !important;
+                    }
+
+                    .es-event-photo {
+                        border: 2px solid #1C2B21 !important;
+                        border-radius: 20px !important;
+                        box-shadow: 0 16px 36px rgba(28, 43, 33, 0.12) !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            // Target all 5 sections
+            const noticeSec = document.getElementById('notice-section') || document.querySelector('section:has(.es-notice-card)');
+            const teachersSec = document.getElementById('teachers-section') || document.querySelector('section:has(.es-teachers-expand-card)');
+            const eventSec = document.getElementById('event-section') || document.querySelector('section:has(.es-event-info-card)');
+            const videoSec = document.getElementById('videos-section') || document.querySelector('section:has(.es-video-card)');
+            const resultSec = document.getElementById('result-section') || document.querySelector('section:has(.es-result-card)');
+
+            const sections = [noticeSec, teachersSec, eventSec, videoSec, resultSec];
+            sections.forEach(function (sec) {
+                if (!sec) return;
+                sec.style.setProperty('background', '#EAEFE1', 'important');
+                sec.style.setProperty('border', 'none', 'important');
+                sec.style.setProperty('border-top', 'none', 'important');
+                sec.style.setProperty('border-bottom', 'none', 'important');
+                sec.style.setProperty('box-shadow', 'none', 'important');
+                sec.style.setProperty('outline', 'none', 'important');
+                sec.style.setProperty('margin-top', '0', 'important');
+                sec.style.setProperty('margin-bottom', '0', 'important');
+            });
+
+            // Clean any existing wrapper zones to share #EAEFE1
+            document.querySelectorAll('.es-unified-showcase-zone, .es-unified-academic-zone').forEach(function (z) {
+                z.style.setProperty('background', '#EAEFE1', 'important');
+                z.style.setProperty('border', 'none', 'important');
+                z.style.setProperty('box-shadow', 'none', 'important');
+                z.style.setProperty('margin-top', '0', 'important');
+                z.style.setProperty('margin-bottom', '0', 'important');
+            });
+
+            // Videos container card wrapping & styling
+            if (videoSec) {
+                videoSec.id = 'videos-section';
+                const row = videoSec.querySelector('.row.g-4');
+                if (row && !row.parentElement.classList.contains('es-videos-container-card')) {
+                    const cardWrap = document.createElement('div');
+                    cardWrap.className = 'es-videos-container-card';
+                    row.parentElement.insertBefore(cardWrap, row);
+                    cardWrap.appendChild(row);
+                }
+            }
+
+            // Force cards styling
+            document.querySelectorAll('.es-videos-container-card').forEach(function (c) {
+                c.style.setProperty('background', '#F1F2E8', 'important');
+                c.style.setProperty('border', '2px solid #1C2B21', 'important');
+                c.style.setProperty('border-radius', '28px', 'important');
+                c.style.setProperty('padding', '28px', 'important');
+            });
+
+            document.querySelectorAll('.es-video-card').forEach(function (vc) {
+                vc.style.setProperty('background', '#F1F2E8', 'important');
+                vc.style.setProperty('border', '2px solid #1C2B21', 'important');
+                vc.style.setProperty('border-radius', '20px', 'important');
+                const vb = vc.querySelector('.es-video-body');
+                if (vb) {
+                    vb.style.setProperty('background', '#F1F2E8', 'important');
+                }
+            });
+
+            document.querySelectorAll('.es-event-info-card').forEach(function (ec) {
+                ec.style.setProperty('background', '#F1F2E8', 'important');
+                ec.style.setProperty('border', '2px solid #1C2B21', 'important');
+                ec.style.setProperty('border-radius', '28px', 'important');
+            });
+
+            document.querySelectorAll('.es-result-card').forEach(function (rc) {
+                rc.style.setProperty('background', '#F1F2E8', 'important');
+                rc.style.setProperty('border', '2px solid #1C2B21', 'important');
+                rc.style.setProperty('border-radius', '28px', 'important');
+            });
+        } catch (e) {
+            console.error('Error in initUnifiedCampusZone:', e);
+        }
+    }
+
+    // Immediate run
+    initUnifiedCampusZone();
+
+    // --------------------------------------------------------------------------
     // Initialize on DOM Ready
     // --------------------------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
+        initUnifiedCampusZone();
+
         if (lenis) {
             lenis.on('scroll', updateParallaxImages);
         } else {
