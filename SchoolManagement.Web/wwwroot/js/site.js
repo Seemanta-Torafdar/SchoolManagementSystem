@@ -301,48 +301,120 @@
     }
 
     // --------------------------------------------------------------------------
-    // 5. Footer Scroll-Triggered Entrance Motion
-    // Triggers ONLY when user scrolls down to the end of the home page!
+    // 5. Guaranteed Footer Injection & Entrance Motion
     // --------------------------------------------------------------------------
-    function initFooterMotion() {
-        const footer = document.querySelector('.es-footer');
-        const footerCols = document.querySelectorAll('.es-footer-col');
-        const footerBottom = document.querySelector('.es-footer-bottom');
+    function ensureFooterAndMotion() {
+        let footer = document.querySelector('.es-footer') || document.querySelector('footer');
+        if (!footer) {
+            footer = document.createElement('footer');
+            footer.className = 'es-footer';
+            footer.innerHTML = `
+                <div class="container">
+                    <div class="row g-4 pb-4">
+                        <!-- Brand Info -->
+                        <div class="col-lg-4 col-md-6 es-footer-col is-revealed">
+                            <div class="d-flex align-items-center gap-2 mb-3">
+                                <div class="es-brand-icon" style="width:38px;height:38px;border-radius:10px;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+                                        <path d="M6 2v20"></path>
+                                    </svg>
+                                </div>
+                                <span class="fs-4 fw-bold text-white">E-School</span>
+                            </div>
+                            <p class="small mb-4 text-white-50" style="line-height: 1.7; max-width: 320px;">
+                                A modern, smart online school platform to learn, explore, and stay connected with your classes, teachers, events, and results.
+                            </p>
+                            <div class="d-flex align-items-center gap-2">
+                                <a href="#" class="es-social-btn" aria-label="Facebook"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a>
+                                <a href="#" class="es-social-btn" aria-label="Instagram"><i data-lucide="instagram" style="width:16px;height:16px;"></i></a>
+                                <a href="#" class="es-social-btn" aria-label="Twitter"><i data-lucide="twitter" style="width:16px;height:16px;"></i></a>
+                                <a href="#" class="es-social-btn" aria-label="Youtube"><i data-lucide="youtube" style="width:16px;height:16px;"></i></a>
+                            </div>
+                        </div>
 
-        if (!footer || !footerCols.length) return;
+                        <!-- Quick Navigation -->
+                        <div class="col-lg-2 col-md-3 col-6 es-footer-col is-revealed">
+                            <h6 class="es-footer-heading">Navigation</h6>
+                            <ul class="es-footer-links">
+                                <li><a href="/Home">Home</a></li>
+                                <li><a href="/Notices">Notice</a></li>
+                                <li><a href="/Teachers">Teachers</a></li>
+                                <li><a href="/About">Management</a></li>
+                                <li><a href="/Results">Result</a></li>
+                            </ul>
+                        </div>
 
-        function revealFooter() {
-            footerCols.forEach((col, idx) => {
-                setTimeout(() => {
-                    col.classList.add('is-revealed');
-                }, idx * 90);
-            });
-            if (footerBottom) {
-                setTimeout(() => {
-                    footerBottom.classList.add('is-revealed');
-                }, footerCols.length * 90 + 50);
+                        <!-- Academics & Resources -->
+                        <div class="col-lg-3 col-md-3 col-6 es-footer-col is-revealed">
+                            <h6 class="es-footer-heading">Academics</h6>
+                            <ul class="es-footer-links">
+                                <li><a href="/Academics">Curriculum</a></li>
+                                <li><a href="/Routine">Class Routine</a></li>
+                                <li><a href="/Events">Upcoming Events</a></li>
+                                <li><a href="/Gallery">Campus Gallery</a></li>
+                                <li><a href="/Admission">Online Admission</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="col-lg-3 col-md-6 es-footer-col is-revealed">
+                            <h6 class="es-footer-heading">Get in Touch</h6>
+                            <ul class="es-footer-links small">
+                                <li class="d-flex align-items-center gap-2 text-white-50">
+                                    <i data-lucide="phone" style="width:16px;height:16px;color:#687F65 !important;"></i>
+                                    <span>+880 1712-345678</span>
+                                </li>
+                                <li class="d-flex align-items-center gap-2 text-white-50">
+                                    <i data-lucide="mail" style="width:16px;height:16px;color:#687F65 !important;"></i>
+                                    <span>info@eschool.edu.bd</span>
+                                </li>
+                                <li class="d-flex align-items-center gap-2 text-white-50">
+                                    <i data-lucide="map-pin" style="width:16px;height:16px;color:#687F65 !important;"></i>
+                                    <span>Green Road, Dhanmondi, Dhaka-1205</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Copyright -->
+                    <div class="es-footer-bottom is-revealed">
+                        <span>&copy; ${new Date().getFullYear()} E-School. All rights reserved.</span>
+                        <div class="d-flex align-items-center gap-3">
+                            <a href="#">Privacy Policy</a>
+                            <span>&bull;</span>
+                            <a href="#">Terms of Use</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            const main = document.querySelector('main') || document.body;
+            if (main.parentElement && main !== document.body) {
+                main.parentElement.appendChild(footer);
+            } else {
+                document.body.appendChild(footer);
+            }
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
             }
         }
 
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        revealFooter();
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
+        footer.style.setProperty('display', 'block', 'important');
+        footer.style.setProperty('visibility', 'visible', 'important');
+        footer.style.setProperty('opacity', '1', 'important');
 
-            observer.observe(footer);
-        } else {
-            revealFooter();
-        }
+        const footerCols = footer.querySelectorAll('.es-footer-col');
+        const footerBottom = footer.querySelector('.es-footer-bottom');
 
-        // Check if footer is already visible on load
-        const rect = footer.getBoundingClientRect();
-        if (rect.top <= window.innerHeight) {
-            revealFooter();
+        footerCols.forEach(col => {
+            col.classList.add('is-revealed');
+            col.style.setProperty('opacity', '1', 'important');
+            col.style.setProperty('transform', 'none', 'important');
+        });
+        if (footerBottom) {
+            footerBottom.classList.add('is-revealed');
+            footerBottom.style.setProperty('opacity', '1', 'important');
+            footerBottom.style.setProperty('transform', 'none', 'important');
         }
     }
 
@@ -409,9 +481,25 @@
                         border-radius: 20px !important;
                         box-shadow: 0 16px 36px rgba(28, 43, 33, 0.12) !important;
                     }
+
+                    .es-navbar-wrapper,
+                    header.es-navbar-wrapper,
+                    header {
+                        display: none !important;
+                        visibility: hidden !important;
+                        height: 0 !important;
+                        overflow: hidden !important;
+                        opacity: 0 !important;
+                        pointer-events: none !important;
+                    }
                 `;
                 document.head.appendChild(style);
             }
+
+            // Remove header from DOM
+            document.querySelectorAll('.es-navbar-wrapper, header').forEach(function (h) {
+                h.remove();
+            });
 
             // Target all 5 sections
             const noticeSec = document.getElementById('notice-section') || document.querySelector('section:has(.es-notice-card)');
@@ -490,12 +578,14 @@
 
     // Immediate run
     initUnifiedCampusZone();
+    ensureFooterAndMotion();
 
     // --------------------------------------------------------------------------
     // Initialize on DOM Ready
     // --------------------------------------------------------------------------
     document.addEventListener('DOMContentLoaded', function () {
         initUnifiedCampusZone();
+        ensureFooterAndMotion();
 
         if (lenis) {
             lenis.on('scroll', updateParallaxImages);
@@ -508,7 +598,6 @@
         initNoticeScrollExpansion();
         initTeachersScrollExpansion();
         initNoticeFolderMotion();
-        initFooterMotion();
     });
 
 })();

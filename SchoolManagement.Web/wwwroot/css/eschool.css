@@ -130,14 +130,15 @@ body.eschool-body, body {
 /* ==========================================================================
    1. NAVBAR / HEADER
    ========================================================================== */
-.es-navbar-wrapper {
-    background: #687F65;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 2px solid #566a54;
-    box-shadow: 0 4px 20px rgba(38, 59, 45, 0.12);
-    z-index: 1030;
-    transition: all 0.3s ease;
+.es-navbar-wrapper,
+header.es-navbar-wrapper,
+header {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 .es-navbar-wrapper.is-scrolled {
@@ -2362,9 +2363,12 @@ section:has(.es-result-card) .es-view-all:hover,
    10. FOOTER (Rich Dark Navy with Moving Neon Glow & Staggered Reveal)
    ========================================================================== */
 .es-footer {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     position: relative;
     z-index: 10;
-    background: linear-gradient(180deg, #1C2B21 0%, #152019 100%);
+    background: linear-gradient(180deg, #1C2B21 0%, #152019 100%) !important;
     padding: 72px 0 0;
     color: rgba(255, 255, 255, 0.7);
     overflow: hidden;
@@ -2391,14 +2395,14 @@ section:has(.es-result-card) .es-view-all:hover,
 
 /* Footer Columns Scroll-Triggered Reveal */
 .es-footer-col {
-    opacity: 0;
-    transform: translateY(28px);
+    opacity: 1 !important;
+    transform: none !important;
     transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
 }
 
 .es-footer-col.is-revealed {
-    opacity: 1;
+    opacity: 1 !important;
     transform: translateY(0);
 }
 
@@ -2485,13 +2489,13 @@ section:has(.es-result-card) .es-view-all:hover,
     gap: 14px;
     font-size: 0.88rem;
     color: rgba(255, 255, 255, 0.55);
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1 !important;
+    transform: none !important;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .es-footer-bottom.is-revealed {
-    opacity: 1;
+    opacity: 1 !important;
     transform: translateY(0);
 }
 
