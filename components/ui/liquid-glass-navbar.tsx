@@ -7,7 +7,7 @@
  * every tap sends a wave along the pill, and each icon plays its own little scene.
  * Water is drawn by a tiny WebGL shader (only inside the pill, paused off-screen);
  * without WebGL it falls back to a CSS drop. No dependencies besides React.
- * by guglielmogiannattasio.it
+ * by guglielmogiannattasio.it - Optimized for Full Desktop & Mobile Responsiveness
  */
 
 import * as React from "react"
@@ -64,8 +64,10 @@ const PAD = 14 // canvas bleed around the pill, for shadows and ripples
 /* ---------- styles ---------- */
 const NIMBUS_CSS = `
 .nimbus-nav{--n-tint:rgba(255,255,255,.14);--n-fg:#0B132B;--n-fg-soft:rgba(11,19,43,.6);--n-rim:rgba(255,255,255,.7);
-  position:relative;display:inline-flex;align-items:center;gap:2px;padding:6px;border-radius:999px;isolation:isolate;
-  font-family:ui-sans-serif,-apple-system,"SF Pro Text","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;user-select:none;-webkit-tap-highlight-color:transparent}
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:2px;padding:6px;border-radius:999px;isolation:isolate;
+  box-sizing:border-box;max-width:100%;margin:0 auto;
+  font-family:ui-sans-serif,-apple-system,"SF Pro Text","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .nimbus-nav[data-tone="dark"]{--n-tint:rgba(10,18,40,.26);--n-fg:#F1F7FF;--n-fg-soft:rgba(241,247,255,.66);--n-rim:rgba(255,255,255,.34)}
 .nimbus-glass{position:absolute;inset:0;border-radius:inherit;z-index:-2;overflow:hidden;background:var(--n-tint);
   -webkit-backdrop-filter:blur(10px) saturate(1.2) brightness(1.08);backdrop-filter:blur(10px) saturate(1.2) brightness(1.08);
@@ -77,11 +79,18 @@ const NIMBUS_CSS = `
   background:radial-gradient(120% 140% at 30% 0%,rgba(255,255,255,.75),rgba(255,255,255,0) 55%),rgba(255,255,255,.38);
   box-shadow:inset 0 1px 1px rgba(255,255,255,.95),inset 0 -2px 6px rgba(0,162,255,.22),inset 0 0 0 1px rgba(255,255,255,.55),0 6px 16px -6px rgba(0,70,140,.45)}
 .nimbus-nav[data-gl="off"] .nimbus-drop{display:block}
-.nimbus-item{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:0;border-radius:999px;background:none;color:var(--n-fg-soft);
-  font-family:inherit;font-weight:500;font-size:14px;line-height:1;letter-spacing:-.01em;text-decoration:none;cursor:pointer;transition:color .25s}
+.nimbus-nav[data-tone="dark"] .nimbus-drop{
+  background:radial-gradient(120% 140% at 30% 0%,rgba(255,255,255,.25),rgba(255,255,255,0) 55%),rgba(255,255,255,.15);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.4),inset 0 -2px 6px rgba(0,162,255,.3),inset 0 0 0 1px rgba(255,255,255,.2),0 6px 16px -6px rgba(0,0,0,.5);
+}
+.nimbus-item{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 16px;border:0;border-radius:999px;background:none;color:var(--n-fg-soft);
+  font-family:inherit;font-weight:500;font-size:14px;line-height:1;letter-spacing:-.01em;text-decoration:none;cursor:pointer;transition:color .25s,transform .15s ease;
+  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;box-sizing:border-box}
 .nimbus-item:hover,.nimbus-item[aria-current="page"]{color:var(--n-fg)}
 .nimbus-item:focus-visible{outline:2px solid #00A2FF;outline-offset:2px}
-.nv-ico{position:relative;display:inline-flex;flex:none}
+.nimbus-item:active{transform:scale(0.97)}
+.nimbus-label{display:inline-block;white-space:nowrap;transition:opacity .2s ease}
+.nv-ico{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none}
 .nv-ico svg{transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
 .nimbus-item[aria-current="page"] .nv-ico svg{transform:translateY(-1px) scale(1.08)}
 .nv-door{fill:transparent}
@@ -107,15 +116,48 @@ const NIMBUS_CSS = `
 @keyframes nvDoor{0%{fill:transparent}30%{fill:#FFF3A8}100%{fill:rgba(126,232,255,.6)}}
 .nv-ico[data-fx="wave"] svg{animation:nvWave .9s ease-in-out both;transform-origin:50% 92%}
 @keyframes nvWave{0%{transform:none}20%{transform:rotate(-15deg)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}100%{transform:translateY(-1px) scale(1.08)}}
-.nimbus-nav[data-compact="true"] .nimbus-item{padding:0 13px}
-.nimbus-nav[data-compact="true"] .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (max-width:520px){.nimbus-nav:not([data-compact="false"]) .nimbus-item{padding:0 13px}.nimbus-nav:not([data-compact="false"]) .nimbus-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
-@media (prefers-reduced-motion:reduce){.nv-ico svg,.nv-ico::before,.nv-ico::after,.nv-door{animation:none!important;transition:none}}
+
+/* Compact prop override */
+.nimbus-nav[data-compact="true"] .nimbus-item{padding:0 12px;gap:0}
+.nimbus-nav[data-compact="true"] .nimbus-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Tablet (521px–768px): Compact navigation layout preventing overflow */
+@media (min-width:521px) and (max-width:768px){
+  .nimbus-nav{padding:5px;gap:2px;max-width:calc(100vw - 24px)}
+  .nimbus-item{padding:0 10px;height:38px;gap:5px;font-size:13px}
+}
+
+/* Mobile (520px and below): Compact pill-shaped icon-only navbar */
+@media (max-width:520px){
+  .nimbus-nav{padding:4px;gap:2px;max-width:calc(100vw - 16px);width:auto;margin:0 auto}
+  .nimbus-nav:not([data-compact="false"]) .nimbus-item{padding:0 10px;height:38px;min-width:38px;gap:0;justify-content:center}
+  .nimbus-nav:not([data-compact="false"]) .nimbus-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .nimbus-drop{top:4px;bottom:4px}
+}
+
+/* Very small mobile (360px and below) */
+@media (max-width:360px){
+  .nimbus-nav{padding:3px;gap:1px;max-width:calc(100vw - 12px)}
+  .nimbus-nav:not([data-compact="false"]) .nimbus-item{padding:0 8px;height:36px;min-width:36px}
+  .nimbus-drop{top:3px;bottom:3px}
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .nv-ico svg,.nv-ico::before,.nv-ico::after,.nv-door{animation:none!important;transition:none!important}
+  .nimbus-drop{transition:none!important}
+}
 `
 
 /* ---------- the water shader ---------- */
 const VERT = `attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}`
-const FRAG = `precision highp float;
+const FRAG = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+
 uniform vec2 uRes;uniform float uDpr;uniform float uTime;uniform vec4 uPill;
 uniform vec4 uBlob[6];uniform float uSy[6];uniform vec4 uRip[6];uniform vec3 uMouse;uniform float uDark;uniform float uAmb;
 float sdRB(vec2 p,vec2 b,float r){vec2 q=abs(p)-b+r;return length(max(q,0.))+min(max(q.x,q.y),0.)-r;}
@@ -190,32 +232,52 @@ function makeState() {
 }
 
 function initGL(canvas: HTMLCanvasElement) {
-  const gl = canvas.getContext("webgl", { premultipliedAlpha: true, alpha: true, antialias: false }) as WebGLRenderingContext | null
-  if (!gl) return null
-  const sh = (type: number, src: string) => {
-    const s = gl.createShader(type)!
-    gl.shaderSource(s, src)
-    gl.compileShader(s)
-    return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null
+  try {
+    const gl = canvas.getContext("webgl", {
+      premultipliedAlpha: true,
+      alpha: true,
+      antialias: false,
+      powerPreference: "low-power",
+    }) as WebGLRenderingContext | null
+    if (!gl) return null
+
+    const sh = (type: number, src: string) => {
+      const s = gl.createShader(type)
+      if (!s) return null
+      gl.shaderSource(s, src)
+      gl.compileShader(s)
+      return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null
+    }
+
+    const vs = sh(gl.VERTEX_SHADER, VERT)
+    const fs = sh(gl.FRAGMENT_SHADER, FRAG)
+    if (!vs || !fs) return null
+
+    const p = gl.createProgram()
+    if (!p) return null
+    gl.attachShader(p, vs)
+    gl.attachShader(p, fs)
+    gl.linkProgram(p)
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) return null
+
+    gl.useProgram(p)
+    const buf = gl.createBuffer()
+    if (!buf) return null
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf)
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
+    const loc = gl.getAttribLocation(p, "a")
+    if (loc < 0) return null
+    gl.enableVertexAttribArray(loc)
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
+
+    const u: Record<string, WebGLUniformLocation | null> = {}
+    for (const n of ["uRes", "uDpr", "uTime", "uPill", "uBlob", "uSy", "uRip", "uMouse", "uDark", "uAmb"]) {
+      u[n] = gl.getUniformLocation(p, n)
+    }
+    return { gl, u }
+  } catch {
+    return null
   }
-  const vs = sh(gl.VERTEX_SHADER, VERT)
-  const fs = sh(gl.FRAGMENT_SHADER, FRAG)
-  if (!vs || !fs) return null
-  const p = gl.createProgram()!
-  gl.attachShader(p, vs)
-  gl.attachShader(p, fs)
-  gl.linkProgram(p)
-  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) return null
-  gl.useProgram(p)
-  const buf = gl.createBuffer()
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf)
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
-  const loc = gl.getAttribLocation(p, "a")
-  gl.enableVertexAttribArray(loc)
-  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
-  const u: Record<string, WebGLUniformLocation | null> = {}
-  for (const n of ["uRes", "uDpr", "uTime", "uPill", "uBlob", "uSy", "uRip", "uMouse", "uDark", "uAmb"]) u[n] = gl.getUniformLocation(p, n)
-  return { gl, u }
 }
 
 function supportsRefraction() {
@@ -286,7 +348,7 @@ export function LiquidNavbar({
     } else if (dropRef.current) {
       const left = Math.min(s.a.x, s.b.x) - s.q - r - PAD
       const width = sep + 2 * (s.q + r)
-      dropRef.current.style.width = `${width}px`
+      dropRef.current.style.width = `${Math.max(width, T.r * 2)}px`
       dropRef.current.style.transform = `translateX(${left}px) scaleY(${s.sy.s})`
     }
   }, [])
@@ -319,7 +381,7 @@ export function LiquidNavbar({
       })
       const L = bodies[s.lead]
       const syT = 1 - 0.2 * Math.min(Math.abs(L.v) / 1500, 1)
-      s.sy.v += (280 * (syT - state.sy.s) - 9 * s.sy.v) * dt
+      s.sy.v += (280 * (syT - s.sy.s) - 9 * s.sy.v) * dt
       s.sy.s += s.sy.v * dt
       if (Math.abs(s.sy.s - 1) > 0.002 || Math.abs(s.sy.v) > 0.02) still = false
       // break the neck: spawn droplets between head and tail
@@ -386,6 +448,7 @@ export function LiquidNavbar({
     const s = st.current
     s.w = nav.offsetWidth
     s.h = nav.offsetHeight
+    if (s.w === 0 || s.h === 0) return
     const T = s.t
     T.r = el.offsetHeight / 2
     T.q = Math.max(0, el.offsetWidth / 2 - T.r)
@@ -419,18 +482,49 @@ export function LiquidNavbar({
   React.useEffect(() => {
     setRefract(supportsRefraction())
     const s = st.current
-    s.reduce = !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    const mql = typeof window !== "undefined" && window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null
+    s.reduce = !!mql?.matches
+    const onMotionChange = (e: MediaQueryListEvent) => {
+      st.current.reduce = e.matches
+      loop()
+    }
+    mql?.addEventListener?.("change", onMotionChange)
+
     const cv = canvasRef.current
     s.glc = cv ? initGL(cv) : null
     if (!s.glc) setGl("off")
-    const lost = (e: Event) => { e.preventDefault(); s.glc = null; setGl("off") }
+
+    const lost = (e: Event) => {
+      e.preventDefault()
+      s.glc = null
+      setGl("off")
+    }
+    const restored = () => {
+      if (canvasRef.current) {
+        s.glc = initGL(canvasRef.current)
+        if (s.glc) setGl("on")
+        loop()
+      }
+    }
     cv?.addEventListener("webglcontextlost", lost)
-    const io = new IntersectionObserver(([e]) => { s.visible = e.isIntersecting; if (s.visible) loop() })
+    cv?.addEventListener("webglcontextrestored", restored)
+
+    const io = new IntersectionObserver(([e]) => {
+      s.visible = e.isIntersecting
+      if (s.visible) loop()
+    })
     if (navRef.current) io.observe(navRef.current)
-    const vis = () => { s.visible = document.visibilityState === "visible"; if (s.visible) loop() }
+
+    const vis = () => {
+      s.visible = document.visibilityState === "visible"
+      if (s.visible) loop()
+    }
     document.addEventListener("visibilitychange", vis)
+
     return () => {
+      mql?.removeEventListener?.("change", onMotionChange)
       cv?.removeEventListener("webglcontextlost", lost)
+      cv?.removeEventListener("webglcontextrestored", restored)
       io.disconnect()
       document.removeEventListener("visibilitychange", vis)
       cancelAnimationFrame(s.raf)
@@ -441,20 +535,49 @@ export function LiquidNavbar({
   React.useLayoutEffect(() => { measure() }, [measure, items.length, compact])
   const measureRef = React.useRef(measure)
   measureRef.current = measure
+
   React.useEffect(() => {
     let lastW = -1
-    const ro = new ResizeObserver(() => {
-      const w = navRef.current?.offsetWidth ?? 0
-      if (w !== lastW) { lastW = w; st.current.ready = false; measureRef.current() }
-    })
-    if (navRef.current) ro.observe(navRef.current)
-    return () => ro.disconnect()
-  }, [])
+    let lastH = -1
+    const onResize = () => {
+      const nav = navRef.current
+      if (!nav) return
+      const w = nav.offsetWidth
+      const h = nav.offsetHeight
+      if (w !== lastW || h !== lastH) {
+        lastW = w
+        lastH = h
+        // Snap immediately on layout shift / rotation to prevent unnatural jumping droplets
+        const s = st.current
+        const el = itemRefs.current[current]
+        if (el) {
+          const nx = PAD + el.offsetLeft + el.offsetWidth / 2
+          s.a.x = s.b.x = nx
+          s.sats = []
+          s.moving = false
+        }
+        measureRef.current()
+      }
+    }
+
+    const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(onResize) : null
+    if (navRef.current && ro) ro.observe(navRef.current)
+    window.addEventListener("resize", onResize, { passive: true })
+    window.addEventListener("orientationchange", onResize, { passive: true })
+
+    return () => {
+      ro?.disconnect()
+      window.removeEventListener("resize", onResize)
+      window.removeEventListener("orientationchange", onResize)
+    }
+  }, [current])
+
   React.useEffect(() => { loop() }, [tone, loop])
 
   /* ---- interaction ---- */
   const local = (clientX: number, clientY: number) => {
-    const r = navRef.current!.getBoundingClientRect()
+    if (!navRef.current) return { x: PAD, y: PAD }
+    const r = navRef.current.getBoundingClientRect()
     return { x: clientX - r.left + PAD, y: clientY - r.top + PAD }
   }
   const ripple = (x: number, y: number, amp: number) => {
@@ -489,9 +612,10 @@ export function LiquidNavbar({
     } catch {}
   }
 
-  const select = (i: number) => {
+  const select = (i: number, e?: React.SyntheticEvent) => {
+    if (i < 0 || i >= items.length) return
     const kind = items[i]?.fx ?? (items[i]?.icon ? "pop" : "none")
-    setFx((f) => ({ i, n: f.n + 1 }))
+    setFx({ i, n: fx.n + 1 })
     plip()
     const c = iconCenter(i)
     if (c && kind === "drop") setTimeout(() => ripple(c.x, st.current.t.cy, 1.4), 430)
@@ -532,7 +656,10 @@ export function LiquidNavbar({
       onKeyDown={onKeyDown}
       onPointerMove={onMove}
       onPointerLeave={() => { st.current.mouse.on = false; loop() }}
-      onPointerDown={(e) => { const p = local(e.clientX, e.clientY); ripple(p.x, p.y, 0.8) }}
+      onPointerDown={(e) => {
+        const p = local(e.clientX, e.clientY)
+        ripple(p.x, p.y, 0.8)
+      }}
       style={style}
     >
       <style dangerouslySetInnerHTML={{ __html: NIMBUS_CSS }} />
@@ -553,7 +680,7 @@ export function LiquidNavbar({
           ref: (el: HTMLElement | null) => { itemRefs.current[i] = el },
           className: "nimbus-item",
           "aria-current": i === current ? ("page" as const) : undefined,
-          onClick: () => select(i),
+          onClick: (e: React.MouseEvent) => select(i, e),
         }
         const content = (
           <>
