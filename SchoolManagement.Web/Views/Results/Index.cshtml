@@ -1,211 +1,346 @@
 @model SchoolManagement.Web.ViewModels.Result.PublicResultSearchViewModel
 @{
-    ViewData["Title"] = "Academic Examination Results";
+    ViewData["Title"] = "Academic Examination Results & Marksheet Verification";
 }
 
-<section class="page-banner py-5 bg-light border-bottom">
-    <div class="container">
-        <h1 class="h3 fw-bold text-dark mb-1">Academic Examination Results</h1>
-        <p class="text-secondary mb-0">Search and verify individual student term marksheets with official verification credentials.</p>
-    </div>
-</section>
+<!-- ==========================================================================
+     1. HERO BANNER (Floating Header Safe + Deep Forest Campus Theme)
+     ========================================================================== -->
+<section class="es-page-hero">
+    <div class="es-notices-hero-lines" aria-hidden="true"></div>
+    <div class="container position-relative" style="z-index: 2;">
+        <!-- Breadcrumb Pill -->
+        <nav aria-label="breadcrumb">
+            <div class="es-breadcrumb-pill">
+                <a asp-controller="Home" asp-action="Index">
+                    <i data-lucide="home" style="width:14px;height:14px;" class="me-1"></i>Home
+                </a>
+                <span>/</span>
+                <span class="text-white">Academic Results</span>
+            </div>
+        </nav>
 
-<section class="py-5">
-    <div class="container">
-        <!-- Search Card -->
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-8">
-                <div class="card shadow-sm border-0">
-                    <div class="card-header bg-primary text-white py-3">
-                        <h5 class="card-title mb-0 fw-semibold"><i class="bi bi-search me-2"></i>Marksheet Search Portal</h5>
+        <div class="row align-items-center g-4">
+            <div class="col-lg-9 col-xl-8">
+                <h1 class="es-page-hero-title">
+                    Examination Results Portal
+                    <span class="es-live-chip" style="background:rgba(16,185,129,0.25); border-color:rgba(16,185,129,0.4); color:#A7F3D0;">
+                        <span class="es-live-chip-dot" style="background:#10B981; box-shadow:0 0 8px #10B981;"></span>
+                        Verified Transcripts
+                    </span>
+                </h1>
+                <p class="es-page-hero-desc">
+                    Search and verify authenticated student term examination marksheets, GPA transcripts, and performance records with certified privacy PIN verification.
+                </p>
+
+                <!-- Quick KPI Stats Bar -->
+                <div class="es-hero-kpi-bar">
+                    <div class="es-kpi-pill">
+                        <i data-lucide="shield-check" style="width:16px;height:16px;color:#34D399;"></i>
+                        <span><strong>PIN</strong> Verification Protected</span>
                     </div>
-                    <div class="card-body p-4">
-                        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
-                        {
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <i class="bi bi-exclamation-triangle-fill me-2"></i>@Model.ErrorMessage
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                            </div>
-                        }
-
-                        <div class="alert alert-info py-2 px-3 small d-flex align-items-center mb-4">
-                            <i class="bi bi-shield-lock-fill text-primary fs-5 me-2"></i>
-                            <div>To safeguard student privacy and prevent unauthenticated data enumeration, entering the <strong>Private Verification PIN</strong> found on the student admit card / ID card is required.</div>
-                        </div>
-
-                        <form asp-action="Index" method="post" class="needs-validation">
-                            @Html.AntiForgeryToken()
-
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label asp-for="ExaminationId" class="form-label fw-semibold">Examination</label>
-                                    <select asp-for="ExaminationId" asp-items="Model.Examinations" class="form-select" required>
-                                        <option value="">-- Select Examination --</option>
-                                    </select>
-                                    <span asp-validation-for="ExaminationId" class="text-danger small"></span>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label asp-for="AcademicSessionId" class="form-label fw-semibold">Academic Session</label>
-                                    <select asp-for="AcademicSessionId" asp-items="Model.Sessions" class="form-select" required>
-                                        <option value="">-- Select Session --</option>
-                                    </select>
-                                    <span asp-validation-for="AcademicSessionId" class="text-danger small"></span>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label asp-for="ClassId" class="form-label fw-semibold">Class</label>
-                                    <select asp-for="ClassId" asp-items="Model.Classes" class="form-select" required>
-                                        <option value="">-- Select Class --</option>
-                                    </select>
-                                    <span asp-validation-for="ClassId" class="text-danger small"></span>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label asp-for="RollNumber" class="form-label fw-semibold">Class Roll Number</label>
-                                    <input asp-for="RollNumber" type="number" class="form-control" placeholder="e.g. 1" required min="1" />
-                                    <span asp-validation-for="RollNumber" class="text-danger small"></span>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label asp-for="VerificationCode" class="form-label fw-semibold">Verification PIN</label>
-                                    <input asp-for="VerificationCode" class="form-control" placeholder="e.g. STU-2026-001" required />
-                                    <span asp-validation-for="VerificationCode" class="text-danger small"></span>
-                                </div>
-                            </div>
-
-                            <div class="mt-4 text-center">
-                                <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">
-                                    <i class="bi bi-file-earmark-check me-2"></i>Search Marksheet
-                                </button>
-                            </div>
-                        </form>
+                    <div class="es-kpi-pill">
+                        <i data-lucide="printer" style="width:16px;height:16px;color:#38BDF8;"></i>
+                        <span>Direct PDF Print Available</span>
+                    </div>
+                    <div class="es-kpi-pill">
+                        <i data-lucide="check-circle-2" style="width:16px;height:16px;color:#FBBF24;"></i>
+                        <span>System Authenticated</span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <!-- Marksheet Result Card -->
-        @if (Model.Marksheet != null)
-        {
-            var sheet = Model.Marksheet;
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card shadow border-0 overflow-hidden">
-                        <div class="card-header bg-dark text-white p-4 d-flex flex-wrap justify-content-between align-items-center">
-                            <div>
-                                <h4 class="mb-1 text-white fw-bold">PROGRESS REPORT & ACADEMIC TRANSCRIPT</h4>
-                                <div class="text-white-50">@sheet.ExaminationName — @sheet.SessionName</div>
-                            </div>
-                            <div class="mt-2 mt-md-0">
-                                <a asp-action="MarksheetPrint" asp-route-studentId="@sheet.StudentId" asp-route-examinationId="@Model.ExaminationId" target="_blank" class="btn btn-light btn-sm fw-semibold">
-                                    <i class="bi bi-printer me-1"></i> Print / Save PDF
-                                </a>
-                            </div>
+<!-- ==========================================================================
+     2. SEARCH CARD & VERIFICATION PORTAL FORM
+     ========================================================================== -->
+<div class="container my-5">
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10 col-xl-9">
+            <div class="es-result-search-card">
+                <!-- Portal Card Header -->
+                <div class="d-flex align-items-center justify-content-between pb-3 mb-4 border-bottom flex-wrap gap-2">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="es-brand-icon" style="width:44px;height:44px;background:#1C2B21;color:#FFFFFF;border-radius:12px;">
+                            <i data-lucide="file-search" style="width:22px;height:22px;"></i>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold text-dark fs-4 mb-0">Marksheet Search &amp; Verification</h3>
+                            <small class="text-muted">Enter student examination parameters to retrieve authenticated grade sheets</small>
+                        </div>
+                    </div>
+                    <span class="badge rounded-pill px-3 py-2 text-uppercase fw-bold" style="background:#E5E8CE; color:#1C2B21; font-size:0.75rem;">
+                        Official Portal
+                    </span>
+                </div>
+
+                <!-- Error Alert -->
+                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="alert alert-danger alert-dismissible fade show rounded-3 p-3 mb-4" role="alert">
+                        <div class="d-flex align-items-center gap-2">
+                            <i data-lucide="alert-triangle" style="width:18px;height:18px;color:#DC2626;"></i>
+                            <strong>@Model.ErrorMessage</strong>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                <!-- Security PIN Notice -->
+                <div class="p-3 mb-4 rounded-3 d-flex align-items-center gap-3 border" style="background:#F8FAF6; border-color:#D2D9C5 !important;">
+                    <div class="p-2 rounded-circle" style="background:#E5E8CE; color:#1C2B21;">
+                        <i data-lucide="lock" style="width:18px;height:18px;"></i>
+                    </div>
+                    <div class="small text-muted" style="line-height:1.5;">
+                        To safeguard student privacy and prevent unauthenticated records access, entering the <strong>Private Verification PIN</strong> found on the student admit card / student ID is required.
+                    </div>
+                </div>
+
+                <!-- Search Form -->
+                <form asp-action="Index" method="post" class="needs-validation">
+                    @Html.AntiForgeryToken()
+
+                    <div class="row g-3">
+                        <!-- Examination Dropdown -->
+                        <div class="col-md-6">
+                            <label asp-for="ExaminationId" class="form-label fw-bold small text-dark">
+                                Examination <span class="text-danger">*</span>
+                            </label>
+                            <select asp-for="ExaminationId" asp-items="Model.Examinations" class="form-select rounded-pill px-3" style="height:48px;" required>
+                                <option value="">-- Select Examination --</option>
+                            </select>
+                            <span asp-validation-for="ExaminationId" class="text-danger small"></span>
                         </div>
 
-                        <div class="card-body p-4 p-md-5">
-                            <!-- Student Info Section -->
-                            <div class="row bg-light rounded-3 p-4 mb-4 align-items-center">
-                                <div class="col-md-8">
-                                    <table class="table table-borderless table-sm mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <th class="ps-0 text-muted" style="width: 150px;">Student Name:</th>
-                                                <td class="fw-bold fs-5 text-dark">@sheet.StudentName</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="ps-0 text-muted">Admission No:</th>
-                                                <td class="fw-semibold">@sheet.AdmissionNumber</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="ps-0 text-muted">Class & Section:</th>
-                                                <td class="fw-semibold">@sheet.ClassName (Section: @sheet.SectionName)</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="ps-0 text-muted">Class Roll:</th>
-                                                <td class="fw-semibold">@sheet.RollNumber</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-md-4 text-center mt-3 mt-md-0">
-                                    <div class="p-3 bg-white rounded-3 border">
-                                        <div class="small text-muted mb-1">Overall GPA</div>
-                                        <div class="display-6 fw-bold text-primary">@sheet.GPA.ToString("F2")</div>
-                                        <span class="badge @(sheet.OverallGrade == "F" ? "bg-danger" : "bg-success") px-3 py-1 fs-6">Grade: @sheet.OverallGrade</span>
+                        <!-- Academic Session Dropdown -->
+                        <div class="col-md-6">
+                            <label asp-for="AcademicSessionId" class="form-label fw-bold small text-dark">
+                                Academic Session <span class="text-danger">*</span>
+                            </label>
+                            <select asp-for="AcademicSessionId" asp-items="Model.Sessions" class="form-select rounded-pill px-3" style="height:48px;" required>
+                                <option value="">-- Select Session --</option>
+                            </select>
+                            <span asp-validation-for="AcademicSessionId" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Class Dropdown -->
+                        <div class="col-md-4">
+                            <label asp-for="ClassId" class="form-label fw-bold small text-dark">
+                                Class <span class="text-danger">*</span>
+                            </label>
+                            <select asp-for="ClassId" asp-items="Model.Classes" class="form-select rounded-pill px-3" style="height:48px;" required>
+                                <option value="">-- Select Class --</option>
+                            </select>
+                            <span asp-validation-for="ClassId" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Roll Number Input -->
+                        <div class="col-md-4">
+                            <label asp-for="RollNumber" class="form-label fw-bold small text-dark">
+                                Class Roll Number <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="RollNumber" type="number" class="form-control rounded-pill px-3" style="height:48px;" placeholder="e.g. 1" required min="1" />
+                            <span asp-validation-for="RollNumber" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Verification PIN Input with Eye Toggle -->
+                        <div class="col-md-4">
+                            <label asp-for="VerificationCode" class="form-label fw-bold small text-dark">
+                                Verification PIN <span class="text-danger">*</span>
+                            </label>
+                            <div class="position-relative">
+                                <input asp-for="VerificationCode" id="pinInput" class="form-control rounded-pill px-3" style="height:48px; padding-right:45px;" placeholder="e.g. STU-2026-001" required />
+                                <button type="button" id="togglePinBtn" class="btn border-0 position-absolute end-0 top-50 translate-middle-y text-muted me-2" aria-label="Toggle PIN Visibility">
+                                    <i data-lucide="eye" style="width:16px;height:16px;"></i>
+                                </button>
+                            </div>
+                            <span asp-validation-for="VerificationCode" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <!-- Search Action CTA -->
+                    <div class="mt-4 pt-3 text-center">
+                        <button type="submit" class="btn-es-green px-5 py-3" style="font-size:1.02rem;">
+                            <i data-lucide="file-check" style="width:18px;height:18px;"></i>
+                            <span>Search &amp; Verify Marksheet</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         3. AUTHENTICATED MARKSHEET CERTIFICATE DISPLAY
+         ========================================================================== -->
+    @if (Model.Marksheet != null)
+    {
+        var sheet = Model.Marksheet;
+        var isPassed = sheet.ResultStatus == SchoolManagement.Domain.Enums.ResultStatus.Passed;
+
+        <div class="row justify-content-center mb-5" id="marksheetResultSection">
+            <div class="col-lg-11 col-xl-10">
+                <div class="es-marksheet-board">
+                    <!-- Certificate Board Header -->
+                    <div class="es-marksheet-board-header d-flex flex-wrap justify-content-between align-items-center gap-3">
+                        <div>
+                            <div class="d-flex align-items-center gap-2 mb-1">
+                                <span class="badge rounded-pill bg-success px-3 py-1 font-weight-bold" style="font-size:0.75rem;">
+                                    OFFICIALLY VERIFIED
+                                </span>
+                                <span class="text-white-50 small">&bull; Ref: RES-@Model.ExaminationId-@(sheet.StudentId.ToString("D4"))</span>
+                            </div>
+                            <h3 class="mb-1 text-white fw-bold fs-4">ACADEMIC TRANSCRIPT &amp; PROGRESS REPORT</h3>
+                            <div class="text-white-50">@sheet.ExaminationName &bull; Session: @sheet.SessionName</div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <a asp-action="MarksheetPrint" asp-route-studentId="@sheet.StudentId" asp-route-examinationId="@Model.ExaminationId" target="_blank" class="btn btn-light rounded-pill px-4 py-2 font-weight-bold d-inline-flex align-items-center gap-2 shadow-sm">
+                                <i data-lucide="printer" style="width:16px;height:16px;color:#1C2B21;"></i>
+                                <span>Print / Save PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Marksheet Body -->
+                    <div class="p-4 p-md-5">
+                        <!-- Student Identity Grid & GPA Summary Card -->
+                        <div class="row g-4 align-items-center mb-4 p-4 rounded-3 border" style="background:#F8FAF6; border-color:#D2D9C5 !important;">
+                            <div class="col-md-8">
+                                <div class="row g-2">
+                                    <div class="col-sm-6">
+                                        <div class="text-muted small">Student Full Name:</div>
+                                        <div class="fw-bold fs-5 text-dark">@sheet.StudentName</div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="text-muted small">Admission Number:</div>
+                                        <div class="fw-bold text-dark">@sheet.AdmissionNumber</div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="text-muted small">Class &amp; Section:</div>
+                                        <div class="fw-bold text-dark">@sheet.ClassName (Section: @sheet.SectionName)</div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="text-muted small">Class Roll Number:</div>
+                                        <div class="fw-bold text-dark">@sheet.RollNumber</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Subject Marks Table -->
-                            <div class="table-responsive mb-4">
-                                <table class="table table-bordered table-hover align-middle">
-                                    <thead class="table-light text-center">
-                                        <tr>
-                                            <th>Code</th>
-                                            <th class="text-start">Subject Name</th>
-                                            <th>Full Marks</th>
-                                            <th>Marks Obtained</th>
-                                            <th>Grade</th>
-                                            <th>Grade Point</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var sub in sheet.Subjects)
-                                        {
-                                            <tr class="text-center">
-                                                <td class="fw-semibold text-muted">@sub.SubjectCode</td>
-                                                <td class="text-start fw-medium">@sub.SubjectName</td>
-                                                <td>@sub.MaxMarks</td>
-                                                <td class="fw-bold">@sub.MarksObtained</td>
-                                                <td><span class="badge @(sub.Grade == "F" ? "bg-danger" : "bg-primary")">@sub.Grade</span></td>
-                                                <td>@sub.GradePoint.ToString("F2")</td>
-                                                <td>
-                                                    @if (sub.Status == SchoolManagement.Domain.Enums.ResultStatus.Passed)
-                                                    {
-                                                        <span class="badge bg-success-subtle text-success border border-success px-2 py-1">Passed</span>
-                                                    }
-                                                    else
-                                                    {
-                                                        <span class="badge bg-danger-subtle text-danger border border-danger px-2 py-1">Failed</span>
-                                                    }
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                    <tfoot class="table-light fw-bold text-center">
-                                        <tr>
-                                            <td colspan="2" class="text-end">Total:</td>
-                                            <td>@sheet.TotalMaxMarks</td>
-                                            <td class="text-primary">@sheet.TotalMarksObtained</td>
-                                            <td>@sheet.OverallGrade</td>
-                                            <td>@sheet.GPA.ToString("F2")</td>
+                            <div class="col-md-4 text-center">
+                                <div class="es-gpa-badge-card">
+                                    <div class="small text-muted font-weight-bold mb-1">CUMULATIVE GPA</div>
+                                    <div class="es-gpa-val">@sheet.GPA.ToString("F2")</div>
+                                    <span class="badge @(sheet.OverallGrade == "F" ? "bg-danger" : "bg-success") px-3 py-1 fs-6 mt-1">
+                                        Grade: @sheet.OverallGrade
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subject Grade Points Breakdown Table -->
+                        <div class="table-responsive mb-4">
+                            <table class="table table-bordered table-hover align-middle mb-0" style="border-color:#D2D9C5;">
+                                <thead style="background:#F1F2E8; color:#1C2B21;" class="text-center font-weight-bold">
+                                    <tr>
+                                        <th style="width:100px;">Code</th>
+                                        <th class="text-start">Subject Title</th>
+                                        <th>Max Marks</th>
+                                        <th>Marks Obtained</th>
+                                        <th>Grade</th>
+                                        <th>Grade Point</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var sub in sheet.Subjects)
+                                    {
+                                        <tr class="text-center">
+                                            <td class="fw-bold text-muted">@sub.SubjectCode</td>
+                                            <td class="text-start fw-bold text-dark">@sub.SubjectName</td>
+                                            <td>@sub.MaxMarks</td>
+                                            <td class="fw-bold text-dark">@sub.MarksObtained</td>
                                             <td>
-                                                @if (sheet.ResultStatus == SchoolManagement.Domain.Enums.ResultStatus.Passed)
+                                                <span class="badge @(sub.Grade == "F" ? "bg-danger" : "bg-dark") px-2 py-1">
+                                                    @sub.Grade
+                                                </span>
+                                            </td>
+                                            <td class="fw-bold">@sub.GradePoint.ToString("F2")</td>
+                                            <td>
+                                                @if (sub.Status == SchoolManagement.Domain.Enums.ResultStatus.Passed)
                                                 {
-                                                    <span class="badge bg-success">PASSED</span>
+                                                    <span class="badge bg-success-subtle text-success border border-success px-2 py-1 font-weight-bold">Passed</span>
                                                 }
                                                 else
                                                 {
-                                                    <span class="badge bg-danger">FAILED</span>
+                                                    <span class="badge bg-danger-subtle text-danger border border-danger px-2 py-1 font-weight-bold">Failed</span>
                                                 }
                                             </td>
                                         </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
+                                    }
+                                </tbody>
+                                <tfoot style="background:#F1F2E8;" class="fw-bold text-center">
+                                    <tr>
+                                        <td colspan="2" class="text-end fw-bold">Aggregate Summary:</td>
+                                        <td>@sheet.TotalMaxMarks</td>
+                                        <td class="text-success fs-5">@sheet.TotalMarksObtained</td>
+                                        <td>@sheet.OverallGrade</td>
+                                        <td class="text-success fs-5">@sheet.GPA.ToString("F2")</td>
+                                        <td>
+                                            @if (isPassed)
+                                            {
+                                                <span class="badge bg-success px-3 py-1 font-weight-bold">PASSED</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-danger px-3 py-1 font-weight-bold">FAILED</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
 
-                            <!-- Footer note -->
-                            <div class="text-muted small text-center mt-3">
-                                <em>This is a system-generated result sheet from the School Management System. Official physical certificate will be issued by the Head of Institution.</em>
-                            </div>
+                        <!-- Institutional Footnote -->
+                        <div class="text-muted small text-center pt-3 border-top">
+                            <em>Certified digital transcript issued under authority of the Institutional Academic Examination Board. Official embossed hard copies can be collected from the Office of the Controller of Examinations.</em>
                         </div>
                     </div>
                 </div>
             </div>
-        }
-    </div>
-</section>
+        </div>
+    }
+</div>
 
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            // PIN Visibility Toggle
+            const pinInput = document.getElementById('pinInput');
+            const togglePinBtn = document.getElementById('togglePinBtn');
+            if (pinInput && togglePinBtn) {
+                let isPassword = false;
+                togglePinBtn.addEventListener('click', function () {
+                    isPassword = !isPassword;
+                    pinInput.type = isPassword ? 'password' : 'text';
+                    this.innerHTML = isPassword 
+                        ? '<i data-lucide="eye-off" style="width:16px;height:16px;"></i>' 
+                        : '<i data-lucide="eye" style="width:16px;height:16px;"></i>';
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                });
+            }
+
+            // Smooth scroll to marksheet if returned
+            const marksheetSec = document.getElementById('marksheetResultSection');
+            if (marksheetSec) {
+                marksheetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    </script>
+}

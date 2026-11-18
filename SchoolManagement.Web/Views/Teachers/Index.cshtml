@@ -2,45 +2,346 @@
 @model IReadOnlyList<TeacherDto>
 
 @{
-    ViewData["Title"] = "Our Faculty Members";
+    ViewData["Title"] = "Our Faculty Members & Mentors";
+    
+    // Extract unique assigned subjects for smart filter chips
+    var allSubjects = Model.SelectMany(t => t.AssignedSubjects)
+                           .Where(s => !string.IsNullOrWhiteSpace(s))
+                           .Distinct(StringComparer.OrdinalIgnoreCase)
+                           .Take(6)
+                           .ToList();
 }
 
-<div class="container py-5">
-    <div class="text-center max-w-700 mx-auto mb-5">
-        <span class="badge badge-purple mb-2">Dedicated Educators</span>
-        <h1 class="display-5 fw-bold">Our Faculty &amp; Mentors</h1>
-        <p class="text-muted fs-5">Meet our team of experienced, certified, and compassionate educators who bring real-world passion to the classroom every single day.</p>
-    </div>
+<!-- ==========================================================================
+     1. HERO BANNER (Floating Header Safe + Deep Forest Campus Theme)
+     ========================================================================== -->
+<section class="es-page-hero">
+    <div class="es-notices-hero-lines" aria-hidden="true"></div>
+    <div class="container position-relative" style="z-index: 2;">
+        <!-- Breadcrumb Pill -->
+        <nav aria-label="breadcrumb">
+            <div class="es-breadcrumb-pill">
+                <a asp-controller="Home" asp-action="Index">
+                    <i data-lucide="home" style="width:14px;height:14px;" class="me-1"></i>Home
+                </a>
+                <span>/</span>
+                <span class="text-white">Faculty &amp; Mentors</span>
+            </div>
+        </nav>
 
-    <div class="row g-4">
+        <div class="row align-items-center">
+            <div class="col-lg-9 col-xl-8">
+                <h1 class="es-page-hero-title">
+                    Our Distinguished Faculty
+                    <span class="es-live-chip" style="background:rgba(16,185,129,0.25); border-color:rgba(16,185,129,0.4); color:#A7F3D0;">
+                        <span class="es-live-chip-dot" style="background:#10B981; box-shadow:0 0 8px #10B981;"></span>
+                        Certified Educators
+                    </span>
+                </h1>
+                <p class="es-page-hero-desc">
+                    Meet our team of visionary scholars, certified mentors, and compassionate educators who bring academic rigor, interactive innovation, and character building to the classroom every single day.
+                </p>
+
+                <!-- Quick KPI Stats Bar -->
+                <div class="es-hero-kpi-bar">
+                    <div class="es-kpi-pill">
+                        <i data-lucide="graduation-cap" style="width:16px;height:16px;color:#34D399;"></i>
+                        <span><strong>@Model.Count</strong> Faculty Members</span>
+                    </div>
+                    <div class="es-kpi-pill">
+                        <i data-lucide="award" style="width:16px;height:16px;color:#38BDF8;"></i>
+                        <span>100% Certified Pedagogy</span>
+                    </div>
+                    <div class="es-kpi-pill">
+                        <i data-lucide="users" style="width:16px;height:16px;color:#FBBF24;"></i>
+                        <span>1:1 Mentorship</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     2. SMART FACULTY SEARCH & SUBJECT FILTER TOOLBAR
+     ========================================================================== -->
+<div class="container">
+    <div class="es-notices-toolbar-wrapper">
+        <div class="es-notices-toolbar">
+            <div class="row g-3 align-items-center">
+                <!-- Live Search Box -->
+                <div class="col-lg-8 col-md-12">
+                    <div class="es-search-input-box">
+                        <i data-lucide="search" style="width:19px;height:19px;"></i>
+                        <input type="text" 
+                               id="teacherSearchInput" 
+                               class="es-search-input" 
+                               placeholder="Search teachers by name, subject, designation, or qualification..." 
+                               autocomplete="off" />
+                        <button type="button" id="clearTeacherSearch" class="es-search-clear-btn" aria-label="Clear Search">
+                            <i data-lucide="x" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Active Count Indicator -->
+                <div class="col-lg-4 col-md-12 d-flex justify-content-lg-end align-items-center">
+                    <span class="text-muted small">
+                        Showing <strong class="text-dark" id="teacherCountDisplay">@Model.Count</strong> of <strong class="text-dark">@Model.Count</strong> educators
+                    </span>
+                </div>
+            </div>
+
+            <!-- Subject Filter Pills -->
+            <div class="es-smart-chips-wrapper">
+                <span class="text-muted small me-1"><i data-lucide="filter" style="width:12px;height:12px;"></i> Filter by Subject:</span>
+                <button type="button" class="es-smart-chip active" data-subject-filter="all">
+                    <span>All Departments</span>
+                </button>
+                @foreach (var sub in allSubjects)
+                {
+                    <button type="button" class="es-smart-chip" data-subject-filter="@sub.ToLower()">
+                        <span>@sub</span>
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     3. FACULTY CARDS DIRECTORY GRID
+     ========================================================================== -->
+<div class="container mb-5">
+    <div class="row g-4" id="teachersGrid">
         @foreach (var teacher in Model)
         {
-            <div class="col-lg-3 col-md-6">
-                <div class="teacher-public-card h-100 d-flex flex-column">
-                    <img src="@(string.IsNullOrEmpty(teacher.ProfilePictureUrl) ? "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=400&auto=format&fit=crop" : teacher.ProfilePictureUrl)" 
-                         alt="@teacher.FullName" />
-                    <div class="teacher-public-info flex-grow-1 d-flex flex-column">
-                        <h5 class="fw-bold mb-1">@teacher.FullName</h5>
-                        <div class="small text-purple fw-semibold mb-2">@teacher.Designation</div>
-                        <p class="small text-muted mb-2"><i class="bi bi-mortarboard me-1"></i>@teacher.Qualification</p>
-                        <p class="small text-muted mb-3"><i class="bi bi-briefcase me-1"></i>@teacher.ExperienceYears+ Years Experience</p>
+            var subjectsJoined = string.Join(" ", teacher.AssignedSubjects).ToLower();
+            var searchIndex = $"{teacher.FullName} {teacher.Designation} {teacher.Qualification} {subjectsJoined}".ToLower();
+            var photoUrl = !string.IsNullOrEmpty(teacher.ProfilePictureUrl) 
+                           ? teacher.ProfilePictureUrl 
+                           : "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=400&auto=format&fit=crop";
 
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 teacher-card-col" 
+                 data-search="@searchIndex"
+                 data-subjects="@subjectsJoined">
+                <div class="es-teacher-card">
+                    <!-- Photo with Experience Badge -->
+                    <div class="es-teacher-img-wrap">
+                        <img src="@photoUrl" alt="@teacher.FullName" loading="lazy" />
+                        <span class="es-teacher-exp-badge">
+                            <i data-lucide="clock" style="width:11px;height:11px;" class="me-1"></i>
+                            @(teacher.ExperienceYears > 0 ? $"{teacher.ExperienceYears}+ Years Exp" : "Faculty Member")
+                        </span>
+                    </div>
+
+                    <!-- Teacher Info -->
+                    <div class="flex-grow-1 d-flex flex-column">
+                        <h4 class="es-teacher-name">@teacher.FullName</h4>
+                        <div class="es-teacher-designation">@teacher.Designation</div>
+                        
+                        <div class="es-teacher-qualification">
+                            <i data-lucide="graduation-cap" style="width:14px;height:14px;color:#687F65;"></i>
+                            <span>@(string.IsNullOrWhiteSpace(teacher.Qualification) ? "Certified Educator" : teacher.Qualification)</span>
+                        </div>
+
+                        <!-- Subjects Taught -->
                         @if (teacher.AssignedSubjects.Any())
                         {
-                            <div class="mt-auto pt-2 border-top">
-                                <div class="small fw-semibold text-secondary mb-1">Teaches:</div>
+                            <div class="mb-3">
                                 <div class="d-flex flex-wrap gap-1">
-                                    @foreach (var sub in teacher.AssignedSubjects)
+                                    @foreach (var sub in teacher.AssignedSubjects.Take(3))
                                     {
-                                        <span class="badge badge-purple" style="font-size: 0.72rem;">@sub</span>
+                                        <span class="es-subject-pill">@sub</span>
+                                    }
+                                    @if (teacher.AssignedSubjects.Count > 3)
+                                    {
+                                        <span class="es-subject-pill">+@(teacher.AssignedSubjects.Count - 3)</span>
                                     }
                                 </div>
                             </div>
                         }
+
+                        <!-- Action Button -->
+                        <div class="mt-auto pt-3 border-top d-flex align-items-center justify-content-between">
+                            <button type="button" 
+                                    class="btn btn-sm btn-outline-dark rounded-pill px-3 py-1 d-inline-flex align-items-center gap-1 font-weight-bold open-teacher-modal"
+                                    data-name="@teacher.FullName"
+                                    data-designation="@teacher.Designation"
+                                    data-qualification="@teacher.Qualification"
+                                    data-exp="@teacher.ExperienceYears"
+                                    data-photo="@photoUrl"
+                                    data-email="@(string.IsNullOrWhiteSpace(teacher.Email) ? "faculty@brightfuture.edu" : teacher.Email)"
+                                    data-bio="@(string.IsNullOrWhiteSpace(teacher.Bio) ? "Dedicated educator committed to student success, critical inquiry, and character development." : teacher.Bio)"
+                                    data-subjects="@string.Join(", ", teacher.AssignedSubjects)">
+                                <i data-lucide="user" style="width:13px;height:13px;"></i> View Profile
+                            </button>
+
+                            @if (!string.IsNullOrWhiteSpace(teacher.Email))
+                            {
+                                <a href="mailto:@teacher.Email" class="btn btn-sm rounded-circle p-2 text-dark bg-light border" title="Email Teacher">
+                                    <i data-lucide="mail" style="width:14px;height:14px;"></i>
+                                </a>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         }
     </div>
+
+    <!-- Empty Search State -->
+    <div id="teacherSearchEmpty" class="card p-5 text-center border-2 d-none my-4" style="border-color:#D2D9C5; border-radius:24px; background:#FAFBF7;">
+        <div class="mb-3">
+            <span class="d-inline-flex p-3 rounded-circle" style="background:#F1F2E8; color:#687F65;">
+                <i data-lucide="user-x" style="width:36px;height:36px;"></i>
+            </span>
+        </div>
+        <h4 class="fw-bold text-dark">No Educators Found</h4>
+        <p class="text-muted mx-auto mb-4" style="max-width: 440px;">
+            We couldn't find any faculty members matching that keyword or subject filter. Try searching with another term.
+        </p>
+        <div>
+            <button type="button" id="btnResetTeacherFilter" class="btn btn-outline-dark rounded-pill px-4 py-2">
+                Clear All Filters
+            </button>
+        </div>
+    </div>
 </div>
 
+<!-- ==========================================================================
+     4. SMART TEACHER PROFILE MODAL (Rich Bio & Contact Details)
+     ========================================================================== -->
+<div class="modal fade es-preview-modal" id="teacherModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="es-preview-modal-header d-flex justify-content-between align-items-center">
+                <span class="badge rounded-pill bg-success-subtle text-success border border-success px-3 py-1 fw-bold">
+                    Official Faculty Profile
+                </span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="es-preview-modal-body text-center p-4">
+                <img src="" id="modalTeacherPhoto" class="rounded-circle shadow-sm mb-3 border border-3 border-light" style="width:110px;height:110px;object-fit:cover;" alt="" />
+                <h4 class="fw-bold text-dark mb-1" id="modalTeacherName">Teacher Name</h4>
+                <div class="text-success fw-bold small mb-2" id="modalTeacherDesignation">Designation</div>
+                <div class="text-muted small mb-3" id="modalTeacherQual"><i data-lucide="mortarboard" style="width:14px;height:14px;" class="me-1"></i>Qualification</div>
+
+                <div class="text-start bg-light p-3 rounded-3 mb-3 border">
+                    <h6 class="fw-bold text-dark small mb-1">Academic Background &amp; Bio:</h6>
+                    <p class="small text-muted mb-0" id="modalTeacherBio" style="line-height:1.6;"></p>
+                </div>
+
+                <div class="text-start mb-3">
+                    <h6 class="fw-bold text-dark small mb-1">Assigned Subjects:</h6>
+                    <div id="modalTeacherSubjects" class="small text-muted"></div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center gap-2 pt-2">
+                    <a href="#" id="modalTeacherEmailBtn" class="btn-es-green px-4 py-2 btn-sm text-decoration-none">
+                        <i data-lucide="mail" style="width:14px;height:14px;"></i> Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            const searchInput = document.getElementById('teacherSearchInput');
+            const clearBtn = document.getElementById('clearTeacherSearch');
+            const emptyState = document.getElementById('teacherSearchEmpty');
+            const resetBtn = document.getElementById('btnResetTeacherFilter');
+            const countDisplay = document.getElementById('teacherCountDisplay');
+            const chips = Array.from(document.querySelectorAll('.es-smart-chip[data-subject-filter]'));
+            const cards = Array.from(document.querySelectorAll('.teacher-card-col'));
+
+            let activeSubject = 'all';
+
+            function filterTeachers() {
+                const query = (searchInput.value || '').trim().toLowerCase();
+                if (clearBtn) clearBtn.style.display = query ? 'inline-flex' : 'none';
+
+                let visibleCount = 0;
+                cards.forEach(col => {
+                    const searchData = col.getAttribute('data-search') || '';
+                    const subjectsData = col.getAttribute('data-subjects') || '';
+
+                    const matchesQuery = !query || searchData.includes(query);
+                    const matchesSubject = activeSubject === 'all' || subjectsData.includes(activeSubject);
+
+                    if (matchesQuery && matchesSubject) {
+                        col.style.display = '';
+                        visibleCount++;
+                    } else {
+                        col.style.display = 'none';
+                    }
+                });
+
+                if (countDisplay) countDisplay.textContent = visibleCount;
+                if (emptyState) {
+                    if (visibleCount === 0 && cards.length > 0) {
+                        emptyState.classList.remove('d-none');
+                    } else {
+                        emptyState.classList.add('d-none');
+                    }
+                }
+            }
+
+            if (searchInput) searchInput.addEventListener('input', filterTeachers);
+            if (clearBtn) {
+                clearBtn.addEventListener('click', () => {
+                    searchInput.value = '';
+                    filterTeachers();
+                    searchInput.focus();
+                });
+            }
+
+            chips.forEach(chip => {
+                chip.addEventListener('click', function () {
+                    chips.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    activeSubject = this.getAttribute('data-subject-filter');
+                    filterTeachers();
+                });
+            });
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    searchInput.value = '';
+                    activeSubject = 'all';
+                    chips.forEach(c => c.classList.remove('active'));
+                    chips[0]?.classList.add('active');
+                    filterTeachers();
+                });
+            }
+
+            // Modal Trigger
+            const modalEl = document.getElementById('teacherModal');
+            let teacherModal = null;
+            if (modalEl && typeof bootstrap !== 'undefined') {
+                teacherModal = new bootstrap.Modal(modalEl);
+            }
+
+            document.querySelectorAll('.open-teacher-modal').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    document.getElementById('modalTeacherPhoto').setAttribute('src', this.getAttribute('data-photo'));
+                    document.getElementById('modalTeacherName').textContent = this.getAttribute('data-name');
+                    document.getElementById('modalTeacherDesignation').textContent = this.getAttribute('data-designation');
+                    document.getElementById('modalTeacherQual').textContent = this.getAttribute('data-qualification');
+                    document.getElementById('modalTeacherBio').textContent = this.getAttribute('data-bio');
+                    document.getElementById('modalTeacherSubjects').textContent = this.getAttribute('data-subjects') || 'General Academic';
+                    document.getElementById('modalTeacherEmailBtn').setAttribute('href', `mailto:${this.getAttribute('data-email')}`);
+
+                    if (teacherModal) teacherModal.show();
+                });
+            });
+        });
+    </script>
+}

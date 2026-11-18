@@ -482,23 +482,137 @@
                         box-shadow: 0 16px 36px rgba(28, 43, 33, 0.12) !important;
                     }
 
-                    .es-navbar-wrapper,
-                    header.es-navbar-wrapper,
-                    header {
-                        display: none !important;
-                        visibility: hidden !important;
-                        height: 0 !important;
-                        overflow: hidden !important;
-                        opacity: 0 !important;
-                        pointer-events: none !important;
+                    /* Transparent Floating Navbar */
+                    .es-navbar-wrapper {
+                        position: absolute !important;
+                        top: 0 !important;
+                        left: 0 !important;
+                        width: 100% !important;
+                        z-index: 1030 !important;
+                        background: transparent !important;
+                        backdrop-filter: none !important;
+                        -webkit-backdrop-filter: none !important;
+                        border: none !important;
+                        border-bottom: none !important;
+                        box-shadow: none !important;
+                        transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease !important;
+                    }
+
+                    .es-navbar-wrapper.is-scrolled {
+                        position: fixed !important;
+                        background: rgba(28, 43, 33, 0.94) !important;
+                        backdrop-filter: blur(14px) !important;
+                        -webkit-backdrop-filter: blur(14px) !important;
+                        border-bottom: 1px solid rgba(210, 217, 197, 0.18) !important;
+                        box-shadow: 0 8px 25px rgba(28, 43, 33, 0.25) !important;
+                    }
+
+                    /* Hero Banner with image directly applied */
+                    .es-full-bg-showcase,
+                    #quick-actions,
+                    .es-hero {
+                        min-height: 100vh !important;
+                        display: flex !important;
+                        flex-direction: column !important;
+                        justify-content: space-between !important;
+                        padding-top: 108px !important;
+                        padding-bottom: 36px !important;
+                        position: relative !important;
+                        z-index: 10 !important;
+                        background: linear-gradient(90deg, 
+                            rgba(15, 23, 42, 0.86) 0%, 
+                            rgba(15, 23, 42, 0.70) 42%, 
+                            rgba(15, 23, 42, 0.24) 75%, 
+                            rgba(15, 23, 42, 0.08) 100%
+                        ), url('/images/hero-building.jpg') center center / cover no-repeat !important;
+                        border: none !important;
+                        border-bottom: none !important;
+                        box-shadow: none !important;
+                    }
+
+                    /* Transparent Quick Action Buttons Strip */
+                    .es-quick-actions-wrapper {
+                        background: rgba(255, 255, 255, 0.06) !important;
+                        backdrop-filter: blur(14px) !important;
+                        -webkit-backdrop-filter: blur(14px) !important;
+                        border-radius: 20px !important;
+                        padding: 10px 14px !important;
+                        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25) !important;
+                        border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+                    }
+
+                    .es-quick-btn {
+                        background: rgba(255, 255, 255, 0.10) !important;
+                        backdrop-filter: blur(8px) !important;
+                        -webkit-backdrop-filter: blur(8px) !important;
+                        border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+                        color: #FFFFFF !important;
+                        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+                    }
+
+                    .es-quick-btn .es-quick-icon {
+                        background: rgba(255, 255, 255, 0.16) !important;
+                        color: var(--btn-color, #FFFFFF) !important;
+                    }
+
+                    .es-quick-btn:hover {
+                        background: rgba(255, 255, 255, 0.24) !important;
+                        border-color: var(--btn-color, rgba(255, 255, 255, 0.7)) !important;
+                        color: #FFFFFF !important;
+                        box-shadow: 0 10px 25px var(--btn-glow, rgba(0, 0, 0, 0.35)) !important;
+                    }
+
+                    .es-quick-btn:hover .es-quick-icon {
+                        background: var(--btn-color, #10B981) !important;
+                        color: #FFFFFF !important;
                     }
                 `;
                 document.head.appendChild(style);
             }
 
-            // Remove header from DOM
-            document.querySelectorAll('.es-navbar-wrapper, header').forEach(function (h) {
-                h.remove();
+            // Ensure header is styled as transparent floating and handle scroll
+            const navbar = document.querySelector('.es-navbar-wrapper');
+            if (navbar) {
+                const handleNavScroll = function () {
+                    if (window.scrollY > 40) {
+                        navbar.classList.add('is-scrolled');
+                    } else {
+                        navbar.classList.remove('is-scrolled');
+                    }
+                };
+                window.addEventListener('scroll', handleNavScroll, { passive: true });
+                handleNavScroll();
+            }
+
+            // Hero banner styling
+            const heroShowcase = document.querySelector('.es-full-bg-showcase') || document.getElementById('quick-actions');
+            if (heroShowcase) {
+                heroShowcase.style.setProperty('min-height', '100vh', 'important');
+                heroShowcase.style.setProperty('padding-top', '108px', 'important');
+                heroShowcase.style.setProperty('background', "linear-gradient(90deg, rgba(15, 23, 42, 0.86) 0%, rgba(15, 23, 42, 0.70) 42%, rgba(15, 23, 42, 0.24) 75%, rgba(15, 23, 42, 0.08) 100%), url('/images/hero-building.jpg') center center / cover no-repeat", 'important');
+                heroShowcase.style.setProperty('border', 'none', 'important');
+                heroShowcase.style.setProperty('border-bottom', 'none', 'important');
+                heroShowcase.style.setProperty('box-shadow', 'none', 'important');
+            }
+
+            // Quick action buttons transparent glassmorphism
+            const quickWrapper = document.querySelector('.es-quick-actions-wrapper');
+            if (quickWrapper) {
+                quickWrapper.style.setProperty('background', 'rgba(255, 255, 255, 0.06)', 'important');
+                quickWrapper.style.setProperty('backdrop-filter', 'blur(14px)', 'important');
+                quickWrapper.style.setProperty('-webkit-backdrop-filter', 'blur(14px)', 'important');
+                quickWrapper.style.setProperty('border', '1.5px solid rgba(255, 255, 255, 0.18)', 'important');
+                quickWrapper.style.setProperty('box-shadow', '0 12px 32px rgba(0, 0, 0, 0.25)', 'important');
+            }
+
+            document.querySelectorAll('.es-quick-btn').forEach(function (btn) {
+                btn.style.setProperty('background', 'rgba(255, 255, 255, 0.10)', 'important');
+                btn.style.setProperty('border', '1.5px solid rgba(255, 255, 255, 0.25)', 'important');
+                btn.style.setProperty('color', '#FFFFFF', 'important');
+                const icon = btn.querySelector('.es-quick-icon');
+                if (icon) {
+                    icon.style.setProperty('background', 'rgba(255, 255, 255, 0.16)', 'important');
+                }
             });
 
             // Target all 5 sections
@@ -576,9 +690,162 @@
         }
     }
 
+    // --------------------------------------------------------------------------
+    // 6. Modern Sliding Spotlight Navbar Transition Engine
+    // Provides pixel-perfect magnetic sliding pill indicator on hover/active
+    // Full support for both desktop horizontal capsule and mobile vertical menu
+    // --------------------------------------------------------------------------
+    function initNavbarTransitions() {
+        const navMenu = document.getElementById('esNavMenu');
+        const slider = document.getElementById('esNavSlider');
+        const navbarCollapse = document.getElementById('esNavbarContent');
+        if (!navMenu || !slider) return;
+
+        const navLinks = Array.from(navMenu.querySelectorAll('.es-nav-link'));
+        if (navLinks.length === 0) return;
+
+        let activeLink = navLinks.find(link => link.classList.contains('active')) || navLinks[0];
+
+        function updateSlider(targetLink, isHover) {
+            if (!targetLink || !slider || !navMenu) {
+                if (slider) slider.style.opacity = '0';
+                return;
+            }
+
+            // Element must be in DOM and visible
+            const menuRect = navMenu.getBoundingClientRect();
+            const linkRect = targetLink.getBoundingClientRect();
+
+            if (linkRect.width <= 0 || linkRect.height <= 0) {
+                slider.style.opacity = '0';
+                return;
+            }
+
+            const targetLeft = Math.round(linkRect.left - menuRect.left + navMenu.scrollLeft);
+            const targetTop = Math.round(linkRect.top - menuRect.top + navMenu.scrollTop);
+            const targetWidth = Math.round(linkRect.width);
+            const targetHeight = Math.round(linkRect.height);
+
+            slider.style.opacity = '1';
+            slider.style.transform = `translate3d(${targetLeft}px, ${targetTop}px, 0)`;
+            slider.style.width = `${targetWidth}px`;
+            slider.style.height = `${targetHeight}px`;
+
+            if (isHover) {
+                slider.style.background = 'rgba(255, 255, 255, 0.28)';
+            } else {
+                slider.style.background = 'rgba(255, 255, 255, 0.20)';
+            }
+        }
+
+        function handlePointerMove(e) {
+            const target = e.target;
+            const link = target ? target.closest('.es-nav-link') : null;
+            if (link) {
+                updateSlider(link, true);
+            }
+        }
+
+        // Attach mouse & pointer tracking across the navbar menu (Desktop & Mobile)
+        navMenu.addEventListener('mousemove', handlePointerMove);
+        navMenu.addEventListener('pointermove', handlePointerMove);
+        navMenu.addEventListener('mouseover', handlePointerMove);
+
+        // Individual link listeners for direct focus/hover
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => updateSlider(link, true));
+            link.addEventListener('focus', () => updateSlider(link, true));
+            link.addEventListener('touchstart', () => updateSlider(link, true), { passive: true });
+
+            link.addEventListener('click', () => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                activeLink = link;
+                updateSlider(link, false);
+            });
+        });
+
+        // Restore to active item when mouse/pointer leaves the nav menu
+        navMenu.addEventListener('mouseleave', () => {
+            updateSlider(activeLink, false);
+        });
+        navMenu.addEventListener('pointerleave', () => {
+            updateSlider(activeLink, false);
+        });
+
+        // Bootstrap Collapse Listeners for Mobile Dropdown
+        if (navbarCollapse) {
+            navbarCollapse.addEventListener('show.bs.collapse', () => {
+                setTimeout(() => updateSlider(activeLink, false), 50);
+                setTimeout(() => updateSlider(activeLink, false), 150);
+                setTimeout(() => updateSlider(activeLink, false), 350);
+            });
+
+            navbarCollapse.addEventListener('shown.bs.collapse', () => {
+                updateSlider(activeLink, false);
+            });
+
+            navbarCollapse.addEventListener('hide.bs.collapse', () => {
+                if (window.innerWidth < 992) {
+                    slider.style.opacity = '0';
+                }
+            });
+
+            navbarCollapse.addEventListener('hidden.bs.collapse', () => {
+                if (window.innerWidth < 992) {
+                    slider.style.opacity = '0';
+                }
+            });
+        }
+
+        // Responsive window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                updateSlider(activeLink, false);
+            }, 60);
+        }, { passive: true });
+
+        // Initial measurements
+        setTimeout(() => {
+            updateSlider(activeLink, false);
+        }, 100);
+        setTimeout(() => {
+            updateSlider(activeLink, false);
+        }, 300);
+    }
+
+    // --------------------------------------------------------------------------
+    // 7. Interactive Button Dynamic Ripple Engine
+    // Generates a smooth expanding radial ripple on click
+    // --------------------------------------------------------------------------
+    function initButtonRippleEffect() {
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('.btn-es-login, .btn-es-green, .btn-es-glass, .es-quick-btn, .btn-es-register, .btn-es-result');
+            if (!btn) return;
+
+            const rect = btn.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.className = 'es-click-ripple';
+            const size = Math.max(rect.width, rect.height) * 2;
+            ripple.style.width = `${size}px`;
+            ripple.style.height = `${size}px`;
+            ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+            ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+            btn.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    }
+
     // Immediate run
     initUnifiedCampusZone();
     ensureFooterAndMotion();
+    initNavbarTransitions();
+    initButtonRippleEffect();
 
     // --------------------------------------------------------------------------
     // Initialize on DOM Ready
@@ -586,6 +853,8 @@
     document.addEventListener('DOMContentLoaded', function () {
         initUnifiedCampusZone();
         ensureFooterAndMotion();
+        initNavbarTransitions();
+        initButtonRippleEffect();
 
         if (lenis) {
             lenis.on('scroll', updateParallaxImages);

@@ -1,106 +1,284 @@
 @using SchoolManagement.Domain.Entities
 
 @{
-    ViewData["Title"] = "About Us";
+    ViewData["Title"] = "About Our Institution & Leadership";
     var members = ViewBag.ManagementMembers as IReadOnlyList<ManagementMember> ?? new List<ManagementMember>();
 }
 
-<div class="container py-5">
-    <div class="text-center max-w-700 mx-auto mb-5">
-        <span class="badge badge-purple mb-2">Our Story &amp; Values</span>
-        <h1 class="display-5 fw-bold">About Bright Future School</h1>
-        <p class="text-muted fs-5">A legacy of over three decades dedicated to educational excellence, moral integrity, and social responsibility.</p>
-    </div>
+<!-- ==========================================================================
+     1. HERO BANNER (Floating Header Safe + Deep Forest Campus Theme)
+     ========================================================================== -->
+<section class="es-page-hero">
+    <div class="es-notices-hero-lines" aria-hidden="true"></div>
+    <div class="container position-relative" style="z-index: 2;">
+        <!-- Breadcrumb Pill -->
+        <nav aria-label="breadcrumb">
+            <div class="es-breadcrumb-pill">
+                <a asp-controller="Home" asp-action="Index">
+                    <i data-lucide="home" style="width:14px;height:14px;" class="me-1"></i>Home
+                </a>
+                <span>/</span>
+                <span class="text-white">About Institution</span>
+            </div>
+        </nav>
 
-    <!-- History, Mission, Vision -->
+        <div class="row align-items-center g-4">
+            <div class="col-lg-9 col-xl-8">
+                <h1 class="es-page-hero-title">
+                    Shaping Future Leaders Since 1994
+                    <span class="es-live-chip" style="background:rgba(56,189,248,0.22); border-color:rgba(56,189,248,0.4); color:#BAE6FD;">
+                        <span class="es-live-chip-dot" style="background:#38BDF8; box-shadow:0 0 8px #38BDF8;"></span>
+                        30+ Years of Trust
+                    </span>
+                </h1>
+                <p class="es-page-hero-desc">
+                    Established with a foundational mission to nurture intellectual inquiry, moral integrity, and community leadership. Today, E-School stands as a premier educational sanctuary empowering students to excel in a globalized world.
+                </p>
+
+                <!-- Quick Milestone Stats -->
+                <div class="es-hero-kpi-bar">
+                    <div class="es-kpi-pill">
+                        <i data-lucide="calendar" style="width:16px;height:16px;color:#34D399;"></i>
+                        <span>Est. <strong>1994</strong></span>
+                    </div>
+                    <div class="es-kpi-pill">
+                        <i data-lucide="users" style="width:16px;height:16px;color:#38BDF8;"></i>
+                        <span><strong>2,500+</strong> Students</span>
+                    </div>
+                    <div class="es-kpi-pill">
+                        <i data-lucide="award" style="width:16px;height:16px;color:#FBBF24;"></i>
+                        <span><strong>100%</strong> Board Pass Rate</span>
+                    </div>
+                    <div class="es-kpi-pill">
+                        <i data-lucide="sparkles" style="width:16px;height:16px;color:#A78BFA;"></i>
+                        <span>Top National Ranking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     2. CORE FOUNDATION PILLARS (History, Mission & Vision)
+     ========================================================================== -->
+<div class="container my-5">
     <div class="row g-4 mb-5">
-        <div class="col-md-4">
-            <div class="card p-4 h-100">
-                <div class="feature-icon-wrap">
-                    <i class="bi bi-hourglass-split"></i>
+        <!-- History Card -->
+        <div class="col-lg-4 col-md-6">
+            <div class="es-about-card">
+                <div class="es-about-icon-circle">
+                    <i data-lucide="history" style="width:28px;height:28px;"></i>
                 </div>
-                <h4 class="fw-bold mb-3">Our History</h4>
-                <p class="text-muted mb-0">
-                    Founded in 1994, Bright Future Model School &amp; College started with a visionary commitment to provide accessible, high-caliber education in the northern capital. Today it stands as an institution of high repute with modern infrastructure and top national rankings.
+                <h3 class="fw-bold text-dark fs-4 mb-3">Our Legacy</h3>
+                <p class="text-muted mb-0" style="line-height: 1.75;">
+                    Founded in 1994, our institution began with a dedicated faculty and a visionary dream. Across three decades, it has blossomed into a landmark academic campus recognized for producing scholarship winners, civil servants, and innovative technologists.
                 </p>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card p-4 h-100">
-                <div class="feature-icon-wrap">
-                    <i class="bi bi-bullseye"></i>
+
+        <!-- Mission Card -->
+        <div class="col-lg-4 col-md-6">
+            <div class="es-about-card">
+                <div class="es-about-icon-circle" style="background:#DCFCE7; color:#15803D;">
+                    <i data-lucide="target" style="width:28px;height:28px;"></i>
                 </div>
-                <h4 class="fw-bold mb-3">Our Mission</h4>
-                <p class="text-muted mb-0">
-                    To cultivate intellectual curiosity, critical inquiry, and compassionate civic responsibility in every student through evidence-based pedagogy, creative expression, and dynamic digital learning environments.
+                <h3 class="fw-bold text-dark fs-4 mb-3">Our Mission</h3>
+                <p class="text-muted mb-0" style="line-height: 1.75;">
+                    To deliver evidence-based, compassionate education that blends technological fluency with humanistic values. We nurture independent critical thinking, collaborative problem-solving, and civic responsibility in every student.
                 </p>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card p-4 h-100">
-                <div class="feature-icon-wrap">
-                    <i class="bi bi-eye-fill"></i>
+
+        <!-- Vision Card -->
+        <div class="col-lg-4 col-md-12">
+            <div class="es-about-card">
+                <div class="es-about-icon-circle" style="background:#E0F2FE; color:#0369A1;">
+                    <i data-lucide="eye" style="width:28px;height:28px;"></i>
                 </div>
-                <h4 class="fw-bold mb-3">Our Vision</h4>
-                <p class="text-muted mb-0">
-                    To be the foremost educational institution inspiring future leaders who shape a sustainable, equitable, and technologically advanced society through excellence, character, and service.
+                <h3 class="fw-bold text-dark fs-4 mb-3">Our Vision</h3>
+                <p class="text-muted mb-0" style="line-height: 1.75;">
+                    To be the leading center of academic excellence and holistic human development, inspiring empathetic leaders who drive sustainable progress, national enrichment, and global scientific innovation.
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- School Facilities -->
-    <div class="card p-5 mb-5 bg-white border-0 shadow-sm">
-        <h3 class="fw-bold mb-4 text-center">World-Class Campus Facilities</h3>
+    <!-- ==========================================================================
+         3. CAMPUS FACILITIES SHOWCASE
+         ========================================================================== -->
+    <div class="card p-4 p-md-5 mb-5 border-2" style="border-color:#1C2B21; border-radius:28px; background:#FFFFFF; box-shadow:0 12px 36px rgba(28,43,33,0.06);">
+        <div class="text-center max-w-700 mx-auto mb-5">
+            <span class="badge rounded-pill px-3 py-2 text-uppercase fw-bold" style="background:#E5E8CE; color:#1C2B21; font-size:0.75rem; letter-spacing:0.5px;">
+                Modern Infrastructure
+            </span>
+            <h2 class="fw-bold text-dark mt-2 display-6">World-Class Campus Ecosystem</h2>
+            <p class="text-muted fs-6">Purpose-built facilities engineered to inspire curiosity, athletic vigor, and creative expression.</p>
+        </div>
+
         <div class="row g-4">
-            <div class="col-md-3 col-6 text-center">
-                <i class="bi bi-book-fill fs-1 text-purple mb-2 d-block"></i>
-                <h6 class="fw-bold">Central Library</h6>
-                <p class="small text-muted">Over 15,000 academic titles, periodicals, and quiet study alcoves.</p>
+            <div class="col-lg-4 col-md-6">
+                <div class="es-facility-box">
+                    <div class="mb-3 text-success">
+                        <i data-lucide="book-open" style="width:36px;height:36px;"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">Central Library &amp; Archives</h5>
+                    <p class="text-muted small mb-0">Over 15,000 academic titles, research periodicals, and soundproof digital study carrels with high-speed catalog terminals.</p>
+                </div>
             </div>
-            <div class="col-md-3 col-6 text-center">
-                <i class="bi bi-cpu-fill fs-1 text-purple mb-2 d-block"></i>
-                <h6 class="fw-bold">Computer Center</h6>
-                <p class="small text-muted">Dual computer laboratories with gigabit fiber-optic connectivity.</p>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="es-facility-box">
+                    <div class="mb-3 text-primary">
+                        <i data-lucide="cpu" style="width:36px;height:36px;"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">Dual Computer &amp; AI Labs</h5>
+                    <p class="text-muted small mb-0">High-performance workstations equipped with coding environments, gigabit fiber connectivity, and robotics prototyping kits.</p>
+                </div>
             </div>
-            <div class="col-md-3 col-6 text-center">
-                <i class="bi bi-lightning-charge-fill fs-1 text-purple mb-2 d-block"></i>
-                <h6 class="fw-bold">Science Laboratories</h6>
-                <p class="small text-muted">Fully certified physics, chemistry, and biology experimental stations.</p>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="es-facility-box">
+                    <div class="mb-3 text-warning">
+                        <i data-lucide="flask-conical" style="width:36px;height:36px;"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">Science Research Stations</h5>
+                    <p class="text-muted small mb-0">Fully certified specialized Physics, Chemistry, and Biology laboratories built according to international safety standards.</p>
+                </div>
             </div>
-            <div class="col-md-3 col-6 text-center">
-                <i class="bi bi-shield-check fs-1 text-purple mb-2 d-block"></i>
-                <h6 class="fw-bold">Safe &amp; Secure</h6>
-                <p class="small text-muted">24/7 CCTV surveillance, automated access control, and dedicated security guards.</p>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="es-facility-box">
+                    <div class="mb-3 text-danger">
+                        <i data-lucide="activity" style="width:36px;height:36px;"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">Sports Arena &amp; Athletics</h5>
+                    <p class="text-muted small mb-0">Olympic-standard football ground, basketball court, indoor badminton pavilion, and dedicated physical health trainers.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="es-facility-box">
+                    <div class="mb-3 text-info">
+                        <i data-lucide="shield-check" style="width:36px;height:36px;"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">Safety &amp; CCTV Surveillance</h5>
+                    <p class="text-muted small mb-0">24/7 synchronized campus camera monitoring, biometric gate security, rapid emergency medical center, and counselor suites.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="es-facility-box">
+                    <div class="mb-3 text-secondary">
+                        <i data-lucide="mic" style="width:36px;height:36px;"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">Auditorium &amp; Cultural Hall</h5>
+                    <p class="text-muted small mb-0">800-seat multi-tier auditorium equipped with professional acoustics, lighting rigs, and digital stage projection systems.</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- School Management Committee -->
-    <div class="text-center mb-4">
-        <span class="badge badge-purple mb-2">Institutional Governance</span>
-        <h3 class="fw-bold">Managing Committee &amp; Administration</h3>
-    </div>
-    <div class="row g-4 justify-content-center">
-        @foreach (var member in members)
-        {
-            <div class="col-md-4 col-sm-6">
-                <div class="card p-4 text-center h-100">
-                    <img src="@(string.IsNullOrEmpty(member.PhotoUrl) ? "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=300&auto=format&fit=crop" : member.PhotoUrl)" 
-                         alt="@member.Name" class="rounded-circle mx-auto mb-3 shadow-sm" style="width: 110px; height: 110px; object-fit: cover;" />
-                    <h5 class="fw-bold mb-1">@member.Name</h5>
-                    <span class="badge badge-purple mb-3">@member.Designation</span>
-                    @if (!string.IsNullOrEmpty(member.Message))
-                    {
-                        <p class="small text-muted fst-italic">"@member.Message"</p>
-                    }
-                    @if (!string.IsNullOrEmpty(member.Email))
-                    {
-                        <div class="small text-muted"><i class="bi bi-envelope me-1"></i>@member.Email</div>
-                    }
+    <!-- ==========================================================================
+         4. INSTITUTIONAL GOVERNANCE & MANAGEMENT COMMITTEE
+         ========================================================================== -->
+    <div class="mb-5">
+        <div class="text-center max-w-700 mx-auto mb-4">
+            <span class="badge rounded-pill px-3 py-2 text-uppercase fw-bold" style="background:#E5E8CE; color:#1C2B21; font-size:0.75rem; letter-spacing:0.5px;">
+                Leadership Team
+            </span>
+            <h2 class="fw-bold text-dark mt-2 display-6">Managing Committee &amp; Administration</h2>
+            <p class="text-muted fs-6">Guided by respected academic administrators, community patrons, and educational stewards.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            @if (members.Any())
+            {
+                @foreach (var member in members)
+                {
+                    var photo = !string.IsNullOrEmpty(member.PhotoUrl) 
+                                ? member.PhotoUrl 
+                                : "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=300&auto=format&fit=crop";
+
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="es-leadership-card">
+                            <img src="@photo" alt="@member.Name" class="es-leadership-avatar" loading="lazy" />
+                            <h4 class="fw-bold text-dark fs-5 mb-1">@member.Name</h4>
+                            <span class="badge rounded-pill mb-3" style="background:#1C2B21; color:#FFFFFF; font-size:0.78rem; padding:6px 14px;">
+                                @member.Designation
+                            </span>
+
+                            @if (!string.IsNullOrEmpty(member.Message))
+                            {
+                                <p class="small text-muted fst-italic mb-3" style="line-height:1.6;">
+                                    &ldquo;@member.Message&rdquo;
+                                </p>
+                            }
+
+                            @if (!string.IsNullOrEmpty(member.Email))
+                            {
+                                <div class="pt-2 border-top">
+                                    <a href="mailto:@member.Email" class="btn btn-sm btn-outline-dark rounded-pill px-3 py-1 d-inline-flex align-items-center gap-2">
+                                        <i data-lucide="mail" style="width:13px;height:13px;"></i>
+                                        <span>@member.Email</span>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-md-4">
+                    <div class="es-leadership-card">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" class="es-leadership-avatar" alt="" />
+                        <h4 class="fw-bold text-dark fs-5 mb-1">Prof. Ayesha Rahman</h4>
+                        <span class="badge rounded-pill mb-3" style="background:#1C2B21; color:#FFFFFF;">Chairman, Governing Body</span>
+                        <p class="small text-muted fst-italic mb-3">&ldquo;Dedicated to fostering an inclusive campus community of excellence, character, and lifelong scholarship.&rdquo;</p>
+                    </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="es-leadership-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop" class="es-leadership-avatar" alt="" />
+                        <h4 class="fw-bold text-dark fs-5 mb-1">Dr. Tariqul Islam</h4>
+                        <span class="badge rounded-pill mb-3" style="background:#1C2B21; color:#FFFFFF;">Principal &amp; Secretary</span>
+                        <p class="small text-muted fst-italic mb-3">&ldquo;Empowering our students with real-world competence, scientific inquiry, and humanitarian empathy.&rdquo;</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         5. CAMPUS INVITATION CTA
+         ========================================================================== -->
+    <div class="card p-5 text-center text-white border-0 position-relative overflow-hidden" style="background: linear-gradient(135deg, #1C2B21 0%, #263B2D 100%); border-radius: 28px; box-shadow: 0 16px 40px rgba(28,43,33,0.2);">
+        <div class="position-relative" style="z-index: 2;">
+            <h2 class="display-6 fw-bold mb-3">Begin Your Academic Journey With Us</h2>
+            <p class="fs-5 text-white-50 mx-auto mb-4" style="max-width: 620px;">
+                Discover an empowering environment where every learner is challenged to reach their highest potential. Admissions are open for the upcoming academic session.
+            </p>
+            <div class="d-flex align-items-center justify-content-center flex-wrap gap-3">
+                <a asp-controller="Academics" asp-action="Index" class="btn-es-green px-4 py-3 text-decoration-none">
+                    <i data-lucide="graduation-cap" style="width:18px;height:18px;"></i>
+                    <span>Apply for Admission</span>
+                </a>
+                <a asp-controller="Contact" asp-action="Index" class="btn btn-outline-light rounded-pill px-4 py-3 d-inline-flex align-items-center gap-2 font-weight-bold" style="font-size:0.95rem;">
+                    <i data-lucide="map-pin" style="width:18px;height:18px;"></i>
+                    <span>Schedule Campus Tour</span>
+                </a>
             </div>
-        }
+        </div>
     </div>
 </div>
 
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+}

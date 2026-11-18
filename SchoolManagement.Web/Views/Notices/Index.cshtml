@@ -3,71 +3,323 @@
 @model NoticeListViewModel
 
 @{
-    ViewData["Title"] = "Official Notice Board";
+    ViewData["Title"] = "Official Notice Board & Circulars";
+    var categories = new[]
+    {
+        NoticeType.Academic,
+        NoticeType.Examination,
+        NoticeType.Holiday,
+        NoticeType.Event,
+        NoticeType.General
+    };
 }
 
-<div class="container py-5">
-    <div class="text-center max-w-700 mx-auto mb-5">
-        <span class="badge badge-purple mb-2">School Announcements</span>
-        <h1 class="display-5 fw-bold">Official Notice Board</h1>
-        <p class="text-muted fs-5">Stay updated with academic circulars, exam routines, administrative announcements, and holiday notices.</p>
-    </div>
+<!-- ==========================================================================
+     1. HERO BANNER (Transparent Floating Navbar Safe + Deep Forest Theme)
+     ========================================================================== -->
+<section class="es-notices-hero">
+    <div class="es-notices-hero-lines" aria-hidden="true"></div>
+    <div class="container position-relative" style="z-index: 2;">
+        <!-- Live Marquee Ticker Bar -->
+        <div class="es-notices-ticker-bar">
+            <span class="es-ticker-live-pill">
+                <span class="es-live-chip-dot" style="width:6px;height:6px;background:#FFF;box-shadow:none;"></span>
+                LIVE
+            </span>
+            <div class="es-ticker-marquee">
+                <span class="es-ticker-marquee-inner">
+                    📌 Term-2 Final Examination Schedule &amp; Admit Card Distribution published &bull; 🔴 Notice for Annual Sports Day &bull; 🟢 Inter-School Science Fair 2026 Registration Open &bull; 🔵 Winter Vacation circular published
+                </span>
+            </div>
+        </div>
 
-    <!-- Filter & Search Form -->
-    <div class="card p-4 mb-4">
-        <form method="get" class="row g-3 align-items-center">
-            <div class="col-md-6">
-                <div class="input-group">
-                    <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
-                    <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Search notices by keyword..." />
+        <!-- Breadcrumb Pill -->
+        <nav aria-label="breadcrumb">
+            <div class="es-breadcrumb-pill">
+                <a asp-controller="Home" asp-action="Index">
+                    <i data-lucide="home" style="width:14px;height:14px;" class="me-1"></i>Home
+                </a>
+                <span>/</span>
+                <span class="text-white">Notice Board</span>
+            </div>
+        </nav>
+
+        <!-- Title & Subtitle Row -->
+        <div class="row align-items-center">
+            <div class="col-lg-10 col-xl-9">
+                <h1 class="es-notices-hero-title">
+                    Official Notice Board
+                    <span class="es-live-chip">
+                        <span class="es-live-chip-dot"></span> Live Portal
+                    </span>
+                </h1>
+                <p class="es-notices-hero-desc">
+                    Access verified institutional circulars, exam routines, academic calendars, and campus bulletins with instant search, live filtering, and one-click PDF downloads.
+                </p>
+
+                <!-- Quick KPI Stats Bar -->
+                <div class="es-hero-kpi-bar">
+                    <div class="es-kpi-pill">
+                        <i data-lucide="file-check-2" style="width:16px;height:16px;color:#34D399;"></i>
+                        <span><strong>@Model.Notices.TotalCount</strong> Total Circulars</span>
+                    </div>
+                    <div class="es-kpi-pill">
+                        <i data-lucide="layers" style="width:16px;height:16px;color:#38BDF8;"></i>
+                        <span><strong>5</strong> Categories</span>
+                    </div>
+                    <div class="es-kpi-pill">
+                        <i data-lucide="file-text" style="width:16px;height:16px;color:#FBBF24;"></i>
+                        <span>Instant PDF Downloads</span>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <select name="category" class="form-select">
-                    <option value="">All Categories</option>
-                    @foreach (NoticeType cat in Enum.GetValues(typeof(NoticeType)))
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================================================
+     2. SMART INTERACTIVE TOOLBAR (Search, Categories, Smart Chips & View Switcher)
+     ========================================================================== -->
+<div class="container">
+    <div class="es-notices-toolbar-wrapper">
+        <div class="es-notices-toolbar">
+            <form method="get" asp-action="Index" id="noticeFilterForm">
+                <div class="row g-3 align-items-center">
+                    <!-- Live Search Input Box -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="es-search-input-box">
+                            <i data-lucide="search" style="width:19px;height:19px;"></i>
+                            <input type="text" 
+                                   id="noticeSearchInput"
+                                   name="searchTerm" 
+                                   value="@Model.SearchTerm" 
+                                   class="es-search-input" 
+                                   placeholder="Type keywords to filter notices instantly (e.g. routine, exam, fee)..." 
+                                   autocomplete="off" />
+                            <button type="button" id="clearSearchBtn" class="es-search-clear-btn" aria-label="Clear Search">
+                                <i data-lucide="x" style="width:16px;height:16px;"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Client-Side Quick Sort Selector -->
+                    <div class="col-lg-3 col-md-6 col-6">
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="text-muted small d-none d-sm-inline font-weight-bold" for="sortSelect">Sort:</label>
+                            <select id="sortSelect" class="form-select rounded-pill border-2" style="font-size:0.86rem; border-color:#D2D9C5; background-color:#F8FAF6;">
+                                <option value="newest">Newest First</option>
+                                <option value="views">Most Viewed</option>
+                                <option value="title">Alphabetical (A-Z)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- View Mode Toggler (List vs Grid) -->
+                    <div class="col-lg-3 col-md-6 col-6 d-flex justify-content-end">
+                        <div class="es-view-mode-group">
+                            <button type="button" class="es-view-mode-btn active" id="btnViewList" title="Dense List View">
+                                <i data-lucide="list" style="width:15px;height:15px;"></i>
+                                <span class="d-none d-sm-inline">List</span>
+                            </button>
+                            <button type="button" class="es-view-mode-btn" id="btnViewGrid" title="Visual Cards View">
+                                <i data-lucide="layout-grid" style="width:15px;height:15px;"></i>
+                                <span class="d-none d-sm-inline">Cards</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Filter Tabs -->
+                <div class="es-cat-tabs-bar">
+                    <a asp-action="Index" 
+                       asp-route-searchTerm="@Model.SearchTerm" 
+                       class="es-cat-tab-btn @(Model.Category == null ? "active" : "")">
+                        <i data-lucide="inbox" style="width:15px;height:15px;"></i>
+                        <span>All Notices</span>
+                        <span class="es-cat-tab-count">@Model.Notices.TotalCount</span>
+                    </a>
+
+                    @foreach (var cat in categories)
                     {
-                        if (cat != NoticeType.TeacherOnly)
-                        {
-                            <option value="@cat" selected="@(Model.Category == cat ? "selected" : null)">@cat</option>
-                        }
+                        var isCatActive = Model.Category == cat;
+                        var catIcon = cat switch {
+                            NoticeType.Academic => "book-open",
+                            NoticeType.Examination => "award",
+                            NoticeType.Holiday => "sun",
+                            NoticeType.Event => "calendar",
+                            _ => "info"
+                        };
+
+                        <a asp-action="Index" 
+                           asp-route-category="@cat" 
+                           asp-route-searchTerm="@Model.SearchTerm" 
+                           class="es-cat-tab-btn @(isCatActive ? "active" : "")">
+                            <i data-lucide="@catIcon" style="width:15px;height:15px;"></i>
+                            <span>@cat.ToString()</span>
+                        </a>
                     }
-                </select>
-            </div>
-            <div class="col-md-2 d-grid">
-                <button type="submit" class="btn btn-primary">Filter</button>
-            </div>
-        </form>
+
+                    @if (!string.IsNullOrEmpty(Model.SearchTerm) || Model.Category != null)
+                    {
+                        <a asp-action="Index" class="btn btn-sm btn-outline-danger rounded-pill px-3 py-1 ms-auto d-inline-flex align-items-center gap-1" style="font-size:0.82rem;">
+                            <i data-lucide="rotate-ccw" style="width:13px;height:13px;"></i> Reset All Filters
+                        </a>
+                    }
+                </div>
+
+                <!-- Smart Quick Filter Chips (Client Filter Layer) -->
+                <div class="es-smart-chips-wrapper">
+                    <span class="text-muted small me-1"><i data-lucide="sliders-horizontal" style="width:12px;height:12px;"></i> Quick Filter:</span>
+                    <button type="button" class="es-smart-chip" data-chip="urgent">
+                        <span>🔥 Urgent &amp; Exams</span>
+                    </button>
+                    <button type="button" class="es-smart-chip" data-chip="pdf">
+                        <span>📄 With PDF Attachment</span>
+                    </button>
+                    <button type="button" class="es-smart-chip" data-chip="new">
+                        <span>✨ Added This Week</span>
+                    </button>
+                    <button type="button" class="es-smart-chip" data-chip="bookmarks" id="chipBookmarks">
+                        <span>⭐ Bookmarked (<span id="savedCount">0</span>)</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     3. NOTICES DIRECTORY (Smart Cards with Dual View Mode)
+     ========================================================================== -->
+<div class="container mb-5">
+    <!-- Active Result Count & Match Status Summary -->
+    <div class="d-flex align-items-center justify-content-between mb-3 px-1">
+        <div class="text-muted small" id="resultsCountSummary">
+            Showing <strong class="text-dark" id="visibleCountEl">@Model.Notices.Items.Count</strong> of <strong class="text-dark">@Model.Notices.TotalCount</strong> circulars
+            @(Model.Category != null ? $"under '{Model.Category}'" : "")
+            @(!string.IsNullOrEmpty(Model.SearchTerm) ? $"matching '{Model.SearchTerm}'" : "")
+        </div>
+        <div class="text-muted small d-none d-md-block">
+            Page <strong>@Model.Notices.PageIndex</strong> of <strong>@Math.Max(1, Model.Notices.TotalPages)</strong>
+        </div>
     </div>
 
-    <!-- Notices List -->
-    <div class="row g-4 mb-5">
+    <!-- Notices Container (Defaults to List View) -->
+    <div class="es-notices-container is-list" id="noticesContainer">
         @if (Model.Notices.Items.Any())
         {
             @foreach (var notice in Model.Notices.Items)
             {
-                <div class="col-md-6">
-                    <div class="card p-4 h-100 d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge badge-purple">@notice.Category</span>
-                            <span class="small text-muted"><i class="bi bi-calendar3 me-1"></i>@notice.PublishDate.ToString("dd MMM yyyy")</span>
+                var isNew = (DateTime.UtcNow - notice.PublishDate).TotalDays <= 7;
+                var hasPdf = !string.IsNullOrEmpty(notice.AttachmentUrl);
+                var catString = notice.Category.ToString();
+                var catBadgeClass = "es-cat-" + catString.ToLower();
+                var isUrgent = notice.Category == NoticeType.Examination;
+                var catIcon = notice.Category switch {
+                    NoticeType.Academic => "book-open",
+                    NoticeType.Examination => "award",
+                    NoticeType.Holiday => "sun",
+                    NoticeType.Event => "calendar",
+                    _ => "info"
+                };
+
+                <div class="es-notice-item-card" 
+                     data-id="@notice.Id"
+                     data-title="@notice.Title.ToLower()" 
+                     data-desc="@notice.Content.ToLower()"
+                     data-views="@notice.ViewCount"
+                     data-date="@notice.PublishDate.ToString("yyyyMMdd")"
+                     data-is-urgent="@(isUrgent ? "true" : "false")"
+                     data-has-pdf="@(hasPdf ? "true" : "false")"
+                     data-is-new="@(isNew ? "true" : "false")">
+
+                    <!-- Date Box -->
+                    <div class="es-notice-item-date">
+                        <span class="day">@notice.PublishDate.ToString("dd")</span>
+                        <span class="month">@notice.PublishDate.ToString("MMM")</span>
+                    </div>
+
+                    <!-- Notice Body -->
+                    <div class="es-notice-item-body">
+                        <div class="d-flex align-items-center justify-content-between mb-1">
+                            <div class="d-flex align-items-center flex-wrap gap-2">
+                                <span class="es-cat-badge @catBadgeClass">
+                                    <i data-lucide="@catIcon" style="width:12px;height:12px;"></i>
+                                    @catString
+                                </span>
+
+                                @if (isNew)
+                                {
+                                    <span class="es-badge-new-pill">NEW</span>
+                                }
+
+                                @if (notice.IsTeacherOnly)
+                                {
+                                    <span class="badge rounded-pill bg-warning-subtle text-warning-emphasis border" style="font-size:0.72rem;">Faculty Only</span>
+                                }
+
+                                <span class="es-read-time-badge">
+                                    <i data-lucide="clock" style="width:11px;height:11px;"></i> 1 min read
+                                </span>
+                            </div>
+
+                            <!-- Bookmark Ribbon Button -->
+                            <button type="button" class="es-btn-bookmark" data-bookmark-id="@notice.Id" title="Bookmark Notice">
+                                <i data-lucide="bookmark" style="width:17px;height:17px;"></i>
+                            </button>
                         </div>
-                        <h4 class="fw-bold mb-2">
-                            <a asp-action="Details" asp-route-id="@notice.Id" class="text-dark">@notice.Title</a>
-                        </h4>
-                        <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">
-                            @(notice.Content.Length > 150 ? notice.Content.Substring(0, 150) + "..." : notice.Content)
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
-                            <a asp-action="Details" asp-route-id="@notice.Id" class="fw-semibold text-purple small">
-                                Read Full Notice <i class="bi bi-chevron-right ms-1"></i>
+
+                        <h3 class="es-notice-item-title">
+                            <a asp-action="Details" asp-route-id="@notice.Id" class="notice-title-text">
+                                @notice.Title
                             </a>
-                            @if (!string.IsNullOrEmpty(notice.AttachmentUrl))
-                            {
-                                <a href="@notice.AttachmentUrl" target="_blank" class="badge badge-purple text-decoration-none">
-                                    <i class="bi bi-file-earmark-pdf-fill me-1"></i> PDF Attachment
+                        </h3>
+
+                        <p class="es-notice-item-snippet notice-desc-text">
+                            @(notice.Content.Length > 175 ? notice.Content.Substring(0, 175) + "..." : notice.Content)
+                        </p>
+
+                        <!-- Metadata Row & Actions -->
+                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 pt-2">
+                            <div class="es-notice-item-meta">
+                                <span class="es-notice-meta-unit">
+                                    <i data-lucide="eye" style="width:14px;height:14px;"></i>
+                                    @notice.ViewCount views
+                                </span>
+                                <span class="es-notice-meta-unit">
+                                    <i data-lucide="calendar" style="width:14px;height:14px;"></i>
+                                    @notice.PublishDate.ToString("MMMM dd, yyyy")
+                                </span>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-2">
+                                <!-- Smart Quick View Button (Opens Modal Without Page Reload) -->
+                                <button type="button" 
+                                        class="es-btn-quick-view open-preview-btn"
+                                        data-id="@notice.Id"
+                                        data-title="@notice.Title"
+                                        data-cat="@catString"
+                                        data-date="@notice.PublishDate.ToString("MMMM dd, yyyy")"
+                                        data-views="@notice.ViewCount"
+                                        data-pdf="@(notice.AttachmentUrl ?? "")"
+                                        data-content="@notice.Content">
+                                    <i data-lucide="maximize-2" style="width:13px;height:13px;"></i>
+                                    <span>Quick View</span>
+                                </button>
+
+                                @if (hasPdf)
+                                {
+                                    <a href="@notice.AttachmentUrl" target="_blank" class="es-btn-view-pdf" title="Download Official PDF Document">
+                                        <i data-lucide="file-text" style="width:14px;height:14px;"></i>
+                                        <span>PDF</span>
+                                    </a>
+                                }
+
+                                <a asp-action="Details" asp-route-id="@notice.Id" class="es-btn-read-full">
+                                    <span>Full Notice</span>
+                                    <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
                                 </a>
-                            }
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,34 +328,463 @@
         else
         {
             <div class="col-12">
-                <div class="alert alert-light text-center py-5">
-                    <i class="bi bi-info-circle fs-2 text-muted mb-2 d-block"></i>
-                    <h5>No notices found</h5>
-                    <p class="text-muted mb-0">Try clearing your filters or check back later.</p>
+                <div class="card p-5 text-center border-2" style="border-color:#D2D9C5; border-radius:24px; background:#FAFBF7;">
+                    <div class="mb-3">
+                        <span class="d-inline-flex p-3 rounded-circle" style="background:#F1F2E8; color:#687F65;">
+                            <i data-lucide="inbox" style="width:40px;height:40px;"></i>
+                        </span>
+                    </div>
+                    <h4 class="fw-bold text-dark">No Notices Found</h4>
+                    <p class="text-muted mx-auto mb-4" style="max-width: 480px;">
+                        We couldn't find any notices matching your selected category or search keywords. Try adjusting your query or reset filters.
+                    </p>
+                    <div>
+                        <a asp-action="Index" class="btn-es-green px-4 py-2" style="font-size:0.92rem;">
+                            <i data-lucide="rotate-ccw" style="width:16px;height:16px;"></i> Clear All Filters
+                        </a>
+                    </div>
                 </div>
             </div>
         }
     </div>
 
-    <!-- Pagination -->
+    <!-- Dynamic Client Search Empty State (Hidden by default) -->
+    <div id="clientSearchEmptyState" class="card p-5 text-center border-2 d-none my-4" style="border-color:#D2D9C5; border-radius:24px; background:#FAFBF7;">
+        <div class="mb-3">
+            <span class="d-inline-flex p-3 rounded-circle" style="background:#F1F2E8; color:#687F65;">
+                <i data-lucide="search-x" style="width:40px;height:40px;"></i>
+            </span>
+        </div>
+        <h4 class="fw-bold text-dark">No Circulars Match Your Filter</h4>
+        <p class="text-muted mx-auto mb-4" style="max-width: 460px;">
+            No notices on this page match your search query or quick filter. You can reset filters or press Enter to run a global search.
+        </p>
+        <div>
+            <button type="button" id="btnResetLiveSearch" class="btn btn-outline-dark rounded-pill px-4 py-2">
+                Clear Filters
+            </button>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         4. SMART PAGINATION (Sleek Theme Rounded Capsule)
+         ========================================================================== -->
     @if (Model.Notices.TotalPages > 1)
     {
-        <nav>
-            <ul class="pagination justify-content-center">
-                <li class="page-item @(!Model.Notices.HasPreviousPage ? "disabled" : "")">
-                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.Notices.PageIndex - 1)" asp-route-searchTerm="@Model.SearchTerm" asp-route-category="@Model.Category">Previous</a>
-                </li>
+        <nav class="es-pagination-wrapper" aria-label="Notices Pagination">
+            <div class="es-pagination">
+                <!-- Previous Button -->
+                <a class="es-page-btn @(!Model.Notices.HasPreviousPage ? "disabled" : "")" 
+                   asp-action="Index" 
+                   asp-route-page="@(Model.Notices.PageIndex - 1)" 
+                   asp-route-searchTerm="@Model.SearchTerm" 
+                   asp-route-category="@Model.Category"
+                   aria-label="Previous Page">
+                    <i data-lucide="chevron-left" style="width:16px;height:16px;"></i>
+                    <span class="d-none d-sm-inline ms-1">Prev</span>
+                </a>
+
+                <!-- Numbered Page Buttons -->
                 @for (int p = 1; p <= Model.Notices.TotalPages; p++)
                 {
-                    <li class="page-item @(p == Model.Notices.PageIndex ? "active" : "")">
-                        <a class="page-link" asp-action="Index" asp-route-page="@p" asp-route-searchTerm="@Model.SearchTerm" asp-route-category="@Model.Category">@p</a>
-                    </li>
+                    if (p == 1 || p == Model.Notices.TotalPages || (p >= Model.Notices.PageIndex - 2 && p <= Model.Notices.PageIndex + 2))
+                    {
+                        <a class="es-page-btn @(p == Model.Notices.PageIndex ? "active" : "")" 
+                           asp-action="Index" 
+                           asp-route-page="@p" 
+                           asp-route-searchTerm="@Model.SearchTerm" 
+                           asp-route-category="@Model.Category">
+                            @p
+                        </a>
+                    }
+                    else if (p == Model.Notices.PageIndex - 3 || p == Model.Notices.PageIndex + 3)
+                    {
+                        <span class="es-page-btn disabled">&hellip;</span>
+                    }
                 }
-                <li class="page-item @(!Model.Notices.HasNextPage ? "disabled" : "")">
-                    <a class="page-link" asp-action="Index" asp-route-page="@(Model.Notices.PageIndex + 1)" asp-route-searchTerm="@Model.SearchTerm" asp-route-category="@Model.Category">Next</a>
-                </li>
-            </ul>
+
+                <!-- Next Button -->
+                <a class="es-page-btn @(!Model.Notices.HasNextPage ? "disabled" : "")" 
+                   asp-action="Index" 
+                   asp-route-page="@(Model.Notices.PageIndex + 1)" 
+                   asp-route-searchTerm="@Model.SearchTerm" 
+                   asp-route-category="@Model.Category"
+                   aria-label="Next Page">
+                    <span class="d-none d-sm-inline me-1">Next</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px;"></i>
+                </a>
+            </div>
         </nav>
     }
 </div>
 
+<!-- ==========================================================================
+     5. SMART MODAL: INSTANT NOTICE PREVIEW (NO RELOAD NEEDED!)
+     ========================================================================== -->
+<div class="modal fade es-preview-modal" id="noticePreviewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="es-preview-modal-header d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="es-cat-badge es-cat-academic" id="modalCatBadge">Academic</span>
+                    <span class="text-muted small ms-2" id="modalRefCode">Ref: CIR-2026-0001</span>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="es-preview-modal-body">
+                <h3 class="fw-bold text-dark mb-2" id="modalNoticeTitle">Notice Title</h3>
+                <div class="d-flex align-items-center gap-3 text-muted small pb-3 mb-3 border-bottom">
+                    <span><i data-lucide="calendar" style="width:14px;height:14px;" class="me-1"></i><span id="modalNoticeDate">Nov 20, 2026</span></span>
+                    <span><i data-lucide="eye" style="width:14px;height:14px;" class="me-1"></i><span id="modalNoticeViews">120</span> Views</span>
+                </div>
+
+                <div class="es-notice-doc-body" id="modalNoticeContent">
+                    Content goes here...
+                </div>
+
+                <!-- Modal PDF Box -->
+                <div id="modalPdfBox" class="es-attachment-download-box d-none mt-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="p-2 rounded-3 bg-danger-subtle text-danger">
+                            <i data-lucide="file-text" style="width:28px;height:28px;"></i>
+                        </div>
+                        <div>
+                            <div class="fw-bold text-dark">Official Attachment Document</div>
+                            <small class="text-muted">Certified authentic PDF file available</small>
+                        </div>
+                    </div>
+                    <a href="#" id="modalPdfLink" target="_blank" class="btn btn-danger rounded-pill px-3 py-1 btn-sm font-weight-bold">
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+
+            <div class="es-preview-modal-footer d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div class="d-flex align-items-center gap-2">
+                    <button type="button" onclick="window.print()" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-1 d-inline-flex align-items-center gap-1">
+                        <i data-lucide="printer" style="width:14px;height:14px;"></i> Print
+                    </button>
+                    <button type="button" id="modalBtnCopyLink" class="btn btn-outline-secondary btn-sm rounded-pill px-3 py-1 d-inline-flex align-items-center gap-1">
+                        <i data-lucide="share-2" style="width:14px;height:14px;"></i> Share
+                    </button>
+                </div>
+                <div>
+                    <a href="#" id="modalFullPageLink" class="btn-es-green btn-sm px-3 py-2 text-decoration-none" style="font-size:0.85rem;">
+                        Open Full Page &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Smart Floating Toast -->
+<div id="smartToast" class="es-smart-toast">
+    <i data-lucide="check-circle" style="width:18px;height:18px;color:#34D399;"></i>
+    <span id="smartToastMsg">Notification message</span>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            const container = document.getElementById('noticesContainer');
+            const btnList = document.getElementById('btnViewList');
+            const btnGrid = document.getElementById('btnViewGrid');
+            const searchInput = document.getElementById('noticeSearchInput');
+            const clearBtn = document.getElementById('clearSearchBtn');
+            const clientEmptyState = document.getElementById('clientSearchEmptyState');
+            const resetSearchBtn = document.getElementById('btnResetLiveSearch');
+            const sortSelect = document.getElementById('sortSelect');
+            const chips = Array.from(document.querySelectorAll('.es-smart-chip'));
+            const savedCountEl = document.getElementById('savedCount');
+            const visibleCountEl = document.getElementById('visibleCountEl');
+            const smartToast = document.getElementById('smartToast');
+            const toastMsg = document.getElementById('smartToastMsg');
+
+            let noticeCards = Array.from(document.querySelectorAll('.es-notice-item-card'));
+            let activeChip = null;
+
+            // Show Toast helper
+            function showToast(msg) {
+                if (!smartToast || !toastMsg) return;
+                toastMsg.textContent = msg;
+                smartToast.classList.add('show');
+                setTimeout(() => {
+                    smartToast.classList.remove('show');
+                }, 2800);
+            }
+
+            // Bookmarks Management with localStorage
+            function getSavedBookmarks() {
+                try {
+                    return JSON.parse(localStorage.getItem('es_saved_notices') || '[]');
+                } catch (e) {
+                    return [];
+                }
+            }
+
+            function updateBookmarkUI() {
+                const saved = getSavedBookmarks();
+                if (savedCountEl) savedCountEl.textContent = saved.length;
+
+                document.querySelectorAll('.es-btn-bookmark').forEach(btn => {
+                    const id = parseInt(btn.getAttribute('data-bookmark-id'));
+                    if (saved.includes(id)) {
+                        btn.classList.add('is-saved');
+                        btn.setAttribute('title', 'Remove Bookmark');
+                    } else {
+                        btn.classList.remove('is-saved');
+                        btn.setAttribute('title', 'Bookmark Notice');
+                    }
+                });
+            }
+
+            document.querySelectorAll('.es-btn-bookmark').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const id = parseInt(this.getAttribute('data-bookmark-id'));
+                    let saved = getSavedBookmarks();
+                    if (saved.includes(id)) {
+                        saved = saved.filter(x => x !== id);
+                        showToast('Notice removed from bookmarks');
+                    } else {
+                        saved.push(id);
+                        showToast('Notice saved to bookmarks ⭐');
+                    }
+                    localStorage.setItem('es_saved_notices', JSON.stringify(saved));
+                    updateBookmarkUI();
+                    if (activeChip === 'bookmarks') {
+                        applyAllFilters();
+                    }
+                });
+            });
+
+            updateBookmarkUI();
+
+            // View mode toggling (Persisted in localStorage)
+            function setViewMode(mode) {
+                if (mode === 'grid') {
+                    container.classList.remove('is-list');
+                    container.classList.add('is-grid');
+                    btnGrid.classList.add('active');
+                    btnList.classList.remove('active');
+                    localStorage.setItem('es_notices_view_mode', 'grid');
+                } else {
+                    container.classList.remove('is-grid');
+                    container.classList.add('is-list');
+                    btnList.classList.add('active');
+                    btnGrid.classList.remove('active');
+                    localStorage.setItem('es_notices_view_mode', 'list');
+                }
+            }
+
+            const savedMode = localStorage.getItem('es_notices_view_mode') || 'list';
+            setViewMode(savedMode);
+
+            if (btnList && btnGrid) {
+                btnList.addEventListener('click', () => setViewMode('list'));
+                btnGrid.addEventListener('click', () => setViewMode('grid'));
+            }
+
+            // Keyword Highlighting helper
+            function highlightText(element, query) {
+                const originalText = element.getAttribute('data-orig') || element.textContent;
+                element.setAttribute('data-orig', originalText);
+
+                if (!query) {
+                    element.textContent = originalText;
+                    return;
+                }
+
+                const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                const highlighted = originalText.replace(regex, '<mark class="es-search-mark">$1</mark>');
+                element.innerHTML = highlighted;
+            }
+
+            // Combined Smart Filter: Search query + Quick chip filter
+            function applyAllFilters() {
+                const query = (searchInput.value || '').trim().toLowerCase();
+                const savedBookmarks = getSavedBookmarks();
+
+                if (clearBtn) {
+                    clearBtn.style.display = query.length > 0 ? 'inline-flex' : 'none';
+                }
+
+                let visibleCount = 0;
+
+                noticeCards.forEach(card => {
+                    const title = card.getAttribute('data-title') || '';
+                    const desc = card.getAttribute('data-desc') || '';
+                    const id = parseInt(card.getAttribute('data-id'));
+                    const isUrgent = card.getAttribute('data-is-urgent') === 'true';
+                    const hasPdf = card.getAttribute('data-has-pdf') === 'true';
+                    const isNew = card.getAttribute('data-is-new') === 'true';
+
+                    // 1. Check Query
+                    const matchesQuery = !query || title.includes(query) || desc.includes(query);
+
+                    // 2. Check Active Quick Chip
+                    let matchesChip = true;
+                    if (activeChip === 'urgent') matchesChip = isUrgent;
+                    else if (activeChip === 'pdf') matchesChip = hasPdf;
+                    else if (activeChip === 'new') matchesChip = isNew;
+                    else if (activeChip === 'bookmarks') matchesChip = savedBookmarks.includes(id);
+
+                    if (matchesQuery && matchesChip) {
+                        card.style.display = '';
+                        visibleCount++;
+
+                        // Highlight matches
+                        const titleEl = card.querySelector('.notice-title-text');
+                        const descEl = card.querySelector('.notice-desc-text');
+                        if (titleEl) highlightText(titleEl, query);
+                        if (descEl) highlightText(descEl, query);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                if (visibleCountEl) visibleCountEl.textContent = visibleCount;
+
+                if (clientEmptyState) {
+                    if (visibleCount === 0 && noticeCards.length > 0) {
+                        clientEmptyState.classList.remove('d-none');
+                    } else {
+                        clientEmptyState.classList.add('d-none');
+                    }
+                }
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', applyAllFilters);
+                if (searchInput.value) {
+                    if (clearBtn) clearBtn.style.display = 'inline-flex';
+                }
+            }
+
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function () {
+                    searchInput.value = '';
+                    applyAllFilters();
+                    searchInput.focus();
+                });
+            }
+
+            // Quick Chips Click handling
+            chips.forEach(chip => {
+                chip.addEventListener('click', function () {
+                    const chipType = this.getAttribute('data-chip');
+                    if (activeChip === chipType) {
+                        activeChip = null;
+                        this.classList.remove('active');
+                    } else {
+                        chips.forEach(c => c.classList.remove('active'));
+                        activeChip = chipType;
+                        this.classList.add('active');
+                    }
+                    applyAllFilters();
+                });
+            });
+
+            if (resetSearchBtn) {
+                resetSearchBtn.addEventListener('click', function () {
+                    searchInput.value = '';
+                    activeChip = null;
+                    chips.forEach(c => c.classList.remove('active'));
+                    applyAllFilters();
+                });
+            }
+
+            // Client-Side Sorting
+            if (sortSelect) {
+                sortSelect.addEventListener('change', function () {
+                    const mode = this.value;
+                    const sorted = [...noticeCards].sort((a, b) => {
+                        if (mode === 'views') {
+                            const vA = parseInt(a.getAttribute('data-views') || '0');
+                            const vB = parseInt(b.getAttribute('data-views') || '0');
+                            return vB - vA;
+                        } else if (mode === 'title') {
+                            const tA = (a.getAttribute('data-title') || '').trim();
+                            const tB = (b.getAttribute('data-title') || '').trim();
+                            return tA.localeCompare(tB);
+                        } else {
+                            const dA = a.getAttribute('data-date') || '';
+                            const dB = b.getAttribute('data-date') || '';
+                            return dB.localeCompare(dA);
+                        }
+                    });
+
+                    sorted.forEach(c => container.appendChild(c));
+                    noticeCards = sorted;
+                });
+            }
+
+            // Smart Preview Modal Engine
+            const previewModalEl = document.getElementById('noticePreviewModal');
+            let previewModal = null;
+            if (previewModalEl && typeof bootstrap !== 'undefined') {
+                previewModal = new bootstrap.Modal(previewModalEl);
+            }
+
+            document.querySelectorAll('.open-preview-btn').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const id = this.getAttribute('data-id');
+                    const title = this.getAttribute('data-title');
+                    const cat = this.getAttribute('data-cat');
+                    const date = this.getAttribute('data-date');
+                    const views = this.getAttribute('data-views');
+                    const pdf = this.getAttribute('data-pdf');
+                    const content = this.getAttribute('data-content');
+
+                    document.getElementById('modalNoticeTitle').textContent = title;
+                    document.getElementById('modalCatBadge').textContent = cat;
+                    document.getElementById('modalCatBadge').className = `es-cat-badge es-cat-${cat.toLowerCase()}`;
+                    document.getElementById('modalRefCode').textContent = `Ref: CIR-2026-${String(id).padStart(4, '0')}`;
+                    document.getElementById('modalNoticeDate').textContent = date;
+                    document.getElementById('modalNoticeViews').textContent = views;
+                    document.getElementById('modalNoticeContent').innerHTML = content.replace(/\n/g, '<br/>');
+
+                    const pdfBox = document.getElementById('modalPdfBox');
+                    const pdfLink = document.getElementById('modalPdfLink');
+                    if (pdf && pdf.trim().length > 0) {
+                        pdfBox.classList.remove('d-none');
+                        pdfLink.setAttribute('href', pdf);
+                    } else {
+                        pdfBox.classList.add('d-none');
+                    }
+
+                    const fullPageLink = document.getElementById('modalFullPageLink');
+                    if (fullPageLink) {
+                        fullPageLink.setAttribute('href', `/Notices/Details/${id}`);
+                    }
+
+                    const modalBtnCopy = document.getElementById('modalBtnCopyLink');
+                    if (modalBtnCopy) {
+                        modalBtnCopy.onclick = async () => {
+                            const url = `${window.location.origin}/Notices/Details/${id}`;
+                            try {
+                                await navigator.clipboard.writeText(url);
+                                showToast('Notice direct link copied to clipboard!');
+                            } catch (err) {
+                                prompt('Copy notice link:', url);
+                            }
+                        };
+                    }
+
+                    if (previewModal) {
+                        previewModal.show();
+                    }
+                });
+            });
+        });
+    </script>
+}

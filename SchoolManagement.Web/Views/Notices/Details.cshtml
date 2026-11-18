@@ -1,65 +1,181 @@
 @model SchoolManagement.BLL.DTOs.Notice.NoticeDto
+@using SchoolManagement.Domain.Enums
+
 @{
     ViewData["Title"] = Model.Title;
+    var catString = Model.Category.ToString();
+    var catBadgeClass = "es-cat-" + catString.ToLower();
+    var catIcon = Model.Category switch {
+        NoticeType.Academic => "book-open",
+        NoticeType.Examination => "award",
+        NoticeType.Holiday => "sun",
+        NoticeType.Event => "calendar",
+        _ => "info"
+    };
 }
 
-<section class="page-banner py-5 bg-light border-bottom">
-    <div class="container">
-        <div class="d-flex align-items-center gap-2 mb-2 text-muted small">
-            <a asp-controller="Home" asp-action="Index" class="text-decoration-none">Home</a>
-            <span>/</span>
-            <a asp-controller="Notices" asp-action="Index" class="text-decoration-none">Notices</a>
-            <span>/</span>
-            <span>Details</span>
-        </div>
-        <h1 class="h3 fw-bold text-dark">@Model.Title</h1>
-        <div class="d-flex flex-wrap align-items-center gap-3 text-secondary small mt-2">
-            <span><i class="bi bi-calendar3 me-1"></i>Published: @Model.PublishDate.ToString("MMMM dd, yyyy")</span>
-            <span><i class="bi bi-tag me-1"></i>@Model.Category</span>
-            <span><i class="bi bi-eye me-1"></i>@Model.ViewCount Views</span>
+<!-- ==========================================================================
+     1. HERO BANNER (Safe for Transparent Floating Navbar)
+     ========================================================================== -->
+<section class="es-notices-hero">
+    <div class="es-notices-hero-lines" aria-hidden="true"></div>
+    <div class="container position-relative" style="z-index: 2;">
+        <!-- Breadcrumb Pill -->
+        <nav aria-label="breadcrumb">
+            <div class="es-breadcrumb-pill">
+                <a asp-controller="Home" asp-action="Index">
+                    <i data-lucide="home" style="width:14px;height:14px;" class="me-1"></i>Home
+                </a>
+                <span>/</span>
+                <a asp-controller="Notices" asp-action="Index">Notices</a>
+                <span>/</span>
+                <span class="text-white">@Model.Category.ToString()</span>
+            </div>
+        </nav>
+
+        <!-- Category & Title -->
+        <div class="d-flex align-items-center flex-wrap gap-2 mb-2">
+            <span class="es-cat-badge @catBadgeClass" style="font-size:0.84rem; padding:6px 14px; background:#FFFFFF; color:#1C2B21; border-color:#FFFFFF;">
+                <i data-lucide="@catIcon" style="width:14px;height:14px;"></i>
+                @catString
+            </span>
+
             @if (Model.IsTeacherOnly)
             {
-                <span class="badge bg-warning-subtle text-warning-emphasis">Faculty Circular</span>
+                <span class="badge rounded-pill bg-warning text-dark px-3 py-1 fw-bold" style="font-size:0.8rem;">
+                    Faculty &amp; Staff Only
+                </span>
+            }
+
+            <span class="es-kpi-pill py-1 px-3">
+                <i data-lucide="eye" style="width:14px;height:14px;color:#34D399;"></i>
+                <span>@Model.ViewCount Views</span>
+            </span>
+        </div>
+
+        <h1 class="es-notices-hero-title mb-3" style="max-width: 900px;">
+            @Model.Title
+        </h1>
+
+        <div class="d-flex align-items-center flex-wrap gap-3 text-white-50 small">
+            <span><i data-lucide="calendar" style="width:14px;height:14px;" class="me-1"></i>Published: @Model.PublishDate.ToString("MMMM dd, yyyy")</span>
+            @if (Model.ExpiryDate.HasValue)
+            {
+                <span><i data-lucide="clock" style="width:14px;height:14px;" class="me-1"></i>Valid Until: @Model.ExpiryDate.Value.ToString("MMMM dd, yyyy")</span>
             }
         </div>
     </div>
 </section>
 
-<section class="py-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-9">
-                <div class="card border-0 shadow-sm p-4 p-md-5">
-                    <div class="notice-content mb-4" style="line-height: 1.8; font-size: 1.05rem;">
-                        @Html.Raw(Model.Content.Replace("\n", "<br/>"))
+<!-- ==========================================================================
+     2. NOTICE DOCUMENT CONTAINER
+     ========================================================================== -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-9">
+            <div class="es-notice-doc-card">
+                <!-- Header inside document -->
+                <div class="es-notice-doc-header d-flex justify-content-between align-items-center flex-wrap gap-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="es-brand-icon" style="width:48px;height:48px;background:#1C2B21;color:#FFFFFF;">
+                            <i data-lucide="graduation-cap" style="width:24px;height:24px;"></i>
+                        </div>
+                        <div>
+                            <div class="fw-bold text-dark fs-5">E-School Institutional Circular</div>
+                            <div class="text-muted small">Ref: CIR-@Model.PublishDate.Year-@(Model.Id.ToString("D4"))</div>
+                        </div>
                     </div>
 
-                    @if (!string.IsNullOrEmpty(Model.AttachmentUrl))
-                    {
-                        <div class="p-3 bg-light rounded-3 d-flex align-items-center justify-content-between my-4 border">
-                            <div class="d-flex align-items-center gap-3">
-                                <i class="bi bi-file-earmark-pdf-fill text-danger fs-2"></i>
-                                <div>
-                                    <div class="fw-semibold">Official Attachment Document</div>
-                                    <small class="text-muted">Click the button to view or download</small>
-                                </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <button type="button" onclick="window.print()" class="btn btn-outline-dark rounded-pill px-3 py-2 btn-sm d-inline-flex align-items-center gap-2">
+                            <i data-lucide="printer" style="width:15px;height:15px;"></i>
+                            <span>Print</span>
+                        </button>
+                        <button type="button" id="btnShareNotice" class="btn btn-outline-secondary rounded-pill px-3 py-2 btn-sm d-inline-flex align-items-center gap-2">
+                            <i data-lucide="share-2" style="width:15px;height:15px;"></i>
+                            <span>Share</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Document Body Content -->
+                <div class="es-notice-doc-body py-2">
+                    @Html.Raw(Model.Content.Replace("\n", "<br/>"))
+                </div>
+
+                <!-- Official Attachment Download Box -->
+                @if (!string.IsNullOrEmpty(Model.AttachmentUrl))
+                {
+                    <div class="es-attachment-download-box">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="p-3 rounded-3" style="background:#FEF2F2; color:#DC2626;">
+                                <i data-lucide="file-text" style="width:32px;height:32px;"></i>
                             </div>
-                            <a href="@Model.AttachmentUrl" target="_blank" class="btn btn-outline-primary btn-sm">
-                                <i class="bi bi-download me-1"></i> Download File
+                            <div>
+                                <h6 class="fw-bold text-dark mb-1">Official Circular Attachment (PDF)</h6>
+                                <p class="text-muted small mb-0">Certified authentic institutional documentation and routine sheet.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                            <a href="@Model.AttachmentUrl" target="_blank" class="btn btn-danger rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 font-weight-bold">
+                                <i data-lucide="download" style="width:16px;height:16px;"></i>
+                                <span>Download PDF</span>
                             </a>
                         </div>
-                    }
+                    </div>
+                }
 
-                    <div class="border-top pt-4 d-flex justify-content-between align-items-center mt-3">
-                        <a asp-action="Index" class="btn btn-secondary">
-                            <i class="bi bi-arrow-left me-1"></i> Back to Notices
-                        </a>
-                        <button onclick="window.print()" class="btn btn-outline-secondary">
-                            <i class="bi bi-printer me-1"></i> Print Notice
-                        </button>
+                <!-- Document Footer & Nav Back -->
+                <div class="border-top pt-4 mt-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                    <a asp-action="Index" class="btn-es-green px-4 py-2" style="font-size:0.92rem;">
+                        <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
+                        <span>Back to All Notices</span>
+                    </a>
+
+                    <div class="text-muted small">
+                        Published by Academic Administration &bull; E-School Management
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            const btnShare = document.getElementById('btnShareNotice');
+            if (btnShare) {
+                btnShare.addEventListener('click', async function () {
+                    const shareData = {
+                        title: '@Html.Raw(Model.Title.Replace("'", "\\'"))',
+                        text: 'Official notice from E-School Management',
+                        url: window.location.href
+                    };
+
+                    if (navigator.share) {
+                        try {
+                            await navigator.share(shareData);
+                        } catch (err) {}
+                    } else {
+                        try {
+                            await navigator.clipboard.writeText(window.location.href);
+                            btnShare.innerHTML = '<i data-lucide="check" style="width:15px;height:15px;"></i> Copied Link!';
+                            if (typeof lucide !== 'undefined') lucide.createIcons();
+                            setTimeout(() => {
+                                btnShare.innerHTML = '<i data-lucide="share-2" style="width:15px;height:15px;"></i> Share';
+                                if (typeof lucide !== 'undefined') lucide.createIcons();
+                            }, 2500);
+                        } catch (e) {
+                            alert('Link copied to clipboard!');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+}
